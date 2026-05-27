@@ -1,0 +1,161 @@
+---
+title: "Contingency Tables"
+---
+
+<span class="section-badge">Basics</span>
+
+When both your variables are **categorical**, the appropriate tools come from the chi-square family. A **contingency table** (cross-tabulation) shows the frequency of every combination of categories, and a chi-square test asks whether the two variables are independent.
+
+This page covers:
+
+- [Chi-square test of independence](#chi-square-test-of-independence) — are two categorical variables related?
+- [Chi-square goodness-of-fit](#chi-square-goodness-of-fit) — does a single categorical variable match an expected distribution?
+- [Fisher's exact test](#fishers-exact-test) — the small-sample alternative
+
+---
+
+## Chi-square test of independence
+
+### What is it?
+
+The chi-square test of independence asks: **are two categorical variables related, or independent?** It compares the *observed* cell frequencies in a contingency table against the *expected* frequencies under the null hypothesis of independence.
+
+$$\chi^2 = \sum \frac{(O - E)^2}{E}$$
+
+**Example**: do voting preferences (Party A / Party B / Party C) differ across age groups (18–30, 31–50, 51+)? The contingency table is 3 × 3; the null hypothesis is that age group and party preference are independent.
+
+### When to use it
+
+- Both variables are **categorical** (nominal or ordinal treated as nominal)
+- Each participant contributes to **exactly one cell** of the table (one row per participant)
+- You want to test whether membership in one variable's categories is related to membership in the other's
+
+### Assumptions
+
+::: {.assumption-list}
+- **Independence**: each observation is independent of the others (no participant appears in more than one cell)
+- **Expected cell counts**: all expected counts should be ≥ 5 (a common rule of thumb); at minimum, no more than 20% of cells should have expected counts below 5
+- If expected counts are too small, use **Fisher's exact test** instead (see below)
+:::
+
+### Effect size
+
+Report **Cramér's V** (or **φ** for a 2 × 2 table):
+
+| Cramér's V | Conventional label (df = 1) |
+|---|---|
+| .10 | Small |
+| .30 | Medium |
+| .50 | Large |
+
+For larger tables, the benchmarks scale down — consult DSUJ Chapter 19 or use JASP's effect size output.
+
+### How to do it in JASP
+
+Go to **Frequencies → Contingency Tables** in the analysis menu.
+
+::: {.callout-note icon=false}
+## JASP Video Library — Contingency Tables
+Recordings at [jasp-stats.github.io/jasp-video-library/All_Frequencies.html](https://jasp-stats.github.io/jasp-video-library/All_Frequencies.html):
+
+- [▶ Main Analysis](https://jasp-stats.github.io/jasp-video-library/All_Frequencies.html#contingency-main-analysis) — setting up the table, requesting chi-square
+- [▶ Cells](https://jasp-stats.github.io/jasp-video-library/All_Frequencies.html#contingency-cells) — observed counts, expected counts, residuals
+- [▶ Statistics](https://jasp-stats.github.io/jasp-video-library/All_Frequencies.html#contingency-statistics) — Cramér's V and other effect sizes
+:::
+
+### Interpreting the output
+
+| Statistic | What it means |
+|---|---|
+| **χ²** | The test statistic — bigger means observed frequencies deviate more from expected |
+| **df** | (rows − 1) × (columns − 1) |
+| **p** | Reject H₀ (independence) if *p* < α |
+| **Cramér's V** | Effect size — the strength of association |
+
+If the test is significant, inspect the **standardised residuals** to see which cells contribute most to the deviation from independence.
+
+::: {.callout-tip}
+## APA reporting example
+*A chi-square test of independence showed a significant association between age group and party preference, χ²(4) = 18.6, p < .001, Cramér's V = .24. Inspection of the standardised residuals indicated that voters aged 51+ were over-represented among Party A supporters.*
+:::
+
+---
+
+## Chi-square goodness-of-fit
+
+A variant of the chi-square test for **one categorical variable** against a hypothesised distribution. Example: does a die roll uniformly (each face expected at 1/6) over 600 throws?
+
+In JASP: **Frequencies → Multinomial Test**. Specify either equal expected probabilities or a custom expected distribution.
+
+---
+
+## Fisher's exact test
+
+When expected cell counts are too small for the chi-square approximation to be trustworthy (typically a 2 × 2 table with any expected count < 5), Fisher's exact test computes the *exact* probability of the observed table under the null. It is available in the same JASP dialog — just tick **Fisher's exact test** under *Statistics*.
+
+::: {.callout-tip collapse=true}
+## Why Fisher's exact, not chi-square, with small expected counts
+The chi-square statistic only *approximately* follows the χ² distribution; the approximation breaks down when expected counts are small. Fisher's exact test side-steps the approximation altogether by enumerating every possible table with the same row and column totals. It costs nothing in interpretation — you still report a *p*-value — and is the safer choice for sparse tables.
+:::
+
+---
+
+## Bayesian alternative
+
+JASP also offers a **Bayesian contingency table** analysis, which returns a Bayes factor for the alternative model (variables are related) over the null (independent). Useful when you want to quantify evidence for *either* hypothesis, including evidence *for* independence.
+
+::: {.callout-note icon=false}
+## JASP Video Library — Bayesian Contingency Tables
+- [▶ Bayesian Contingency Tables](https://jasp-stats.github.io/jasp-video-library/All_Frequencies.html#bayesian-contingency-main-analysis) — setting up the analysis, interpreting the Bayes factor
+:::
+
+---
+
+## Further reading
+
+- **DSUJ Chapter 19** — *Categorical data* — chi-square, Fisher's exact, and odds ratios with JASP walkthroughs
+- JASP blog — [How to interpret a contingency table](https://jasp-stats.org/2017/10/04/contingency-tables-jasp/)
+
+---
+
+## Further viewing — SSR lecture recording
+
+The full 2026 SSR lecture covers the chi-square family in depth (captions are available in the SharePoint player):
+
+- [▶ SSR Lecture 28 — Chi-Square](https://amsuni-my.sharepoint.com/:v:/g/personal/j_b_vandoorn_uva_nl/EUdZ0iYtIZBLsOyakIXtcJMBDfwT9iC1FrMlmUpiIYHsdQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=uArm3T)
+
+---
+
+## Try it yourself
+
+Each exercise below ends with a collapsible solution. Try the analysis first, then expand to compare.
+
+### Exercise 1 (chi-square) — Does image type (sexualised vs performance) shape women's reactions to female athletes?
+
+Daniels (2012) showed women either sexualised or performance-focused images of female athletes, then coded each participant's open-ended response for whether it expressed **self-objectification** (yes/no). Using [`leni_16a.jasp`](https://discoverjasp.com/repository/dsj1_leni/leni_16a.jasp), run a chi-square test of independence on image type × self-objectification. Inspect the **standardised residuals** to see which cells drive the result.
+
+::: {.callout-note collapse=true icon=false}
+## ▸ Worked solution
+- **Walkthrough**: [Labcoat Leni — The impact of sexualised images on women's self-evaluations](https://discoverjasp.com/pages/labcoat_leni#the-impact-of-sexualized-images-on-womens-self-evaluations)
+- **Annotated JASP output**: [leni_16a.html](https://discoverjasp.com/repository/dsj1_leni/leni_16a.html)
+:::
+
+### Exercise 2 (chi-square × three outcomes) — Are perceptions of happiness associated with the professional group rated?
+
+Three groups of professionals rated each other on three different happiness-related measures. Using [`leni_16b.jasp`](https://discoverjasp.com/repository/dsj1_leni/leni_16b.jasp), run a chi-square test for **each** of the three outcomes. Report Cramér's V and discuss whether you should adjust for multiple testing.
+
+::: {.callout-note collapse=true icon=false}
+## ▸ Worked solution
+- **Walkthrough**: [Labcoat Leni — Is the Black American happy?](https://discoverjasp.com/pages/labcoat_leni#is-the-black-american-happy)
+- **Annotated JASP output**: [leni_16b.html](https://discoverjasp.com/repository/dsj1_leni/leni_16b.html)
+:::
+
+### Exercise 3 (chi-square + Bayesian alternative) — Does time-pressure at work affect off-hours psychological detachment?
+
+Sonnentag (2012) surveyed 1709 employees on their work time-pressure (5 ordered levels) and whether they could psychologically *detach* from work in their off-hours. Using [`sonnentag_2012.jasp`](https://discoverjasp.com/repository/dsj1_data/data/sonnentag_2012.jasp), set up the contingency table with `time_pressure` in *Rows*, `detachment` in *Columns*, and `frequency` in *Counts*. Run a classical chi-square test **and** a Bayesian contingency-table analysis — compare what the *p*-value and the Bayes factor each tell you.
+
+::: {.callout-note collapse=true icon=false}
+## ▸ Worked solution
+- **Walkthrough**: [Smart Alex Task 16.1](https://discoverjasp.com/pages/smart_alex#task-16.1)
+- **Annotated JASP output**: [alex_16_01.html](https://discoverjasp.com/repository/dsj1_alex/alex_16_01.html)
+:::

@@ -1,0 +1,140 @@
+---
+title: "Descriptive Statistics & Visualisation"
+---
+
+<span class="section-badge">Basics</span>
+
+Before running any inferential test, always explore your data. Descriptive statistics and visualisations help you understand the shape of your distributions, identify outliers, and check whether your data meet the assumptions of the analyses you plan to run.
+
+This is not a step to skip — surprising patterns often only become visible at this stage.
+
+---
+
+## What are descriptive statistics?
+
+Descriptive statistics summarise the key features of a dataset without making inferences about a population. The most important are:
+
+**Central tendency** — where is the middle of the distribution?
+
+| Statistic | Use when |
+|---|---|
+| Mean | Continuous data, approximately symmetric distribution |
+| Median | Skewed distributions or ordinal data |
+| Mode | Categorical data, or to describe the most common value |
+
+**Spread** — how much do values vary?
+
+| Statistic | What it tells you |
+|---|---|
+| Standard deviation (SD) | Average distance from the mean (same units as the data) |
+| Variance | SD² — less intuitive but used in many formulas |
+| Range | Max − Min — sensitive to outliers |
+| Interquartile range (IQR) | Middle 50% of values — robust to outliers |
+
+**Shape** — is the distribution symmetric?
+
+| Statistic | What it tells you |
+|---|---|
+| Skewness | Whether the tail is longer on the left (negative) or right (positive) |
+| Kurtosis | How heavy or light the tails are relative to a normal distribution |
+
+---
+
+## When to use descriptive statistics
+
+Always — as the first step in every analysis. Specifically:
+
+- **Before any test**: report means and SDs for your key variables
+- **To check normality**: look at histograms and Q-Q plots, and inspect skewness/kurtosis values
+- **To detect outliers**: boxplots flag values beyond 1.5 × IQR from the quartiles
+- **To describe your sample**: demographics (age, gender, group sizes) always require descriptives
+
+---
+
+## Assumptions to check
+
+Descriptive statistics have no assumptions themselves, but examining them tells you whether the assumptions of your *next* analysis hold:
+
+::: {.assumption-list}
+- **Normality**: histograms should be roughly bell-shaped; skewness and kurtosis should be close to 0 (rough rule: |value| < 1 for reasonable samples, though this depends on sample size)
+- **Outliers**: inspect boxplots — individual points beyond the whiskers warrant investigation
+- **Floor/ceiling effects**: if most values cluster at the minimum or maximum, your scale may not have sufficient range
+:::
+
+---
+
+## How to do it in JASP
+
+Open your dataset, go to **Descriptives → Descriptives** in the analysis menu.
+
+::: {.callout-note icon=false}
+## JASP Video Library — Descriptives
+All screen recordings are at [jasp-stats.github.io/jasp-video-library/Descriptives.html](https://jasp-stats.github.io/jasp-video-library/Descriptives.html):
+
+- [▶ Main Analysis](https://jasp-stats.github.io/jasp-video-library/Descriptives.html#main-analysis) — setting up descriptives, requesting mean, SD, and frequency tables
+- [▶ Split Variable](https://jasp-stats.github.io/jasp-video-library/Descriptives.html#split-variable) — computing descriptives separately per group
+- [▶ Raincloud Plots](https://jasp-stats.github.io/jasp-video-library/Descriptives.html#raincloud-plots) — raw data + density + boxplot in one figure
+- [▶ Distribution and Boxplots](https://jasp-stats.github.io/jasp-video-library/Descriptives.html#distribution-and-boxplots) — exploring spread and outliers
+- [▶ Scatter Plot](https://jasp-stats.github.io/jasp-video-library/Descriptives.html#scatter-plot) — visualising relationships between two continuous variables
+- [▶ Assumption Checks](https://jasp-stats.github.io/jasp-video-library/Descriptives.html#assumption-checks) — Q-Q plots and normality tests
+:::
+
+---
+
+## Interpreting the output
+
+After running Descriptives in JASP, the output table shows your requested statistics. Key things to check:
+
+- **N**: the number of valid (non-missing) observations per variable
+- **Mean ± SD**: the central tendency and spread — always report these together
+- **Skewness / Kurtosis**: both should be close to 0 for a normal distribution. Divide each value by its standard error to get a *z*-score; |*z*| > 3.29 flags a significant deviation (in large samples, use visual inspection instead)
+- **Boxplot whiskers**: extend to 1.5 × IQR; individual points beyond the whiskers are potential outliers
+
+::: {.callout-tip}
+## Reporting in APA format
+For continuous variables: *M* = [mean], *SD* = [SD], *N* = [n].
+For frequency data: report counts and percentages.
+:::
+
+---
+
+## Further reading
+
+- **DSUJ Chapter 5** — *Exploring data with graphs* — covers histograms, boxplots, violin plots, and scatter plots in detail with JASP walkthroughs
+- **DSUJ Chapter 6** — *Assumptions* — normality tests, outlier detection, and robust alternatives
+
+---
+
+## Try it yourself
+
+Each exercise below ends with a collapsible solution. Try the analysis first, then expand to compare.
+
+### Exercise 1 (visualisation) — Plot a raincloud comparing students and lecturers on number of friends
+
+Using [`students.jasp`](https://discoverjasp.com/repository/dsj1_data/data/students.jasp), produce a raincloud plot of `friends` split by `role` (student vs lecturer). A raincloud plot combines a half-violin density, a boxplot, and the raw jittered data in a single figure — much more informative than a bar-and-error-bar plot.
+
+::: {.callout-note collapse=true icon=false}
+## ▸ Worked solution
+- **Walkthrough**: [Smart Alex Task 5.1](https://discoverjasp.com/pages/smart_alex#task-5.1)
+- **JASP file with the plot pre-configured**: [alex_05_01-06.jasp](https://discoverjasp.com/repository/dsj1_alex/alex_05_01-06.jasp)
+:::
+
+### Exercise 2 (assumption checks) — Are the JASP exam scores normally distributed?
+
+Using [`jasp_exam.jasp`](https://discoverjasp.com/repository/dsj1_data/data/jasp_exam.jasp), compute descriptives + Shapiro-Wilk tests for `numeracy` and `exam` scores. Then *split by university* and run the same tests again — does the picture change once you account for the grouping?
+
+::: {.callout-note collapse=true icon=false}
+## ▸ Worked solution
+- **Walkthrough**: [Smart Alex Task 6.7](https://discoverjasp.com/pages/smart_alex#task-6.7)
+- **Annotated JASP output**: [alex_06_07.html](https://discoverjasp.com/repository/dsj1_alex/alex_06_07.html)
+:::
+
+### Exercise 3 (descriptives by group) — Compare two pet groups on liking-of-animals and life satisfaction
+
+Using [`pets.jasp`](https://discoverjasp.com/repository/dsj1_data/data/pets.jasp), produce two raincloud plots (one for `animal` liking, one for `life_satisfaction`), each split by `pet` (fish vs cat). Then run descriptives **split by `pet`** to get the group means, SDs, and 95% CIs.
+
+::: {.callout-note collapse=true icon=false}
+## ▸ Worked solution
+- **Walkthrough**: [Smart Alex Task 5.8](https://discoverjasp.com/pages/smart_alex#task-5.8)
+- **JASP file with the plots pre-configured**: [alex_05_08.jasp](https://discoverjasp.com/repository/dsj1_alex/alex_05_08.jasp)
+:::

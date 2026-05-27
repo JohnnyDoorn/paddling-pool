@@ -1,0 +1,39 @@
+---
+title: "Measurement Invariance"
+---
+
+<span class="section-badge advanced">Advanced Topics</span>
+
+::: {.coming-soon}
+## 🚧
+
+**This page is under construction.**
+
+Content covering measurement invariance testing — configural, metric, scalar, and strict invariance — will be added here.
+:::
+
+---
+
+## What this page will cover
+
+Measurement invariance (also called measurement equivalence) tests whether a scale measures the same construct in the same way across different groups (e.g., cultures, genders, time points). It is a prerequisite for meaningfully comparing latent means or factor structures across groups.
+
+**Levels of invariance**:
+
+| Level | What is constrained | What it allows |
+|---|---|---|
+| **Configural** | Nothing (same factor structure) | Comparing factor structure qualitatively |
+| **Metric** | Factor loadings equal across groups | Comparing relationships (correlations, regressions) |
+| **Scalar** | Loadings + intercepts equal | Comparing latent means |
+| **Strict** | Loadings + intercepts + residuals equal | Rarely required in practice |
+
+**In practice**: if scalar invariance holds, you can compare questionnaire means across groups. If only metric invariance holds (some intercepts differ = partial invariance), you can compare relationships but not means.
+
+---
+
+## Useful resources in the meantime
+
+- Vandenberg, R. J., & Lance, C. E. (2000). A review and synthesis of the measurement invariance literature. *Organizational Research Methods*, 3(1), 4–70.
+- Putnick, D. L., & Bornstein, M. H. (2016). Measurement invariance conventions and reporting. *Developmental Review*, 41, 71–90.
+
+Measurement invariance testing uses CFA — make sure you are comfortable with the [Factor Analysis](factor-analysis.qmd) page first.

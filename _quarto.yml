@@ -1,0 +1,84 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Paddling Pool"
+  description: "Statistics refresher for master's psychology students"
+  site-url: "https://johnnydoorn.github.io/paddling-pool/"
+  favicon: assets/favicon.png
+  navbar:
+    pinned: true
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "Getting Started"
+        href: getting-started.qmd
+      - text: "Basics"
+        menu:
+          - text: "Descriptive Statistics"
+            href: core/descriptives.qmd
+          - text: "t-Tests"
+            href: core/t-tests.qmd
+          - text: "ANOVA"
+            href: core/anova.qmd
+          - text: "Correlation & Regression"
+            href: core/regression.qmd
+          - text: "Non-Parametric Tests"
+            href: core/nonparametrics.qmd
+          - text: "Contingency Tables"
+            href: core/contingency-tables.qmd
+      - text: "Advanced Topics"
+        menu:
+          - text: "Mediation & Moderation"
+            href: advanced/mediation-moderation.qmd
+          - text: "Logistic Regression"
+            href: advanced/logistic-regression.qmd
+          - text: "Factor Analysis"
+            href: advanced/factor-analysis.qmd
+          - text: "Power Analysis"
+            href: advanced/power-analysis.qmd
+          - text: "Missing Data & Imputation"
+            href: advanced/missing-data.qmd
+          - text: "Meta-Analysis"
+            href: advanced/meta-analysis.qmd
+          - text: "---"
+          - text: "Measurement Invariance"
+            href: advanced/measurement-invariance.qmd
+          - text: "Path Modeling"
+            href: advanced/path-modeling.qmd
+          - text: "Latent Class / Profile Analysis"
+            href: advanced/latent-class.qmd
+          - text: "Network Analysis"
+            href: advanced/network-analysis.qmd
+    right:
+      - icon: github
+        href: https://github.com/jasp-stats
+      - icon: suit-heart-fill
+        href: https://jasp-stats.org
+  search:
+    location: navbar
+    type: textbox
+  page-footer:
+    center: |
+      Paddling Pool &nbsp;|&nbsp; UvA Psychology &nbsp;|&nbsp;
+      Built with <a href="https://jasp-stats.org">JASP</a> &amp;
+      <a href="https://quarto.org">Quarto</a>
+
+execute:
+  freeze: auto
+  echo: false
+  warning: false
+  message: false
+
+format:
+  html:
+    theme: flatly
+    css: assets/custom.css
+    toc: true
+    toc-depth: 3
+    toc-location: left
+    toc-title: "On this page"
+    anchor-sections: true
+    smooth-scroll: true
+    footnotes-hover: true

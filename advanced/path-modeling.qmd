@@ -1,0 +1,36 @@
+---
+title: "Path Modeling"
+---
+
+<span class="section-badge advanced">Advanced Topics</span>
+
+::: {.coming-soon}
+## 🚧
+
+**This page is under construction.**
+
+Content covering path modeling — and its relationship to SEM — will be added here.
+:::
+
+---
+
+## What this page will cover
+
+Path modeling extends multiple regression to systems of equations with multiple dependent variables. It allows you to:
+
+- Estimate **direct** and **indirect** effects simultaneously across a network of variables
+- Test theoretical models about causal pathways
+- Include **latent variables** (measured variables with error) — the combination of path modeling and latent variables is **structural equation modeling (SEM)**
+
+Common applications in psychology: cross-lagged panel models (measuring variables at two time points to examine reciprocal relationships), growth curve models, and complex mediation models with multiple mediators.
+
+**Relationship to mediation**: a simple mediation model (X → M → Y) is a path model. The [Mediation & Moderation](mediation-moderation.qmd) page covers simple cases using PROCESS. This page will cover more complex path structures.
+
+---
+
+## Useful resources in the meantime
+
+- Kline, R. B. (2023). *Principles and practice of structural equation modeling* (5th ed.). Guilford Press.
+- The **lavaan** R package is widely used for SEM: [lavaan.org](https://lavaan.ugent.be)
+
+Start with the [Mediation & Moderation](mediation-moderation.qmd) and [Factor Analysis](factor-analysis.qmd) pages before tackling full path models.

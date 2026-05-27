@@ -1,0 +1,37 @@
+---
+title: "Latent Class / Profile Analysis"
+---
+
+<span class="section-badge advanced">Advanced Topics</span>
+
+::: {.coming-soon}
+## 🚧
+
+**This page is under construction.**
+
+Content covering latent class analysis (LCA) and latent profile analysis (LPA) will be added here.
+:::
+
+---
+
+## What this page will cover
+
+Latent Class Analysis (LCA) and Latent Profile Analysis (LPA) are **person-centred** approaches that identify subgroups (classes or profiles) of individuals who are similar to each other and different from other subgroups.
+
+| Technique | Variable type | Example |
+|---|---|---|
+| **LCA** | Categorical indicators | Classifying patients by symptom patterns (present/absent) |
+| **LPA** | Continuous indicators | Identifying motivational profiles from several continuous scale scores |
+
+Both are forms of **mixture modelling** — the assumption is that the population is a mixture of *k* unobserved subgroups, and the goal is to identify those subgroups and assign individuals to them.
+
+**Key decisions**:
+- How many classes? Use BIC, AIC, entropy, and the Lo-Mendell-Rubin test to decide
+- Are classes meaningful and interpretable? Statistical fit is necessary but not sufficient
+
+---
+
+## Useful resources in the meantime
+
+- Masyn, K. E. (2013). Latent class analysis and finite mixture modeling. In *The Oxford handbook of quantitative methods* (Vol. 2). Oxford University Press.
+- The **Mplus** software is frequently used for complex mixture models: [statmodel.com](https://www.statmodel.com)

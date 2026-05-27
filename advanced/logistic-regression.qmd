@@ -1,0 +1,152 @@
+---
+title: "Logistic Regression"
+---
+
+<span class="section-badge advanced">Advanced Topics</span>
+
+Use logistic regression when your **outcome variable is categorical** — most commonly binary (yes/no, clinical/control, recovered/not recovered). Linear regression is inappropriate for binary outcomes because it can produce predicted probabilities below 0 or above 1, and it violates homoscedasticity.
+
+---
+
+## What is it?
+
+Binary logistic regression models the **log-odds** (logit) of the outcome as a linear function of the predictors:
+
+$$\log\!\left(\frac{p}{1-p}\right) = b_0 + b_1 X_1 + b_2 X_2 + \ldots$$
+
+The model predicts the **probability** that a case belongs to the "outcome = 1" category. Predictors can be continuous, binary, or categorical (with dummy coding).
+
+### Odds ratios
+
+The exponentiated coefficients (*e^b*) are **odds ratios (OR)**:
+
+| OR | Interpretation |
+|---|---|
+| > 1 | A one-unit increase in X is associated with *increased* odds of the outcome |
+| < 1 | A one-unit increase in X is associated with *decreased* odds of the outcome |
+| = 1 | No association |
+
+::: {.callout-note}
+## Odds ≠ probability
+An OR of 2 does not mean the outcome is "twice as likely" — it means the *odds* are doubled. Probabilities and odds are related but not the same. Always report predicted probabilities or absolute risk when communicating results to a non-statistical audience.
+:::
+
+---
+
+## When to use logistic regression
+
+| Situation | Appropriate method |
+|---|---|
+| Binary outcome (2 categories) | Binary logistic regression |
+| Nominal outcome (3+ unordered categories) | Multinomial logistic regression |
+| Ordinal outcome (3+ ordered categories) | Ordinal logistic regression |
+
+This page focuses on **binary logistic regression** — the most common case in psychology research.
+
+---
+
+## Assumptions
+
+::: {.assumption-list}
+- **Binary outcome**: the DV must have exactly two categories
+- **Independence of observations**: each participant contributes one row
+- **No multicollinearity**: predictors should not be highly correlated — check VIF as in regular regression
+- **Sufficient cell sizes**: especially important when predictors are categorical; very small cells can cause convergence problems
+- **No complete separation**: if a predictor perfectly predicts the outcome, the model cannot estimate coefficients
+- **Linearity of continuous predictors with the log-odds**: check using Box-Tidwell test or visual inspection (available as an option in JASP)
+:::
+
+*Note*: logistic regression does **not** require normality of residuals or homoscedasticity — these are linear regression assumptions that do not apply here.
+
+---
+
+## Model fit
+
+Unlike linear regression, logistic regression uses maximum likelihood estimation. Model fit statistics:
+
+| Statistic | What it tells you |
+|---|---|
+| **−2 Log Likelihood (−2LL)** | Overall fit — smaller is better |
+| **Nagelkerke R²** | Pseudo-R²: approximate proportion of variance explained — treat as an effect size, not a literal R² |
+| **Hosmer-Lemeshow test** | Goodness of fit — a non-significant result indicates adequate fit |
+| **Classification table** | Percentage of cases correctly classified by the model |
+
+Model comparison: test whether adding predictors improves fit using the **likelihood ratio test** (χ² difference in −2LL with corresponding df).
+
+---
+
+## How to do it in JASP
+
+Go to **Regression → Logistic Regression**.
+
+::: {.callout-note icon=false}
+## JASP Video Library — Logistic Regression
+Recording at [jasp-stats.github.io/jasp-video-library/All_Regression.html#logistic-regression](https://jasp-stats.github.io/jasp-video-library/All_Regression.html#logistic-regression):
+
+- [▶ Logistic Regression](https://jasp-stats.github.io/jasp-video-library/All_Regression.html#logistic-regression) — setup, odds ratios, classification table, model fit
+:::
+
+---
+
+## Interpreting the output
+
+**Omnibus test**: tests whether the model with predictors fits better than an intercept-only model. A significant χ² (*p* < .05) indicates the model explains a significant amount of variance.
+
+**Coefficients table**: for each predictor, report:
+- *b*: the log-odds coefficient (hard to interpret directly)
+- *OR* (= *e^b*): the odds ratio — more interpretable
+- 95% CI for the OR: does it include 1.0? If not, the predictor is significant
+- *p*-value
+
+::: {.callout-tip}
+## APA reporting example
+Logistic regression was used to predict survival from age and treatment group. The model was significant, χ²(2) = 14.3, *p* < .001, Nagelkerke R² = .23. Treatment group was a significant predictor, *b* = 1.42, OR = 4.14, 95% CI [1.87, 9.17], *p* = .001.
+:::
+
+---
+
+## Multinomial logistic regression
+
+When the outcome has **three or more unordered categories**, use **multinomial logistic regression**. This runs separate binary logistic regressions comparing each category to a reference category. Available in JASP under **Regression → Logistic Regression** by changing the outcome type.
+
+---
+
+## Further reading
+
+- **DSUJ Chapter 17** — *Logistic regression* — binary and multinomial logistic regression with JASP walkthroughs
+
+---
+
+## Try it yourself
+
+Each exercise below ends with a collapsible solution. Try the analysis first, then expand to compare.
+
+### Exercise 1 (binary logistic regression — risk factors) — Which factors predict adolescent suicide risk?
+
+Adolescents at risk of self-harm were measured on demographics, family environment, and **music preferences** (heavy metal among others). Using [`leni_17.jasp`](https://discoverjasp.com/repository/dsj1_leni/leni_17.jasp), fit a binary logistic regression with risk status as the outcome. Report each predictor's odds ratio with its 95% CI and the Nagelkerke R².
+
+::: {.callout-note collapse=true icon=false}
+## ▸ Worked solution
+- **Walkthrough**: [Labcoat Leni — Heavy metal and risk of harm](https://discoverjasp.com/pages/labcoat_leni#heavy-metal-and-risk-of-harm)
+- **Annotated JASP output**: [leni_17.html](https://discoverjasp.com/repository/dsj1_leni/leni_17.html)
+:::
+
+### Exercise 2 (binary logistic regression — developmental psychology) — Do age and theory-of-mind predict mastery of emotional display rules?
+
+A psychologist measured whether each child could correctly apply a "display rule" (pass/fail), their age in months, and their theory-of-mind score. Using [`display.jasp`](https://discoverjasp.com/repository/dsj1_data/data/display.jasp), fit a logistic regression with display-rule mastery as the binary outcome and age + theory-of-mind as predictors.
+
+::: {.callout-note collapse=true icon=false}
+## ▸ Worked solution
+- **Walkthrough**: [Smart Alex Task 17.1](https://discoverjasp.com/pages/smart_alex#task-17.1)
+- **Annotated JASP output**: [alex_17_01-02.html](https://discoverjasp.com/repository/dsj1_alex/alex_17_01-02.html)
+:::
+
+### Exercise 3 (binary logistic regression — social psychology) — Does social class (inferred from car) predict whether a driver cuts in?
+
+Piff et al. (2012) ranked drivers' social class by the type of car they drove (1–5) and observed whether each driver cut in front of another at a busy intersection. Using [`piff_2012_vehicle.jasp`](https://discoverjasp.com/repository/dsj1_data/data/piff_2012_vehicle.jasp), fit a logistic regression with `vehicle_cut` (yes/no) as the outcome and `vehicle` (1–5) as the predictor. Interpret the odds ratio for a one-step increase in vehicle class.
+
+::: {.callout-note collapse=true icon=false}
+## ▸ Worked solution
+- **Walkthrough**: [Smart Alex Task 17.3](https://discoverjasp.com/pages/smart_alex#task-17.3)
+- **Annotated JASP output**: [alex_17_03.html](https://discoverjasp.com/repository/dsj1_alex/alex_17_03.html)
+:::

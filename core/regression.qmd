@@ -1,0 +1,261 @@
+---
+title: "Correlation & Regression"
+---
+
+<span class="section-badge">Basics</span>
+
+Regression allows you to model the relationship between a continuous outcome variable (the **dependent variable**, DV) and one or more predictors (the **independent variables**, IVs). Start with correlation to quantify the relationship between two variables, then move to regression when you want to predict an outcome or test the unique contribution of each predictor.
+
+This page covers:
+
+- [Correlation](#correlation) — quantifying a relationship between two continuous variables
+- [Simple regression](#simple-regression) — predicting an outcome from one predictor
+- [Multiple regression](#multiple-regression) — predicting an outcome from several predictors, controlling for the others
+
+::: {.callout-tip collapse=true}
+## Regression is ANOVA, just continuous
+Quick framing: regression keeps the same explained-variance logic from ANOVA, but swaps categorical for continuous predictors — and JASP's Regression module instead of ANOVA.
+:::
+
+---
+
+## Correlation
+
+### What is it?
+
+A **correlation coefficient** (*r*) describes the strength and direction of the linear relationship between two continuous variables. Pearson's *r* ranges from −1 (perfect negative) to +1 (perfect positive), with 0 indicating no linear relationship.
+
+| *r* | Conventional label |
+|---|---|
+| ±.10 | Small |
+| ±.30 | Medium |
+| ±.50 | Large |
+
+### When to use it
+
+- As a descriptive measure of association between two variables (no implied causality)
+- As a preliminary step before regression
+- When reporting relationships in your results section
+
+### Assumptions
+
+::: {.assumption-list}
+- Both variables are **continuous** (interval/ratio)
+- The relationship is **linear** (check with a scatter plot — non-linear relationships yield misleading *r* values)
+- Approximately **bivariate normal** — no extreme outliers (outliers can inflate or deflate *r* dramatically)
+:::
+
+If assumptions are violated, use Spearman's *ρ* (rho) — a rank-based non-parametric alternative available in JASP.
+
+### How to do it in JASP
+
+Go to **Regression → Correlation**.
+
+::: {.callout-note icon=false}
+## JASP Video Library — Correlation
+Recordings at [jasp-stats.github.io/jasp-video-library/All_Regression.html#correlation](https://jasp-stats.github.io/jasp-video-library/All_Regression.html#correlation):
+
+- [▶ Main Analysis](https://jasp-stats.github.io/jasp-video-library/All_Regression.html#main-analysis) — Pearson/Spearman correlation matrix
+- [▶ Plots](https://jasp-stats.github.io/jasp-video-library/All_Regression.html#plots) — scatter plots and correlation matrix visualisation
+- [▶ Partial Correlation](https://jasp-stats.github.io/jasp-video-library/All_Regression.html#main-analysis-partial) — controlling for a third variable
+:::
+
+---
+
+## Simple regression
+
+### What is it?
+
+Simple (linear) regression models the relationship between **one predictor** (X) and a **continuous outcome** (Y):
+
+$$Y = b_0 + b_1 X + \varepsilon$$
+
+- *b₀*: the intercept — the predicted value of Y when X = 0
+- *b₁*: the slope — the expected change in Y for a one-unit increase in X
+- *ε*: the residual error
+
+The **R²** statistic tells you the proportion of variance in Y explained by the model. Adjusted R² penalises for the number of predictors and is used for model comparison.
+
+::: {.callout-tip}
+## Why the intercept (*b₀*) belongs in the model
+You might be tempted to drop the intercept when it isn't substantively meaningful (e.g. when X = 0 makes no sense). Don't — omitting it forces the regression line through the origin, which introduces systematic over- and under-estimation. The reported *R²* can then look misleadingly high because it's compared against a degenerate null model that predicts zero rather than the mean.
+
+→ [Worked example with album sales](https://johnnydoorn.github.io/teaching-statistics/extra-texts/IncludingIntercept.html)
+:::
+
+### Assumptions
+
+::: {.assumption-list}
+- **Linearity**: the relationship between X and Y is linear — check with a scatter plot
+- **Independence of residuals**: each observation is independent — check with the Durbin-Watson statistic
+- **Homoscedasticity**: the spread of residuals is constant across fitted values — check the residuals vs. fitted plot
+- **Normality of residuals**: residuals should be approximately normally distributed — check the residuals Q-Q plot
+- **No influential outliers**: cases with high Cook's distance (> 1 as a rough rule) warrant investigation
+:::
+
+::: {.callout-tip collapse=true}
+## Diagnosing homoscedasticity at a glance
+Plot the standardised residuals against the standardised predictions. A "healthy" cloud of points means error is constant across the range of Y. A funnel shape or a tilted line means the model is more accurate for some predicted values than others — a sign of mis-specification.
+
+→ [Visual catalogue: healthy vs. heteroscedastic plots](https://johnnydoorn.github.io/teaching-statistics/extra-texts/Heteroscedasticity.html)
+:::
+
+### How to do it in JASP
+
+Go to **Regression → Linear Regression**.
+
+::: {.callout-note icon=false}
+## JASP Video Library — Simple Regression
+Recordings at [jasp-stats.github.io/jasp-video-library/All_Regression.html#regression](https://jasp-stats.github.io/jasp-video-library/All_Regression.html#regression):
+
+- [▶ Single Predictor](https://jasp-stats.github.io/jasp-video-library/All_Regression.html#main-analysis-single-predictor) — simple regression setup and output
+- [▶ Assumption Checks](https://jasp-stats.github.io/jasp-video-library/All_Regression.html#assumption-checks-1) — residual plots, Q-Q plots
+- [▶ Cook's Distance](https://jasp-stats.github.io/jasp-video-library/All_Regression.html#cooks-distance) — identifying influential cases
+:::
+
+---
+
+## Multiple regression
+
+### What is it?
+
+Multiple regression extends simple regression to **two or more predictors**:
+
+$$Y = b_0 + b_1 X_1 + b_2 X_2 + \ldots + b_k X_k + \varepsilon$$
+
+Each *bⱼ* is a **partial regression coefficient** — it represents the unique effect of predictor *Xⱼ* on Y, *controlling for all other predictors in the model*. This is a crucial distinction from simple regression or from looking at correlations in isolation.
+
+### Building your model
+
+There are several approaches to entering predictors:
+
+| Method | When to use |
+|---|---|
+| **Simultaneous (Enter)** | All predictors entered at once. Use when you have theory-driven reasons to include all predictors |
+| **Hierarchical** | Predictors entered in blocks based on theoretical priority. Change in R² (ΔR²) for each block tests the incremental contribution |
+| **Stepwise** | Automated selection based on statistical criteria — generally discouraged for confirmatory research but can be useful exploratory |
+
+::: {.callout-tip collapse=true}
+## Hierarchical regression in JASP
+How to set up Model 0 → Model 1 → Model 2 in JASP's Regression module, what the ΔR² between consecutive models actually means, and why "controlling for X" and "adding X to the null model" are the same operation.
+:::
+
+### Additional assumption: multicollinearity
+
+When predictors are highly correlated with each other, regression coefficients become unstable. Check:
+- **Tolerance** (should be > .1) or **VIF** (variance inflation factor, should be < 10)
+— both available in JASP under *Collinearity Diagnostics*
+
+::: {.callout-tip collapse=true}
+## VIF, tolerance, and why 10 isn't a hard cutoff
+What multicollinearity really means (predictors that overlap), how to read VIF (the 10 threshold is a continuum, not a binary pass/fail), and why a scatter plot matrix of your predictors is still worth its weight — VIF only catches *linear* dependence.
+:::
+
+### How to do it in JASP
+
+::: {.callout-note icon=false}
+## JASP Video Library — Multiple Regression
+Recordings at [jasp-stats.github.io/jasp-video-library/All_Regression.html#regression](https://jasp-stats.github.io/jasp-video-library/All_Regression.html#regression):
+
+- [▶ Multiple Predictors](https://jasp-stats.github.io/jasp-video-library/All_Regression.html#main-analysis-multiple-predictors) — multiple regression setup and output
+- [▶ Hierarchical Regression](https://jasp-stats.github.io/jasp-video-library/All_Regression.html#hierarchical-regression) — entering predictors in blocks, ΔR²
+- [▶ Bootstrap Confidence Intervals](https://jasp-stats.github.io/jasp-video-library/All_Regression.html#bootstrap-confidence-interval) — robust inference for the coefficients
+:::
+
+---
+
+## Interpreting the regression output
+
+The key tables in JASP output:
+
+**Model Summary**
+
+| Column | What it means |
+|---|---|
+| **R** | Multiple correlation coefficient |
+| **R²** | Proportion of variance in Y explained by all predictors combined |
+| **Adjusted R²** | R² corrected for the number of predictors — use this for model comparison |
+| **RMSE** | Root mean square error — average prediction error in the original units |
+
+**Coefficients table**
+
+| Column | What it means |
+|---|---|
+| **b** (Unstandardised) | The slope in original units — "one unit increase in X is associated with a *b* change in Y, holding all other predictors constant" |
+| **β** (Standardised) | The slope in standard deviation units — comparable across predictors with different scales |
+| **t** / **p** | Whether the slope is significantly different from zero |
+| **95% CI** | Confidence interval for the slope |
+
+::: {.callout-tip}
+## APA reporting example
+Album sales were significantly predicted by advertising budget, *b* = 0.096, 95% CI [0.076, 0.115], *β* = .578, *t*(196) = 9.98, *p* < .001. The model explained 33% of the variance in album sales, *F*(1, 198) = 99.6, *p* < .001, adjusted *R²* = .33.
+:::
+
+---
+
+## Dummy coding categorical predictors
+
+Continuous predictors enter regression directly. Categorical predictors must be **dummy coded**: create *k* − 1 binary variables (0/1), where *k* is the number of categories. JASP does this automatically when you define a variable as nominal.
+
+**Example**: a variable with 3 groups (control, therapy A, therapy B) → 2 dummy variables. The reference category (control) becomes the baseline against which the others are compared.
+
+::: {.callout-tip}
+## How predictions and group means come out of the dummies
+The intercept becomes the mean of the reference group; each dummy's coefficient is the difference from that group. Add a covariate (or another categorical predictor) and the coefficients shift slightly — the dummies no longer recover the group means *exactly*, but the prediction formula still works the same way. With an interaction term added, you do recover each cell mean — at the cost of more parameters.
+
+→ [Part 1: one categorical predictor + optional covariate](https://johnnydoorn.github.io/teaching-statistics/extra-texts/PredictingWithDummies_1Variable.html) · [Part 2: two predictors and the interaction term](https://johnnydoorn.github.io/teaching-statistics/extra-texts/PredictingWithDummies_2Variables.html)
+:::
+
+---
+
+## Further reading
+
+- **DSUJ Chapter 7** — *Correlation*
+- **DSUJ Chapter 8** — *Regression* (simple and multiple, hierarchical, dummy coding)
+- JASP blog — [Hierarchical regression](https://jasp-stats.org/2017/10/18/hierarchical-regression-jasp-0-8-3/)
+
+---
+
+## Further viewing — SSR lecture recordings
+
+The 2026 SSR lectures cover correlation and regression across three recordings (captions are available in the SharePoint player):
+
+- [▶ SSR Lecture 7 — Correlation & the Linear Model](https://amsuni-my.sharepoint.com/:v:/g/personal/r_a_voskens_uva_nl/EYmgPRhAgkBEliafLv_ech8BPwxS8gy8aTtX7lOVHJvFbg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=eV0zUx) — correlation up front; jump to **~23:28** for the linear-model / simple-regression section
+- [▶ SSR Lecture 8 — The Linear Model](https://amsuni-my.sharepoint.com/:v:/g/personal/j_b_vandoorn_uva_nl/ESL3M4DpFURCuLyCb7ILp24BYREu8vRoKWYd7tN-4v4kWw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=nqlXIF) — simple linear regression in depth
+- [▶ SSR Lecture 22 — Multiple Regression](https://amsuni-my.sharepoint.com/:v:/g/personal/j_b_vandoorn_uva_nl/EVZu2_XUBChDgKCE_D74OZQBnFoilT4XQRG5cEDfZcWu3g?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=OFlsC3) — multiple predictors, hierarchical regression, multicollinearity
+
+---
+
+## Try it yourself
+
+Each exercise below ends with a collapsible solution. Try the analysis first, then expand to compare.
+
+### Exercise 1 (correlation) — Do GCSE maths grades predict university statistics grades?
+
+The [`grades.jasp`](https://discoverjasp.com/repository/dsj1_data/data/grades.jasp) dataset pairs each student's GCSE maths grade with their later university statistics grade. Pick the appropriate correlation coefficient (think about the measurement level of GCSE grade), run it, and report *r* with its 95% CI.
+
+::: {.callout-note collapse=true icon=false}
+## ▸ Worked solution
+- **Walkthrough**: [Smart Alex Task 7.4](https://discoverjasp.com/pages/smart_alex#task-7.4)
+- **Annotated JASP output**: [alex_07_04.html](https://discoverjasp.com/repository/dsj1_alex/alex_07_04.html)
+:::
+
+### Exercise 2 (correlation matrix) — Which student traits predict the lecturer they prefer?
+
+Chamorro-Premuzic et al. (2008) measured five student personality traits and five lecturer-preference dimensions. Using [`leni_07.jasp`](https://discoverjasp.com/repository/dsj1_leni/leni_07.jasp), produce the full correlation matrix between student traits and preferred-lecturer dimensions, and identify which student trait is most strongly associated with each lecturer dimension.
+
+::: {.callout-note collapse=true icon=false}
+## ▸ Worked solution
+- **Walkthrough**: [Labcoat Leni — Why do you like your lecturers?](https://discoverjasp.com/pages/labcoat_leni#why-do-you-like-your-lecturers)
+- **Annotated JASP output**: [leni_07.html](https://discoverjasp.com/repository/dsj1_leni/leni_07.html)
+:::
+
+### Exercise 3 (hierarchical multiple regression) — Does narcissism predict Facebook status frequency above and beyond extraversion?
+
+Ong et al. (2011) measured adolescents' status-update frequency, demographics (age, grade, sex), extraversion, and narcissism. Using [`leni_08a.jasp`](https://discoverjasp.com/repository/dsj1_leni/leni_08a.jasp), fit a hierarchical regression with **three blocks**: demographics (Model 0), + extraversion (Model 1), + narcissism (Model 2). Report ΔR² for each step.
+
+::: {.callout-note collapse=true icon=false}
+## ▸ Worked solution
+- **Walkthrough**: [Labcoat Leni — I want to be loved (on Facebook)](https://discoverjasp.com/pages/labcoat_leni#i-want-to-be-loved-on-facebook)
+- **Annotated JASP output**: [leni_08a.html](https://discoverjasp.com/repository/dsj1_leni/leni_08a.html)
+:::

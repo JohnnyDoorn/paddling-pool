@@ -1,0 +1,125 @@
+---
+title: "Power Analysis"
+---
+
+<span class="section-badge advanced">Advanced Topics</span>
+
+A **power analysis** determines the sample size needed to detect an effect of a given size with a specified probability, given a chosen significance threshold. Running a power analysis before data collection is a core component of preregistration and transparent science.
+
+---
+
+## Key concepts
+
+**Statistical power** (1 − β) is the probability of correctly rejecting a false null hypothesis. Conventional minimum: **.80** (80%), meaning a 20% chance of a false negative.
+
+Four quantities are mathematically related — if you know three, you can calculate the fourth:
+
+| Quantity | Symbol | Typical default |
+|---|---|---|
+| Sample size | *N* | To be determined |
+| Effect size | *d*, *f*, *r*, etc. | From prior research or theory |
+| Significance level | α | .05 |
+| Power | 1 − β | .80 |
+
+Most commonly: specify the expected effect size, α = .05, power = .80 → solve for *N*.
+
+---
+
+## Effect sizes for power analysis
+
+Use the effect size metric appropriate for your planned analysis:
+
+| Analysis | Effect size |
+|---|---|
+| t-test | Cohen's *d* |
+| ANOVA | Cohen's *f* (or η²: f = √(η²/(1−η²))) |
+| Correlation / regression | Pearson's *r* or Cohen's *f²* |
+| Chi-square | Cohen's *w* |
+
+**Where do I get the expected effect size?**
+
+1. **Previous studies**: the effect size from published research on the same or closely related topic
+2. **Meta-analyses**: if one exists for your research question, use the meta-analytic estimate
+3. **Pilot data**: run a small pilot study first (though pilot estimates are unreliable with small N)
+4. **Smallest effect size of interest (SESOI)**: what is the minimum effect that would be theoretically or practically meaningful? This is increasingly recommended over using published estimates, which may be inflated.
+
+::: {.callout-warning}
+## Publication bias inflates effect sizes
+Published effect sizes are often inflated due to selective reporting. Using them naively will lead to underpowered studies. Where possible, use meta-analytic estimates or pre-specify a conservative (smaller) effect size.
+:::
+
+---
+
+## Tools for power analysis
+
+### G*Power (recommended)
+
+[G*Power](https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower) is free, widely used, and covers all common analyses including t-tests, ANOVA, regression, and correlation.
+
+Steps:
+1. Select **Test family** (e.g., *t*-tests)
+2. Select **Statistical test** (e.g., *Means: Difference between two independent means*)
+3. Set **Type of power analysis** to *A priori* (for planning)
+4. Enter effect size, α, and desired power → click **Calculate**
+
+### JASP: jpower module
+
+JASP includes a **jpower** module for power analysis. Install it via **Modules (☰) → Available Modules → jpower**.
+
+### Online tools
+
+- [pwr2ppl](https://jakewestfall.shinyapps.io/pwr2ppl/) — Shiny app for a variety of designs
+- [Superpower](https://arcaldwell49.shinyapps.io/anova-exact/) — power for ANOVA designs including repeated measures
+- [WebPower](https://webpower.psychstat.org) — comprehensive online power calculator
+
+---
+
+## Power analysis for common designs
+
+### Independent-samples t-test
+
+Effect size: Cohen's *d* = (μ₁ − μ₂) / σ_pooled
+
+| Desired power | *d* = 0.2 (small) | *d* = 0.5 (medium) | *d* = 0.8 (large) |
+|---|---|---|---|
+| .80 | *N* = 394/group | *N* = 64/group | *N* = 26/group |
+| .90 | *N* = 527/group | *N* = 85/group | *N* = 34/group |
+
+*(Two-tailed, α = .05, equal group sizes)*
+
+### Pearson correlation
+
+| Desired power | *r* = .10 (small) | *r* = .30 (medium) | *r* = .50 (large) |
+|---|---|---|---|
+| .80 | *N* = 782 | *N* = 84 | *N* = 28 |
+
+### One-way ANOVA (3 groups)
+
+Effect size: Cohen's *f* = 0.10 (small), 0.25 (medium), 0.40 (large)
+
+| Desired power | *f* = 0.10 | *f* = 0.25 | *f* = 0.40 |
+|---|---|---|---|
+| .80 | *N* = 969 total | *N* = 159 total | *N* = 66 total |
+
+---
+
+## Sensitivity analysis
+
+If your sample size is already fixed (e.g., a clinical trial limited by patient availability), conduct a **sensitivity analysis**: given my N, α, and desired power, what is the minimum effect size I can detect? This helps set realistic expectations.
+
+---
+
+## Reporting power analysis
+
+::: {.callout-tip}
+## APA reporting example
+A priori power analysis (G*Power 3.1) indicated that a sample of *N* = 128 (64 per group) would provide 80% power to detect a medium-sized effect (*d* = 0.50) with α = .05 (two-tailed independent-samples *t*-test).
+:::
+
+---
+
+## Further reading
+
+- Cohen, J. (1992). A power primer. *Psychological Bulletin*, 112(1), 155–159. — The classic reference
+- [G*Power user manual](https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower)
+- Lakens, D. (2022). Sample size justification. *Collabra: Psychology*. — A modern guide to justifying sample sizes

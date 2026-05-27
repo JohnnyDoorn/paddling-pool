@@ -1,0 +1,108 @@
+---
+title: "Meta-Analysis"
+---
+
+<span class="section-badge advanced">Advanced Topics</span>
+
+Meta-analysis is a statistical method for **synthesising effect sizes across multiple studies**. Rather than relying on a single study, a meta-analysis pools estimates to arrive at a more precise, generalisable conclusion about an effect.
+
+---
+
+## When to use meta-analysis
+
+- You have collected effect sizes (or sufficient statistics) from multiple independent studies on the same research question
+- Your thesis includes a systematic review with a quantitative synthesis component
+- You want to quantify **heterogeneity** — do effect sizes vary across studies, and if so, why?
+
+---
+
+## Key concepts
+
+### Effect size metrics
+
+Choose the effect size metric appropriate for your data:
+
+| Data type | Effect size metric |
+|---|---|
+| Two group means (continuous DV) | Cohen's *d* / Hedges' *g* |
+| Correlational data | Fisher's *z*-transformed *r* |
+| Frequencies / proportions | Log odds ratio (log OR) |
+| Means across time / conditions | Standardised mean change |
+
+### Fixed-effects vs. random-effects models
+
+| Model | Assumption | Use when |
+|---|---|---|
+| **Fixed-effects** | All studies estimate the same true effect | Exact replications — rarely appropriate |
+| **Random-effects** | Studies estimate different true effects drawn from a distribution | Different studies, different populations — almost always preferred |
+
+In a **random-effects model**, the variance of the distribution of true effects (τ²) is estimated. A larger τ² indicates more heterogeneity.
+
+### Heterogeneity
+
+| Statistic | What it tells you |
+|---|---|
+| **Q** | Total variability in effect sizes; significant *Q* indicates heterogeneity beyond sampling error |
+| **I²** | Percentage of total variability due to true heterogeneity (not sampling error). I² = 25% (low), 50% (moderate), 75% (high) as rough guides |
+| **τ** (tau) | The standard deviation of the distribution of true effects — in the original effect size metric |
+
+---
+
+## How to do it in JASP
+
+Install the Meta-Analysis module: **Modules (☰) → Available Modules → Meta-Analysis**.
+
+Then go to **Meta-Analysis → Classical Meta-Analysis**.
+
+::: {.callout-note icon=false}
+## JASP Video Library — Meta-Analysis
+Recordings at [jasp-stats.github.io/jasp-video-library/Meta-Analysis.html](https://jasp-stats.github.io/jasp-video-library/Meta-Analysis.html):
+
+- [▶ Effect Size Computation](https://jasp-stats.github.io/jasp-video-library/Meta-Analysis.html#effect-size-computation) — computing *d*, *r*, or log OR from raw statistics
+- [▶ Main Analysis](https://jasp-stats.github.io/jasp-video-library/Meta-Analysis.html#main-analysis) — random-effects model, forest plot, heterogeneity statistics
+:::
+
+---
+
+## Reading a forest plot
+
+A forest plot shows:
+
+- Each study as a horizontal line: the **point estimate** (square) and its **confidence interval** (the line)
+- The size of the square is proportional to the study's **weight** (usually inverse variance)
+- The **diamond** at the bottom shows the pooled effect and its CI
+- The dashed vertical line is the pooled effect; the solid vertical line at 0 (or 1 for ORs) is the null
+
+---
+
+## Publication bias
+
+Studies with null results are less likely to be published, which can inflate meta-analytic estimates. Assess with:
+
+- **Funnel plot**: plot effect size vs. standard error — asymmetry suggests publication bias
+- **Egger's test**: a regression test for funnel plot asymmetry
+- **Trim-and-fill method**: imputes "missing" studies to correct for asymmetry
+
+All of these are available in JASP's meta-analysis module.
+
+---
+
+## Moderator analysis
+
+If I² is high (> 50%), explore **moderators** — study-level variables (e.g., participant age, intervention type, publication year) that might explain heterogeneity. In JASP, add these as covariates in a **meta-regression**.
+
+---
+
+## Interpreting the output
+
+::: {.callout-tip}
+## APA reporting example
+A random-effects meta-analysis of *k* = 18 studies (total *N* = 2,341) yielded a pooled effect of *d* = 0.43, 95% CI [0.28, 0.58], *z* = 5.60, *p* < .001. Heterogeneity was moderate, *Q*(17) = 34.2, *p* = .007, I² = 50%. There was no evidence of publication bias based on Egger's test (*t*(16) = 1.21, *p* = .24).
+:::
+
+---
+
+## Further reading
+
+- Borenstein, M., Hedges, L. V., Higgins, J. P. T., & Rothstein, H. R. (2009). *Introduction to meta-analysis*. Wiley. — The standard text
+- [Cochrane Handbook](https://training.cochrane.org/handbook) — comprehensive guide for systematic reviews in health research

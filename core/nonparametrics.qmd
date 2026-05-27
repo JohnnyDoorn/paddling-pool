@@ -1,0 +1,132 @@
+---
+title: "Non-Parametric Tests"
+---
+
+<span class="section-badge">Basics</span>
+
+Non-parametric tests are rank-based alternatives to t-tests and ANOVA. They don't assume the data follow a particular distribution — making them the go-to choice when the normality assumption is seriously violated (often in small samples, or with strong outliers or floor/ceiling effects).
+
+This page covers the four most commonly used non-parametric tests for group comparison, each one a counterpart to a parametric procedure you already know:
+
+| Parametric test | Non-parametric equivalent | Design |
+|---|---|---|
+| Independent-samples t-test | **Wilcoxon rank-sum test** (Mann–Whitney U) | Two independent groups |
+| Paired-samples t-test | **Wilcoxon signed-rank test** | Two related measurements |
+| One-way ANOVA (between) | **Kruskal–Wallis test** | Three or more independent groups |
+| Repeated-measures ANOVA | **Friedman test** | Three or more related measurements |
+
+---
+
+## What do they actually do?
+
+All four tests follow the same idea: **convert your raw scores to ranks, then test whether the ranks differ between groups (or conditions)**. Because ranks are bounded and don't depend on the original metric, the resulting test statistic isn't pulled around by outliers or skew the way a *t* or *F* statistic can be.
+
+::: {.callout-tip collapse=true}
+## Why "rank" the data?
+Imagine one participant in your dataset reports a reaction time of 12,000 ms while everyone else is between 200–800 ms. That single value drags the mean of their group up and inflates the variance of the difference — your *t* drops, your *p* climbs, and you may miss a real effect. Replace each raw score by its rank (1 = fastest, *N* = slowest), and that outlier becomes "the slowest one" — its influence is bounded. You trade away some information (the absolute spacing of the values) for robustness against extreme scores.
+:::
+
+---
+
+## When to use a non-parametric test
+
+- The **normality** assumption of the parametric test is seriously violated, *especially* in small samples (*n* < ~30) where you can't lean on the central limit theorem
+- You have **ordinal data** (e.g. Likert items treated strictly as ranks), where means aren't really meaningful
+- You have **strong outliers** that you don't want to remove and that distort the parametric test
+- Sample sizes are small enough that visual checks (Q-Q plots, histograms per group) clearly look non-normal
+
+::: {.callout-warning}
+## Non-parametric ≠ assumption-free
+The Mann–Whitney test does *not* test for equal medians unless the two distributions have the same shape. If group A is symmetric and group B is heavily skewed, a significant Mann–Whitney result could reflect that difference in shape — not a median shift. Always inspect the distributions before interpreting.
+:::
+
+---
+
+## How to do them in JASP
+
+In JASP, every non-parametric test lives alongside its parametric counterpart:
+
+- **Wilcoxon rank-sum / signed-rank** → *T-Tests* menu → tick the *Wilcoxon* option
+- **Kruskal–Wallis** → *ANOVA* menu → tick the *Kruskal-Wallis test* option (under *Nonparametrics*)
+- **Friedman** → *Repeated Measures ANOVA* menu → tick the *Friedman* option
+
+JASP reports the rank-based statistic, a *p*-value, and a rank-biserial correlation as the effect size for the Wilcoxon tests.
+
+---
+
+## Interpreting the output
+
+| Test | Statistic | Effect size |
+|---|---|---|
+| Wilcoxon rank-sum | *W* (or *U*) | rank-biserial correlation |
+| Wilcoxon signed-rank | *V* | rank-biserial correlation (matched-rank) |
+| Kruskal–Wallis | *H* (≈ χ²) | ε² or η²<sub>H</sub> |
+| Friedman | χ²<sub>F</sub> | Kendall's *W* |
+
+Report the test statistic, *p*-value, and an effect size. Where relevant, also report group medians (and IQRs) rather than means.
+
+::: {.callout-tip}
+## APA reporting example
+*A Wilcoxon rank-sum test showed that reaction times were significantly higher in the alcohol condition (Mdn = 540, IQR = 180) than in the control condition (Mdn = 420, IQR = 140), W = 312, p = .008, rank-biserial r = .42.*
+:::
+
+---
+
+## Post-hoc tests
+
+A significant Kruskal–Wallis or Friedman test tells you that *at least two* groups (conditions) differ — but not which. JASP offers **Dunn's post-hoc tests** with Bonferroni or Holm correction directly in the same dialog.
+
+---
+
+## Further reading
+
+- **DSUJ Chapter 16** — *Non-parametric tests* — covers all four tests with JASP walkthroughs, when to choose them, and how to interpret rank-based output
+- JASP blog — [Bayesian Mann-Whitney U test](https://jasp-stats.org/2018/02/27/release-jasp-0-8-6-bayesian-non-parametric-mann-whitney-test/) (if you want a Bayesian non-parametric alternative)
+
+---
+
+## Further viewing — SSR lecture recording
+
+The full 2026 SSR lecture covers all four tests in one recording (captions are available in the SharePoint player). Approximate timestamps:
+
+- [▶ SSR Lecture 20 — Non-Parametrics](https://amsuni-my.sharepoint.com/:v:/g/personal/j_b_vandoorn_uva_nl/Ef2Nmky2nMJMhvGu8vcNQqkB3d4_n1ngzHSvP5JxkY8IMQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=0xVUhj)
+  - **~23:48** — Wilcoxon rank-sum test (Mann–Whitney U) — independent groups
+  - **~44:13** — Wilcoxon signed-rank test — paired/repeated measurements
+  - **~1:12:47** — Kruskal–Wallis test — three or more independent groups
+  - **~1:23:48** — Friedman test — three or more related measurements
+
+---
+
+## Try it yourself
+
+Each exercise below ends with a collapsible solution. Try the analysis first, then expand to compare.
+
+### Exercise 1 (Wilcoxon signed-rank) — Do male quails fertilise more eggs after signaled vs control mating contexts?
+
+Each male quail experienced two mating contexts (signaled vs control) in counterbalanced order, and the number of fertilised eggs was counted. Using [`leni_15a.jasp`](https://discoverjasp.com/repository/dsj1_leni/leni_15a.jasp), run a Wilcoxon signed-rank test on the within-subject difference, and report the rank-biserial effect size alongside the medians.
+
+::: {.callout-note collapse=true icon=false}
+## ▸ Worked solution
+- **Walkthrough**: [Labcoat Leni — Having a quail of a time?](https://discoverjasp.com/pages/labcoat_leni#having-a-quail-of-a-time)
+- **Annotated JASP output**: [leni_15a.html](https://discoverjasp.com/repository/dsj1_leni/leni_15a.html)
+:::
+
+### Exercise 2 (Kruskal–Wallis + Dunn post-hoc) — Do three types of "quail fetish" differ in fertilisation rate?
+
+Male quails were classified into three fetish groups based on their behaviour around a terrycloth object, and fertilisation rate was compared across the three groups. Using [`leni_15b.jasp`](https://discoverjasp.com/repository/dsj1_leni/leni_15b.jasp), fit a Kruskal–Wallis test and follow up with **Dunn's post-hoc** (Bonferroni-corrected).
+
+::: {.callout-note collapse=true icon=false}
+## ▸ Worked solution
+- **Walkthrough**: [Labcoat Leni — Eggs-traordinary](https://discoverjasp.com/pages/labcoat_leni#eggs-traordinary)
+- **Annotated JASP output**: [leni_15b.html](https://discoverjasp.com/repository/dsj1_leni/leni_15b.html)
+:::
+
+### Exercise 3 (Mann–Whitney / Wilcoxon rank-sum) — Do men and women spend different amounts of time shopping?
+
+The [`shopping.jasp`](https://discoverjasp.com/repository/dsj1_data/data/shopping.jasp) dataset has shopping-trip durations (in minutes) for male and female participants. Run a Mann–Whitney test (i.e. Wilcoxon rank-sum) and interpret the result alongside the group medians.
+
+::: {.callout-note collapse=true icon=false}
+## ▸ Worked solution
+- **Walkthrough**: [Smart Alex Task 15.7](https://discoverjasp.com/pages/smart_alex#task-15.7)
+- **Annotated JASP output**: [alex_15_07-08.html](https://discoverjasp.com/repository/dsj1_alex/alex_15_07-08.html)
+:::

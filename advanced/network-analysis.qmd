@@ -1,0 +1,36 @@
+---
+title: "Network Analysis"
+---
+
+<span class="section-badge advanced">Advanced Topics</span>
+
+::: {.coming-soon}
+## 🚧
+
+**This page is under construction.**
+
+Content covering psychometric network analysis will be added here.
+:::
+
+---
+
+## What this page will cover
+
+Psychometric network analysis conceptualises psychological constructs as **networks of interacting components** rather than as reflections of a single latent variable. For example, depression might be modelled as a network of interrelated symptoms (insomnia, fatigue, anhedonia, etc.) rather than as a single underlying factor.
+
+Key methods:
+
+- **GGM (Gaussian Graphical Model)**: estimates partial correlations between variables, with edges representing direct relationships after controlling for all other variables
+- **EBIC graphical LASSO**: a regularisation method to estimate sparse networks and avoid over-fitting
+- **Centrality measures**: which nodes (variables) are most central to the network? (strength, betweenness, closeness)
+- **Community detection**: identifying clusters of closely connected nodes
+
+JASP has a Network Analysis module.
+
+---
+
+## Useful resources in the meantime
+
+- Borsboom, D., & Cramer, A. O. J. (2013). Network analysis: An integrative approach to the structure of psychopathology. *Annual Review of Clinical Psychology*, 9, 91–121.
+- Epskamp, S., & Fried, E. I. (2018). A tutorial on regularized partial correlation networks. *Psychological Methods*, 23(4), 617–634.
+- The **qgraph** R package: [cran.r-project.org/package=qgraph](https://cran.r-project.org/package=qgraph)

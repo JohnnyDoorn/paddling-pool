@@ -1,0 +1,147 @@
+---
+title: "Factor Analysis"
+---
+
+<span class="section-badge advanced">Advanced Topics</span>
+
+Factor analysis is a family of techniques for identifying **latent dimensions** (factors) that underlie a set of observed variables. It is widely used in scale development, construct validation, and data reduction.
+
+Three related techniques are covered here:
+
+| Technique | Purpose |
+|---|---|
+| **EFA** — Exploratory Factor Analysis | Discover the underlying factor structure when it is not known in advance |
+| **CFA** — Confirmatory Factor Analysis | Test whether data fit a theoretically specified factor structure |
+| **PCA** — Principal Component Analysis | Data reduction: extract linear combinations that explain maximum variance |
+
+::: {.callout-warning}
+## EFA ≠ PCA
+Although often confused, EFA and PCA have different goals. PCA is a mathematical data reduction technique with no model of latent variables. EFA assumes that observed variables are caused by underlying latent factors plus unique error. Use EFA when you are interested in the constructs; use PCA when you want to reduce dimensionality for practical reasons.
+:::
+
+---
+
+## Exploratory Factor Analysis (EFA)
+
+### When to use it
+
+- You have a set of items (e.g., questionnaire items) and you do not know — or want to discover — how many factors underlie them
+- Scale development: determining the dimensional structure of a new measure
+- Generating hypotheses about construct structure to be tested later with CFA
+
+### Key decisions
+
+**How many factors?**
+
+- **Scree plot**: look for the "elbow" — the point where the eigenvalues flatten out
+- **Kaiser criterion**: retain factors with eigenvalue > 1 (can over-extract in large datasets)
+- **Parallel analysis**: compare actual eigenvalues to those from random data — more accurate than the Kaiser criterion (recommended)
+
+**Rotation method**
+
+Rotation makes factors more interpretable. Two families:
+
+| Family | Method | Use when |
+|---|---|---|
+| **Orthogonal** | Varimax | You expect factors to be uncorrelated |
+| **Oblique** | Oblimin / Promax | You expect factors to correlate (common in psychology) |
+
+In psychology, oblique rotation is usually more realistic.
+
+**What loadings tell you**
+
+A factor loading is the correlation between an item and a factor. Loadings > .30 (or .40 for a more conservative threshold) are typically considered meaningful. An item should load strongly on one factor and minimally on others — check for **cross-loadings**.
+
+### How to do it in JASP
+
+Go to **Factor → Exploratory Factor Analysis**.
+
+::: {.callout-note icon=false}
+## JASP Video Library — EFA
+Recording at [jasp-stats.github.io/jasp-video-library/All_Factor-Analysis.html#efa](https://jasp-stats.github.io/jasp-video-library/All_Factor-Analysis.html#efa):
+
+- [▶ EFA Main Analysis](https://jasp-stats.github.io/jasp-video-library/All_Factor-Analysis.html#main-analysis-1) — number of factors, rotation method, factor loadings, scree plot
+:::
+
+---
+
+## Confirmatory Factor Analysis (CFA)
+
+### When to use it
+
+- You have a **theoretically specified model** of which items load on which factors
+- Testing whether a previously validated scale replicates in your sample
+- Comparing alternative factor structures (e.g., one-factor vs. two-factor)
+- As a prerequisite to testing **measurement invariance** across groups
+
+### Model fit indices
+
+| Index | Acceptable range | Notes |
+|---|---|---|
+| **χ²** | Non-significant (p > .05) | Very sensitive to sample size — rarely met with large N |
+| **CFI / TLI** | > .90 (acceptable), > .95 (good) | Comparative Fit Index / Tucker-Lewis Index |
+| **RMSEA** | < .08 (acceptable), < .05 (good) | Root Mean Square Error of Approximation |
+| **SRMR** | < .08 | Standardised Root Mean Square Residual |
+
+::: {.callout-tip}
+## Always report multiple fit indices
+No single fit index is sufficient. Report CFI, TLI, RMSEA (with 90% CI), and SRMR together.
+:::
+
+### How to do it in JASP
+
+Go to **Factor → Confirmatory Factor Analysis**.
+
+::: {.callout-note icon=false}
+## JASP Video Library — CFA
+Recording at [jasp-stats.github.io/jasp-video-library/All_Factor-Analysis.html#cfa](https://jasp-stats.github.io/jasp-video-library/All_Factor-Analysis.html#cfa):
+
+- [▶ CFA Main Analysis](https://jasp-stats.github.io/jasp-video-library/All_Factor-Analysis.html#main-analysis) — specifying a CFA model, fit indices, modification indices
+:::
+
+---
+
+## Principal Component Analysis (PCA)
+
+### When to use it
+
+- You want to reduce a large number of variables to a smaller set of components for use in further analyses
+- You want to remove multicollinearity by replacing correlated variables with orthogonal components
+- You are *not* primarily interested in a latent variable model
+
+### How to do it in JASP
+
+Go to **Factor → Principal Component Analysis**.
+
+::: {.callout-note icon=false}
+## JASP Video Library — PCA
+Recording at [jasp-stats.github.io/jasp-video-library/All_Factor-Analysis.html#pca](https://jasp-stats.github.io/jasp-video-library/All_Factor-Analysis.html#pca):
+
+- [▶ PCA Main Analysis](https://jasp-stats.github.io/jasp-video-library/All_Factor-Analysis.html#main-analysis-2) — number of components, rotation, component loadings and scores
+:::
+
+---
+
+## Reliability: Cronbach's α
+
+When developing or using a scale, report **Cronbach's α** as a measure of internal consistency. Values > .70 are conventionally considered acceptable.
+
+Cronbach's α is available in JASP under **Factor → Reliability Analysis**. Note that α depends on the number of items and their average inter-correlation, so it is not a pure measure of unidimensionality.
+
+---
+
+## Further reading
+
+- **DSUJ Chapter** on factor analysis (check your edition) — EFA and CFA with JASP
+- Brown, T. A. (2015). *Confirmatory factor analysis for applied research*. Guilford Press.
+
+---
+
+## Try it yourself
+
+- **Dataset**: [exam_anxiety.jasp](https://discoverjasp.com/repository/dsj1_data/data/exam_anxiety.jasp) — exam performance, anxiety, and revision time. Explore correlations between scale variables as a starting point before fitting a factor model.
+
+::: {.callout-note}
+## DSUJ exercises
+The factor analysis chapter self-tests and Smart Alex tasks are available with solutions at the [discoverjasp companion site](https://discoverjasp.com/pages/smart_alex).
+:::

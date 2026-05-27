@@ -1,0 +1,111 @@
+---
+title: "Welcome to the Paddling Pool"
+---
+
+::: {.hero-banner}
+# The Paddling Pool
+
+**A statistics refresher for master's psychology students at UvA**
+
+Before you dive into your thesis or specialist master's courses, make sure you are comfortable with the analyses you will actually use. This site is your self-study companion — work through topics at your own pace, watch short JASP demonstrations, and practise with real datasets.
+:::
+
+## How to use this site
+
+1. **Start with [Getting Started](getting-started.qmd)** if you have not used JASP before, or need a quick refresh on loading data and navigating the interface.
+2. **Work through [Basics](core/descriptives.qmd)** — descriptive statistics, t-tests, ANOVA, regression, non-parametric tests, and contingency tables. These are the foundations that almost every analysis builds on.
+3. **Consult [Advanced Topics](advanced/mediation-moderation.qmd)** when your thesis or course requires a specific technique. Not everyone needs all of these — pick what is relevant to you.
+
+Each topic page follows the same structure:
+
+::: {.callout-note icon=false}
+## What you will find on each topic page
+- **What is it?** — a short conceptual overview
+- **When to use it** — decision guide: which research question, which data type
+- **Assumptions** — what to check before interpreting your results
+- **How to do it in JASP** — screen recordings
+- **Interpreting the output** — what to report and how to read the numbers
+- **Further reading** — DSUJ chapter, blog posts
+- **Try it yourself** — downloadable JASP file and practice exercises
+:::
+
+---
+
+## Basics
+
+These topics cover the analyses expected of every master's student.
+
+::: {.topic-grid}
+::: {.topic-card}
+#### [Descriptive Statistics](core/descriptives.qmd)
+Summarise and visualise your data before running any inferential test. Mean, SD, histograms, boxplots, raincloud plots.
+:::
+::: {.topic-card}
+#### [t-Tests](core/t-tests.qmd)
+Compare one or two means. One-sample, paired-samples, and independent-samples t-tests — with effect sizes and assumption checks.
+:::
+::: {.topic-card}
+#### [ANOVA](core/anova.qmd)
+Compare three or more groups, or multiple factors. One-way, factorial, ANCOVA, and repeated-measures ANOVA.
+:::
+::: {.topic-card}
+#### [Correlation & Regression](core/regression.qmd)
+Quantify relationships and predict outcomes. Pearson correlation, simple regression, and multiple regression.
+:::
+::: {.topic-card}
+#### [Non-Parametric Tests](core/nonparametrics.qmd)
+Rank-based alternatives when normality is violated. Mann–Whitney, Wilcoxon signed-rank, Kruskal–Wallis, and Friedman.
+:::
+::: {.topic-card}
+#### [Contingency Tables](core/contingency-tables.qmd)
+Test associations between two categorical variables. Chi-square tests of independence, Fisher's exact, and Cramér's V.
+:::
+:::
+
+---
+
+## Advanced Topics
+
+These analyses appear frequently in master's theses. Choose the ones relevant to your research area.
+
+::: {.topic-grid}
+::: {.topic-card}
+#### [Mediation & Moderation](advanced/mediation-moderation.qmd)
+Test whether an effect works *through* a third variable (mediation) or *depends on* a third variable (moderation). Uses the PROCESS module.
+:::
+::: {.topic-card}
+#### [Logistic Regression](advanced/logistic-regression.qmd)
+Predict a binary outcome (yes/no, clinical/control) from one or more predictors. Odds ratios and classification accuracy.
+:::
+::: {.topic-card}
+#### [Factor Analysis](advanced/factor-analysis.qmd)
+Identify underlying dimensions in a set of items. Exploratory (EFA) and Confirmatory (CFA) approaches, plus PCA.
+:::
+::: {.topic-card}
+#### [Power Analysis](advanced/power-analysis.qmd)
+Determine how many participants you need to detect an effect of a given size. Avoid underpowered studies.
+:::
+::: {.topic-card}
+#### [Missing Data & Imputation](advanced/missing-data.qmd)
+Understand the types of missingness (MCAR, MAR, MNAR) and when multiple imputation is appropriate.
+:::
+::: {.topic-card}
+#### [Meta-Analysis](advanced/meta-analysis.qmd)
+Synthesise effect sizes across studies. Forest plots, heterogeneity, and moderator analysis in JASP.
+:::
+:::
+
+::: {.callout-note}
+**Coming soon:** Measurement Invariance, Path Modeling, Latent Class / Profile Analysis, and Network Analysis. These are more specialised topics currently being developed.
+:::
+
+---
+
+## Resources
+
+| Resource | Description |
+|---|---|
+| [Discovering Statistics Using JASP (DSUJ)](https://profandyfield.com/discoverse/dsuj/) | The main textbook this site is built around. Available in the UvA library. |
+| [How to Use JASP](https://jasp-stats.org/how-to-use-jasp/) | Step-by-step blog posts for specific analyses on the JASP website. |
+| [JASP Download](https://jasp-stats.org/download/) | Free, open-source statistical software used throughout this site. |
+| [JASP Video Library](https://jasp-stats.org) | The full collection of screen recordings we draw from. |

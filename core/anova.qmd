@@ -1,0 +1,282 @@
+---
+title: "ANOVA"
+---
+
+<span class="section-badge">Basics</span>
+
+Analysis of Variance (ANOVA) extends the logic of the t-test to situations with three or more groups, multiple factors, covariates, or repeated measurements. It answers the question: are there significant differences in means across conditions?
+
+This page covers four ANOVA designs. Jump to the relevant section:
+
+- [One-way ANOVA](#one-way-anova) — one factor, three or more independent groups
+- [ANCOVA](#ancova-analysis-of-covariance) — one factor with one or more continuous covariates
+- [Factorial ANOVA](#factorial-anova) — two or more factors (between-subjects)
+- [Repeated-measures ANOVA](#repeated-measures-anova) — within-subjects or mixed designs
+
+---
+
+## One-way ANOVA
+
+### What is it?
+
+One-way ANOVA tests whether the means of three or more independent groups differ on a continuous dependent variable. The "one-way" refers to a single grouping factor (independent variable).
+
+The F-statistic is the ratio of *between-groups variance* to *within-groups variance*. A large F indicates that the group means are more spread out than expected by chance.
+
+::: {.callout-tip collapse=true}
+## Where the F-statistic comes from
+F is the ratio of the mean squares of the *model* (how much variance the group means capture) to the mean squares of the *error* (leftover within-group variance). Like a *t*-statistic, F is a standardised test statistic with a known sampling distribution — that's how a *p*-value gets attached to it.
+:::
+
+### Assumptions
+
+::: {.assumption-list}
+- **Independence**: each participant contributes data to only one group
+- **Normality**: the DV should be approximately normally distributed *within each group* (check with histograms or Q-Q plots per group)
+- **Homogeneity of variance (homoscedasticity)**: the variance should be similar across groups — Levene's test checks this. If violated, use Welch's ANOVA (available in JASP)
+:::
+
+::: {.callout-tip collapse=true}
+## Why assumptions actually matter (small simulation)
+When the DV is heavy-tailed (e.g. reaction times with extreme values), the empirical sampling distribution of *F* under H₀ no longer matches the theoretical *F*-distribution. The result: your α and power aren't what you think they are. ANOVA is relatively robust to mild non-normality, but vulnerable to extreme observations that inflate within-group variance.
+
+→ [Simulation: what 100,000 ANOVAs under H₀ actually look like](https://johnnydoorn.github.io/teaching-statistics/extra-texts/ViolatingAssumptionsANOVA.html)
+:::
+
+### Effect size
+
+Report **η² (eta squared)** or the more conservative **ω² (omega squared)**. Partial η² is often reported in factorial designs.
+
+| η² | Conventional label |
+|---|---|
+| .01 | Small |
+| .06 | Medium |
+| .14 | Large |
+
+::: {.callout-tip collapse=true}
+## Effect size vs. test statistic — what's the difference?
+A *t* (or *F*) statistic grows with both the magnitude of the effect *and* the sample size — increase *n* with a fixed mean difference and *t* climbs accordingly. Effect sizes like Cohen's *d*, *r*, or η² are standardised and largely insulated from sample size. That's why a significant result with a tiny effect size can still be practically meaningless, and why both belong in your report.
+
+→ [Worked example with numbers](https://johnnydoorn.github.io/teaching-statistics/extra-texts/EffSizeVsTestStat.html)
+:::
+
+### Post-hoc tests
+
+A significant F-test only tells you that *at least one pair of groups differs* — not which pairs. Request post-hoc tests (e.g., Tukey HSD) or planned contrasts to identify specific differences. JASP provides both.
+
+### How to do it in JASP
+
+Go to **ANOVA → ANOVA** in the analysis menu.
+
+::: {.callout-note icon=false}
+## JASP Video Library — One-Way ANOVA
+Recordings at [jasp-stats.github.io/jasp-video-library/All_ANOVA.html#anova-oneway](https://jasp-stats.github.io/jasp-video-library/All_ANOVA.html#anova-oneway):
+
+- [▶ Main Analysis](https://jasp-stats.github.io/jasp-video-library/All_ANOVA.html#main-analysis) — setting up one-way ANOVA, post-hoc tests
+- [▶ Normality and Homogeneity Check](https://jasp-stats.github.io/jasp-video-library/All_ANOVA.html#normality-and-homogeneity-check) — assumption checks
+- [▶ Effect Size](https://jasp-stats.github.io/jasp-video-library/All_ANOVA.html#effect-size) — requesting η² and ω²
+- [▶ Descriptive Plots](https://jasp-stats.github.io/jasp-video-library/All_ANOVA.html#descriptive-plots) — visualising group means
+:::
+
+---
+
+## ANCOVA (Analysis of Covariance)
+
+### What is it?
+
+ANCOVA extends ANOVA by adding one or more **continuous covariates** — variables you want to statistically control for. By removing the variance explained by the covariate, ANCOVA gives a more sensitive test of the group effect.
+
+**Example**: comparing therapy outcomes across three groups while controlling for pre-therapy symptom severity.
+
+### Key additional assumption
+
+- **Homogeneity of regression slopes**: the relationship between the covariate and the DV should be the same in all groups. JASP can test this by adding a Group × Covariate interaction — it should not be significant.
+
+::: {.callout-tip collapse=true}
+## How ANCOVA partitions variance (with worked example)
+Once you add a covariate, the regression coefficients for the group dummies no longer recover the raw group means — they recover means *adjusted for* the covariate. The F-tests for group and covariate then come from comparing the full model against reduced models that drop one predictor at a time.
+
+→ [Worked example: extraversion ~ nationality + openness](https://johnnydoorn.github.io/teaching-statistics/extra-texts/PredictingWithDummies_1Variable.html)
+:::
+
+### How to do it in JASP
+
+Add covariates in the **Covariates** box when setting up an ANOVA.
+
+::: {.callout-note icon=false}
+## JASP Video Library — ANCOVA
+Recordings at [jasp-stats.github.io/jasp-video-library/All_ANOVA.html#ancova](https://jasp-stats.github.io/jasp-video-library/All_ANOVA.html#ancova):
+
+- [▶ Main Analysis](https://jasp-stats.github.io/jasp-video-library/All_ANOVA.html#main-analysis-2) — setting up ANCOVA, adding the covariate
+- [▶ Add Interaction](https://jasp-stats.github.io/jasp-video-library/All_ANOVA.html#add-interaction) — testing homogeneity of regression slopes
+- [▶ Descriptive Plots](https://jasp-stats.github.io/jasp-video-library/All_ANOVA.html#descriptives-plots) — marginal means after controlling for the covariate
+:::
+
+---
+
+## Factorial ANOVA
+
+### What is it?
+
+Factorial ANOVA includes **two or more between-subjects factors**. In addition to the main effect of each factor, it tests the **interaction** — whether the effect of one factor depends on the level of another.
+
+**Example**: testing whether a new intervention is effective (factor 1: intervention vs. control) and whether this depends on participant gender (factor 2: male/female/other).
+
+### Interpreting interactions
+
+An interaction means the effect of factor A is different at different levels of factor B. Always examine interaction plots — JASP provides these under *Descriptive plots*. A significant interaction means you should interpret simple main effects rather than main effects alone.
+
+::: {.callout-tip collapse=true}
+## What "interaction" really means
+A concrete example: *does the effect of alcohol on accidents differ across levels of speed?* If somebody is going fast, maybe the alcohol effect is smaller (or larger) than at low speeds. That's what "the effect of one variable depends on the level of another" looks like in practice.
+:::
+
+### How to do it in JASP
+
+::: {.callout-note icon=false}
+## JASP Video Library — Factorial ANOVA
+Recordings at [jasp-stats.github.io/jasp-video-library/All_ANOVA.html#anova-factorial](https://jasp-stats.github.io/jasp-video-library/All_ANOVA.html#anova-factorial):
+
+- [▶ Main Analysis](https://jasp-stats.github.io/jasp-video-library/All_ANOVA.html#main-analysis-1) — setting up a two-way ANOVA
+- [▶ Plots](https://jasp-stats.github.io/jasp-video-library/All_ANOVA.html#plots) — interaction plots
+- [▶ Simple Main Effects](https://jasp-stats.github.io/jasp-video-library/All_ANOVA.html#simple-main-effects) — follow-up after a significant interaction
+- [▶ Post-Hoc Tests](https://jasp-stats.github.io/jasp-video-library/All_ANOVA.html#post-hoc-tests) — pairwise comparisons
+:::
+
+---
+
+## Repeated-measures ANOVA
+
+### What is it?
+
+Repeated-measures ANOVA is used when the **same participants are measured across multiple conditions or time points** (within-subjects design). Because measurements within a person are correlated, this design is more powerful than a between-subjects design of the same size.
+
+**Mixed designs** contain both a within-subjects factor (e.g., time: pre, post, follow-up) and a between-subjects factor (e.g., treatment group).
+
+### Key additional assumption: sphericity
+
+For within-subjects factors with **three or more levels**, ANOVA assumes **sphericity** — that the variances of the differences between all pairs of levels are equal. JASP performs **Mauchly's test** automatically:
+
+- If sphericity is violated (*p* < .05): use the **Greenhouse-Geisser** or **Huynh-Feldt** correction (JASP offers both)
+- If there are only two within-subjects levels, sphericity cannot be violated (it is automatic)
+
+::: {.callout-tip collapse=true}
+## Sphericity, Mauchly, and "just always apply the correction"
+Sphericity = the variances of the *differences* between every pair of within-subject levels are equal. Mauchly's test flags violations, but (like Levene's and Shapiro-Wilk) it's sensitive to sample size. The pragmatic move: under *Assumption Checks → Sphericity corrections*, tick Greenhouse-Geisser (or Huynh-Feldt) by default — they adjust the degrees of freedom in the ANOVA table to give you a result that's robust to sphericity violations whether or not Mauchly is significant.
+:::
+
+### How to do it in JASP
+
+Go to **ANOVA → Repeated Measures ANOVA**.
+
+::: {.callout-note icon=false}
+## JASP Video Library — Repeated-Measures ANOVA
+Recordings at [jasp-stats.github.io/jasp-video-library/All_ANOVA.html#anova-repeated](https://jasp-stats.github.io/jasp-video-library/All_ANOVA.html#anova-repeated):
+
+- [▶ Main Analysis](https://jasp-stats.github.io/jasp-video-library/All_ANOVA.html#main-analysis-3) — defining within-subjects factors and levels
+- [▶ Sphericity Test](https://jasp-stats.github.io/jasp-video-library/All_ANOVA.html#sphericity-test) — Mauchly's test and Greenhouse-Geisser correction
+- [▶ Plots](https://jasp-stats.github.io/jasp-video-library/All_ANOVA.html#plots-1) — profile plots for within-subjects designs
+- [▶ Contrasts](https://jasp-stats.github.io/jasp-video-library/All_ANOVA.html#contrasts) — planned comparisons
+- [▶ Post-Hoc Tests](https://jasp-stats.github.io/jasp-video-library/All_ANOVA.html#post-hoc-tests-1) — pairwise comparisons with correction
+:::
+
+---
+
+## Interpreting the ANOVA output
+
+The ANOVA table shows:
+
+| Column | What it means |
+|---|---|
+| **F** | Test statistic — variance between groups / variance within groups |
+| **df** | Degrees of freedom — (number of groups − 1) for the effect, (N − number of groups) for the error |
+| **p** | Significance — reject H₀ if *p* < α |
+| **η²** or **ω²** | Effect size |
+
+::: {.callout-tip}
+## APA reporting
+*F*(df_effect, df_error) = [value], *p* = [value], η² = [value].
+
+Example: *F*(2, 57) = 4.32, *p* = .018, η² = .13.
+
+For repeated measures with a correction: *F*(1.76, 46.5) = 5.21, *p* = .011, η² = .17 (Greenhouse-Geisser corrected).
+:::
+
+---
+
+## Non-parametric alternatives
+
+If ANOVA assumptions are seriously violated:
+
+| ANOVA design | Non-parametric alternative |
+|---|---|
+| One-way (between) | Kruskal–Wallis test |
+| One-way (within) | Friedman test |
+
+Both are available under **ANOVA → Nonparametric** in JASP.
+
+---
+
+## Further reading
+
+- **DSUJ Chapter 11** — *One-way independent ANOVA*
+- **DSUJ Chapter 12** — *Analysis of covariance (ANCOVA)*
+- **DSUJ Chapter 13** — *Factorial ANOVA*
+- **DSUJ Chapter 14** — *Repeated-measures designs*
+
+---
+
+## Further viewing — SSR lecture recordings
+
+The 2026 SSR lecture series covers ANOVA across several recordings (captions are available in the SharePoint player):
+
+- [▶ SSR Lecture 12 — ANOVA](https://amsuni-my.sharepoint.com/:v:/g/personal/j_b_vandoorn_uva_nl/ERes4EOiQZpGiel4rafb1u4B5bqXqGTWv2QiTKTA4xGB9A?e=VSXMW4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) — one-way ANOVA, the F-statistic
+- [▶ SSR Lecture 14 — ANCOVA](https://amsuni-my.sharepoint.com/:v:/g/personal/j_b_vandoorn_uva_nl/ER_RAS7DHcFBniFgxHobdoUBLhJX7wJC8obRIgBmG9QCIg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=KvLQQl) — adding continuous covariates
+- [▶ SSR Lecture 15 — Factorial ANOVA](https://amsuni-my.sharepoint.com/:v:/g/personal/j_b_vandoorn_uva_nl/EYOhbLyuOsZHqJd72rlUp-IBMjUeoS2Z3f_ak44KzW-4Dw?e=ygYJyb&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) — main effects and interactions
+- [▶ SSR Lecture 18 — Repeated-Measures ANOVA](https://amsuni-my.sharepoint.com/:v:/g/personal/j_b_vandoorn_uva_nl/ERu30EipOpFHlscrmrf4PHsBeJft-YNnXKJxuPq1GaEflQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=OetsEz) — within-subjects designs, sphericity
+
+---
+
+## Try it yourself
+
+One exercise for each of the four ANOVA designs covered above. Each ends with a collapsible solution — try the analysis first, then expand to compare.
+
+### Exercise 1 (one-way ANOVA) — Do the four Hogwarts houses differ in Machiavellianism?
+
+Jakob et al. (2019) measured Machiavellianism in students who identified as Gryffindor, Hufflepuff, Ravenclaw, or Slytherin. Using [`leni_11.jasp`](https://discoverjasp.com/repository/dsj1_leni/leni_11.jasp), run a one-way ANOVA, follow it up with a **Tukey HSD** post-hoc test, and add a planned contrast comparing Slytherin against the other three houses combined.
+
+::: {.callout-note collapse=true icon=false}
+## ▸ Worked solution
+- **Walkthrough**: [Labcoat Leni — Science behind the magic?](https://discoverjasp.com/pages/labcoat_leni#science-behind-the-magic)
+- **Annotated JASP output**: [leni_11.html](https://discoverjasp.com/repository/dsj1_leni/leni_11.html)
+:::
+
+### Exercise 2 (ANCOVA) — Does interpretation training induce a persistent negative bias in children?
+
+Muris et al. (2008) randomly assigned children to one of three training conditions (negative / positive / no information) and measured a later interpretation-bias score. The age, gender, and natural anxiety of each child should be controlled for. Using [`leni_12.jasp`](https://discoverjasp.com/repository/dsj1_leni/leni_12.jasp), fit an ANCOVA with training as the factor and the three demographics as covariates. Check the homogeneity-of-regression-slopes assumption.
+
+::: {.callout-note collapse=true icon=false}
+## ▸ Worked solution
+- **Walkthrough**: [Labcoat Leni — Space invaders](https://discoverjasp.com/pages/labcoat_leni#space-invaders)
+- **Annotated JASP output**: [leni_12.html](https://discoverjasp.com/repository/dsj1_leni/leni_12.html)
+:::
+
+### Exercise 3 (factorial ANOVA) — Does mood × "stop rule" affect checking behaviour?
+
+Davey et al. (2003) used a 2 × 3 design (mood: negative/positive × stop-rule: "as many as can" / "feel like continuing" / no instruction) and measured checking behaviour. Using [`leni_13.jasp`](https://discoverjasp.com/repository/dsj1_leni/leni_13.jasp), fit a two-way factorial ANOVA — but inspect the **interaction plot before the main effects**. (This dataset is a textbook reminder that main effects can mislead when the interaction is significant.)
+
+::: {.callout-note collapse=true icon=false}
+## ▸ Worked solution
+- **Walkthrough**: [Labcoat Leni — Don't forget your toothbrush](https://discoverjasp.com/pages/labcoat_leni#dont-forget-your-toothbrush)
+- **Annotated JASP output**: [leni_13.html](https://discoverjasp.com/repository/dsj1_leni/leni_13.html)
+:::
+
+### Exercise 4 (repeated-measures ANOVA) — Are splattered cadavers distracting during serial recall?
+
+Participants attempted serial recall while three different types of music played (no music / classical / "death metal"). Using [`leni_14.jasp`](https://discoverjasp.com/repository/dsj1_leni/leni_14.jasp), fit a repeated-measures ANOVA on the music factor, check **Mauchly's test** for sphericity, and apply the **Greenhouse-Geisser** correction if needed.
+
+::: {.callout-note collapse=true icon=false}
+## ▸ Worked solution
+- **Walkthrough**: [Labcoat Leni — Are splattered cadavers distracting?](https://discoverjasp.com/pages/labcoat_leni#are-splattered-cadavers-distracting)
+- **Annotated JASP output**: [leni_14.html](https://discoverjasp.com/repository/dsj1_leni/leni_14.html)
+:::

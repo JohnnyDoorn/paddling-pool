@@ -1,0 +1,196 @@
+---
+title: "t-Tests"
+---
+
+<span class="section-badge">Basics</span>
+
+t-tests are used to compare means — either against a known value, or between two groups. They are one of the most widely used inferential tests in psychology.
+
+---
+
+## Three types of t-test
+
+| Test | Research question | Example |
+|---|---|---|
+| **One-sample** | Does my sample mean differ from a known value? | Is the mean IQ of my sample different from the population mean of 100? |
+| **Paired-samples** | Do two related measurements differ? | Do anxiety scores decrease from pre- to post-therapy within the same participants? |
+| **Independent-samples** | Do two independent groups differ? | Do males and females differ in their extraversion scores? |
+
+---
+
+## When to use which t-test
+
+- **One-sample**: you have a single group and want to compare its mean to a fixed reference value (e.g., population norm, chance level, zero)
+- **Paired-samples** (also called *dependent-samples* or *repeated-measures* t-test): the same participants measured twice, or participants matched in pairs — the two measurements are *not independent*
+- **Independent-samples**: two separate, unrelated groups — each participant contributes one score
+
+::: {.callout-warning}
+## Don't confuse paired and independent
+Using an independent-samples t-test when you have a repeated-measures design throws away half the information and inflates your error term. Always identify whether measurements within rows of your dataset are linked.
+:::
+
+::: {.callout-tip collapse=true}
+## The paired t-test is just a one-sample t-test on difference scores
+For each participant, compute the difference between their two measurements. Now you have one set of difference scores — and you're back to a one-sample t-test against H₀: mean difference = 0. This is why "paired", "dependent-samples", and "within-subjects" all refer to the same procedure.
+:::
+
+---
+
+## One-sided or two-sided?
+
+Whichever t-test you pick, you'll also need to decide what alternative hypothesis to test:
+
+- **Two-sided** (default in JASP): H₁ says the mean differs from the null value in *either* direction. Use this unless you have a strong directional prediction.
+- **One-sided** (directional): H₁ says the mean is specifically greater than, or specifically less than, the null value. More statistical power if you're right about the direction — but if the effect goes the other way, you can't reject H₀.
+
+::: {.callout-tip}
+## A one-sided test is a commitment, not a shortcut
+Commit to a one-sided test *before* looking at your data — ideally pre-registered. Switching to one-sided after seeing a result in your favoured direction is a common form of p-hacking.
+
+→ [Visual explainer: how the rejection region changes between one-sided and two-sided](https://johnnydoorn.github.io/teaching-statistics/extra-texts/OneSidedVsTwoSided.html)
+:::
+
+::: {.callout-tip collapse=true}
+## Choosing your alternative hypothesis
+Using the IQ self-assessment example: two-sided ("self-reported IQ is *different from* 120") asks whether there's any bias, while one-sided ("students systematically *overestimate* IQ") tests a specific direction. Different research questions, different rejection regions.
+:::
+
+---
+
+## Assumptions
+
+::: {.assumption-list}
+- **Scale data**: the dependent variable is continuous (interval or ratio level)
+- **Independence of observations**: each row in the dataset is an independent participant (violated in paired designs, which is *why* you use the paired t-test instead)
+- **Normality**: the dependent variable (or, for paired data, the *difference scores*) should be approximately normally distributed, especially important in small samples (*n* < 30)
+- **Equal variances** (independent-samples only): Levene's test checks this. JASP reports a Welch correction by default, which is robust to unequal variances — this is generally the safer choice
+:::
+
+::: {.callout-tip collapse=true}
+## Why "always use Welch" is the safer default
+A subtle point: significance tests *for assumptions* (Levene's, Shapiro-Wilk) are themselves driven by sample size. At large *n*, even a trivial deviation from equal variances will make Levene's significant — that doesn't mean you have a "problem". At small *n*, neither test has the power to detect a meaningful violation. The recommended workflow: look at the observed standard deviations (a ratio of more than ~1.4 between groups is worth noting), inspect Q-Q plots, and just default to the Welch t-test — it costs you a little power and buys robustness against unequal variances.
+:::
+
+### Checking normality
+
+Use the Q-Q plot and inspect skewness/kurtosis in Descriptives (see the [Descriptives](descriptives.qmd) page). The Shapiro-Wilk test is available in JASP under the assumption checks, but is sensitive to sample size — a visual check is often more informative.
+
+---
+
+## Effect size
+
+Always report an effect size alongside your *p*-value. For t-tests, use **Cohen's *d***:
+
+| *d* | Conventional label |
+|---|---|
+| 0.2 | Small |
+| 0.5 | Medium |
+| 0.8 | Large |
+
+These benchmarks are rough guides — the meaningful effect size depends on your research context. Tick **Cohen's d** under *Effect Size* in the JASP options panel.
+
+---
+
+## How to do it in JASP
+
+Go to **T-Tests** in the analysis menu and select the appropriate test.
+
+::: {.callout-note icon=false}
+## JASP Video Library — T-Tests
+All screen recordings are at [jasp-stats.github.io/jasp-video-library/All_T-Tests.html](https://jasp-stats.github.io/jasp-video-library/All_T-Tests.html):
+
+**Independent-samples t-test**
+
+- [▶ Main Analysis](https://jasp-stats.github.io/jasp-video-library/All_T-Tests.html#independent-main-analysis) — setting up the test, grouping variable
+- [▶ Assumption Checks](https://jasp-stats.github.io/jasp-video-library/All_T-Tests.html#assumption-checks) — normality and homogeneity of variance
+- [▶ Effect Size](https://jasp-stats.github.io/jasp-video-library/All_T-Tests.html#effect-size) — requesting Cohen's *d* and confidence intervals
+- [▶ Plots](https://jasp-stats.github.io/jasp-video-library/All_T-Tests.html#plots) — raincloud or bar plots for group differences
+
+**One-sample and paired-samples t-test**
+
+- [▶ One-Sample](https://jasp-stats.github.io/jasp-video-library/All_T-Tests.html#one-sample-all) — comparing a mean to a fixed reference value
+- [▶ Paired-Samples](https://jasp-stats.github.io/jasp-video-library/All_T-Tests.html#paired-all) — pre/post measurements or matched pairs
+:::
+
+---
+
+## Interpreting the output
+
+The JASP output for an independent-samples t-test contains:
+
+- **t**: the test statistic — the ratio of the mean difference to the standard error of the difference
+- **df**: degrees of freedom (for Welch's test, this will not be a whole number)
+- **p**: the two-tailed *p*-value. Reject H₀ (no difference) if *p* < your α level (typically .05)
+- **Mean difference**: the raw difference between group means — report this alongside the SE or CI
+- **Cohen's d**: the effect size
+
+::: {.callout-tip}
+## APA reporting example
+An independent-samples t-test showed that the anxiety ratings of participants shown a picture of a spider (*M* = 47.0, *SD* = 9.3) were significantly higher than those of participants shown a picture of a real spider (*M* = 40.0, *SD* = 9.3), *t*(21.4) = 1.68, *p* = .108, *d* = 0.71. *(This is an example — adjust numbers and interpretation to your own results.)*
+:::
+
+---
+
+## Non-parametric alternative
+
+If your data strongly violate the normality assumption (and your sample is small), use the **Wilcoxon** tests instead:
+
+| t-test | Non-parametric equivalent |
+|---|---|
+| One-sample | Wilcoxon signed-rank test |
+| Paired-samples | Wilcoxon signed-rank test |
+| Independent-samples | Mann–Whitney U test (Wilcoxon rank-sum test) |
+
+These are available under **T-Tests → Nonparametric** in JASP.
+
+---
+
+## Further reading
+
+- **DSUJ Chapter 9** — *Comparing two means* — covers all three t-tests with detailed JASP walkthroughs, effect sizes, and assumption checks
+- JASP blog — [Classical one-sample t-test](https://jasp-stats.org/2018/01/09/classical-one-sample-t-test-jasp-interpret-results/)
+- JASP blog — [Classical independent-samples t-test](https://jasp-stats.org/2018/04/18/how-to-conduct-a-classical-independent-sample-t-test-in-jasp-and-interpret-the-results/)
+
+---
+
+## Further viewing — SSR lecture recording
+
+The full 2026 SSR lecture covers the material on this page in depth (captions are available in the SharePoint player):
+
+- [▶ SSR Lecture 11 — t-Tests](https://amsuni-my.sharepoint.com/:v:/g/personal/j_b_vandoorn_uva_nl/EahOMDJnz9VPttWQxAZco9wBrb5K99hpGubhOkz0-DdZAw?e=GFj5cF&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
+
+---
+
+## Try it yourself
+
+Each exercise below ends with a collapsible solution. Try the analysis first, then expand to compare.
+
+### Exercise 1 — Is arachnophobia specific to real spiders, or do pictures evoke similar anxiety?
+
+Twelve arachnophobes were each exposed to a real tarantula *and* a picture of one, with their anxiety rated in both conditions. Using [`big_hairy_spider.jasp`](https://discoverjasp.com/repository/dsj1_data/data/big_hairy_spider.jasp), run **both** an independent-samples and a paired-samples t-test on the same data. Compare the conclusions — what does the discrepancy reveal about respecting the design?
+
+::: {.callout-note collapse=true icon=false}
+## ▸ Worked solution
+- **Walkthrough**: [Smart Alex Task 9.1](https://discoverjasp.com/pages/smart_alex#task-9.1)
+- **Annotated JASP output**: [alex_09_01-02.html](https://discoverjasp.com/repository/dsj1_alex/alex_09_01-02.html)
+:::
+
+### Exercise 2 — Are senior business managers as histrionic as inpatients with personality disorders?
+
+Board & Fritzon (2005) compared the personality profiles of senior business managers against a clinical inpatient sample. Using [`leni_09a.jasp`](https://discoverjasp.com/repository/dsj1_leni/leni_09a.jasp), run an independent-samples t-test on the histrionic personality scores, tick **Welch** and **Cohen's *d***, and write a one-sentence APA-style verdict.
+
+::: {.callout-note collapse=true icon=false}
+## ▸ Worked solution
+- **Walkthrough**: [Labcoat Leni — You don't have to be mad here, but it helps](https://discoverjasp.com/pages/labcoat_leni#you-dont-have-to-be-mad-here-but-it-helps)
+- **Annotated JASP output**: [leni_09a.html](https://discoverjasp.com/repository/dsj1_leni/leni_09a.html)
+:::
+
+### Exercise 3 — Does hygiene deteriorate over a music festival?
+
+The [`download.jasp`](https://discoverjasp.com/repository/dsj1_data/data/download.jasp) dataset records hygiene ratings of festival-goers on day 1 and day 3 of a UK rock festival. Run a paired-samples t-test on day 1 vs day 3 and decide whether the change is significant — then inspect the distribution and judge whether the parametric test is actually appropriate.
+
+::: {.callout-note collapse=true icon=false}
+## ▸ Worked solution
+- **Walkthrough**: [Smart Alex Task 9.7](https://discoverjasp.com/pages/smart_alex#task-9.7)
+- **Annotated JASP output**: [alex_09_07.html](https://discoverjasp.com/repository/dsj1_alex/alex_09_07.html)
+:::

@@ -1,0 +1,15 @@
+# Quarto build output and cache
+_site/
+.quarto/
+
+# RStudio
+.Rproj.user/
+.Rhistory
+
+# macOS
+.DS_Store
+
+# Private working files (do NOT commit)
+2026-SSR-Recordings/
+snippets/
+lecture-recording-links

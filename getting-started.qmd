@@ -1,0 +1,106 @@
+---
+title: "Getting Started with JASP"
+---
+
+JASP is free, open-source statistical software developed at the University of Amsterdam. It is designed to make statistical analyses intuitive and interactive — output updates in real time as you change settings.
+
+## Download and install JASP
+
+Go to [jasp-stats.org/download](https://jasp-stats.org/download/) and download the installer for your operating system (Windows, macOS, or Linux). Installation is straightforward; no licence is required.
+
+::: {.callout-tip}
+## Which version?
+Always download the latest stable release. If you are working on a university computer that already has JASP installed, make sure it is version 0.18 or later — some modules used in this course require a recent version.
+:::
+
+---
+
+## Loading data into JASP
+
+JASP can open several file formats: `.jasp` (JASP's own format), `.csv`, `.sav` (SPSS), `.xlsx`, `.ods`, and more.
+
+**Opening a .jasp file** — this is the easiest way to practise. A `.jasp` file contains both the dataset and any pre-configured analyses. Double-click the file or use *File → Open* in JASP.
+
+**Opening a .csv or .sav file** — use *File → Open* and navigate to your file. After opening, JASP shows the spreadsheet. Check that your variables have the correct measurement level (nominal, ordinal, or scale) by clicking the variable type icon next to the column header.
+
+### Getting started video
+
+[▶ Removing an outlier in JASP](https://jasp-stats.github.io/jasp-video-library/Getting-Started.html) — a short example from the JASP Video Library.
+
+---
+
+## The JASP interface
+
+When you open a dataset, the JASP window is divided into three panels:
+
+| Panel | What it shows |
+|---|---|
+| **Left** — Data | The spreadsheet with your variables and cases |
+| **Middle** — Analysis menu | The list of available statistical tests |
+| **Right** — Output | Results that update in real time as you configure the analysis |
+
+### Variable types
+
+JASP uses three measurement levels:
+
+- **Nominal** — unordered categories (e.g., treatment group, gender)
+- **Ordinal** — ordered categories (e.g., Likert scales treated as ordinal)
+- **Scale** (continuous/interval/ratio) — numeric measurements (e.g., reaction time, score)
+
+Assigning the correct variable type matters because JASP uses it to determine which analyses are available and how to display your data.
+
+---
+
+## Running an analysis
+
+1. Select the relevant menu item (e.g., *T-Tests → Independent Samples T-Test*)
+2. Drag variables into the appropriate boxes (dependent variable, grouping variable)
+3. Tick the options you need (effect size, assumption checks, plots)
+4. Output appears immediately in the right panel
+
+There is no "Run" button — JASP updates results live.
+
+---
+
+## Saving your work
+
+- *File → Save* saves a `.jasp` file containing both data and current analyses
+- To export the output, click the downward triangle (▼) next to any result table or figure and choose *Copy*, *Save as image*, or similar
+
+---
+
+## Where to get help
+
+| Resource | Link |
+|---|---|
+| JASP how-to blog posts | <https://jasp-stats.org/how-to-use-jasp/> |
+| JASP forum | <https://forum.cogsci.nl/categories/jasp> |
+| Discovering Statistics Using JASP (DSUJ) | Chapter 4 covers the JASP interface in detail |
+
+---
+
+## Further viewing — SSR lecture recordings
+
+Two SSR lectures are useful before diving into the analysis topics (captions are available in the SharePoint player):
+
+- [▶ SSR Lecture 4 — Introduction to Statistics & NHST](https://amsuni-my.sharepoint.com/:v:/g/personal/r_a_voskens_uva_nl/ET2tzHtsP4BMpjvy-LvhZrYB2ofWdiACW8JgRAYd1h-AiA?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=3lX7UQ) — populations, samples, distributions, inference; jump to **~32:19** for the null-hypothesis-significance-testing (NHST) section
+- [▶ SSR Lecture 5 — Introduction to JASP](https://amsuni-my.sharepoint.com/:v:/g/personal/r_a_voskens_uva_nl/EXVZr9oM-jVLquRgPwzAEEYB1mR9oVHqZYeURLGOkffzWw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=MaZfdw) — jump to **~6:12** for the JASP walkthrough proper (the first six minutes are course logistics and the lecture agenda)
+
+---
+
+## Try it yourself
+
+### Warm-up exercise — Enter an ultimatum-game dataset by hand
+
+Before launching into analyses, get comfortable with the JASP data view. Open [`acdc.jasp`](https://discoverjasp.com/repository/dsj1_data/data/acdc.jasp) — a dataset where listeners hearing AC/DC songs (under either Bon Scott or Brian Johnson) were asked what ultimatum-game offer they'd accept. Check the variable types in the column headers, add value labels for the singer factor, and produce a basic descriptive summary.
+
+::: {.callout-note collapse=true icon=false}
+## ▸ Worked solution
+- **Walkthrough**: [Labcoat Leni — Gonna be a rock 'n' roll singer](https://discoverjasp.com/pages/labcoat_leni#gonna-be-a-rock-n-roll-singer)
+:::
+
+---
+
+## Ready to start?
+
+Head to **[Descriptive Statistics](core/descriptives.qmd)** to begin exploring your data, or jump to any topic in the navigation bar.
