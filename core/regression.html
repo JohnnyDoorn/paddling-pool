@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Correlation &amp; Regression – Paddling Pool</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../assets/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-f7333b7c44a7c3d55afcc11699a363c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../assets/custom.css">
+</head>
+
+<body class="floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Paddling Pool</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../getting-started.html"> 
+<span class="menu-text">Getting Started</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-basics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Basics</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-basics">    
+        <li>
+    <a class="dropdown-item" href="../core/descriptives.html">
+ <span class="dropdown-text">Descriptive Statistics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../core/t-tests.html">
+ <span class="dropdown-text">t-Tests</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../core/anova.html">
+ <span class="dropdown-text">ANOVA</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../core/regression.html">
+ <span class="dropdown-text">Correlation &amp; Regression</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../core/nonparametrics.html">
+ <span class="dropdown-text">Non-Parametric Tests</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../core/contingency-tables.html">
+ <span class="dropdown-text">Contingency Tables</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-advanced-topics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Advanced Topics</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-advanced-topics">    
+        <li>
+    <a class="dropdown-item" href="../advanced/mediation-moderation.html">
+ <span class="dropdown-text">Mediation &amp; Moderation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/logistic-regression.html">
+ <span class="dropdown-text">Logistic Regression</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/factor-analysis.html">
+ <span class="dropdown-text">Factor Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/power-analysis.html">
+ <span class="dropdown-text">Power Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/missing-data.html">
+ <span class="dropdown-text">Missing Data &amp; Imputation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/meta-analysis.html">
+ <span class="dropdown-text">Meta-Analysis</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../advanced/measurement-invariance.html">
+ <span class="dropdown-text">Measurement Invariance</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/path-modeling.html">
+ <span class="dropdown-text">Path Modeling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/latent-class.html">
+ <span class="dropdown-text">Latent Class / Profile Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/network-analysis.html">
+ <span class="dropdown-text">Network Analysis</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/jasp-stats"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://jasp-stats.org"> <i class="bi bi-suit-heart-fill" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#correlation" id="toc-correlation" class="nav-link active" data-scroll-target="#correlation">Correlation</a>
+  <ul class="collapse">
+  <li><a href="#what-is-it" id="toc-what-is-it" class="nav-link" data-scroll-target="#what-is-it">What is it?</a></li>
+  <li><a href="#when-to-use-it" id="toc-when-to-use-it" class="nav-link" data-scroll-target="#when-to-use-it">When to use it</a></li>
+  <li><a href="#assumptions" id="toc-assumptions" class="nav-link" data-scroll-target="#assumptions">Assumptions</a></li>
+  <li><a href="#how-to-do-it-in-jasp" id="toc-how-to-do-it-in-jasp" class="nav-link" data-scroll-target="#how-to-do-it-in-jasp">How to do it in JASP</a></li>
+  </ul></li>
+  <li><a href="#simple-regression" id="toc-simple-regression" class="nav-link" data-scroll-target="#simple-regression">Simple regression</a>
+  <ul class="collapse">
+  <li><a href="#what-is-it-1" id="toc-what-is-it-1" class="nav-link" data-scroll-target="#what-is-it-1">What is it?</a></li>
+  <li><a href="#assumptions-1" id="toc-assumptions-1" class="nav-link" data-scroll-target="#assumptions-1">Assumptions</a></li>
+  <li><a href="#how-to-do-it-in-jasp-1" id="toc-how-to-do-it-in-jasp-1" class="nav-link" data-scroll-target="#how-to-do-it-in-jasp-1">How to do it in JASP</a></li>
+  </ul></li>
+  <li><a href="#multiple-regression" id="toc-multiple-regression" class="nav-link" data-scroll-target="#multiple-regression">Multiple regression</a>
+  <ul class="collapse">
+  <li><a href="#what-is-it-2" id="toc-what-is-it-2" class="nav-link" data-scroll-target="#what-is-it-2">What is it?</a></li>
+  <li><a href="#building-your-model" id="toc-building-your-model" class="nav-link" data-scroll-target="#building-your-model">Building your model</a></li>
+  <li><a href="#additional-assumption-multicollinearity" id="toc-additional-assumption-multicollinearity" class="nav-link" data-scroll-target="#additional-assumption-multicollinearity">Additional assumption: multicollinearity</a></li>
+  <li><a href="#how-to-do-it-in-jasp-2" id="toc-how-to-do-it-in-jasp-2" class="nav-link" data-scroll-target="#how-to-do-it-in-jasp-2">How to do it in JASP</a></li>
+  </ul></li>
+  <li><a href="#interpreting-the-regression-output" id="toc-interpreting-the-regression-output" class="nav-link" data-scroll-target="#interpreting-the-regression-output">Interpreting the regression output</a></li>
+  <li><a href="#dummy-coding-categorical-predictors" id="toc-dummy-coding-categorical-predictors" class="nav-link" data-scroll-target="#dummy-coding-categorical-predictors">Dummy coding categorical predictors</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further reading</a></li>
+  <li><a href="#further-viewing-ssr-lecture-recordings" id="toc-further-viewing-ssr-lecture-recordings" class="nav-link" data-scroll-target="#further-viewing-ssr-lecture-recordings">Further viewing — SSR lecture recordings</a></li>
+  <li><a href="#try-it-yourself" id="toc-try-it-yourself" class="nav-link" data-scroll-target="#try-it-yourself">Try it yourself</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-correlation-do-gcse-maths-grades-predict-university-statistics-grades" id="toc-exercise-1-correlation-do-gcse-maths-grades-predict-university-statistics-grades" class="nav-link" data-scroll-target="#exercise-1-correlation-do-gcse-maths-grades-predict-university-statistics-grades">Exercise 1 (correlation) — Do GCSE maths grades predict university statistics grades?</a></li>
+  <li><a href="#exercise-2-correlation-matrix-which-student-traits-predict-the-lecturer-they-prefer" id="toc-exercise-2-correlation-matrix-which-student-traits-predict-the-lecturer-they-prefer" class="nav-link" data-scroll-target="#exercise-2-correlation-matrix-which-student-traits-predict-the-lecturer-they-prefer">Exercise 2 (correlation matrix) — Which student traits predict the lecturer they prefer?</a></li>
+  <li><a href="#exercise-3-hierarchical-multiple-regression-does-narcissism-predict-facebook-status-frequency-above-and-beyond-extraversion" id="toc-exercise-3-hierarchical-multiple-regression-does-narcissism-predict-facebook-status-frequency-above-and-beyond-extraversion" class="nav-link" data-scroll-target="#exercise-3-hierarchical-multiple-regression-does-narcissism-predict-facebook-status-frequency-above-and-beyond-extraversion">Exercise 3 (hierarchical multiple regression) — Does narcissism predict Facebook status frequency above and beyond extraversion?</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Correlation &amp; Regression</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><span class="section-badge">Basics</span></p>
+<p>Regression allows you to model the relationship between a continuous outcome variable (the <strong>dependent variable</strong>, DV) and one or more predictors (the <strong>independent variables</strong>, IVs). Start with correlation to quantify the relationship between two variables, then move to regression when you want to predict an outcome or test the unique contribution of each predictor.</p>
+<p>This page covers:</p>
+<ul>
+<li><a href="#correlation">Correlation</a> — quantifying a relationship between two continuous variables</li>
+<li><a href="#simple-regression">Simple regression</a> — predicting an outcome from one predictor</li>
+<li><a href="#multiple-regression">Multiple regression</a> — predicting an outcome from several predictors, controlling for the others</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Regression is ANOVA, just continuous
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Quick framing: regression keeps the same explained-variance logic from ANOVA, but swaps categorical for continuous predictors — and JASP’s Regression module instead of ANOVA.</p>
+</div>
+</div>
+</div>
+<hr>
+<section id="correlation" class="level2">
+<h2 class="anchored" data-anchor-id="correlation">Correlation</h2>
+<section id="what-is-it" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-it">What is it?</h3>
+<p>A <strong>correlation coefficient</strong> (<em>r</em>) describes the strength and direction of the linear relationship between two continuous variables. Pearson’s <em>r</em> ranges from −1 (perfect negative) to +1 (perfect positive), with 0 indicating no linear relationship.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><em>r</em></th>
+<th>Conventional label</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>±.10</td>
+<td>Small</td>
+</tr>
+<tr class="even">
+<td>±.30</td>
+<td>Medium</td>
+</tr>
+<tr class="odd">
+<td>±.50</td>
+<td>Large</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="when-to-use-it" class="level3">
+<h3 class="anchored" data-anchor-id="when-to-use-it">When to use it</h3>
+<ul>
+<li>As a descriptive measure of association between two variables (no implied causality)</li>
+<li>As a preliminary step before regression</li>
+<li>When reporting relationships in your results section</li>
+</ul>
+</section>
+<section id="assumptions" class="level3">
+<h3 class="anchored" data-anchor-id="assumptions">Assumptions</h3>
+<div class="assumption-list">
+<ul>
+<li>Both variables are <strong>continuous</strong> (interval/ratio)</li>
+<li>The relationship is <strong>linear</strong> (check with a scatter plot — non-linear relationships yield misleading <em>r</em> values)</li>
+<li>Approximately <strong>bivariate normal</strong> — no extreme outliers (outliers can inflate or deflate <em>r</em> dramatically)</li>
+</ul>
+</div>
+<p>If assumptions are violated, use Spearman’s <em>ρ</em> (rho) — a rank-based non-parametric alternative available in JASP.</p>
+</section>
+<section id="how-to-do-it-in-jasp" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-do-it-in-jasp">How to do it in JASP</h3>
+<p>Go to <strong>Regression → Correlation</strong>.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>JASP Video Library — Correlation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Recordings at <a href="https://jasp-stats.github.io/jasp-video-library/All_Regression.html#correlation">jasp-stats.github.io/jasp-video-library/All_Regression.html#correlation</a>:</p>
+<ul>
+<li><a href="https://jasp-stats.github.io/jasp-video-library/All_Regression.html#main-analysis">▶ Main Analysis</a> — Pearson/Spearman correlation matrix</li>
+<li><a href="https://jasp-stats.github.io/jasp-video-library/All_Regression.html#plots">▶ Plots</a> — scatter plots and correlation matrix visualisation</li>
+<li><a href="https://jasp-stats.github.io/jasp-video-library/All_Regression.html#main-analysis-partial">▶ Partial Correlation</a> — controlling for a third variable</li>
+</ul>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="simple-regression" class="level2">
+<h2 class="anchored" data-anchor-id="simple-regression">Simple regression</h2>
+<section id="what-is-it-1" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-it-1">What is it?</h3>
+<p>Simple (linear) regression models the relationship between <strong>one predictor</strong> (X) and a <strong>continuous outcome</strong> (Y):</p>
+<p><span class="math display">\[Y = b_0 + b_1 X + \varepsilon\]</span></p>
+<ul>
+<li><em>b₀</em>: the intercept — the predicted value of Y when X = 0</li>
+<li><em>b₁</em>: the slope — the expected change in Y for a one-unit increase in X</li>
+<li><em>ε</em>: the residual error</li>
+</ul>
+<p>The <strong>R²</strong> statistic tells you the proportion of variance in Y explained by the model. Adjusted R² penalises for the number of predictors and is used for model comparison.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Why the intercept (<em>b₀</em>) belongs in the model
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You might be tempted to drop the intercept when it isn’t substantively meaningful (e.g.&nbsp;when X = 0 makes no sense). Don’t — omitting it forces the regression line through the origin, which introduces systematic over- and under-estimation. The reported <em>R²</em> can then look misleadingly high because it’s compared against a degenerate null model that predicts zero rather than the mean.</p>
+<p>→ <a href="https://johnnydoorn.github.io/teaching-statistics/extra-texts/IncludingIntercept.html">Worked example with album sales</a></p>
+</div>
+</div>
+</section>
+<section id="assumptions-1" class="level3">
+<h3 class="anchored" data-anchor-id="assumptions-1">Assumptions</h3>
+<div class="assumption-list">
+<ul>
+<li><strong>Linearity</strong>: the relationship between X and Y is linear — check with a scatter plot</li>
+<li><strong>Independence of residuals</strong>: each observation is independent — check with the Durbin-Watson statistic</li>
+<li><strong>Homoscedasticity</strong>: the spread of residuals is constant across fitted values — check the residuals vs.&nbsp;fitted plot</li>
+<li><strong>Normality of residuals</strong>: residuals should be approximately normally distributed — check the residuals Q-Q plot</li>
+<li><strong>No influential outliers</strong>: cases with high Cook’s distance (&gt; 1 as a rough rule) warrant investigation</li>
+</ul>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Diagnosing homoscedasticity at a glance
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Plot the standardised residuals against the standardised predictions. A “healthy” cloud of points means error is constant across the range of Y. A funnel shape or a tilted line means the model is more accurate for some predicted values than others — a sign of mis-specification.</p>
+<p>→ <a href="https://johnnydoorn.github.io/teaching-statistics/extra-texts/Heteroscedasticity.html">Visual catalogue: healthy vs.&nbsp;heteroscedastic plots</a></p>
+</div>
+</div>
+</div>
+</section>
+<section id="how-to-do-it-in-jasp-1" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-do-it-in-jasp-1">How to do it in JASP</h3>
+<p>Go to <strong>Regression → Linear Regression</strong>.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>JASP Video Library — Simple Regression
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Recordings at <a href="https://jasp-stats.github.io/jasp-video-library/All_Regression.html#regression">jasp-stats.github.io/jasp-video-library/All_Regression.html#regression</a>:</p>
+<ul>
+<li><a href="https://jasp-stats.github.io/jasp-video-library/All_Regression.html#main-analysis-single-predictor">▶ Single Predictor</a> — simple regression setup and output</li>
+<li><a href="https://jasp-stats.github.io/jasp-video-library/All_Regression.html#assumption-checks-1">▶ Assumption Checks</a> — residual plots, Q-Q plots</li>
+<li><a href="https://jasp-stats.github.io/jasp-video-library/All_Regression.html#cooks-distance">▶ Cook’s Distance</a> — identifying influential cases</li>
+</ul>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="multiple-regression" class="level2">
+<h2 class="anchored" data-anchor-id="multiple-regression">Multiple regression</h2>
+<section id="what-is-it-2" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-it-2">What is it?</h3>
+<p>Multiple regression extends simple regression to <strong>two or more predictors</strong>:</p>
+<p><span class="math display">\[Y = b_0 + b_1 X_1 + b_2 X_2 + \ldots + b_k X_k + \varepsilon\]</span></p>
+<p>Each <em>bⱼ</em> is a <strong>partial regression coefficient</strong> — it represents the unique effect of predictor <em>Xⱼ</em> on Y, <em>controlling for all other predictors in the model</em>. This is a crucial distinction from simple regression or from looking at correlations in isolation.</p>
+</section>
+<section id="building-your-model" class="level3">
+<h3 class="anchored" data-anchor-id="building-your-model">Building your model</h3>
+<p>There are several approaches to entering predictors:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>When to use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Simultaneous (Enter)</strong></td>
+<td>All predictors entered at once. Use when you have theory-driven reasons to include all predictors</td>
+</tr>
+<tr class="even">
+<td><strong>Hierarchical</strong></td>
+<td>Predictors entered in blocks based on theoretical priority. Change in R² (ΔR²) for each block tests the incremental contribution</td>
+</tr>
+<tr class="odd">
+<td><strong>Stepwise</strong></td>
+<td>Automated selection based on statistical criteria — generally discouraged for confirmatory research but can be useful exploratory</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hierarchical regression in JASP
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>How to set up Model 0 → Model 1 → Model 2 in JASP’s Regression module, what the ΔR² between consecutive models actually means, and why “controlling for X” and “adding X to the null model” are the same operation.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="additional-assumption-multicollinearity" class="level3">
+<h3 class="anchored" data-anchor-id="additional-assumption-multicollinearity">Additional assumption: multicollinearity</h3>
+<p>When predictors are highly correlated with each other, regression coefficients become unstable. Check: - <strong>Tolerance</strong> (should be &gt; .1) or <strong>VIF</strong> (variance inflation factor, should be &lt; 10) — both available in JASP under <em>Collinearity Diagnostics</em></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>VIF, tolerance, and why 10 isn’t a hard cutoff
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>What multicollinearity really means (predictors that overlap), how to read VIF (the 10 threshold is a continuum, not a binary pass/fail), and why a scatter plot matrix of your predictors is still worth its weight — VIF only catches <em>linear</em> dependence.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="how-to-do-it-in-jasp-2" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-do-it-in-jasp-2">How to do it in JASP</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>JASP Video Library — Multiple Regression
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Recordings at <a href="https://jasp-stats.github.io/jasp-video-library/All_Regression.html#regression">jasp-stats.github.io/jasp-video-library/All_Regression.html#regression</a>:</p>
+<ul>
+<li><a href="https://jasp-stats.github.io/jasp-video-library/All_Regression.html#main-analysis-multiple-predictors">▶ Multiple Predictors</a> — multiple regression setup and output</li>
+<li><a href="https://jasp-stats.github.io/jasp-video-library/All_Regression.html#hierarchical-regression">▶ Hierarchical Regression</a> — entering predictors in blocks, ΔR²</li>
+<li><a href="https://jasp-stats.github.io/jasp-video-library/All_Regression.html#bootstrap-confidence-interval">▶ Bootstrap Confidence Intervals</a> — robust inference for the coefficients</li>
+</ul>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="interpreting-the-regression-output" class="level2">
+<h2 class="anchored" data-anchor-id="interpreting-the-regression-output">Interpreting the regression output</h2>
+<p>The key tables in JASP output:</p>
+<p><strong>Model Summary</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Column</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>R</strong></td>
+<td>Multiple correlation coefficient</td>
+</tr>
+<tr class="even">
+<td><strong>R²</strong></td>
+<td>Proportion of variance in Y explained by all predictors combined</td>
+</tr>
+<tr class="odd">
+<td><strong>Adjusted R²</strong></td>
+<td>R² corrected for the number of predictors — use this for model comparison</td>
+</tr>
+<tr class="even">
+<td><strong>RMSE</strong></td>
+<td>Root mean square error — average prediction error in the original units</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Coefficients table</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Column</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>b</strong> (Unstandardised)</td>
+<td>The slope in original units — “one unit increase in X is associated with a <em>b</em> change in Y, holding all other predictors constant”</td>
+</tr>
+<tr class="even">
+<td><strong>β</strong> (Standardised)</td>
+<td>The slope in standard deviation units — comparable across predictors with different scales</td>
+</tr>
+<tr class="odd">
+<td><strong>t</strong> / <strong>p</strong></td>
+<td>Whether the slope is significantly different from zero</td>
+</tr>
+<tr class="even">
+<td><strong>95% CI</strong></td>
+<td>Confidence interval for the slope</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>APA reporting example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Album sales were significantly predicted by advertising budget, <em>b</em> = 0.096, 95% CI [0.076, 0.115], <em>β</em> = .578, <em>t</em>(196) = 9.98, <em>p</em> &lt; .001. The model explained 33% of the variance in album sales, <em>F</em>(1, 198) = 99.6, <em>p</em> &lt; .001, adjusted <em>R²</em> = .33.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="dummy-coding-categorical-predictors" class="level2">
+<h2 class="anchored" data-anchor-id="dummy-coding-categorical-predictors">Dummy coding categorical predictors</h2>
+<p>Continuous predictors enter regression directly. Categorical predictors must be <strong>dummy coded</strong>: create <em>k</em> − 1 binary variables (0/1), where <em>k</em> is the number of categories. JASP does this automatically when you define a variable as nominal.</p>
+<p><strong>Example</strong>: a variable with 3 groups (control, therapy A, therapy B) → 2 dummy variables. The reference category (control) becomes the baseline against which the others are compared.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>How predictions and group means come out of the dummies
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The intercept becomes the mean of the reference group; each dummy’s coefficient is the difference from that group. Add a covariate (or another categorical predictor) and the coefficients shift slightly — the dummies no longer recover the group means <em>exactly</em>, but the prediction formula still works the same way. With an interaction term added, you do recover each cell mean — at the cost of more parameters.</p>
+<p>→ <a href="https://johnnydoorn.github.io/teaching-statistics/extra-texts/PredictingWithDummies_1Variable.html">Part 1: one categorical predictor + optional covariate</a> · <a href="https://johnnydoorn.github.io/teaching-statistics/extra-texts/PredictingWithDummies_2Variables.html">Part 2: two predictors and the interaction term</a></p>
+</div>
+</div>
+<hr>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
+<ul>
+<li><strong>DSUJ Chapter 7</strong> — <em>Correlation</em></li>
+<li><strong>DSUJ Chapter 8</strong> — <em>Regression</em> (simple and multiple, hierarchical, dummy coding)</li>
+<li>JASP blog — <a href="https://jasp-stats.org/2017/10/18/hierarchical-regression-jasp-0-8-3/">Hierarchical regression</a></li>
+</ul>
+<hr>
+</section>
+<section id="further-viewing-ssr-lecture-recordings" class="level2">
+<h2 class="anchored" data-anchor-id="further-viewing-ssr-lecture-recordings">Further viewing — SSR lecture recordings</h2>
+<p>The 2026 SSR lectures cover correlation and regression across three recordings (captions are available in the SharePoint player):</p>
+<ul>
+<li><a href="https://amsuni-my.sharepoint.com/:v:/g/personal/r_a_voskens_uva_nl/EYmgPRhAgkBEliafLv_ech8BPwxS8gy8aTtX7lOVHJvFbg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&amp;e=eV0zUx">▶ SSR Lecture 7 — Correlation &amp; the Linear Model</a> — correlation up front; jump to <strong>~23:28</strong> for the linear-model / simple-regression section</li>
+<li><a href="https://amsuni-my.sharepoint.com/:v:/g/personal/j_b_vandoorn_uva_nl/ESL3M4DpFURCuLyCb7ILp24BYREu8vRoKWYd7tN-4v4kWw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&amp;e=nqlXIF">▶ SSR Lecture 8 — The Linear Model</a> — simple linear regression in depth</li>
+<li><a href="https://amsuni-my.sharepoint.com/:v:/g/personal/j_b_vandoorn_uva_nl/EVZu2_XUBChDgKCE_D74OZQBnFoilT4XQRG5cEDfZcWu3g?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=OFlsC3">▶ SSR Lecture 22 — Multiple Regression</a> — multiple predictors, hierarchical regression, multicollinearity</li>
+</ul>
+<hr>
+</section>
+<section id="try-it-yourself" class="level2">
+<h2 class="anchored" data-anchor-id="try-it-yourself">Try it yourself</h2>
+<p>Each exercise below ends with a collapsible solution. Try the analysis first, then expand to compare.</p>
+<section id="exercise-1-correlation-do-gcse-maths-grades-predict-university-statistics-grades" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1-correlation-do-gcse-maths-grades-predict-university-statistics-grades">Exercise 1 (correlation) — Do GCSE maths grades predict university statistics grades?</h3>
+<p>The <a href="https://discoverjasp.com/repository/dsj1_data/data/grades.jasp"><code>grades.jasp</code></a> dataset pairs each student’s GCSE maths grade with their later university statistics grade. Pick the appropriate correlation coefficient (think about the measurement level of GCSE grade), run it, and report <em>r</em> with its 95% CI.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>▸ Worked solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/smart_alex#task-7.4">Smart Alex Task 7.4</a></li>
+<li><strong>Annotated JASP output</strong>: <a href="https://discoverjasp.com/repository/dsj1_alex/alex_07_04.html">alex_07_04.html</a></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-2-correlation-matrix-which-student-traits-predict-the-lecturer-they-prefer" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2-correlation-matrix-which-student-traits-predict-the-lecturer-they-prefer">Exercise 2 (correlation matrix) — Which student traits predict the lecturer they prefer?</h3>
+<p>Chamorro-Premuzic et al.&nbsp;(2008) measured five student personality traits and five lecturer-preference dimensions. Using <a href="https://discoverjasp.com/repository/dsj1_leni/leni_07.jasp"><code>leni_07.jasp</code></a>, produce the full correlation matrix between student traits and preferred-lecturer dimensions, and identify which student trait is most strongly associated with each lecturer dimension.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>▸ Worked solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/labcoat_leni#why-do-you-like-your-lecturers">Labcoat Leni — Why do you like your lecturers?</a></li>
+<li><strong>Annotated JASP output</strong>: <a href="https://discoverjasp.com/repository/dsj1_leni/leni_07.html">leni_07.html</a></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-3-hierarchical-multiple-regression-does-narcissism-predict-facebook-status-frequency-above-and-beyond-extraversion" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3-hierarchical-multiple-regression-does-narcissism-predict-facebook-status-frequency-above-and-beyond-extraversion">Exercise 3 (hierarchical multiple regression) — Does narcissism predict Facebook status frequency above and beyond extraversion?</h3>
+<p>Ong et al.&nbsp;(2011) measured adolescents’ status-update frequency, demographics (age, grade, sex), extraversion, and narcissism. Using <a href="https://discoverjasp.com/repository/dsj1_leni/leni_08a.jasp"><code>leni_08a.jasp</code></a>, fit a hierarchical regression with <strong>three blocks</strong>: demographics (Model 0), + extraversion (Model 1), + narcissism (Model 2). Report ΔR² for each step.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>▸ Worked solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/labcoat_leni#i-want-to-be-loved-on-facebook">Labcoat Leni — I want to be loved (on Facebook)</a></li>
+<li><strong>Annotated JASP output</strong>: <a href="https://discoverjasp.com/repository/dsj1_leni/leni_08a.html">leni_08a.html</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/johnnydoorn\.github\.io\/paddling-pool\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Paddling Pool &nbsp;|&nbsp; UvA Psychology &nbsp;|&nbsp; Built with <a href="https://jasp-stats.org">JASP</a> &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

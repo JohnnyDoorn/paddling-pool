@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Contingency Tables – Paddling Pool</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../assets/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-f7333b7c44a7c3d55afcc11699a363c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../assets/custom.css">
+</head>
+
+<body class="floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Paddling Pool</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../getting-started.html"> 
+<span class="menu-text">Getting Started</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-basics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Basics</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-basics">    
+        <li>
+    <a class="dropdown-item" href="../core/descriptives.html">
+ <span class="dropdown-text">Descriptive Statistics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../core/t-tests.html">
+ <span class="dropdown-text">t-Tests</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../core/anova.html">
+ <span class="dropdown-text">ANOVA</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../core/regression.html">
+ <span class="dropdown-text">Correlation &amp; Regression</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../core/nonparametrics.html">
+ <span class="dropdown-text">Non-Parametric Tests</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../core/contingency-tables.html">
+ <span class="dropdown-text">Contingency Tables</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-advanced-topics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Advanced Topics</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-advanced-topics">    
+        <li>
+    <a class="dropdown-item" href="../advanced/mediation-moderation.html">
+ <span class="dropdown-text">Mediation &amp; Moderation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/logistic-regression.html">
+ <span class="dropdown-text">Logistic Regression</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/factor-analysis.html">
+ <span class="dropdown-text">Factor Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/power-analysis.html">
+ <span class="dropdown-text">Power Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/missing-data.html">
+ <span class="dropdown-text">Missing Data &amp; Imputation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/meta-analysis.html">
+ <span class="dropdown-text">Meta-Analysis</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../advanced/measurement-invariance.html">
+ <span class="dropdown-text">Measurement Invariance</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/path-modeling.html">
+ <span class="dropdown-text">Path Modeling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/latent-class.html">
+ <span class="dropdown-text">Latent Class / Profile Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/network-analysis.html">
+ <span class="dropdown-text">Network Analysis</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/jasp-stats"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://jasp-stats.org"> <i class="bi bi-suit-heart-fill" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#chi-square-test-of-independence" id="toc-chi-square-test-of-independence" class="nav-link active" data-scroll-target="#chi-square-test-of-independence">Chi-square test of independence</a>
+  <ul class="collapse">
+  <li><a href="#what-is-it" id="toc-what-is-it" class="nav-link" data-scroll-target="#what-is-it">What is it?</a></li>
+  <li><a href="#when-to-use-it" id="toc-when-to-use-it" class="nav-link" data-scroll-target="#when-to-use-it">When to use it</a></li>
+  <li><a href="#assumptions" id="toc-assumptions" class="nav-link" data-scroll-target="#assumptions">Assumptions</a></li>
+  <li><a href="#effect-size" id="toc-effect-size" class="nav-link" data-scroll-target="#effect-size">Effect size</a></li>
+  <li><a href="#how-to-do-it-in-jasp" id="toc-how-to-do-it-in-jasp" class="nav-link" data-scroll-target="#how-to-do-it-in-jasp">How to do it in JASP</a></li>
+  <li><a href="#interpreting-the-output" id="toc-interpreting-the-output" class="nav-link" data-scroll-target="#interpreting-the-output">Interpreting the output</a></li>
+  </ul></li>
+  <li><a href="#chi-square-goodness-of-fit" id="toc-chi-square-goodness-of-fit" class="nav-link" data-scroll-target="#chi-square-goodness-of-fit">Chi-square goodness-of-fit</a></li>
+  <li><a href="#fishers-exact-test" id="toc-fishers-exact-test" class="nav-link" data-scroll-target="#fishers-exact-test">Fisher’s exact test</a></li>
+  <li><a href="#bayesian-alternative" id="toc-bayesian-alternative" class="nav-link" data-scroll-target="#bayesian-alternative">Bayesian alternative</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further reading</a></li>
+  <li><a href="#further-viewing-ssr-lecture-recording" id="toc-further-viewing-ssr-lecture-recording" class="nav-link" data-scroll-target="#further-viewing-ssr-lecture-recording">Further viewing — SSR lecture recording</a></li>
+  <li><a href="#try-it-yourself" id="toc-try-it-yourself" class="nav-link" data-scroll-target="#try-it-yourself">Try it yourself</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-chi-square-does-image-type-sexualised-vs-performance-shape-womens-reactions-to-female-athletes" id="toc-exercise-1-chi-square-does-image-type-sexualised-vs-performance-shape-womens-reactions-to-female-athletes" class="nav-link" data-scroll-target="#exercise-1-chi-square-does-image-type-sexualised-vs-performance-shape-womens-reactions-to-female-athletes">Exercise 1 (chi-square) — Does image type (sexualised vs performance) shape women’s reactions to female athletes?</a></li>
+  <li><a href="#exercise-2-chi-square-three-outcomes-are-perceptions-of-happiness-associated-with-the-professional-group-rated" id="toc-exercise-2-chi-square-three-outcomes-are-perceptions-of-happiness-associated-with-the-professional-group-rated" class="nav-link" data-scroll-target="#exercise-2-chi-square-three-outcomes-are-perceptions-of-happiness-associated-with-the-professional-group-rated">Exercise 2 (chi-square × three outcomes) — Are perceptions of happiness associated with the professional group rated?</a></li>
+  <li><a href="#exercise-3-chi-square-bayesian-alternative-does-time-pressure-at-work-affect-off-hours-psychological-detachment" id="toc-exercise-3-chi-square-bayesian-alternative-does-time-pressure-at-work-affect-off-hours-psychological-detachment" class="nav-link" data-scroll-target="#exercise-3-chi-square-bayesian-alternative-does-time-pressure-at-work-affect-off-hours-psychological-detachment">Exercise 3 (chi-square + Bayesian alternative) — Does time-pressure at work affect off-hours psychological detachment?</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Contingency Tables</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><span class="section-badge">Basics</span></p>
+<p>When both your variables are <strong>categorical</strong>, the appropriate tools come from the chi-square family. A <strong>contingency table</strong> (cross-tabulation) shows the frequency of every combination of categories, and a chi-square test asks whether the two variables are independent.</p>
+<p>This page covers:</p>
+<ul>
+<li><a href="#chi-square-test-of-independence">Chi-square test of independence</a> — are two categorical variables related?</li>
+<li><a href="#chi-square-goodness-of-fit">Chi-square goodness-of-fit</a> — does a single categorical variable match an expected distribution?</li>
+<li><a href="#fishers-exact-test">Fisher’s exact test</a> — the small-sample alternative</li>
+</ul>
+<hr>
+<section id="chi-square-test-of-independence" class="level2">
+<h2 class="anchored" data-anchor-id="chi-square-test-of-independence">Chi-square test of independence</h2>
+<section id="what-is-it" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-it">What is it?</h3>
+<p>The chi-square test of independence asks: <strong>are two categorical variables related, or independent?</strong> It compares the <em>observed</em> cell frequencies in a contingency table against the <em>expected</em> frequencies under the null hypothesis of independence.</p>
+<p><span class="math display">\[\chi^2 = \sum \frac{(O - E)^2}{E}\]</span></p>
+<p><strong>Example</strong>: do voting preferences (Party A / Party B / Party C) differ across age groups (18–30, 31–50, 51+)? The contingency table is 3 × 3; the null hypothesis is that age group and party preference are independent.</p>
+</section>
+<section id="when-to-use-it" class="level3">
+<h3 class="anchored" data-anchor-id="when-to-use-it">When to use it</h3>
+<ul>
+<li>Both variables are <strong>categorical</strong> (nominal or ordinal treated as nominal)</li>
+<li>Each participant contributes to <strong>exactly one cell</strong> of the table (one row per participant)</li>
+<li>You want to test whether membership in one variable’s categories is related to membership in the other’s</li>
+</ul>
+</section>
+<section id="assumptions" class="level3">
+<h3 class="anchored" data-anchor-id="assumptions">Assumptions</h3>
+<div class="assumption-list">
+<ul>
+<li><strong>Independence</strong>: each observation is independent of the others (no participant appears in more than one cell)</li>
+<li><strong>Expected cell counts</strong>: all expected counts should be ≥ 5 (a common rule of thumb); at minimum, no more than 20% of cells should have expected counts below 5</li>
+<li>If expected counts are too small, use <strong>Fisher’s exact test</strong> instead (see below)</li>
+</ul>
+</div>
+</section>
+<section id="effect-size" class="level3">
+<h3 class="anchored" data-anchor-id="effect-size">Effect size</h3>
+<p>Report <strong>Cramér’s V</strong> (or <strong>φ</strong> for a 2 × 2 table):</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Cramér’s V</th>
+<th>Conventional label (df = 1)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>.10</td>
+<td>Small</td>
+</tr>
+<tr class="even">
+<td>.30</td>
+<td>Medium</td>
+</tr>
+<tr class="odd">
+<td>.50</td>
+<td>Large</td>
+</tr>
+</tbody>
+</table>
+<p>For larger tables, the benchmarks scale down — consult DSUJ Chapter 19 or use JASP’s effect size output.</p>
+</section>
+<section id="how-to-do-it-in-jasp" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-do-it-in-jasp">How to do it in JASP</h3>
+<p>Go to <strong>Frequencies → Contingency Tables</strong> in the analysis menu.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>JASP Video Library — Contingency Tables
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Recordings at <a href="https://jasp-stats.github.io/jasp-video-library/All_Frequencies.html">jasp-stats.github.io/jasp-video-library/All_Frequencies.html</a>:</p>
+<ul>
+<li><a href="https://jasp-stats.github.io/jasp-video-library/All_Frequencies.html#contingency-main-analysis">▶ Main Analysis</a> — setting up the table, requesting chi-square</li>
+<li><a href="https://jasp-stats.github.io/jasp-video-library/All_Frequencies.html#contingency-cells">▶ Cells</a> — observed counts, expected counts, residuals</li>
+<li><a href="https://jasp-stats.github.io/jasp-video-library/All_Frequencies.html#contingency-statistics">▶ Statistics</a> — Cramér’s V and other effect sizes</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="interpreting-the-output" class="level3">
+<h3 class="anchored" data-anchor-id="interpreting-the-output">Interpreting the output</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Statistic</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>χ²</strong></td>
+<td>The test statistic — bigger means observed frequencies deviate more from expected</td>
+</tr>
+<tr class="even">
+<td><strong>df</strong></td>
+<td>(rows − 1) × (columns − 1)</td>
+</tr>
+<tr class="odd">
+<td><strong>p</strong></td>
+<td>Reject H₀ (independence) if <em>p</em> &lt; α</td>
+</tr>
+<tr class="even">
+<td><strong>Cramér’s V</strong></td>
+<td>Effect size — the strength of association</td>
+</tr>
+</tbody>
+</table>
+<p>If the test is significant, inspect the <strong>standardised residuals</strong> to see which cells contribute most to the deviation from independence.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>APA reporting example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><em>A chi-square test of independence showed a significant association between age group and party preference, χ²(4) = 18.6, p &lt; .001, Cramér’s V = .24. Inspection of the standardised residuals indicated that voters aged 51+ were over-represented among Party A supporters.</em></p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="chi-square-goodness-of-fit" class="level2">
+<h2 class="anchored" data-anchor-id="chi-square-goodness-of-fit">Chi-square goodness-of-fit</h2>
+<p>A variant of the chi-square test for <strong>one categorical variable</strong> against a hypothesised distribution. Example: does a die roll uniformly (each face expected at 1/6) over 600 throws?</p>
+<p>In JASP: <strong>Frequencies → Multinomial Test</strong>. Specify either equal expected probabilities or a custom expected distribution.</p>
+<hr>
+</section>
+<section id="fishers-exact-test" class="level2">
+<h2 class="anchored" data-anchor-id="fishers-exact-test">Fisher’s exact test</h2>
+<p>When expected cell counts are too small for the chi-square approximation to be trustworthy (typically a 2 × 2 table with any expected count &lt; 5), Fisher’s exact test computes the <em>exact</em> probability of the observed table under the null. It is available in the same JASP dialog — just tick <strong>Fisher’s exact test</strong> under <em>Statistics</em>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Why Fisher’s exact, not chi-square, with small expected counts
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The chi-square statistic only <em>approximately</em> follows the χ² distribution; the approximation breaks down when expected counts are small. Fisher’s exact test side-steps the approximation altogether by enumerating every possible table with the same row and column totals. It costs nothing in interpretation — you still report a <em>p</em>-value — and is the safer choice for sparse tables.</p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="bayesian-alternative" class="level2">
+<h2 class="anchored" data-anchor-id="bayesian-alternative">Bayesian alternative</h2>
+<p>JASP also offers a <strong>Bayesian contingency table</strong> analysis, which returns a Bayes factor for the alternative model (variables are related) over the null (independent). Useful when you want to quantify evidence for <em>either</em> hypothesis, including evidence <em>for</em> independence.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>JASP Video Library — Bayesian Contingency Tables
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="https://jasp-stats.github.io/jasp-video-library/All_Frequencies.html#bayesian-contingency-main-analysis">▶ Bayesian Contingency Tables</a> — setting up the analysis, interpreting the Bayes factor</li>
+</ul>
+</div>
+</div>
+<hr>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
+<ul>
+<li><strong>DSUJ Chapter 19</strong> — <em>Categorical data</em> — chi-square, Fisher’s exact, and odds ratios with JASP walkthroughs</li>
+<li>JASP blog — <a href="https://jasp-stats.org/2017/10/04/contingency-tables-jasp/">How to interpret a contingency table</a></li>
+</ul>
+<hr>
+</section>
+<section id="further-viewing-ssr-lecture-recording" class="level2">
+<h2 class="anchored" data-anchor-id="further-viewing-ssr-lecture-recording">Further viewing — SSR lecture recording</h2>
+<p>The full 2026 SSR lecture covers the chi-square family in depth (captions are available in the SharePoint player):</p>
+<ul>
+<li><a href="https://amsuni-my.sharepoint.com/:v:/g/personal/j_b_vandoorn_uva_nl/EUdZ0iYtIZBLsOyakIXtcJMBDfwT9iC1FrMlmUpiIYHsdQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&amp;e=uArm3T">▶ SSR Lecture 28 — Chi-Square</a></li>
+</ul>
+<hr>
+</section>
+<section id="try-it-yourself" class="level2">
+<h2 class="anchored" data-anchor-id="try-it-yourself">Try it yourself</h2>
+<p>Each exercise below ends with a collapsible solution. Try the analysis first, then expand to compare.</p>
+<section id="exercise-1-chi-square-does-image-type-sexualised-vs-performance-shape-womens-reactions-to-female-athletes" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1-chi-square-does-image-type-sexualised-vs-performance-shape-womens-reactions-to-female-athletes">Exercise 1 (chi-square) — Does image type (sexualised vs performance) shape women’s reactions to female athletes?</h3>
+<p>Daniels (2012) showed women either sexualised or performance-focused images of female athletes, then coded each participant’s open-ended response for whether it expressed <strong>self-objectification</strong> (yes/no). Using <a href="https://discoverjasp.com/repository/dsj1_leni/leni_16a.jasp"><code>leni_16a.jasp</code></a>, run a chi-square test of independence on image type × self-objectification. Inspect the <strong>standardised residuals</strong> to see which cells drive the result.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>▸ Worked solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/labcoat_leni#the-impact-of-sexualized-images-on-womens-self-evaluations">Labcoat Leni — The impact of sexualised images on women’s self-evaluations</a></li>
+<li><strong>Annotated JASP output</strong>: <a href="https://discoverjasp.com/repository/dsj1_leni/leni_16a.html">leni_16a.html</a></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-2-chi-square-three-outcomes-are-perceptions-of-happiness-associated-with-the-professional-group-rated" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2-chi-square-three-outcomes-are-perceptions-of-happiness-associated-with-the-professional-group-rated">Exercise 2 (chi-square × three outcomes) — Are perceptions of happiness associated with the professional group rated?</h3>
+<p>Three groups of professionals rated each other on three different happiness-related measures. Using <a href="https://discoverjasp.com/repository/dsj1_leni/leni_16b.jasp"><code>leni_16b.jasp</code></a>, run a chi-square test for <strong>each</strong> of the three outcomes. Report Cramér’s V and discuss whether you should adjust for multiple testing.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>▸ Worked solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/labcoat_leni#is-the-black-american-happy">Labcoat Leni — Is the Black American happy?</a></li>
+<li><strong>Annotated JASP output</strong>: <a href="https://discoverjasp.com/repository/dsj1_leni/leni_16b.html">leni_16b.html</a></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-3-chi-square-bayesian-alternative-does-time-pressure-at-work-affect-off-hours-psychological-detachment" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3-chi-square-bayesian-alternative-does-time-pressure-at-work-affect-off-hours-psychological-detachment">Exercise 3 (chi-square + Bayesian alternative) — Does time-pressure at work affect off-hours psychological detachment?</h3>
+<p>Sonnentag (2012) surveyed 1709 employees on their work time-pressure (5 ordered levels) and whether they could psychologically <em>detach</em> from work in their off-hours. Using <a href="https://discoverjasp.com/repository/dsj1_data/data/sonnentag_2012.jasp"><code>sonnentag_2012.jasp</code></a>, set up the contingency table with <code>time_pressure</code> in <em>Rows</em>, <code>detachment</code> in <em>Columns</em>, and <code>frequency</code> in <em>Counts</em>. Run a classical chi-square test <strong>and</strong> a Bayesian contingency-table analysis — compare what the <em>p</em>-value and the Bayes factor each tell you.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>▸ Worked solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/smart_alex#task-16.1">Smart Alex Task 16.1</a></li>
+<li><strong>Annotated JASP output</strong>: <a href="https://discoverjasp.com/repository/dsj1_alex/alex_16_01.html">alex_16_01.html</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/johnnydoorn\.github\.io\/paddling-pool\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Paddling Pool &nbsp;|&nbsp; UvA Psychology &nbsp;|&nbsp; Built with <a href="https://jasp-stats.org">JASP</a> &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

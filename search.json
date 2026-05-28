@@ -1,0 +1,940 @@
+[
+  {
+    "objectID": "getting-started.html",
+    "href": "getting-started.html",
+    "title": "Getting Started with JASP",
+    "section": "",
+    "text": "JASP is free, open-source statistical software developed at the University of Amsterdam. It is designed to make statistical analyses intuitive and interactive — output updates in real time as you change settings."
+  },
+  {
+    "objectID": "getting-started.html#download-and-install-jasp",
+    "href": "getting-started.html#download-and-install-jasp",
+    "title": "Getting Started with JASP",
+    "section": "Download and install JASP",
+    "text": "Download and install JASP\nGo to jasp-stats.org/download and download the installer for your operating system (Windows, macOS, or Linux). Installation is straightforward; no licence is required.\n\n\n\n\n\n\nTipWhich version?\n\n\n\nAlways download the latest stable release. If you are working on a university computer that already has JASP installed, make sure it is version 0.18 or later — some modules used in this course require a recent version."
+  },
+  {
+    "objectID": "getting-started.html#loading-data-into-jasp",
+    "href": "getting-started.html#loading-data-into-jasp",
+    "title": "Getting Started with JASP",
+    "section": "Loading data into JASP",
+    "text": "Loading data into JASP\nJASP can open several file formats: .jasp (JASP’s own format), .csv, .sav (SPSS), .xlsx, .ods, and more.\nOpening a .jasp file — this is the easiest way to practise. A .jasp file contains both the dataset and any pre-configured analyses. Double-click the file or use File → Open in JASP.\nOpening a .csv or .sav file — use File → Open and navigate to your file. After opening, JASP shows the spreadsheet. Check that your variables have the correct measurement level (nominal, ordinal, or scale) by clicking the variable type icon next to the column header.\n\nGetting started video\n▶ Removing an outlier in JASP — a short example from the JASP Video Library."
+  },
+  {
+    "objectID": "getting-started.html#the-jasp-interface",
+    "href": "getting-started.html#the-jasp-interface",
+    "title": "Getting Started with JASP",
+    "section": "The JASP interface",
+    "text": "The JASP interface\nWhen you open a dataset, the JASP window is divided into three panels:\n\n\n\n\n\n\n\nPanel\nWhat it shows\n\n\n\n\nLeft — Data\nThe spreadsheet with your variables and cases\n\n\nMiddle — Analysis menu\nThe list of available statistical tests\n\n\nRight — Output\nResults that update in real time as you configure the analysis\n\n\n\n\nVariable types\nJASP uses three measurement levels:\n\nNominal — unordered categories (e.g., treatment group, gender)\nOrdinal — ordered categories (e.g., Likert scales treated as ordinal)\nScale (continuous/interval/ratio) — numeric measurements (e.g., reaction time, score)\n\nAssigning the correct variable type matters because JASP uses it to determine which analyses are available and how to display your data."
+  },
+  {
+    "objectID": "getting-started.html#running-an-analysis",
+    "href": "getting-started.html#running-an-analysis",
+    "title": "Getting Started with JASP",
+    "section": "Running an analysis",
+    "text": "Running an analysis\n\nSelect the relevant menu item (e.g., T-Tests → Independent Samples T-Test)\nDrag variables into the appropriate boxes (dependent variable, grouping variable)\nTick the options you need (effect size, assumption checks, plots)\nOutput appears immediately in the right panel\n\nThere is no “Run” button — JASP updates results live."
+  },
+  {
+    "objectID": "getting-started.html#saving-your-work",
+    "href": "getting-started.html#saving-your-work",
+    "title": "Getting Started with JASP",
+    "section": "Saving your work",
+    "text": "Saving your work\n\nFile → Save saves a .jasp file containing both data and current analyses\nTo export the output, click the downward triangle (▼) next to any result table or figure and choose Copy, Save as image, or similar"
+  },
+  {
+    "objectID": "getting-started.html#where-to-get-help",
+    "href": "getting-started.html#where-to-get-help",
+    "title": "Getting Started with JASP",
+    "section": "Where to get help",
+    "text": "Where to get help\n\n\n\nResource\nLink\n\n\n\n\nJASP how-to blog posts\nhttps://jasp-stats.org/how-to-use-jasp/\n\n\nJASP forum\nhttps://forum.cogsci.nl/categories/jasp\n\n\nDiscovering Statistics Using JASP (DSUJ)\nChapter 4 covers the JASP interface in detail"
+  },
+  {
+    "objectID": "getting-started.html#further-viewing-ssr-lecture-recordings",
+    "href": "getting-started.html#further-viewing-ssr-lecture-recordings",
+    "title": "Getting Started with JASP",
+    "section": "Further viewing — SSR lecture recordings",
+    "text": "Further viewing — SSR lecture recordings\nTwo SSR lectures are useful before diving into the analysis topics (captions are available in the SharePoint player):\n\n▶ SSR Lecture 4 — Introduction to Statistics & NHST — populations, samples, distributions, inference; jump to ~32:19 for the null-hypothesis-significance-testing (NHST) section\n▶ SSR Lecture 5 — Introduction to JASP — jump to ~6:12 for the JASP walkthrough proper (the first six minutes are course logistics and the lecture agenda)"
+  },
+  {
+    "objectID": "getting-started.html#try-it-yourself",
+    "href": "getting-started.html#try-it-yourself",
+    "title": "Getting Started with JASP",
+    "section": "Try it yourself",
+    "text": "Try it yourself\n\nWarm-up exercise — Enter an ultimatum-game dataset by hand\nBefore launching into analyses, get comfortable with the JASP data view. Open acdc.jasp — a dataset where listeners hearing AC/DC songs (under either Bon Scott or Brian Johnson) were asked what ultimatum-game offer they’d accept. Check the variable types in the column headers, add value labels for the singer factor, and produce a basic descriptive summary.\n\n\n\n\n\n\nNote▸ Worked solution\n\n\n\n\n\n\nWalkthrough: Labcoat Leni — Gonna be a rock ‘n’ roll singer"
+  },
+  {
+    "objectID": "getting-started.html#ready-to-start",
+    "href": "getting-started.html#ready-to-start",
+    "title": "Getting Started with JASP",
+    "section": "Ready to start?",
+    "text": "Ready to start?\nHead to Descriptive Statistics to begin exploring your data, or jump to any topic in the navigation bar."
+  },
+  {
+    "objectID": "advanced/power-analysis.html",
+    "href": "advanced/power-analysis.html",
+    "title": "Power Analysis",
+    "section": "",
+    "text": "Advanced Topics\nA power analysis determines the sample size needed to detect an effect of a given size with a specified probability, given a chosen significance threshold. Running a power analysis before data collection is a core component of preregistration and transparent science."
+  },
+  {
+    "objectID": "advanced/power-analysis.html#key-concepts",
+    "href": "advanced/power-analysis.html#key-concepts",
+    "title": "Power Analysis",
+    "section": "Key concepts",
+    "text": "Key concepts\nStatistical power (1 − β) is the probability of correctly rejecting a false null hypothesis. Conventional minimum: .80 (80%), meaning a 20% chance of a false negative.\nFour quantities are mathematically related — if you know three, you can calculate the fourth:\n\n\n\nQuantity\nSymbol\nTypical default\n\n\n\n\nSample size\nN\nTo be determined\n\n\nEffect size\nd, f, r, etc.\nFrom prior research or theory\n\n\nSignificance level\nα\n.05\n\n\nPower\n1 − β\n.80\n\n\n\nMost commonly: specify the expected effect size, α = .05, power = .80 → solve for N."
+  },
+  {
+    "objectID": "advanced/power-analysis.html#effect-sizes-for-power-analysis",
+    "href": "advanced/power-analysis.html#effect-sizes-for-power-analysis",
+    "title": "Power Analysis",
+    "section": "Effect sizes for power analysis",
+    "text": "Effect sizes for power analysis\nUse the effect size metric appropriate for your planned analysis:\n\n\n\nAnalysis\nEffect size\n\n\n\n\nt-test\nCohen’s d\n\n\nANOVA\nCohen’s f (or η²: f = √(η²/(1−η²)))\n\n\nCorrelation / regression\nPearson’s r or Cohen’s f²\n\n\nChi-square\nCohen’s w\n\n\n\nWhere do I get the expected effect size?\n\nPrevious studies: the effect size from published research on the same or closely related topic\nMeta-analyses: if one exists for your research question, use the meta-analytic estimate\nPilot data: run a small pilot study first (though pilot estimates are unreliable with small N)\nSmallest effect size of interest (SESOI): what is the minimum effect that would be theoretically or practically meaningful? This is increasingly recommended over using published estimates, which may be inflated.\n\n\n\n\n\n\n\nWarningPublication bias inflates effect sizes\n\n\n\nPublished effect sizes are often inflated due to selective reporting. Using them naively will lead to underpowered studies. Where possible, use meta-analytic estimates or pre-specify a conservative (smaller) effect size."
+  },
+  {
+    "objectID": "advanced/power-analysis.html#tools-for-power-analysis",
+    "href": "advanced/power-analysis.html#tools-for-power-analysis",
+    "title": "Power Analysis",
+    "section": "Tools for power analysis",
+    "text": "Tools for power analysis\n\nG*Power (recommended)\nG*Power is free, widely used, and covers all common analyses including t-tests, ANOVA, regression, and correlation.\nSteps: 1. Select Test family (e.g., t-tests) 2. Select Statistical test (e.g., Means: Difference between two independent means) 3. Set Type of power analysis to A priori (for planning) 4. Enter effect size, α, and desired power → click Calculate\n\n\nJASP: jpower module\nJASP includes a jpower module for power analysis. Install it via Modules (☰) → Available Modules → jpower.\n\n\nOnline tools\n\npwr2ppl — Shiny app for a variety of designs\nSuperpower — power for ANOVA designs including repeated measures\nWebPower — comprehensive online power calculator"
+  },
+  {
+    "objectID": "advanced/power-analysis.html#power-analysis-for-common-designs",
+    "href": "advanced/power-analysis.html#power-analysis-for-common-designs",
+    "title": "Power Analysis",
+    "section": "Power analysis for common designs",
+    "text": "Power analysis for common designs\n\nIndependent-samples t-test\nEffect size: Cohen’s d = (μ₁ − μ₂) / σ_pooled\n\n\n\n\n\n\n\n\n\nDesired power\nd = 0.2 (small)\nd = 0.5 (medium)\nd = 0.8 (large)\n\n\n\n\n.80\nN = 394/group\nN = 64/group\nN = 26/group\n\n\n.90\nN = 527/group\nN = 85/group\nN = 34/group\n\n\n\n(Two-tailed, α = .05, equal group sizes)\n\n\nPearson correlation\n\n\n\n\n\n\n\n\n\nDesired power\nr = .10 (small)\nr = .30 (medium)\nr = .50 (large)\n\n\n\n\n.80\nN = 782\nN = 84\nN = 28\n\n\n\n\n\nOne-way ANOVA (3 groups)\nEffect size: Cohen’s f = 0.10 (small), 0.25 (medium), 0.40 (large)\n\n\n\nDesired power\nf = 0.10\nf = 0.25\nf = 0.40\n\n\n\n\n.80\nN = 969 total\nN = 159 total\nN = 66 total"
+  },
+  {
+    "objectID": "advanced/power-analysis.html#sensitivity-analysis",
+    "href": "advanced/power-analysis.html#sensitivity-analysis",
+    "title": "Power Analysis",
+    "section": "Sensitivity analysis",
+    "text": "Sensitivity analysis\nIf your sample size is already fixed (e.g., a clinical trial limited by patient availability), conduct a sensitivity analysis: given my N, α, and desired power, what is the minimum effect size I can detect? This helps set realistic expectations."
+  },
+  {
+    "objectID": "advanced/power-analysis.html#reporting-power-analysis",
+    "href": "advanced/power-analysis.html#reporting-power-analysis",
+    "title": "Power Analysis",
+    "section": "Reporting power analysis",
+    "text": "Reporting power analysis\n\n\n\n\n\n\nTipAPA reporting example\n\n\n\nA priori power analysis (GPower 3.1) indicated that a sample of N* = 128 (64 per group) would provide 80% power to detect a medium-sized effect (d = 0.50) with α = .05 (two-tailed independent-samples t-test)."
+  },
+  {
+    "objectID": "advanced/power-analysis.html#further-reading",
+    "href": "advanced/power-analysis.html#further-reading",
+    "title": "Power Analysis",
+    "section": "Further reading",
+    "text": "Further reading\n\nCohen, J. (1992). A power primer. Psychological Bulletin, 112(1), 155–159. — The classic reference\nG*Power user manual\nLakens, D. (2022). Sample size justification. Collabra: Psychology. — A modern guide to justifying sample sizes"
+  },
+  {
+    "objectID": "advanced/mediation-moderation.html",
+    "href": "advanced/mediation-moderation.html",
+    "title": "Mediation & Moderation",
+    "section": "",
+    "text": "Advanced Topics\nMediation and moderation both involve a third variable in the relationship between a predictor (X) and an outcome (Y) — but they ask fundamentally different questions.\nIn JASP, both are estimated using the PROCESS module, developed by Andrew Hayes."
+  },
+  {
+    "objectID": "advanced/mediation-moderation.html#mediation",
+    "href": "advanced/mediation-moderation.html#mediation",
+    "title": "Mediation & Moderation",
+    "section": "Mediation",
+    "text": "Mediation\n\nWhat is it?\nMediation tests whether the effect of X on Y is transmitted through a third variable M (the mediator).\nX → M → Y      (indirect effect)\nX → Y          (direct effect, controlling for M)\nThe total effect of X on Y is decomposed into:\n\nDirect effect: the effect of X on Y after accounting for M\nIndirect effect (a × b): the effect of X on Y that goes through M (= path a × path b)\n\n\n\n\n\n\n\nTipDecomposing the total effect\n\n\n\n\n\nThe trick of mediation: the original X → Y relationship gets split into two pathways. The direct effect (X → Y, controlling for M) and the indirect effect (X → M → Y). A relationship that’s completely mediated by M tells a very different psychological story than one with no mediation at all.\n\n\n\n\n\nAssumptions\n\n\nThe causal ordering X → M → Y must be theoretically justified — mediation analysis does not prove causality\nAll variables are measured without error (impossible in practice, but a key limitation to acknowledge)\nThere is no unmeasured confounding of the X → M, M → Y, or X → Y relationships\nNo interaction between X and M — if you suspect one, use moderated mediation (Hayes Model 8 or 14)\n\n\n\n\nInference: bootstrapping\nThe indirect effect (a × b) is non-normally distributed. JASP uses bootstrapped confidence intervals (typically 5000–10000 samples). An indirect effect is considered significant if the 95% CI does not contain zero.\n\n\nHow to do it in JASP\nInstall the PROCESS module: Modules (☰) → Available Modules → PROCESS.\n\n\n\n\n\n\nNoteJASP Video Library — Mediation\n\n\n\nRecordings at jasp-stats.github.io/jasp-video-library/All_PROCESS.html#mediation:\n\n▶ Load Module — installing and opening the PROCESS module\n▶ Specify Model — assigning X, M, and Y; bootstrapped indirect effects\n▶ Hayes Model — using pre-defined Hayes templates (Model 4 for simple mediation)\n\n\n\n\n\nInterpreting mediation output\n\n\n\n\n\n\n\nPath\nWhat to look for\n\n\n\n\nPath a\nX → M: is the predictor associated with the mediator?\n\n\nPath b\nM → Y: does the mediator predict the outcome, controlling for X?\n\n\nDirect effect (c’)\nX → Y controlling for M: has the effect changed from the total effect?\n\n\nIndirect effect (a × b)\nIs the 95% bootstrapped CI excluding zero?\n\n\n\nFull mediation: the direct effect becomes non-significant once M is included — X only affects Y through M. Partial mediation: both direct and indirect effects remain significant.\n\n\n\n\n\n\nTipAPA reporting\n\n\n\nReport the indirect effect with its bootstrapped CI: indirect effect = [value], 95% CI [lower, upper]. For the direct and total effects, report b, SE, t, p."
+  },
+  {
+    "objectID": "advanced/mediation-moderation.html#moderation",
+    "href": "advanced/mediation-moderation.html#moderation",
+    "title": "Mediation & Moderation",
+    "section": "Moderation",
+    "text": "Moderation\n\nWhat is it?\nModeration tests whether the effect of X on Y differs across levels of a third variable W (the moderator). Statistically, this is an interaction effect: you add the product term X × W to the regression model.\nIf the X × W interaction is significant, the slope of X on Y is different at different values of W.\n\n\n\n\n\n\nTipModeration = interaction = “steering”\n\n\n\n\n\nA useful mnemonic: to moderate means to steer — to control how something unfolds. Statistically, moderation is just an interaction effect: one predictor steers how another predictor affects the outcome. Which of the two predictors gets called “the moderator” is somewhat arbitrary — it’s about which framing matches your theoretical question.\n\n\n\n\n\nAssumptions\n\n\nThe same as multiple regression — see the Regression page\nCentering: for continuous moderators, it is good practice to mean-centre X and W before computing the product term. This reduces multicollinearity and makes the lower-order coefficients interpretable. JASP does this automatically\n\n\n\n\nSimple slopes and interaction plots\nAfter a significant moderation, inspect simple slopes: the slope of X on Y at specific values of W (typically M − 1 SD, M, M + 1 SD for a continuous moderator). JASP provides simple slope plots and significance tests.\n\n\nHow to do it in JASP\n\n\n\n\n\n\nNoteJASP Video Library — Moderation\n\n\n\nRecordings at jasp-stats.github.io/jasp-video-library/All_PROCESS.html#moderation:\n\n▶ Specify Model — entering X, W, and the X×W product term\n▶ Hayes Model 1 — simple moderation using a Hayes template\n▶ Flexplot — visualising the interaction\n▶ Simple Slopes Plot — effect of X at low/medium/high levels of W"
+  },
+  {
+    "objectID": "advanced/mediation-moderation.html#moderated-mediation",
+    "href": "advanced/mediation-moderation.html#moderated-mediation",
+    "title": "Mediation & Moderation",
+    "section": "Moderated mediation",
+    "text": "Moderated mediation\nWhen moderation and mediation are combined — the indirect effect of X on Y through M depends on the level of W — this is moderated mediation (or conditional indirect effect). Hayes’ Model 8 and Model 14 are the most common configurations.\nThe indirect effect is estimated separately at different values of W. A Johnson-Neyman interval identifies the exact range of W values for which the indirect effect is significant."
+  },
+  {
+    "objectID": "advanced/mediation-moderation.html#further-reading",
+    "href": "advanced/mediation-moderation.html#further-reading",
+    "title": "Mediation & Moderation",
+    "section": "Further reading",
+    "text": "Further reading\n\nDSUJ Chapter 10 — Moderation and mediation — comprehensive treatment with PROCESS walkthroughs\nHayes, A. F. (2022). Introduction to mediation, moderation, and conditional process analysis — the definitive text"
+  },
+  {
+    "objectID": "advanced/mediation-moderation.html#further-viewing-ssr-lecture-recordings",
+    "href": "advanced/mediation-moderation.html#further-viewing-ssr-lecture-recordings",
+    "title": "Mediation & Moderation",
+    "section": "Further viewing — SSR lecture recordings",
+    "text": "Further viewing — SSR lecture recordings\nThe 2026 SSR lectures cover moderation and mediation across two recordings (captions are available in the SharePoint player):\n\n▶ SSR Lecture 26 — Moderation\n▶ SSR Lecture 27 — Mediation"
+  },
+  {
+    "objectID": "advanced/mediation-moderation.html#try-it-yourself",
+    "href": "advanced/mediation-moderation.html#try-it-yourself",
+    "title": "Mediation & Moderation",
+    "section": "Try it yourself",
+    "text": "Try it yourself\nEach exercise below ends with a collapsible solution. Try the analysis first, then expand to compare.\n\nExercise 1 (mediation) — Does mate value mediate the age → gossiping relationship?\nOlder adults gossip more than younger adults — but is this transmitted through changes in perceived mate value? Using leni_10.jasp, fit a Hayes Model 4 mediation with age as X, mate value as M, and gossiping tendency as Y. Report the indirect effect with its bootstrapped 95% CI.\n\n\n\n\n\n\nNote▸ Worked solution\n\n\n\n\n\n\nWalkthrough: Labcoat Leni — I heard that Jane has a boil and kissed a tramp\nAnnotated JASP output: leni_10.html\n\n\n\n\n\n\nExercise 2 (moderation) — Does the attractiveness → spousal-support relationship differ for husbands vs wives?\nMcNulty et al. (2008) tested whether attractiveness predicts how much support newlyweds give their partner — and whether this relationship is moderated by being the husband vs the wife. Using mcnulty_2008.jasp, fit a Hayes Model 1 moderation with attractiveness as the continuous predictor, spouse as the categorical moderator, and support as the outcome. Inspect the simple slopes.\n\n\n\n\n\n\nNote▸ Worked solution\n\n\n\n\n\n\nWalkthrough: Smart Alex Task 10.1\nAnnotated JASP output: alex_10_01-03.html\n\n\n\n\n\n\nExercise 3 (mediation) — Does product-perceived-coolness mediate the advert → desirability path?\nA company owner measured how cool people thought the advertising was, how cool they thought the product was, and how desirable they found the product. Using tablets.jasp, test whether the relationship between advertising coolness and product desirability is mediated by product coolness.\n\n\n\n\n\n\nNote▸ Worked solution\n\n\n\n\n\n\nWalkthrough: Smart Alex Task 10.5\nAnnotated JASP output: alex_10_05.html"
+  },
+  {
+    "objectID": "advanced/meta-analysis.html",
+    "href": "advanced/meta-analysis.html",
+    "title": "Meta-Analysis",
+    "section": "",
+    "text": "Advanced Topics\nMeta-analysis is a statistical method for synthesising effect sizes across multiple studies. Rather than relying on a single study, a meta-analysis pools estimates to arrive at a more precise, generalisable conclusion about an effect."
+  },
+  {
+    "objectID": "advanced/meta-analysis.html#when-to-use-meta-analysis",
+    "href": "advanced/meta-analysis.html#when-to-use-meta-analysis",
+    "title": "Meta-Analysis",
+    "section": "When to use meta-analysis",
+    "text": "When to use meta-analysis\n\nYou have collected effect sizes (or sufficient statistics) from multiple independent studies on the same research question\nYour thesis includes a systematic review with a quantitative synthesis component\nYou want to quantify heterogeneity — do effect sizes vary across studies, and if so, why?"
+  },
+  {
+    "objectID": "advanced/meta-analysis.html#key-concepts",
+    "href": "advanced/meta-analysis.html#key-concepts",
+    "title": "Meta-Analysis",
+    "section": "Key concepts",
+    "text": "Key concepts\n\nEffect size metrics\nChoose the effect size metric appropriate for your data:\n\n\n\nData type\nEffect size metric\n\n\n\n\nTwo group means (continuous DV)\nCohen’s d / Hedges’ g\n\n\nCorrelational data\nFisher’s z-transformed r\n\n\nFrequencies / proportions\nLog odds ratio (log OR)\n\n\nMeans across time / conditions\nStandardised mean change\n\n\n\n\n\nFixed-effects vs. random-effects models\n\n\n\n\n\n\n\n\nModel\nAssumption\nUse when\n\n\n\n\nFixed-effects\nAll studies estimate the same true effect\nExact replications — rarely appropriate\n\n\nRandom-effects\nStudies estimate different true effects drawn from a distribution\nDifferent studies, different populations — almost always preferred\n\n\n\nIn a random-effects model, the variance of the distribution of true effects (τ²) is estimated. A larger τ² indicates more heterogeneity.\n\n\nHeterogeneity\n\n\n\n\n\n\n\nStatistic\nWhat it tells you\n\n\n\n\nQ\nTotal variability in effect sizes; significant Q indicates heterogeneity beyond sampling error\n\n\nI²\nPercentage of total variability due to true heterogeneity (not sampling error). I² = 25% (low), 50% (moderate), 75% (high) as rough guides\n\n\nτ (tau)\nThe standard deviation of the distribution of true effects — in the original effect size metric"
+  },
+  {
+    "objectID": "advanced/meta-analysis.html#how-to-do-it-in-jasp",
+    "href": "advanced/meta-analysis.html#how-to-do-it-in-jasp",
+    "title": "Meta-Analysis",
+    "section": "How to do it in JASP",
+    "text": "How to do it in JASP\nInstall the Meta-Analysis module: Modules (☰) → Available Modules → Meta-Analysis.\nThen go to Meta-Analysis → Classical Meta-Analysis.\n\n\n\n\n\n\nNoteJASP Video Library — Meta-Analysis\n\n\n\nRecordings at jasp-stats.github.io/jasp-video-library/Meta-Analysis.html:\n\n▶ Effect Size Computation — computing d, r, or log OR from raw statistics\n▶ Main Analysis — random-effects model, forest plot, heterogeneity statistics"
+  },
+  {
+    "objectID": "advanced/meta-analysis.html#reading-a-forest-plot",
+    "href": "advanced/meta-analysis.html#reading-a-forest-plot",
+    "title": "Meta-Analysis",
+    "section": "Reading a forest plot",
+    "text": "Reading a forest plot\nA forest plot shows:\n\nEach study as a horizontal line: the point estimate (square) and its confidence interval (the line)\nThe size of the square is proportional to the study’s weight (usually inverse variance)\nThe diamond at the bottom shows the pooled effect and its CI\nThe dashed vertical line is the pooled effect; the solid vertical line at 0 (or 1 for ORs) is the null"
+  },
+  {
+    "objectID": "advanced/meta-analysis.html#publication-bias",
+    "href": "advanced/meta-analysis.html#publication-bias",
+    "title": "Meta-Analysis",
+    "section": "Publication bias",
+    "text": "Publication bias\nStudies with null results are less likely to be published, which can inflate meta-analytic estimates. Assess with:\n\nFunnel plot: plot effect size vs. standard error — asymmetry suggests publication bias\nEgger’s test: a regression test for funnel plot asymmetry\nTrim-and-fill method: imputes “missing” studies to correct for asymmetry\n\nAll of these are available in JASP’s meta-analysis module."
+  },
+  {
+    "objectID": "advanced/meta-analysis.html#moderator-analysis",
+    "href": "advanced/meta-analysis.html#moderator-analysis",
+    "title": "Meta-Analysis",
+    "section": "Moderator analysis",
+    "text": "Moderator analysis\nIf I² is high (&gt; 50%), explore moderators — study-level variables (e.g., participant age, intervention type, publication year) that might explain heterogeneity. In JASP, add these as covariates in a meta-regression."
+  },
+  {
+    "objectID": "advanced/meta-analysis.html#interpreting-the-output",
+    "href": "advanced/meta-analysis.html#interpreting-the-output",
+    "title": "Meta-Analysis",
+    "section": "Interpreting the output",
+    "text": "Interpreting the output\n\n\n\n\n\n\nTipAPA reporting example\n\n\n\nA random-effects meta-analysis of k = 18 studies (total N = 2,341) yielded a pooled effect of d = 0.43, 95% CI [0.28, 0.58], z = 5.60, p &lt; .001. Heterogeneity was moderate, Q(17) = 34.2, p = .007, I² = 50%. There was no evidence of publication bias based on Egger’s test (t(16) = 1.21, p = .24)."
+  },
+  {
+    "objectID": "advanced/meta-analysis.html#further-reading",
+    "href": "advanced/meta-analysis.html#further-reading",
+    "title": "Meta-Analysis",
+    "section": "Further reading",
+    "text": "Further reading\n\nBorenstein, M., Hedges, L. V., Higgins, J. P. T., & Rothstein, H. R. (2009). Introduction to meta-analysis. Wiley. — The standard text\nCochrane Handbook — comprehensive guide for systematic reviews in health research"
+  },
+  {
+    "objectID": "advanced/latent-class.html",
+    "href": "advanced/latent-class.html",
+    "title": "Latent Class / Profile Analysis",
+    "section": "",
+    "text": "Advanced Topics"
+  },
+  {
+    "objectID": "advanced/latent-class.html#section",
+    "href": "advanced/latent-class.html#section",
+    "title": "Latent Class / Profile Analysis",
+    "section": "🚧",
+    "text": "🚧\nThis page is under construction.\nContent covering latent class analysis (LCA) and latent profile analysis (LPA) will be added here."
+  },
+  {
+    "objectID": "advanced/latent-class.html#what-this-page-will-cover",
+    "href": "advanced/latent-class.html#what-this-page-will-cover",
+    "title": "Latent Class / Profile Analysis",
+    "section": "What this page will cover",
+    "text": "What this page will cover\nLatent Class Analysis (LCA) and Latent Profile Analysis (LPA) are person-centred approaches that identify subgroups (classes or profiles) of individuals who are similar to each other and different from other subgroups.\n\n\n\n\n\n\n\n\nTechnique\nVariable type\nExample\n\n\n\n\nLCA\nCategorical indicators\nClassifying patients by symptom patterns (present/absent)\n\n\nLPA\nContinuous indicators\nIdentifying motivational profiles from several continuous scale scores\n\n\n\nBoth are forms of mixture modelling — the assumption is that the population is a mixture of k unobserved subgroups, and the goal is to identify those subgroups and assign individuals to them.\nKey decisions: - How many classes? Use BIC, AIC, entropy, and the Lo-Mendell-Rubin test to decide - Are classes meaningful and interpretable? Statistical fit is necessary but not sufficient"
+  },
+  {
+    "objectID": "advanced/latent-class.html#useful-resources-in-the-meantime",
+    "href": "advanced/latent-class.html#useful-resources-in-the-meantime",
+    "title": "Latent Class / Profile Analysis",
+    "section": "Useful resources in the meantime",
+    "text": "Useful resources in the meantime\n\nMasyn, K. E. (2013). Latent class analysis and finite mixture modeling. In The Oxford handbook of quantitative methods (Vol. 2). Oxford University Press.\nThe Mplus software is frequently used for complex mixture models: statmodel.com"
+  },
+  {
+    "objectID": "advanced/path-modeling.html",
+    "href": "advanced/path-modeling.html",
+    "title": "Path Modeling",
+    "section": "",
+    "text": "Advanced Topics"
+  },
+  {
+    "objectID": "advanced/path-modeling.html#section",
+    "href": "advanced/path-modeling.html#section",
+    "title": "Path Modeling",
+    "section": "🚧",
+    "text": "🚧\nThis page is under construction.\nContent covering path modeling — and its relationship to SEM — will be added here."
+  },
+  {
+    "objectID": "advanced/path-modeling.html#what-this-page-will-cover",
+    "href": "advanced/path-modeling.html#what-this-page-will-cover",
+    "title": "Path Modeling",
+    "section": "What this page will cover",
+    "text": "What this page will cover\nPath modeling extends multiple regression to systems of equations with multiple dependent variables. It allows you to:\n\nEstimate direct and indirect effects simultaneously across a network of variables\nTest theoretical models about causal pathways\nInclude latent variables (measured variables with error) — the combination of path modeling and latent variables is structural equation modeling (SEM)\n\nCommon applications in psychology: cross-lagged panel models (measuring variables at two time points to examine reciprocal relationships), growth curve models, and complex mediation models with multiple mediators.\nRelationship to mediation: a simple mediation model (X → M → Y) is a path model. The Mediation & Moderation page covers simple cases using PROCESS. This page will cover more complex path structures."
+  },
+  {
+    "objectID": "advanced/path-modeling.html#useful-resources-in-the-meantime",
+    "href": "advanced/path-modeling.html#useful-resources-in-the-meantime",
+    "title": "Path Modeling",
+    "section": "Useful resources in the meantime",
+    "text": "Useful resources in the meantime\n\nKline, R. B. (2023). Principles and practice of structural equation modeling (5th ed.). Guilford Press.\nThe lavaan R package is widely used for SEM: lavaan.org\n\nStart with the Mediation & Moderation and Factor Analysis pages before tackling full path models."
+  },
+  {
+    "objectID": "core/anova.html",
+    "href": "core/anova.html",
+    "title": "ANOVA",
+    "section": "",
+    "text": "Basics\nAnalysis of Variance (ANOVA) extends the logic of the t-test to situations with three or more groups, multiple factors, covariates, or repeated measurements. It answers the question: are there significant differences in means across conditions?\nThis page covers four ANOVA designs. Jump to the relevant section:"
+  },
+  {
+    "objectID": "core/anova.html#one-way-anova",
+    "href": "core/anova.html#one-way-anova",
+    "title": "ANOVA",
+    "section": "One-way ANOVA",
+    "text": "One-way ANOVA\n\nWhat is it?\nOne-way ANOVA tests whether the means of three or more independent groups differ on a continuous dependent variable. The “one-way” refers to a single grouping factor (independent variable).\nThe F-statistic is the ratio of between-groups variance to within-groups variance. A large F indicates that the group means are more spread out than expected by chance.\n\n\n\n\n\n\nTipWhere the F-statistic comes from\n\n\n\n\n\nF is the ratio of the mean squares of the model (how much variance the group means capture) to the mean squares of the error (leftover within-group variance). Like a t-statistic, F is a standardised test statistic with a known sampling distribution — that’s how a p-value gets attached to it.\n\n\n\n\n\nAssumptions\n\n\nIndependence: each participant contributes data to only one group\nNormality: the DV should be approximately normally distributed within each group (check with histograms or Q-Q plots per group)\nHomogeneity of variance (homoscedasticity): the variance should be similar across groups — Levene’s test checks this. If violated, use Welch’s ANOVA (available in JASP)\n\n\n\n\n\n\n\n\nTipWhy assumptions actually matter (small simulation)\n\n\n\n\n\nWhen the DV is heavy-tailed (e.g. reaction times with extreme values), the empirical sampling distribution of F under H₀ no longer matches the theoretical F-distribution. The result: your α and power aren’t what you think they are. ANOVA is relatively robust to mild non-normality, but vulnerable to extreme observations that inflate within-group variance.\n→ Simulation: what 100,000 ANOVAs under H₀ actually look like\n\n\n\n\n\nEffect size\nReport η² (eta squared) or the more conservative ω² (omega squared). Partial η² is often reported in factorial designs.\n\n\n\nη²\nConventional label\n\n\n\n\n.01\nSmall\n\n\n.06\nMedium\n\n\n.14\nLarge\n\n\n\n\n\n\n\n\n\nTipEffect size vs. test statistic — what’s the difference?\n\n\n\n\n\nA t (or F) statistic grows with both the magnitude of the effect and the sample size — increase n with a fixed mean difference and t climbs accordingly. Effect sizes like Cohen’s d, r, or η² are standardised and largely insulated from sample size. That’s why a significant result with a tiny effect size can still be practically meaningless, and why both belong in your report.\n→ Worked example with numbers\n\n\n\n\n\nPost-hoc tests\nA significant F-test only tells you that at least one pair of groups differs — not which pairs. Request post-hoc tests (e.g., Tukey HSD) or planned contrasts to identify specific differences. JASP provides both.\n\n\nHow to do it in JASP\nGo to ANOVA → ANOVA in the analysis menu.\n\n\n\n\n\n\nNoteJASP Video Library — One-Way ANOVA\n\n\n\nRecordings at jasp-stats.github.io/jasp-video-library/All_ANOVA.html#anova-oneway:\n\n▶ Main Analysis — setting up one-way ANOVA, post-hoc tests\n▶ Normality and Homogeneity Check — assumption checks\n▶ Effect Size — requesting η² and ω²\n▶ Descriptive Plots — visualising group means"
+  },
+  {
+    "objectID": "core/anova.html#ancova-analysis-of-covariance",
+    "href": "core/anova.html#ancova-analysis-of-covariance",
+    "title": "ANOVA",
+    "section": "ANCOVA (Analysis of Covariance)",
+    "text": "ANCOVA (Analysis of Covariance)\n\nWhat is it?\nANCOVA extends ANOVA by adding one or more continuous covariates — variables you want to statistically control for. By removing the variance explained by the covariate, ANCOVA gives a more sensitive test of the group effect.\nExample: comparing therapy outcomes across three groups while controlling for pre-therapy symptom severity.\n\n\nKey additional assumption\n\nHomogeneity of regression slopes: the relationship between the covariate and the DV should be the same in all groups. JASP can test this by adding a Group × Covariate interaction — it should not be significant.\n\n\n\n\n\n\n\nTipHow ANCOVA partitions variance (with worked example)\n\n\n\n\n\nOnce you add a covariate, the regression coefficients for the group dummies no longer recover the raw group means — they recover means adjusted for the covariate. The F-tests for group and covariate then come from comparing the full model against reduced models that drop one predictor at a time.\n→ Worked example: extraversion ~ nationality + openness\n\n\n\n\n\nHow to do it in JASP\nAdd covariates in the Covariates box when setting up an ANOVA.\n\n\n\n\n\n\nNoteJASP Video Library — ANCOVA\n\n\n\nRecordings at jasp-stats.github.io/jasp-video-library/All_ANOVA.html#ancova:\n\n▶ Main Analysis — setting up ANCOVA, adding the covariate\n▶ Add Interaction — testing homogeneity of regression slopes\n▶ Descriptive Plots — marginal means after controlling for the covariate"
+  },
+  {
+    "objectID": "core/anova.html#factorial-anova",
+    "href": "core/anova.html#factorial-anova",
+    "title": "ANOVA",
+    "section": "Factorial ANOVA",
+    "text": "Factorial ANOVA\n\nWhat is it?\nFactorial ANOVA includes two or more between-subjects factors. In addition to the main effect of each factor, it tests the interaction — whether the effect of one factor depends on the level of another.\nExample: testing whether a new intervention is effective (factor 1: intervention vs. control) and whether this depends on participant gender (factor 2: male/female/other).\n\n\nInterpreting interactions\nAn interaction means the effect of factor A is different at different levels of factor B. Always examine interaction plots — JASP provides these under Descriptive plots. A significant interaction means you should interpret simple main effects rather than main effects alone.\n\n\n\n\n\n\nTipWhat “interaction” really means\n\n\n\n\n\nA concrete example: does the effect of alcohol on accidents differ across levels of speed? If somebody is going fast, maybe the alcohol effect is smaller (or larger) than at low speeds. That’s what “the effect of one variable depends on the level of another” looks like in practice.\n\n\n\n\n\nHow to do it in JASP\n\n\n\n\n\n\nNoteJASP Video Library — Factorial ANOVA\n\n\n\nRecordings at jasp-stats.github.io/jasp-video-library/All_ANOVA.html#anova-factorial:\n\n▶ Main Analysis — setting up a two-way ANOVA\n▶ Plots — interaction plots\n▶ Simple Main Effects — follow-up after a significant interaction\n▶ Post-Hoc Tests — pairwise comparisons"
+  },
+  {
+    "objectID": "core/anova.html#repeated-measures-anova",
+    "href": "core/anova.html#repeated-measures-anova",
+    "title": "ANOVA",
+    "section": "Repeated-measures ANOVA",
+    "text": "Repeated-measures ANOVA\n\nWhat is it?\nRepeated-measures ANOVA is used when the same participants are measured across multiple conditions or time points (within-subjects design). Because measurements within a person are correlated, this design is more powerful than a between-subjects design of the same size.\nMixed designs contain both a within-subjects factor (e.g., time: pre, post, follow-up) and a between-subjects factor (e.g., treatment group).\n\n\nKey additional assumption: sphericity\nFor within-subjects factors with three or more levels, ANOVA assumes sphericity — that the variances of the differences between all pairs of levels are equal. JASP performs Mauchly’s test automatically:\n\nIf sphericity is violated (p &lt; .05): use the Greenhouse-Geisser or Huynh-Feldt correction (JASP offers both)\nIf there are only two within-subjects levels, sphericity cannot be violated (it is automatic)\n\n\n\n\n\n\n\nTipSphericity, Mauchly, and “just always apply the correction”\n\n\n\n\n\nSphericity = the variances of the differences between every pair of within-subject levels are equal. Mauchly’s test flags violations, but (like Levene’s and Shapiro-Wilk) it’s sensitive to sample size. The pragmatic move: under Assumption Checks → Sphericity corrections, tick Greenhouse-Geisser (or Huynh-Feldt) by default — they adjust the degrees of freedom in the ANOVA table to give you a result that’s robust to sphericity violations whether or not Mauchly is significant.\n\n\n\n\n\nHow to do it in JASP\nGo to ANOVA → Repeated Measures ANOVA.\n\n\n\n\n\n\nNoteJASP Video Library — Repeated-Measures ANOVA\n\n\n\nRecordings at jasp-stats.github.io/jasp-video-library/All_ANOVA.html#anova-repeated:\n\n▶ Main Analysis — defining within-subjects factors and levels\n▶ Sphericity Test — Mauchly’s test and Greenhouse-Geisser correction\n▶ Plots — profile plots for within-subjects designs\n▶ Contrasts — planned comparisons\n▶ Post-Hoc Tests — pairwise comparisons with correction"
+  },
+  {
+    "objectID": "core/anova.html#interpreting-the-anova-output",
+    "href": "core/anova.html#interpreting-the-anova-output",
+    "title": "ANOVA",
+    "section": "Interpreting the ANOVA output",
+    "text": "Interpreting the ANOVA output\nThe ANOVA table shows:\n\n\n\n\n\n\n\nColumn\nWhat it means\n\n\n\n\nF\nTest statistic — variance between groups / variance within groups\n\n\ndf\nDegrees of freedom — (number of groups − 1) for the effect, (N − number of groups) for the error\n\n\np\nSignificance — reject H₀ if p &lt; α\n\n\nη² or ω²\nEffect size\n\n\n\n\n\n\n\n\n\nTipAPA reporting\n\n\n\nF(df_effect, df_error) = [value], p = [value], η² = [value].\nExample: F(2, 57) = 4.32, p = .018, η² = .13.\nFor repeated measures with a correction: F(1.76, 46.5) = 5.21, p = .011, η² = .17 (Greenhouse-Geisser corrected)."
+  },
+  {
+    "objectID": "core/anova.html#non-parametric-alternatives",
+    "href": "core/anova.html#non-parametric-alternatives",
+    "title": "ANOVA",
+    "section": "Non-parametric alternatives",
+    "text": "Non-parametric alternatives\nIf ANOVA assumptions are seriously violated:\n\n\n\nANOVA design\nNon-parametric alternative\n\n\n\n\nOne-way (between)\nKruskal–Wallis test\n\n\nOne-way (within)\nFriedman test\n\n\n\nBoth are available under ANOVA → Nonparametric in JASP."
+  },
+  {
+    "objectID": "core/anova.html#further-reading",
+    "href": "core/anova.html#further-reading",
+    "title": "ANOVA",
+    "section": "Further reading",
+    "text": "Further reading\n\nDSUJ Chapter 11 — One-way independent ANOVA\nDSUJ Chapter 12 — Analysis of covariance (ANCOVA)\nDSUJ Chapter 13 — Factorial ANOVA\nDSUJ Chapter 14 — Repeated-measures designs"
+  },
+  {
+    "objectID": "core/anova.html#further-viewing-ssr-lecture-recordings",
+    "href": "core/anova.html#further-viewing-ssr-lecture-recordings",
+    "title": "ANOVA",
+    "section": "Further viewing — SSR lecture recordings",
+    "text": "Further viewing — SSR lecture recordings\nThe 2026 SSR lecture series covers ANOVA across several recordings (captions are available in the SharePoint player):\n\n▶ SSR Lecture 12 — ANOVA — one-way ANOVA, the F-statistic\n▶ SSR Lecture 14 — ANCOVA — adding continuous covariates\n▶ SSR Lecture 15 — Factorial ANOVA — main effects and interactions\n▶ SSR Lecture 18 — Repeated-Measures ANOVA — within-subjects designs, sphericity"
+  },
+  {
+    "objectID": "core/anova.html#try-it-yourself",
+    "href": "core/anova.html#try-it-yourself",
+    "title": "ANOVA",
+    "section": "Try it yourself",
+    "text": "Try it yourself\nOne exercise for each of the four ANOVA designs covered above. Each ends with a collapsible solution — try the analysis first, then expand to compare.\n\nExercise 1 (one-way ANOVA) — Do the four Hogwarts houses differ in Machiavellianism?\nJakob et al. (2019) measured Machiavellianism in students who identified as Gryffindor, Hufflepuff, Ravenclaw, or Slytherin. Using leni_11.jasp, run a one-way ANOVA, follow it up with a Tukey HSD post-hoc test, and add a planned contrast comparing Slytherin against the other three houses combined.\n\n\n\n\n\n\nNote▸ Worked solution\n\n\n\n\n\n\nWalkthrough: Labcoat Leni — Science behind the magic?\nAnnotated JASP output: leni_11.html\n\n\n\n\n\n\nExercise 2 (ANCOVA) — Does interpretation training induce a persistent negative bias in children?\nMuris et al. (2008) randomly assigned children to one of three training conditions (negative / positive / no information) and measured a later interpretation-bias score. The age, gender, and natural anxiety of each child should be controlled for. Using leni_12.jasp, fit an ANCOVA with training as the factor and the three demographics as covariates. Check the homogeneity-of-regression-slopes assumption.\n\n\n\n\n\n\nNote▸ Worked solution\n\n\n\n\n\n\nWalkthrough: Labcoat Leni — Space invaders\nAnnotated JASP output: leni_12.html\n\n\n\n\n\n\nExercise 3 (factorial ANOVA) — Does mood × “stop rule” affect checking behaviour?\nDavey et al. (2003) used a 2 × 3 design (mood: negative/positive × stop-rule: “as many as can” / “feel like continuing” / no instruction) and measured checking behaviour. Using leni_13.jasp, fit a two-way factorial ANOVA — but inspect the interaction plot before the main effects. (This dataset is a textbook reminder that main effects can mislead when the interaction is significant.)\n\n\n\n\n\n\nNote▸ Worked solution\n\n\n\n\n\n\nWalkthrough: Labcoat Leni — Don’t forget your toothbrush\nAnnotated JASP output: leni_13.html\n\n\n\n\n\n\nExercise 4 (repeated-measures ANOVA) — Are splattered cadavers distracting during serial recall?\nParticipants attempted serial recall while three different types of music played (no music / classical / “death metal”). Using leni_14.jasp, fit a repeated-measures ANOVA on the music factor, check Mauchly’s test for sphericity, and apply the Greenhouse-Geisser correction if needed.\n\n\n\n\n\n\nNote▸ Worked solution\n\n\n\n\n\n\nWalkthrough: Labcoat Leni — Are splattered cadavers distracting?\nAnnotated JASP output: leni_14.html"
+  },
+  {
+    "objectID": "core/regression.html",
+    "href": "core/regression.html",
+    "title": "Correlation & Regression",
+    "section": "",
+    "text": "Basics\nRegression allows you to model the relationship between a continuous outcome variable (the dependent variable, DV) and one or more predictors (the independent variables, IVs). Start with correlation to quantify the relationship between two variables, then move to regression when you want to predict an outcome or test the unique contribution of each predictor.\nThis page covers:"
+  },
+  {
+    "objectID": "core/regression.html#correlation",
+    "href": "core/regression.html#correlation",
+    "title": "Correlation & Regression",
+    "section": "Correlation",
+    "text": "Correlation\n\nWhat is it?\nA correlation coefficient (r) describes the strength and direction of the linear relationship between two continuous variables. Pearson’s r ranges from −1 (perfect negative) to +1 (perfect positive), with 0 indicating no linear relationship.\n\n\n\nr\nConventional label\n\n\n\n\n±.10\nSmall\n\n\n±.30\nMedium\n\n\n±.50\nLarge\n\n\n\n\n\nWhen to use it\n\nAs a descriptive measure of association between two variables (no implied causality)\nAs a preliminary step before regression\nWhen reporting relationships in your results section\n\n\n\nAssumptions\n\n\nBoth variables are continuous (interval/ratio)\nThe relationship is linear (check with a scatter plot — non-linear relationships yield misleading r values)\nApproximately bivariate normal — no extreme outliers (outliers can inflate or deflate r dramatically)\n\n\nIf assumptions are violated, use Spearman’s ρ (rho) — a rank-based non-parametric alternative available in JASP.\n\n\nHow to do it in JASP\nGo to Regression → Correlation.\n\n\n\n\n\n\nNoteJASP Video Library — Correlation\n\n\n\nRecordings at jasp-stats.github.io/jasp-video-library/All_Regression.html#correlation:\n\n▶ Main Analysis — Pearson/Spearman correlation matrix\n▶ Plots — scatter plots and correlation matrix visualisation\n▶ Partial Correlation — controlling for a third variable"
+  },
+  {
+    "objectID": "core/regression.html#simple-regression",
+    "href": "core/regression.html#simple-regression",
+    "title": "Correlation & Regression",
+    "section": "Simple regression",
+    "text": "Simple regression\n\nWhat is it?\nSimple (linear) regression models the relationship between one predictor (X) and a continuous outcome (Y):\n\\[Y = b_0 + b_1 X + \\varepsilon\\]\n\nb₀: the intercept — the predicted value of Y when X = 0\nb₁: the slope — the expected change in Y for a one-unit increase in X\nε: the residual error\n\nThe R² statistic tells you the proportion of variance in Y explained by the model. Adjusted R² penalises for the number of predictors and is used for model comparison.\n\n\n\n\n\n\nTipWhy the intercept (b₀) belongs in the model\n\n\n\nYou might be tempted to drop the intercept when it isn’t substantively meaningful (e.g. when X = 0 makes no sense). Don’t — omitting it forces the regression line through the origin, which introduces systematic over- and under-estimation. The reported R² can then look misleadingly high because it’s compared against a degenerate null model that predicts zero rather than the mean.\n→ Worked example with album sales\n\n\n\n\nAssumptions\n\n\nLinearity: the relationship between X and Y is linear — check with a scatter plot\nIndependence of residuals: each observation is independent — check with the Durbin-Watson statistic\nHomoscedasticity: the spread of residuals is constant across fitted values — check the residuals vs. fitted plot\nNormality of residuals: residuals should be approximately normally distributed — check the residuals Q-Q plot\nNo influential outliers: cases with high Cook’s distance (&gt; 1 as a rough rule) warrant investigation\n\n\n\n\n\n\n\n\nTipDiagnosing homoscedasticity at a glance\n\n\n\n\n\nPlot the standardised residuals against the standardised predictions. A “healthy” cloud of points means error is constant across the range of Y. A funnel shape or a tilted line means the model is more accurate for some predicted values than others — a sign of mis-specification.\n→ Visual catalogue: healthy vs. heteroscedastic plots\n\n\n\n\n\nHow to do it in JASP\nGo to Regression → Linear Regression.\n\n\n\n\n\n\nNoteJASP Video Library — Simple Regression\n\n\n\nRecordings at jasp-stats.github.io/jasp-video-library/All_Regression.html#regression:\n\n▶ Single Predictor — simple regression setup and output\n▶ Assumption Checks — residual plots, Q-Q plots\n▶ Cook’s Distance — identifying influential cases"
+  },
+  {
+    "objectID": "core/regression.html#multiple-regression",
+    "href": "core/regression.html#multiple-regression",
+    "title": "Correlation & Regression",
+    "section": "Multiple regression",
+    "text": "Multiple regression\n\nWhat is it?\nMultiple regression extends simple regression to two or more predictors:\n\\[Y = b_0 + b_1 X_1 + b_2 X_2 + \\ldots + b_k X_k + \\varepsilon\\]\nEach bⱼ is a partial regression coefficient — it represents the unique effect of predictor Xⱼ on Y, controlling for all other predictors in the model. This is a crucial distinction from simple regression or from looking at correlations in isolation.\n\n\nBuilding your model\nThere are several approaches to entering predictors:\n\n\n\n\n\n\n\nMethod\nWhen to use\n\n\n\n\nSimultaneous (Enter)\nAll predictors entered at once. Use when you have theory-driven reasons to include all predictors\n\n\nHierarchical\nPredictors entered in blocks based on theoretical priority. Change in R² (ΔR²) for each block tests the incremental contribution\n\n\nStepwise\nAutomated selection based on statistical criteria — generally discouraged for confirmatory research but can be useful exploratory\n\n\n\n\n\n\n\n\n\nTipHierarchical regression in JASP\n\n\n\n\n\nHow to set up Model 0 → Model 1 → Model 2 in JASP’s Regression module, what the ΔR² between consecutive models actually means, and why “controlling for X” and “adding X to the null model” are the same operation.\n\n\n\n\n\nAdditional assumption: multicollinearity\nWhen predictors are highly correlated with each other, regression coefficients become unstable. Check: - Tolerance (should be &gt; .1) or VIF (variance inflation factor, should be &lt; 10) — both available in JASP under Collinearity Diagnostics\n\n\n\n\n\n\nTipVIF, tolerance, and why 10 isn’t a hard cutoff\n\n\n\n\n\nWhat multicollinearity really means (predictors that overlap), how to read VIF (the 10 threshold is a continuum, not a binary pass/fail), and why a scatter plot matrix of your predictors is still worth its weight — VIF only catches linear dependence.\n\n\n\n\n\nHow to do it in JASP\n\n\n\n\n\n\nNoteJASP Video Library — Multiple Regression\n\n\n\nRecordings at jasp-stats.github.io/jasp-video-library/All_Regression.html#regression:\n\n▶ Multiple Predictors — multiple regression setup and output\n▶ Hierarchical Regression — entering predictors in blocks, ΔR²\n▶ Bootstrap Confidence Intervals — robust inference for the coefficients"
+  },
+  {
+    "objectID": "core/regression.html#interpreting-the-regression-output",
+    "href": "core/regression.html#interpreting-the-regression-output",
+    "title": "Correlation & Regression",
+    "section": "Interpreting the regression output",
+    "text": "Interpreting the regression output\nThe key tables in JASP output:\nModel Summary\n\n\n\n\n\n\n\nColumn\nWhat it means\n\n\n\n\nR\nMultiple correlation coefficient\n\n\nR²\nProportion of variance in Y explained by all predictors combined\n\n\nAdjusted R²\nR² corrected for the number of predictors — use this for model comparison\n\n\nRMSE\nRoot mean square error — average prediction error in the original units\n\n\n\nCoefficients table\n\n\n\n\n\n\n\nColumn\nWhat it means\n\n\n\n\nb (Unstandardised)\nThe slope in original units — “one unit increase in X is associated with a b change in Y, holding all other predictors constant”\n\n\nβ (Standardised)\nThe slope in standard deviation units — comparable across predictors with different scales\n\n\nt / p\nWhether the slope is significantly different from zero\n\n\n95% CI\nConfidence interval for the slope\n\n\n\n\n\n\n\n\n\nTipAPA reporting example\n\n\n\nAlbum sales were significantly predicted by advertising budget, b = 0.096, 95% CI [0.076, 0.115], β = .578, t(196) = 9.98, p &lt; .001. The model explained 33% of the variance in album sales, F(1, 198) = 99.6, p &lt; .001, adjusted R² = .33."
+  },
+  {
+    "objectID": "core/regression.html#dummy-coding-categorical-predictors",
+    "href": "core/regression.html#dummy-coding-categorical-predictors",
+    "title": "Correlation & Regression",
+    "section": "Dummy coding categorical predictors",
+    "text": "Dummy coding categorical predictors\nContinuous predictors enter regression directly. Categorical predictors must be dummy coded: create k − 1 binary variables (0/1), where k is the number of categories. JASP does this automatically when you define a variable as nominal.\nExample: a variable with 3 groups (control, therapy A, therapy B) → 2 dummy variables. The reference category (control) becomes the baseline against which the others are compared.\n\n\n\n\n\n\nTipHow predictions and group means come out of the dummies\n\n\n\nThe intercept becomes the mean of the reference group; each dummy’s coefficient is the difference from that group. Add a covariate (or another categorical predictor) and the coefficients shift slightly — the dummies no longer recover the group means exactly, but the prediction formula still works the same way. With an interaction term added, you do recover each cell mean — at the cost of more parameters.\n→ Part 1: one categorical predictor + optional covariate · Part 2: two predictors and the interaction term"
+  },
+  {
+    "objectID": "core/regression.html#further-reading",
+    "href": "core/regression.html#further-reading",
+    "title": "Correlation & Regression",
+    "section": "Further reading",
+    "text": "Further reading\n\nDSUJ Chapter 7 — Correlation\nDSUJ Chapter 8 — Regression (simple and multiple, hierarchical, dummy coding)\nJASP blog — Hierarchical regression"
+  },
+  {
+    "objectID": "core/regression.html#further-viewing-ssr-lecture-recordings",
+    "href": "core/regression.html#further-viewing-ssr-lecture-recordings",
+    "title": "Correlation & Regression",
+    "section": "Further viewing — SSR lecture recordings",
+    "text": "Further viewing — SSR lecture recordings\nThe 2026 SSR lectures cover correlation and regression across three recordings (captions are available in the SharePoint player):\n\n▶ SSR Lecture 7 — Correlation & the Linear Model — correlation up front; jump to ~23:28 for the linear-model / simple-regression section\n▶ SSR Lecture 8 — The Linear Model — simple linear regression in depth\n▶ SSR Lecture 22 — Multiple Regression — multiple predictors, hierarchical regression, multicollinearity"
+  },
+  {
+    "objectID": "core/regression.html#try-it-yourself",
+    "href": "core/regression.html#try-it-yourself",
+    "title": "Correlation & Regression",
+    "section": "Try it yourself",
+    "text": "Try it yourself\nEach exercise below ends with a collapsible solution. Try the analysis first, then expand to compare.\n\nExercise 1 (correlation) — Do GCSE maths grades predict university statistics grades?\nThe grades.jasp dataset pairs each student’s GCSE maths grade with their later university statistics grade. Pick the appropriate correlation coefficient (think about the measurement level of GCSE grade), run it, and report r with its 95% CI.\n\n\n\n\n\n\nNote▸ Worked solution\n\n\n\n\n\n\nWalkthrough: Smart Alex Task 7.4\nAnnotated JASP output: alex_07_04.html\n\n\n\n\n\n\nExercise 2 (correlation matrix) — Which student traits predict the lecturer they prefer?\nChamorro-Premuzic et al. (2008) measured five student personality traits and five lecturer-preference dimensions. Using leni_07.jasp, produce the full correlation matrix between student traits and preferred-lecturer dimensions, and identify which student trait is most strongly associated with each lecturer dimension.\n\n\n\n\n\n\nNote▸ Worked solution\n\n\n\n\n\n\nWalkthrough: Labcoat Leni — Why do you like your lecturers?\nAnnotated JASP output: leni_07.html\n\n\n\n\n\n\nExercise 3 (hierarchical multiple regression) — Does narcissism predict Facebook status frequency above and beyond extraversion?\nOng et al. (2011) measured adolescents’ status-update frequency, demographics (age, grade, sex), extraversion, and narcissism. Using leni_08a.jasp, fit a hierarchical regression with three blocks: demographics (Model 0), + extraversion (Model 1), + narcissism (Model 2). Report ΔR² for each step.\n\n\n\n\n\n\nNote▸ Worked solution\n\n\n\n\n\n\nWalkthrough: Labcoat Leni — I want to be loved (on Facebook)\nAnnotated JASP output: leni_08a.html"
+  },
+  {
+    "objectID": "core/contingency-tables.html",
+    "href": "core/contingency-tables.html",
+    "title": "Contingency Tables",
+    "section": "",
+    "text": "Basics\nWhen both your variables are categorical, the appropriate tools come from the chi-square family. A contingency table (cross-tabulation) shows the frequency of every combination of categories, and a chi-square test asks whether the two variables are independent.\nThis page covers:"
+  },
+  {
+    "objectID": "core/contingency-tables.html#chi-square-test-of-independence",
+    "href": "core/contingency-tables.html#chi-square-test-of-independence",
+    "title": "Contingency Tables",
+    "section": "Chi-square test of independence",
+    "text": "Chi-square test of independence\n\nWhat is it?\nThe chi-square test of independence asks: are two categorical variables related, or independent? It compares the observed cell frequencies in a contingency table against the expected frequencies under the null hypothesis of independence.\n\\[\\chi^2 = \\sum \\frac{(O - E)^2}{E}\\]\nExample: do voting preferences (Party A / Party B / Party C) differ across age groups (18–30, 31–50, 51+)? The contingency table is 3 × 3; the null hypothesis is that age group and party preference are independent.\n\n\nWhen to use it\n\nBoth variables are categorical (nominal or ordinal treated as nominal)\nEach participant contributes to exactly one cell of the table (one row per participant)\nYou want to test whether membership in one variable’s categories is related to membership in the other’s\n\n\n\nAssumptions\n\n\nIndependence: each observation is independent of the others (no participant appears in more than one cell)\nExpected cell counts: all expected counts should be ≥ 5 (a common rule of thumb); at minimum, no more than 20% of cells should have expected counts below 5\nIf expected counts are too small, use Fisher’s exact test instead (see below)\n\n\n\n\nEffect size\nReport Cramér’s V (or φ for a 2 × 2 table):\n\n\n\nCramér’s V\nConventional label (df = 1)\n\n\n\n\n.10\nSmall\n\n\n.30\nMedium\n\n\n.50\nLarge\n\n\n\nFor larger tables, the benchmarks scale down — consult DSUJ Chapter 19 or use JASP’s effect size output.\n\n\nHow to do it in JASP\nGo to Frequencies → Contingency Tables in the analysis menu.\n\n\n\n\n\n\nNoteJASP Video Library — Contingency Tables\n\n\n\nRecordings at jasp-stats.github.io/jasp-video-library/All_Frequencies.html:\n\n▶ Main Analysis — setting up the table, requesting chi-square\n▶ Cells — observed counts, expected counts, residuals\n▶ Statistics — Cramér’s V and other effect sizes\n\n\n\n\n\nInterpreting the output\n\n\n\n\n\n\n\nStatistic\nWhat it means\n\n\n\n\nχ²\nThe test statistic — bigger means observed frequencies deviate more from expected\n\n\ndf\n(rows − 1) × (columns − 1)\n\n\np\nReject H₀ (independence) if p &lt; α\n\n\nCramér’s V\nEffect size — the strength of association\n\n\n\nIf the test is significant, inspect the standardised residuals to see which cells contribute most to the deviation from independence.\n\n\n\n\n\n\nTipAPA reporting example\n\n\n\nA chi-square test of independence showed a significant association between age group and party preference, χ²(4) = 18.6, p &lt; .001, Cramér’s V = .24. Inspection of the standardised residuals indicated that voters aged 51+ were over-represented among Party A supporters."
+  },
+  {
+    "objectID": "core/contingency-tables.html#chi-square-goodness-of-fit",
+    "href": "core/contingency-tables.html#chi-square-goodness-of-fit",
+    "title": "Contingency Tables",
+    "section": "Chi-square goodness-of-fit",
+    "text": "Chi-square goodness-of-fit\nA variant of the chi-square test for one categorical variable against a hypothesised distribution. Example: does a die roll uniformly (each face expected at 1/6) over 600 throws?\nIn JASP: Frequencies → Multinomial Test. Specify either equal expected probabilities or a custom expected distribution."
+  },
+  {
+    "objectID": "core/contingency-tables.html#fishers-exact-test",
+    "href": "core/contingency-tables.html#fishers-exact-test",
+    "title": "Contingency Tables",
+    "section": "Fisher’s exact test",
+    "text": "Fisher’s exact test\nWhen expected cell counts are too small for the chi-square approximation to be trustworthy (typically a 2 × 2 table with any expected count &lt; 5), Fisher’s exact test computes the exact probability of the observed table under the null. It is available in the same JASP dialog — just tick Fisher’s exact test under Statistics.\n\n\n\n\n\n\nTipWhy Fisher’s exact, not chi-square, with small expected counts\n\n\n\n\n\nThe chi-square statistic only approximately follows the χ² distribution; the approximation breaks down when expected counts are small. Fisher’s exact test side-steps the approximation altogether by enumerating every possible table with the same row and column totals. It costs nothing in interpretation — you still report a p-value — and is the safer choice for sparse tables."
+  },
+  {
+    "objectID": "core/contingency-tables.html#bayesian-alternative",
+    "href": "core/contingency-tables.html#bayesian-alternative",
+    "title": "Contingency Tables",
+    "section": "Bayesian alternative",
+    "text": "Bayesian alternative\nJASP also offers a Bayesian contingency table analysis, which returns a Bayes factor for the alternative model (variables are related) over the null (independent). Useful when you want to quantify evidence for either hypothesis, including evidence for independence.\n\n\n\n\n\n\nNoteJASP Video Library — Bayesian Contingency Tables\n\n\n\n\n▶ Bayesian Contingency Tables — setting up the analysis, interpreting the Bayes factor"
+  },
+  {
+    "objectID": "core/contingency-tables.html#further-reading",
+    "href": "core/contingency-tables.html#further-reading",
+    "title": "Contingency Tables",
+    "section": "Further reading",
+    "text": "Further reading\n\nDSUJ Chapter 19 — Categorical data — chi-square, Fisher’s exact, and odds ratios with JASP walkthroughs\nJASP blog — How to interpret a contingency table"
+  },
+  {
+    "objectID": "core/contingency-tables.html#further-viewing-ssr-lecture-recording",
+    "href": "core/contingency-tables.html#further-viewing-ssr-lecture-recording",
+    "title": "Contingency Tables",
+    "section": "Further viewing — SSR lecture recording",
+    "text": "Further viewing — SSR lecture recording\nThe full 2026 SSR lecture covers the chi-square family in depth (captions are available in the SharePoint player):\n\n▶ SSR Lecture 28 — Chi-Square"
+  },
+  {
+    "objectID": "core/contingency-tables.html#try-it-yourself",
+    "href": "core/contingency-tables.html#try-it-yourself",
+    "title": "Contingency Tables",
+    "section": "Try it yourself",
+    "text": "Try it yourself\nEach exercise below ends with a collapsible solution. Try the analysis first, then expand to compare.\n\nExercise 1 (chi-square) — Does image type (sexualised vs performance) shape women’s reactions to female athletes?\nDaniels (2012) showed women either sexualised or performance-focused images of female athletes, then coded each participant’s open-ended response for whether it expressed self-objectification (yes/no). Using leni_16a.jasp, run a chi-square test of independence on image type × self-objectification. Inspect the standardised residuals to see which cells drive the result.\n\n\n\n\n\n\nNote▸ Worked solution\n\n\n\n\n\n\nWalkthrough: Labcoat Leni — The impact of sexualised images on women’s self-evaluations\nAnnotated JASP output: leni_16a.html\n\n\n\n\n\n\nExercise 2 (chi-square × three outcomes) — Are perceptions of happiness associated with the professional group rated?\nThree groups of professionals rated each other on three different happiness-related measures. Using leni_16b.jasp, run a chi-square test for each of the three outcomes. Report Cramér’s V and discuss whether you should adjust for multiple testing.\n\n\n\n\n\n\nNote▸ Worked solution\n\n\n\n\n\n\nWalkthrough: Labcoat Leni — Is the Black American happy?\nAnnotated JASP output: leni_16b.html\n\n\n\n\n\n\nExercise 3 (chi-square + Bayesian alternative) — Does time-pressure at work affect off-hours psychological detachment?\nSonnentag (2012) surveyed 1709 employees on their work time-pressure (5 ordered levels) and whether they could psychologically detach from work in their off-hours. Using sonnentag_2012.jasp, set up the contingency table with time_pressure in Rows, detachment in Columns, and frequency in Counts. Run a classical chi-square test and a Bayesian contingency-table analysis — compare what the p-value and the Bayes factor each tell you.\n\n\n\n\n\n\nNote▸ Worked solution\n\n\n\n\n\n\nWalkthrough: Smart Alex Task 16.1\nAnnotated JASP output: alex_16_01.html"
+  },
+  {
+    "objectID": "core/descriptives.html",
+    "href": "core/descriptives.html",
+    "title": "Descriptive Statistics & Visualisation",
+    "section": "",
+    "text": "Basics\nBefore running any inferential test, always explore your data. Descriptive statistics and visualisations help you understand the shape of your distributions, identify outliers, and check whether your data meet the assumptions of the analyses you plan to run.\nThis is not a step to skip — surprising patterns often only become visible at this stage."
+  },
+  {
+    "objectID": "core/descriptives.html#what-are-descriptive-statistics",
+    "href": "core/descriptives.html#what-are-descriptive-statistics",
+    "title": "Descriptive Statistics & Visualisation",
+    "section": "What are descriptive statistics?",
+    "text": "What are descriptive statistics?\nDescriptive statistics summarise the key features of a dataset without making inferences about a population. The most important are:\nCentral tendency — where is the middle of the distribution?\n\n\n\nStatistic\nUse when\n\n\n\n\nMean\nContinuous data, approximately symmetric distribution\n\n\nMedian\nSkewed distributions or ordinal data\n\n\nMode\nCategorical data, or to describe the most common value\n\n\n\nSpread — how much do values vary?\n\n\n\n\n\n\n\nStatistic\nWhat it tells you\n\n\n\n\nStandard deviation (SD)\nAverage distance from the mean (same units as the data)\n\n\nVariance\nSD² — less intuitive but used in many formulas\n\n\nRange\nMax − Min — sensitive to outliers\n\n\nInterquartile range (IQR)\nMiddle 50% of values — robust to outliers\n\n\n\nShape — is the distribution symmetric?\n\n\n\n\n\n\n\nStatistic\nWhat it tells you\n\n\n\n\nSkewness\nWhether the tail is longer on the left (negative) or right (positive)\n\n\nKurtosis\nHow heavy or light the tails are relative to a normal distribution"
+  },
+  {
+    "objectID": "core/descriptives.html#when-to-use-descriptive-statistics",
+    "href": "core/descriptives.html#when-to-use-descriptive-statistics",
+    "title": "Descriptive Statistics & Visualisation",
+    "section": "When to use descriptive statistics",
+    "text": "When to use descriptive statistics\nAlways — as the first step in every analysis. Specifically:\n\nBefore any test: report means and SDs for your key variables\nTo check normality: look at histograms and Q-Q plots, and inspect skewness/kurtosis values\nTo detect outliers: boxplots flag values beyond 1.5 × IQR from the quartiles\nTo describe your sample: demographics (age, gender, group sizes) always require descriptives"
+  },
+  {
+    "objectID": "core/descriptives.html#assumptions-to-check",
+    "href": "core/descriptives.html#assumptions-to-check",
+    "title": "Descriptive Statistics & Visualisation",
+    "section": "Assumptions to check",
+    "text": "Assumptions to check\nDescriptive statistics have no assumptions themselves, but examining them tells you whether the assumptions of your next analysis hold:\n\n\nNormality: histograms should be roughly bell-shaped; skewness and kurtosis should be close to 0 (rough rule: |value| &lt; 1 for reasonable samples, though this depends on sample size)\nOutliers: inspect boxplots — individual points beyond the whiskers warrant investigation\nFloor/ceiling effects: if most values cluster at the minimum or maximum, your scale may not have sufficient range"
+  },
+  {
+    "objectID": "core/descriptives.html#how-to-do-it-in-jasp",
+    "href": "core/descriptives.html#how-to-do-it-in-jasp",
+    "title": "Descriptive Statistics & Visualisation",
+    "section": "How to do it in JASP",
+    "text": "How to do it in JASP\nOpen your dataset, go to Descriptives → Descriptives in the analysis menu.\n\n\n\n\n\n\nNoteJASP Video Library — Descriptives\n\n\n\nAll screen recordings are at jasp-stats.github.io/jasp-video-library/Descriptives.html:\n\n▶ Main Analysis — setting up descriptives, requesting mean, SD, and frequency tables\n▶ Split Variable — computing descriptives separately per group\n▶ Raincloud Plots — raw data + density + boxplot in one figure\n▶ Distribution and Boxplots — exploring spread and outliers\n▶ Scatter Plot — visualising relationships between two continuous variables\n▶ Assumption Checks — Q-Q plots and normality tests"
+  },
+  {
+    "objectID": "core/descriptives.html#interpreting-the-output",
+    "href": "core/descriptives.html#interpreting-the-output",
+    "title": "Descriptive Statistics & Visualisation",
+    "section": "Interpreting the output",
+    "text": "Interpreting the output\nAfter running Descriptives in JASP, the output table shows your requested statistics. Key things to check:\n\nN: the number of valid (non-missing) observations per variable\nMean ± SD: the central tendency and spread — always report these together\nSkewness / Kurtosis: both should be close to 0 for a normal distribution. Divide each value by its standard error to get a z-score; |z| &gt; 3.29 flags a significant deviation (in large samples, use visual inspection instead)\nBoxplot whiskers: extend to 1.5 × IQR; individual points beyond the whiskers are potential outliers\n\n\n\n\n\n\n\nTipReporting in APA format\n\n\n\nFor continuous variables: M = [mean], SD = [SD], N = [n]. For frequency data: report counts and percentages."
+  },
+  {
+    "objectID": "core/descriptives.html#further-reading",
+    "href": "core/descriptives.html#further-reading",
+    "title": "Descriptive Statistics & Visualisation",
+    "section": "Further reading",
+    "text": "Further reading\n\nDSUJ Chapter 5 — Exploring data with graphs — covers histograms, boxplots, violin plots, and scatter plots in detail with JASP walkthroughs\nDSUJ Chapter 6 — Assumptions — normality tests, outlier detection, and robust alternatives"
+  },
+  {
+    "objectID": "core/descriptives.html#try-it-yourself",
+    "href": "core/descriptives.html#try-it-yourself",
+    "title": "Descriptive Statistics & Visualisation",
+    "section": "Try it yourself",
+    "text": "Try it yourself\nEach exercise below ends with a collapsible solution. Try the analysis first, then expand to compare.\n\nExercise 1 (visualisation) — Plot a raincloud comparing students and lecturers on number of friends\nUsing students.jasp, produce a raincloud plot of friends split by role (student vs lecturer). A raincloud plot combines a half-violin density, a boxplot, and the raw jittered data in a single figure — much more informative than a bar-and-error-bar plot.\n\n\n\n\n\n\nNote▸ Worked solution\n\n\n\n\n\n\nWalkthrough: Smart Alex Task 5.1\nJASP file with the plot pre-configured: alex_05_01-06.jasp\n\n\n\n\n\n\nExercise 2 (assumption checks) — Are the JASP exam scores normally distributed?\nUsing jasp_exam.jasp, compute descriptives + Shapiro-Wilk tests for numeracy and exam scores. Then split by university and run the same tests again — does the picture change once you account for the grouping?\n\n\n\n\n\n\nNote▸ Worked solution\n\n\n\n\n\n\nWalkthrough: Smart Alex Task 6.7\nAnnotated JASP output: alex_06_07.html\n\n\n\n\n\n\nExercise 3 (descriptives by group) — Compare two pet groups on liking-of-animals and life satisfaction\nUsing pets.jasp, produce two raincloud plots (one for animal liking, one for life_satisfaction), each split by pet (fish vs cat). Then run descriptives split by pet to get the group means, SDs, and 95% CIs.\n\n\n\n\n\n\nNote▸ Worked solution\n\n\n\n\n\n\nWalkthrough: Smart Alex Task 5.8\nJASP file with the plots pre-configured: alex_05_08.jasp"
+  },
+  {
+    "objectID": "core/nonparametrics.html",
+    "href": "core/nonparametrics.html",
+    "title": "Non-Parametric Tests",
+    "section": "",
+    "text": "Basics\nNon-parametric tests are rank-based alternatives to t-tests and ANOVA. They don’t assume the data follow a particular distribution — making them the go-to choice when the normality assumption is seriously violated (often in small samples, or with strong outliers or floor/ceiling effects).\nThis page covers the four most commonly used non-parametric tests for group comparison, each one a counterpart to a parametric procedure you already know:"
+  },
+  {
+    "objectID": "core/nonparametrics.html#what-do-they-actually-do",
+    "href": "core/nonparametrics.html#what-do-they-actually-do",
+    "title": "Non-Parametric Tests",
+    "section": "What do they actually do?",
+    "text": "What do they actually do?\nAll four tests follow the same idea: convert your raw scores to ranks, then test whether the ranks differ between groups (or conditions). Because ranks are bounded and don’t depend on the original metric, the resulting test statistic isn’t pulled around by outliers or skew the way a t or F statistic can be.\n\n\n\n\n\n\nTipWhy “rank” the data?\n\n\n\n\n\nImagine one participant in your dataset reports a reaction time of 12,000 ms while everyone else is between 200–800 ms. That single value drags the mean of their group up and inflates the variance of the difference — your t drops, your p climbs, and you may miss a real effect. Replace each raw score by its rank (1 = fastest, N = slowest), and that outlier becomes “the slowest one” — its influence is bounded. You trade away some information (the absolute spacing of the values) for robustness against extreme scores."
+  },
+  {
+    "objectID": "core/nonparametrics.html#when-to-use-a-non-parametric-test",
+    "href": "core/nonparametrics.html#when-to-use-a-non-parametric-test",
+    "title": "Non-Parametric Tests",
+    "section": "When to use a non-parametric test",
+    "text": "When to use a non-parametric test\n\nThe normality assumption of the parametric test is seriously violated, especially in small samples (n &lt; ~30) where you can’t lean on the central limit theorem\nYou have ordinal data (e.g. Likert items treated strictly as ranks), where means aren’t really meaningful\nYou have strong outliers that you don’t want to remove and that distort the parametric test\nSample sizes are small enough that visual checks (Q-Q plots, histograms per group) clearly look non-normal\n\n\n\n\n\n\n\nWarningNon-parametric ≠ assumption-free\n\n\n\nThe Mann–Whitney test does not test for equal medians unless the two distributions have the same shape. If group A is symmetric and group B is heavily skewed, a significant Mann–Whitney result could reflect that difference in shape — not a median shift. Always inspect the distributions before interpreting."
+  },
+  {
+    "objectID": "core/nonparametrics.html#how-to-do-them-in-jasp",
+    "href": "core/nonparametrics.html#how-to-do-them-in-jasp",
+    "title": "Non-Parametric Tests",
+    "section": "How to do them in JASP",
+    "text": "How to do them in JASP\nIn JASP, every non-parametric test lives alongside its parametric counterpart:\n\nWilcoxon rank-sum / signed-rank → T-Tests menu → tick the Wilcoxon option\nKruskal–Wallis → ANOVA menu → tick the Kruskal-Wallis test option (under Nonparametrics)\nFriedman → Repeated Measures ANOVA menu → tick the Friedman option\n\nJASP reports the rank-based statistic, a p-value, and a rank-biserial correlation as the effect size for the Wilcoxon tests."
+  },
+  {
+    "objectID": "core/nonparametrics.html#interpreting-the-output",
+    "href": "core/nonparametrics.html#interpreting-the-output",
+    "title": "Non-Parametric Tests",
+    "section": "Interpreting the output",
+    "text": "Interpreting the output\n\n\n\n\n\n\n\n\nTest\nStatistic\nEffect size\n\n\n\n\nWilcoxon rank-sum\nW (or U)\nrank-biserial correlation\n\n\nWilcoxon signed-rank\nV\nrank-biserial correlation (matched-rank)\n\n\nKruskal–Wallis\nH (≈ χ²)\nε² or η²H\n\n\nFriedman\nχ²F\nKendall’s W\n\n\n\nReport the test statistic, p-value, and an effect size. Where relevant, also report group medians (and IQRs) rather than means.\n\n\n\n\n\n\nTipAPA reporting example\n\n\n\nA Wilcoxon rank-sum test showed that reaction times were significantly higher in the alcohol condition (Mdn = 540, IQR = 180) than in the control condition (Mdn = 420, IQR = 140), W = 312, p = .008, rank-biserial r = .42."
+  },
+  {
+    "objectID": "core/nonparametrics.html#post-hoc-tests",
+    "href": "core/nonparametrics.html#post-hoc-tests",
+    "title": "Non-Parametric Tests",
+    "section": "Post-hoc tests",
+    "text": "Post-hoc tests\nA significant Kruskal–Wallis or Friedman test tells you that at least two groups (conditions) differ — but not which. JASP offers Dunn’s post-hoc tests with Bonferroni or Holm correction directly in the same dialog."
+  },
+  {
+    "objectID": "core/nonparametrics.html#further-reading",
+    "href": "core/nonparametrics.html#further-reading",
+    "title": "Non-Parametric Tests",
+    "section": "Further reading",
+    "text": "Further reading\n\nDSUJ Chapter 16 — Non-parametric tests — covers all four tests with JASP walkthroughs, when to choose them, and how to interpret rank-based output\nJASP blog — Bayesian Mann-Whitney U test (if you want a Bayesian non-parametric alternative)"
+  },
+  {
+    "objectID": "core/nonparametrics.html#further-viewing-ssr-lecture-recording",
+    "href": "core/nonparametrics.html#further-viewing-ssr-lecture-recording",
+    "title": "Non-Parametric Tests",
+    "section": "Further viewing — SSR lecture recording",
+    "text": "Further viewing — SSR lecture recording\nThe full 2026 SSR lecture covers all four tests in one recording (captions are available in the SharePoint player). Approximate timestamps:\n\n▶ SSR Lecture 20 — Non-Parametrics\n\n~23:48 — Wilcoxon rank-sum test (Mann–Whitney U) — independent groups\n~44:13 — Wilcoxon signed-rank test — paired/repeated measurements\n~1:12:47 — Kruskal–Wallis test — three or more independent groups\n~1:23:48 — Friedman test — three or more related measurements"
+  },
+  {
+    "objectID": "core/nonparametrics.html#try-it-yourself",
+    "href": "core/nonparametrics.html#try-it-yourself",
+    "title": "Non-Parametric Tests",
+    "section": "Try it yourself",
+    "text": "Try it yourself\nEach exercise below ends with a collapsible solution. Try the analysis first, then expand to compare.\n\nExercise 1 (Wilcoxon signed-rank) — Do male quails fertilise more eggs after signaled vs control mating contexts?\nEach male quail experienced two mating contexts (signaled vs control) in counterbalanced order, and the number of fertilised eggs was counted. Using leni_15a.jasp, run a Wilcoxon signed-rank test on the within-subject difference, and report the rank-biserial effect size alongside the medians.\n\n\n\n\n\n\nNote▸ Worked solution\n\n\n\n\n\n\nWalkthrough: Labcoat Leni — Having a quail of a time?\nAnnotated JASP output: leni_15a.html\n\n\n\n\n\n\nExercise 2 (Kruskal–Wallis + Dunn post-hoc) — Do three types of “quail fetish” differ in fertilisation rate?\nMale quails were classified into three fetish groups based on their behaviour around a terrycloth object, and fertilisation rate was compared across the three groups. Using leni_15b.jasp, fit a Kruskal–Wallis test and follow up with Dunn’s post-hoc (Bonferroni-corrected).\n\n\n\n\n\n\nNote▸ Worked solution\n\n\n\n\n\n\nWalkthrough: Labcoat Leni — Eggs-traordinary\nAnnotated JASP output: leni_15b.html\n\n\n\n\n\n\nExercise 3 (Mann–Whitney / Wilcoxon rank-sum) — Do men and women spend different amounts of time shopping?\nThe shopping.jasp dataset has shopping-trip durations (in minutes) for male and female participants. Run a Mann–Whitney test (i.e. Wilcoxon rank-sum) and interpret the result alongside the group medians.\n\n\n\n\n\n\nNote▸ Worked solution\n\n\n\n\n\n\nWalkthrough: Smart Alex Task 15.7\nAnnotated JASP output: alex_15_07-08.html"
+  },
+  {
+    "objectID": "core/t-tests.html",
+    "href": "core/t-tests.html",
+    "title": "t-Tests",
+    "section": "",
+    "text": "Basics\nt-tests are used to compare means — either against a known value, or between two groups. They are one of the most widely used inferential tests in psychology."
+  },
+  {
+    "objectID": "core/t-tests.html#three-types-of-t-test",
+    "href": "core/t-tests.html#three-types-of-t-test",
+    "title": "t-Tests",
+    "section": "Three types of t-test",
+    "text": "Three types of t-test\n\n\n\n\n\n\n\n\nTest\nResearch question\nExample\n\n\n\n\nOne-sample\nDoes my sample mean differ from a known value?\nIs the mean IQ of my sample different from the population mean of 100?\n\n\nPaired-samples\nDo two related measurements differ?\nDo anxiety scores decrease from pre- to post-therapy within the same participants?\n\n\nIndependent-samples\nDo two independent groups differ?\nDo males and females differ in their extraversion scores?"
+  },
+  {
+    "objectID": "core/t-tests.html#when-to-use-which-t-test",
+    "href": "core/t-tests.html#when-to-use-which-t-test",
+    "title": "t-Tests",
+    "section": "When to use which t-test",
+    "text": "When to use which t-test\n\nOne-sample: you have a single group and want to compare its mean to a fixed reference value (e.g., population norm, chance level, zero)\nPaired-samples (also called dependent-samples or repeated-measures t-test): the same participants measured twice, or participants matched in pairs — the two measurements are not independent\nIndependent-samples: two separate, unrelated groups — each participant contributes one score\n\n\n\n\n\n\n\nWarningDon’t confuse paired and independent\n\n\n\nUsing an independent-samples t-test when you have a repeated-measures design throws away half the information and inflates your error term. Always identify whether measurements within rows of your dataset are linked.\n\n\n\n\n\n\n\n\nTipThe paired t-test is just a one-sample t-test on difference scores\n\n\n\n\n\nFor each participant, compute the difference between their two measurements. Now you have one set of difference scores — and you’re back to a one-sample t-test against H₀: mean difference = 0. This is why “paired”, “dependent-samples”, and “within-subjects” all refer to the same procedure."
+  },
+  {
+    "objectID": "core/t-tests.html#one-sided-or-two-sided",
+    "href": "core/t-tests.html#one-sided-or-two-sided",
+    "title": "t-Tests",
+    "section": "One-sided or two-sided?",
+    "text": "One-sided or two-sided?\nWhichever t-test you pick, you’ll also need to decide what alternative hypothesis to test:\n\nTwo-sided (default in JASP): H₁ says the mean differs from the null value in either direction. Use this unless you have a strong directional prediction.\nOne-sided (directional): H₁ says the mean is specifically greater than, or specifically less than, the null value. More statistical power if you’re right about the direction — but if the effect goes the other way, you can’t reject H₀.\n\n\n\n\n\n\n\nTipA one-sided test is a commitment, not a shortcut\n\n\n\nCommit to a one-sided test before looking at your data — ideally pre-registered. Switching to one-sided after seeing a result in your favoured direction is a common form of p-hacking.\n→ Visual explainer: how the rejection region changes between one-sided and two-sided\n\n\n\n\n\n\n\n\nTipChoosing your alternative hypothesis\n\n\n\n\n\nUsing the IQ self-assessment example: two-sided (“self-reported IQ is different from 120”) asks whether there’s any bias, while one-sided (“students systematically overestimate IQ”) tests a specific direction. Different research questions, different rejection regions."
+  },
+  {
+    "objectID": "core/t-tests.html#assumptions",
+    "href": "core/t-tests.html#assumptions",
+    "title": "t-Tests",
+    "section": "Assumptions",
+    "text": "Assumptions\n\n\nScale data: the dependent variable is continuous (interval or ratio level)\nIndependence of observations: each row in the dataset is an independent participant (violated in paired designs, which is why you use the paired t-test instead)\nNormality: the dependent variable (or, for paired data, the difference scores) should be approximately normally distributed, especially important in small samples (n &lt; 30)\nEqual variances (independent-samples only): Levene’s test checks this. JASP reports a Welch correction by default, which is robust to unequal variances — this is generally the safer choice\n\n\n\n\n\n\n\n\nTipWhy “always use Welch” is the safer default\n\n\n\n\n\nA subtle point: significance tests for assumptions (Levene’s, Shapiro-Wilk) are themselves driven by sample size. At large n, even a trivial deviation from equal variances will make Levene’s significant — that doesn’t mean you have a “problem”. At small n, neither test has the power to detect a meaningful violation. The recommended workflow: look at the observed standard deviations (a ratio of more than ~1.4 between groups is worth noting), inspect Q-Q plots, and just default to the Welch t-test — it costs you a little power and buys robustness against unequal variances.\n\n\n\n\nChecking normality\nUse the Q-Q plot and inspect skewness/kurtosis in Descriptives (see the Descriptives page). The Shapiro-Wilk test is available in JASP under the assumption checks, but is sensitive to sample size — a visual check is often more informative."
+  },
+  {
+    "objectID": "core/t-tests.html#effect-size",
+    "href": "core/t-tests.html#effect-size",
+    "title": "t-Tests",
+    "section": "Effect size",
+    "text": "Effect size\nAlways report an effect size alongside your p-value. For t-tests, use Cohen’s d:\n\n\n\nd\nConventional label\n\n\n\n\n0.2\nSmall\n\n\n0.5\nMedium\n\n\n0.8\nLarge\n\n\n\nThese benchmarks are rough guides — the meaningful effect size depends on your research context. Tick Cohen’s d under Effect Size in the JASP options panel."
+  },
+  {
+    "objectID": "core/t-tests.html#how-to-do-it-in-jasp",
+    "href": "core/t-tests.html#how-to-do-it-in-jasp",
+    "title": "t-Tests",
+    "section": "How to do it in JASP",
+    "text": "How to do it in JASP\nGo to T-Tests in the analysis menu and select the appropriate test.\n\n\n\n\n\n\nNoteJASP Video Library — T-Tests\n\n\n\nAll screen recordings are at jasp-stats.github.io/jasp-video-library/All_T-Tests.html:\nIndependent-samples t-test\n\n▶ Main Analysis — setting up the test, grouping variable\n▶ Assumption Checks — normality and homogeneity of variance\n▶ Effect Size — requesting Cohen’s d and confidence intervals\n▶ Plots — raincloud or bar plots for group differences\n\nOne-sample and paired-samples t-test\n\n▶ One-Sample — comparing a mean to a fixed reference value\n▶ Paired-Samples — pre/post measurements or matched pairs"
+  },
+  {
+    "objectID": "core/t-tests.html#interpreting-the-output",
+    "href": "core/t-tests.html#interpreting-the-output",
+    "title": "t-Tests",
+    "section": "Interpreting the output",
+    "text": "Interpreting the output\nThe JASP output for an independent-samples t-test contains:\n\nt: the test statistic — the ratio of the mean difference to the standard error of the difference\ndf: degrees of freedom (for Welch’s test, this will not be a whole number)\np: the two-tailed p-value. Reject H₀ (no difference) if p &lt; your α level (typically .05)\nMean difference: the raw difference between group means — report this alongside the SE or CI\nCohen’s d: the effect size\n\n\n\n\n\n\n\nTipAPA reporting example\n\n\n\nAn independent-samples t-test showed that the anxiety ratings of participants shown a picture of a spider (M = 47.0, SD = 9.3) were significantly higher than those of participants shown a picture of a real spider (M = 40.0, SD = 9.3), t(21.4) = 1.68, p = .108, d = 0.71. (This is an example — adjust numbers and interpretation to your own results.)"
+  },
+  {
+    "objectID": "core/t-tests.html#non-parametric-alternative",
+    "href": "core/t-tests.html#non-parametric-alternative",
+    "title": "t-Tests",
+    "section": "Non-parametric alternative",
+    "text": "Non-parametric alternative\nIf your data strongly violate the normality assumption (and your sample is small), use the Wilcoxon tests instead:\n\n\n\nt-test\nNon-parametric equivalent\n\n\n\n\nOne-sample\nWilcoxon signed-rank test\n\n\nPaired-samples\nWilcoxon signed-rank test\n\n\nIndependent-samples\nMann–Whitney U test (Wilcoxon rank-sum test)\n\n\n\nThese are available under T-Tests → Nonparametric in JASP."
+  },
+  {
+    "objectID": "core/t-tests.html#further-reading",
+    "href": "core/t-tests.html#further-reading",
+    "title": "t-Tests",
+    "section": "Further reading",
+    "text": "Further reading\n\nDSUJ Chapter 9 — Comparing two means — covers all three t-tests with detailed JASP walkthroughs, effect sizes, and assumption checks\nJASP blog — Classical one-sample t-test\nJASP blog — Classical independent-samples t-test"
+  },
+  {
+    "objectID": "core/t-tests.html#further-viewing-ssr-lecture-recording",
+    "href": "core/t-tests.html#further-viewing-ssr-lecture-recording",
+    "title": "t-Tests",
+    "section": "Further viewing — SSR lecture recording",
+    "text": "Further viewing — SSR lecture recording\nThe full 2026 SSR lecture covers the material on this page in depth (captions are available in the SharePoint player):\n\n▶ SSR Lecture 11 — t-Tests"
+  },
+  {
+    "objectID": "core/t-tests.html#try-it-yourself",
+    "href": "core/t-tests.html#try-it-yourself",
+    "title": "t-Tests",
+    "section": "Try it yourself",
+    "text": "Try it yourself\nEach exercise below ends with a collapsible solution. Try the analysis first, then expand to compare.\n\nExercise 1 — Is arachnophobia specific to real spiders, or do pictures evoke similar anxiety?\nTwelve arachnophobes were each exposed to a real tarantula and a picture of one, with their anxiety rated in both conditions. Using big_hairy_spider.jasp, run both an independent-samples and a paired-samples t-test on the same data. Compare the conclusions — what does the discrepancy reveal about respecting the design?\n\n\n\n\n\n\nNote▸ Worked solution\n\n\n\n\n\n\nWalkthrough: Smart Alex Task 9.1\nAnnotated JASP output: alex_09_01-02.html\n\n\n\n\n\n\nExercise 2 — Are senior business managers as histrionic as inpatients with personality disorders?\nBoard & Fritzon (2005) compared the personality profiles of senior business managers against a clinical inpatient sample. Using leni_09a.jasp, run an independent-samples t-test on the histrionic personality scores, tick Welch and Cohen’s d, and write a one-sentence APA-style verdict.\n\n\n\n\n\n\nNote▸ Worked solution\n\n\n\n\n\n\nWalkthrough: Labcoat Leni — You don’t have to be mad here, but it helps\nAnnotated JASP output: leni_09a.html\n\n\n\n\n\n\nExercise 3 — Does hygiene deteriorate over a music festival?\nThe download.jasp dataset records hygiene ratings of festival-goers on day 1 and day 3 of a UK rock festival. Run a paired-samples t-test on day 1 vs day 3 and decide whether the change is significant — then inspect the distribution and judge whether the parametric test is actually appropriate.\n\n\n\n\n\n\nNote▸ Worked solution\n\n\n\n\n\n\nWalkthrough: Smart Alex Task 9.7\nAnnotated JASP output: alex_09_07.html"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome to the Paddling Pool",
+    "section": "",
+    "text": "A statistics refresher for master’s psychology students at UvA\nBefore you dive into your thesis or specialist master’s courses, make sure you are comfortable with the analyses you will actually use. This site is your self-study companion — work through topics at your own pace, watch short JASP demonstrations, and practise with real datasets."
+  },
+  {
+    "objectID": "index.html#how-to-use-this-site",
+    "href": "index.html#how-to-use-this-site",
+    "title": "Welcome to the Paddling Pool",
+    "section": "How to use this site",
+    "text": "How to use this site\n\nStart with Getting Started if you have not used JASP before, or need a quick refresh on loading data and navigating the interface.\nWork through Basics — descriptive statistics, t-tests, ANOVA, regression, non-parametric tests, and contingency tables. These are the foundations that almost every analysis builds on.\nConsult Advanced Topics when your thesis or course requires a specific technique. Not everyone needs all of these — pick what is relevant to you.\n\nEach topic page follows the same structure:\n\n\n\n\n\n\nNoteWhat you will find on each topic page\n\n\n\n\nWhat is it? — a short conceptual overview\nWhen to use it — decision guide: which research question, which data type\nAssumptions — what to check before interpreting your results\nHow to do it in JASP — screen recordings\nInterpreting the output — what to report and how to read the numbers\nFurther reading — DSUJ chapter, blog posts\nTry it yourself — downloadable JASP file and practice exercises"
+  },
+  {
+    "objectID": "index.html#basics",
+    "href": "index.html#basics",
+    "title": "Welcome to the Paddling Pool",
+    "section": "Basics",
+    "text": "Basics\nThese topics cover the analyses expected of every master’s student.\n\n\nDescriptive Statistics\nSummarise and visualise your data before running any inferential test. Mean, SD, histograms, boxplots, raincloud plots.\n\n\nt-Tests\nCompare one or two means. One-sample, paired-samples, and independent-samples t-tests — with effect sizes and assumption checks.\n\n\nANOVA\nCompare three or more groups, or multiple factors. One-way, factorial, ANCOVA, and repeated-measures ANOVA.\n\n\nCorrelation & Regression\nQuantify relationships and predict outcomes. Pearson correlation, simple regression, and multiple regression.\n\n\nNon-Parametric Tests\nRank-based alternatives when normality is violated. Mann–Whitney, Wilcoxon signed-rank, Kruskal–Wallis, and Friedman.\n\n\nContingency Tables\nTest associations between two categorical variables. Chi-square tests of independence, Fisher’s exact, and Cramér’s V."
+  },
+  {
+    "objectID": "index.html#advanced-topics",
+    "href": "index.html#advanced-topics",
+    "title": "Welcome to the Paddling Pool",
+    "section": "Advanced Topics",
+    "text": "Advanced Topics\nThese analyses appear frequently in master’s theses. Choose the ones relevant to your research area.\n\n\nMediation & Moderation\nTest whether an effect works through a third variable (mediation) or depends on a third variable (moderation). Uses the PROCESS module.\n\n\nLogistic Regression\nPredict a binary outcome (yes/no, clinical/control) from one or more predictors. Odds ratios and classification accuracy.\n\n\nFactor Analysis\nIdentify underlying dimensions in a set of items. Exploratory (EFA) and Confirmatory (CFA) approaches, plus PCA.\n\n\nPower Analysis\nDetermine how many participants you need to detect an effect of a given size. Avoid underpowered studies.\n\n\nMissing Data & Imputation\nUnderstand the types of missingness (MCAR, MAR, MNAR) and when multiple imputation is appropriate.\n\n\nMeta-Analysis\nSynthesise effect sizes across studies. Forest plots, heterogeneity, and moderator analysis in JASP.\n\n\n\n\n\n\n\n\nNote\n\n\n\nComing soon: Measurement Invariance, Path Modeling, Latent Class / Profile Analysis, and Network Analysis. These are more specialised topics currently being developed."
+  },
+  {
+    "objectID": "index.html#resources",
+    "href": "index.html#resources",
+    "title": "Welcome to the Paddling Pool",
+    "section": "Resources",
+    "text": "Resources\n\n\n\nResource\nDescription\n\n\n\n\nDiscovering Statistics Using JASP (DSUJ)\nThe main textbook this site is built around. Available in the UvA library.\n\n\nHow to Use JASP\nStep-by-step blog posts for specific analyses on the JASP website.\n\n\nJASP Download\nFree, open-source statistical software used throughout this site.\n\n\nJASP Video Library\nThe full collection of screen recordings we draw from."
+  },
+  {
+    "objectID": "advanced/factor-analysis.html",
+    "href": "advanced/factor-analysis.html",
+    "title": "Factor Analysis",
+    "section": "",
+    "text": "Advanced Topics\nFactor analysis is a family of techniques for identifying latent dimensions (factors) that underlie a set of observed variables. It is widely used in scale development, construct validation, and data reduction.\nThree related techniques are covered here:"
+  },
+  {
+    "objectID": "advanced/factor-analysis.html#exploratory-factor-analysis-efa",
+    "href": "advanced/factor-analysis.html#exploratory-factor-analysis-efa",
+    "title": "Factor Analysis",
+    "section": "Exploratory Factor Analysis (EFA)",
+    "text": "Exploratory Factor Analysis (EFA)\n\nWhen to use it\n\nYou have a set of items (e.g., questionnaire items) and you do not know — or want to discover — how many factors underlie them\nScale development: determining the dimensional structure of a new measure\nGenerating hypotheses about construct structure to be tested later with CFA\n\n\n\nKey decisions\nHow many factors?\n\nScree plot: look for the “elbow” — the point where the eigenvalues flatten out\nKaiser criterion: retain factors with eigenvalue &gt; 1 (can over-extract in large datasets)\nParallel analysis: compare actual eigenvalues to those from random data — more accurate than the Kaiser criterion (recommended)\n\nRotation method\nRotation makes factors more interpretable. Two families:\n\n\n\n\n\n\n\n\nFamily\nMethod\nUse when\n\n\n\n\nOrthogonal\nVarimax\nYou expect factors to be uncorrelated\n\n\nOblique\nOblimin / Promax\nYou expect factors to correlate (common in psychology)\n\n\n\nIn psychology, oblique rotation is usually more realistic.\nWhat loadings tell you\nA factor loading is the correlation between an item and a factor. Loadings &gt; .30 (or .40 for a more conservative threshold) are typically considered meaningful. An item should load strongly on one factor and minimally on others — check for cross-loadings.\n\n\nHow to do it in JASP\nGo to Factor → Exploratory Factor Analysis.\n\n\n\n\n\n\nNoteJASP Video Library — EFA\n\n\n\nRecording at jasp-stats.github.io/jasp-video-library/All_Factor-Analysis.html#efa:\n\n▶ EFA Main Analysis — number of factors, rotation method, factor loadings, scree plot"
+  },
+  {
+    "objectID": "advanced/factor-analysis.html#confirmatory-factor-analysis-cfa",
+    "href": "advanced/factor-analysis.html#confirmatory-factor-analysis-cfa",
+    "title": "Factor Analysis",
+    "section": "Confirmatory Factor Analysis (CFA)",
+    "text": "Confirmatory Factor Analysis (CFA)\n\nWhen to use it\n\nYou have a theoretically specified model of which items load on which factors\nTesting whether a previously validated scale replicates in your sample\nComparing alternative factor structures (e.g., one-factor vs. two-factor)\nAs a prerequisite to testing measurement invariance across groups\n\n\n\nModel fit indices\n\n\n\n\n\n\n\n\nIndex\nAcceptable range\nNotes\n\n\n\n\nχ²\nNon-significant (p &gt; .05)\nVery sensitive to sample size — rarely met with large N\n\n\nCFI / TLI\n&gt; .90 (acceptable), &gt; .95 (good)\nComparative Fit Index / Tucker-Lewis Index\n\n\nRMSEA\n&lt; .08 (acceptable), &lt; .05 (good)\nRoot Mean Square Error of Approximation\n\n\nSRMR\n&lt; .08\nStandardised Root Mean Square Residual\n\n\n\n\n\n\n\n\n\nTipAlways report multiple fit indices\n\n\n\nNo single fit index is sufficient. Report CFI, TLI, RMSEA (with 90% CI), and SRMR together.\n\n\n\n\nHow to do it in JASP\nGo to Factor → Confirmatory Factor Analysis.\n\n\n\n\n\n\nNoteJASP Video Library — CFA\n\n\n\nRecording at jasp-stats.github.io/jasp-video-library/All_Factor-Analysis.html#cfa:\n\n▶ CFA Main Analysis — specifying a CFA model, fit indices, modification indices"
+  },
+  {
+    "objectID": "advanced/factor-analysis.html#principal-component-analysis-pca",
+    "href": "advanced/factor-analysis.html#principal-component-analysis-pca",
+    "title": "Factor Analysis",
+    "section": "Principal Component Analysis (PCA)",
+    "text": "Principal Component Analysis (PCA)\n\nWhen to use it\n\nYou want to reduce a large number of variables to a smaller set of components for use in further analyses\nYou want to remove multicollinearity by replacing correlated variables with orthogonal components\nYou are not primarily interested in a latent variable model\n\n\n\nHow to do it in JASP\nGo to Factor → Principal Component Analysis.\n\n\n\n\n\n\nNoteJASP Video Library — PCA\n\n\n\nRecording at jasp-stats.github.io/jasp-video-library/All_Factor-Analysis.html#pca:\n\n▶ PCA Main Analysis — number of components, rotation, component loadings and scores"
+  },
+  {
+    "objectID": "advanced/factor-analysis.html#reliability-cronbachs-α",
+    "href": "advanced/factor-analysis.html#reliability-cronbachs-α",
+    "title": "Factor Analysis",
+    "section": "Reliability: Cronbach’s α",
+    "text": "Reliability: Cronbach’s α\nWhen developing or using a scale, report Cronbach’s α as a measure of internal consistency. Values &gt; .70 are conventionally considered acceptable.\nCronbach’s α is available in JASP under Factor → Reliability Analysis. Note that α depends on the number of items and their average inter-correlation, so it is not a pure measure of unidimensionality."
+  },
+  {
+    "objectID": "advanced/factor-analysis.html#further-reading",
+    "href": "advanced/factor-analysis.html#further-reading",
+    "title": "Factor Analysis",
+    "section": "Further reading",
+    "text": "Further reading\n\nDSUJ Chapter on factor analysis (check your edition) — EFA and CFA with JASP\nBrown, T. A. (2015). Confirmatory factor analysis for applied research. Guilford Press."
+  },
+  {
+    "objectID": "advanced/factor-analysis.html#try-it-yourself",
+    "href": "advanced/factor-analysis.html#try-it-yourself",
+    "title": "Factor Analysis",
+    "section": "Try it yourself",
+    "text": "Try it yourself\n\nDataset: exam_anxiety.jasp — exam performance, anxiety, and revision time. Explore correlations between scale variables as a starting point before fitting a factor model.\n\n\n\n\n\n\n\nNoteDSUJ exercises\n\n\n\nThe factor analysis chapter self-tests and Smart Alex tasks are available with solutions at the discoverjasp companion site."
+  },
+  {
+    "objectID": "advanced/network-analysis.html",
+    "href": "advanced/network-analysis.html",
+    "title": "Network Analysis",
+    "section": "",
+    "text": "Advanced Topics"
+  },
+  {
+    "objectID": "advanced/network-analysis.html#section",
+    "href": "advanced/network-analysis.html#section",
+    "title": "Network Analysis",
+    "section": "🚧",
+    "text": "🚧\nThis page is under construction.\nContent covering psychometric network analysis will be added here."
+  },
+  {
+    "objectID": "advanced/network-analysis.html#what-this-page-will-cover",
+    "href": "advanced/network-analysis.html#what-this-page-will-cover",
+    "title": "Network Analysis",
+    "section": "What this page will cover",
+    "text": "What this page will cover\nPsychometric network analysis conceptualises psychological constructs as networks of interacting components rather than as reflections of a single latent variable. For example, depression might be modelled as a network of interrelated symptoms (insomnia, fatigue, anhedonia, etc.) rather than as a single underlying factor.\nKey methods:\n\nGGM (Gaussian Graphical Model): estimates partial correlations between variables, with edges representing direct relationships after controlling for all other variables\nEBIC graphical LASSO: a regularisation method to estimate sparse networks and avoid over-fitting\nCentrality measures: which nodes (variables) are most central to the network? (strength, betweenness, closeness)\nCommunity detection: identifying clusters of closely connected nodes\n\nJASP has a Network Analysis module."
+  },
+  {
+    "objectID": "advanced/network-analysis.html#useful-resources-in-the-meantime",
+    "href": "advanced/network-analysis.html#useful-resources-in-the-meantime",
+    "title": "Network Analysis",
+    "section": "Useful resources in the meantime",
+    "text": "Useful resources in the meantime\n\nBorsboom, D., & Cramer, A. O. J. (2013). Network analysis: An integrative approach to the structure of psychopathology. Annual Review of Clinical Psychology, 9, 91–121.\nEpskamp, S., & Fried, E. I. (2018). A tutorial on regularized partial correlation networks. Psychological Methods, 23(4), 617–634.\nThe qgraph R package: cran.r-project.org/package=qgraph"
+  },
+  {
+    "objectID": "advanced/missing-data.html",
+    "href": "advanced/missing-data.html",
+    "title": "Missing Data & Imputation",
+    "section": "",
+    "text": "Advanced Topics\nMissing data is almost inevitable in psychology research. How you handle it matters: the wrong approach can introduce bias and reduce statistical power. This page covers the types of missingness and the options available for dealing with it."
+  },
+  {
+    "objectID": "advanced/missing-data.html#types-of-missingness",
+    "href": "advanced/missing-data.html#types-of-missingness",
+    "title": "Missing Data & Imputation",
+    "section": "Types of missingness",
+    "text": "Types of missingness\nBefore choosing a method, you need to think about why data are missing.\n\n\n\n\n\n\n\n\nMechanism\nDefinition\nExample\n\n\n\n\nMCAR — Missing Completely At Random\nThe probability of being missing is unrelated to any variable (observed or unobserved)\nA random equipment failure causes some data to be lost\n\n\nMAR — Missing At Random\nThe probability of being missing depends on observed variables, but not on the missing value itself\nOlder participants more likely to skip a question about technology use, but we observe age\n\n\nMNAR — Missing Not At Random\nThe probability of being missing depends on the missing value itself (or unobserved variables)\nParticipants with the highest depression scores are most likely to drop out of a depression study\n\n\n\n\n\n\n\n\n\nWarningWhy this matters\n\n\n\n\nMCAR: listwise deletion is unbiased (but wasteful)\nMAR: listwise deletion is biased. Multiple imputation or FIML is appropriate\nMNAR: all standard methods can produce biased results. Requires sensitivity analysis or specialised models.\n\n\n\nTesting MCAR: Little’s MCAR test (available in SPSS and R; not yet in JASP). In practice, MCAR is often implausible — assume MAR unless you have strong reasons otherwise."
+  },
+  {
+    "objectID": "advanced/missing-data.html#common-approaches",
+    "href": "advanced/missing-data.html#common-approaches",
+    "title": "Missing Data & Imputation",
+    "section": "Common approaches",
+    "text": "Common approaches\n\n1. Listwise deletion (complete-case analysis)\nOnly cases with complete data on all variables are included. This is the JASP default.\n\nWhen it is acceptable: MCAR and sample size remains adequate\nProblem: throws away all information from partially complete cases; biased under MAR\n\n\n\n2. Pairwise deletion\nEach analysis uses all cases available for the variables involved. Different analyses may use different subsets.\n\nProblem: can lead to inconsistent estimates and negative definite correlation matrices\n\n\n\n3. Mean substitution\nReplace missing values with the variable mean.\n\nAvoid this: it distorts the distribution, reduces variance, and biases correlations. It is almost never appropriate.\n\n\n\n4. Multiple Imputation (MI) ✓ Recommended\nMI creates m complete datasets by replacing each missing value with m plausible values drawn from the predictive distribution of the missing data given the observed data. Each dataset is analysed separately, and results are pooled using Rubin’s rules.\nSteps: 1. Impute: create m datasets (typically 20–100, though m = 5 is still common in older literature; more is better) 2. Analyse: run your intended analysis on each imputed dataset 3. Pool: combine estimates across datasets — JASP does this automatically\n\n\n\n\n\n\nTipKey principle\n\n\n\nThe imputation model should include all variables you will use in the analysis, plus any auxiliary variables that predict missingness. A sparse imputation model produces biased results.\n\n\nIn JASP: go to Missing Values → Multiple Imputation. You can then run subsequent analyses that automatically use the imputed datasets.\n\n\n5. Full Information Maximum Likelihood (FIML)\nFIML estimates model parameters using all available information — including partially complete cases — without creating imputed datasets. It is the preferred approach for structural equation models (SEM) and is available in JASP’s SEM module.\n\n\n\nApproach\nValid under\nJASP availability\n\n\n\n\nListwise deletion\nMCAR only\nDefault\n\n\nMultiple Imputation\nMAR (and MCAR)\nMissing Values module\n\n\nFIML\nMAR (and MCAR)\nSEM module"
+  },
+  {
+    "objectID": "advanced/missing-data.html#diagnosing-missingness-in-jasp",
+    "href": "advanced/missing-data.html#diagnosing-missingness-in-jasp",
+    "title": "Missing Data & Imputation",
+    "section": "Diagnosing missingness in JASP",
+    "text": "Diagnosing missingness in JASP\n\nDescriptives: the N in the descriptives table shows how many valid values each variable has. Compare to total N.\nMissing value plots: available in the Missing Values module — visualise which variables and cases have missing data, and whether missingness is patterned."
+  },
+  {
+    "objectID": "advanced/missing-data.html#reporting",
+    "href": "advanced/missing-data.html#reporting",
+    "title": "Missing Data & Imputation",
+    "section": "Reporting",
+    "text": "Reporting\n\n\n\n\n\n\nTipReporting missing data\n\n\n\nState (a) the percentage of missing data per variable, (b) the missingness mechanism assumed (MCAR/MAR/MNAR) and why, and (c) the method used to handle it. Example: “Data were missing on [variable] for 12% of participants. Little’s MCAR test was non-significant (χ²(5) = 4.2, p = .52), and missingness appeared unrelated to observed study variables, so listwise deletion was used.”"
+  },
+  {
+    "objectID": "advanced/missing-data.html#further-reading",
+    "href": "advanced/missing-data.html#further-reading",
+    "title": "Missing Data & Imputation",
+    "section": "Further reading",
+    "text": "Further reading\n\nVan Buuren, S. (2018). Flexible Imputation of Missing Data (2nd ed.). CRC Press. — Freely available at stefvanbuuren.name/fimd/\nSterne, J. A. C., et al. (2009). Multiple imputation for missing data in epidemiological and clinical research. BMJ, 338, b2393.\nDSUJ Chapter 6 — Bias — includes discussion of data problems including missingness"
+  },
+  {
+    "objectID": "advanced/logistic-regression.html",
+    "href": "advanced/logistic-regression.html",
+    "title": "Logistic Regression",
+    "section": "",
+    "text": "Advanced Topics\nUse logistic regression when your outcome variable is categorical — most commonly binary (yes/no, clinical/control, recovered/not recovered). Linear regression is inappropriate for binary outcomes because it can produce predicted probabilities below 0 or above 1, and it violates homoscedasticity."
+  },
+  {
+    "objectID": "advanced/logistic-regression.html#what-is-it",
+    "href": "advanced/logistic-regression.html#what-is-it",
+    "title": "Logistic Regression",
+    "section": "What is it?",
+    "text": "What is it?\nBinary logistic regression models the log-odds (logit) of the outcome as a linear function of the predictors:\n\\[\\log\\!\\left(\\frac{p}{1-p}\\right) = b_0 + b_1 X_1 + b_2 X_2 + \\ldots\\]\nThe model predicts the probability that a case belongs to the “outcome = 1” category. Predictors can be continuous, binary, or categorical (with dummy coding).\n\nOdds ratios\nThe exponentiated coefficients (e^b) are odds ratios (OR):\n\n\n\n\n\n\n\nOR\nInterpretation\n\n\n\n\n&gt; 1\nA one-unit increase in X is associated with increased odds of the outcome\n\n\n&lt; 1\nA one-unit increase in X is associated with decreased odds of the outcome\n\n\n= 1\nNo association\n\n\n\n\n\n\n\n\n\nNoteOdds ≠ probability\n\n\n\nAn OR of 2 does not mean the outcome is “twice as likely” — it means the odds are doubled. Probabilities and odds are related but not the same. Always report predicted probabilities or absolute risk when communicating results to a non-statistical audience."
+  },
+  {
+    "objectID": "advanced/logistic-regression.html#when-to-use-logistic-regression",
+    "href": "advanced/logistic-regression.html#when-to-use-logistic-regression",
+    "title": "Logistic Regression",
+    "section": "When to use logistic regression",
+    "text": "When to use logistic regression\n\n\n\n\n\n\n\nSituation\nAppropriate method\n\n\n\n\nBinary outcome (2 categories)\nBinary logistic regression\n\n\nNominal outcome (3+ unordered categories)\nMultinomial logistic regression\n\n\nOrdinal outcome (3+ ordered categories)\nOrdinal logistic regression\n\n\n\nThis page focuses on binary logistic regression — the most common case in psychology research."
+  },
+  {
+    "objectID": "advanced/logistic-regression.html#assumptions",
+    "href": "advanced/logistic-regression.html#assumptions",
+    "title": "Logistic Regression",
+    "section": "Assumptions",
+    "text": "Assumptions\n\n\nBinary outcome: the DV must have exactly two categories\nIndependence of observations: each participant contributes one row\nNo multicollinearity: predictors should not be highly correlated — check VIF as in regular regression\nSufficient cell sizes: especially important when predictors are categorical; very small cells can cause convergence problems\nNo complete separation: if a predictor perfectly predicts the outcome, the model cannot estimate coefficients\nLinearity of continuous predictors with the log-odds: check using Box-Tidwell test or visual inspection (available as an option in JASP)\n\n\nNote: logistic regression does not require normality of residuals or homoscedasticity — these are linear regression assumptions that do not apply here."
+  },
+  {
+    "objectID": "advanced/logistic-regression.html#model-fit",
+    "href": "advanced/logistic-regression.html#model-fit",
+    "title": "Logistic Regression",
+    "section": "Model fit",
+    "text": "Model fit\nUnlike linear regression, logistic regression uses maximum likelihood estimation. Model fit statistics:\n\n\n\n\n\n\n\nStatistic\nWhat it tells you\n\n\n\n\n−2 Log Likelihood (−2LL)\nOverall fit — smaller is better\n\n\nNagelkerke R²\nPseudo-R²: approximate proportion of variance explained — treat as an effect size, not a literal R²\n\n\nHosmer-Lemeshow test\nGoodness of fit — a non-significant result indicates adequate fit\n\n\nClassification table\nPercentage of cases correctly classified by the model\n\n\n\nModel comparison: test whether adding predictors improves fit using the likelihood ratio test (χ² difference in −2LL with corresponding df)."
+  },
+  {
+    "objectID": "advanced/logistic-regression.html#how-to-do-it-in-jasp",
+    "href": "advanced/logistic-regression.html#how-to-do-it-in-jasp",
+    "title": "Logistic Regression",
+    "section": "How to do it in JASP",
+    "text": "How to do it in JASP\nGo to Regression → Logistic Regression.\n\n\n\n\n\n\nNoteJASP Video Library — Logistic Regression\n\n\n\nRecording at jasp-stats.github.io/jasp-video-library/All_Regression.html#logistic-regression:\n\n▶ Logistic Regression — setup, odds ratios, classification table, model fit"
+  },
+  {
+    "objectID": "advanced/logistic-regression.html#interpreting-the-output",
+    "href": "advanced/logistic-regression.html#interpreting-the-output",
+    "title": "Logistic Regression",
+    "section": "Interpreting the output",
+    "text": "Interpreting the output\nOmnibus test: tests whether the model with predictors fits better than an intercept-only model. A significant χ² (p &lt; .05) indicates the model explains a significant amount of variance.\nCoefficients table: for each predictor, report: - b: the log-odds coefficient (hard to interpret directly) - OR (= e^b): the odds ratio — more interpretable - 95% CI for the OR: does it include 1.0? If not, the predictor is significant - p-value\n\n\n\n\n\n\nTipAPA reporting example\n\n\n\nLogistic regression was used to predict survival from age and treatment group. The model was significant, χ²(2) = 14.3, p &lt; .001, Nagelkerke R² = .23. Treatment group was a significant predictor, b = 1.42, OR = 4.14, 95% CI [1.87, 9.17], p = .001."
+  },
+  {
+    "objectID": "advanced/logistic-regression.html#multinomial-logistic-regression",
+    "href": "advanced/logistic-regression.html#multinomial-logistic-regression",
+    "title": "Logistic Regression",
+    "section": "Multinomial logistic regression",
+    "text": "Multinomial logistic regression\nWhen the outcome has three or more unordered categories, use multinomial logistic regression. This runs separate binary logistic regressions comparing each category to a reference category. Available in JASP under Regression → Logistic Regression by changing the outcome type."
+  },
+  {
+    "objectID": "advanced/logistic-regression.html#further-reading",
+    "href": "advanced/logistic-regression.html#further-reading",
+    "title": "Logistic Regression",
+    "section": "Further reading",
+    "text": "Further reading\n\nDSUJ Chapter 17 — Logistic regression — binary and multinomial logistic regression with JASP walkthroughs"
+  },
+  {
+    "objectID": "advanced/logistic-regression.html#try-it-yourself",
+    "href": "advanced/logistic-regression.html#try-it-yourself",
+    "title": "Logistic Regression",
+    "section": "Try it yourself",
+    "text": "Try it yourself\nEach exercise below ends with a collapsible solution. Try the analysis first, then expand to compare.\n\nExercise 1 (binary logistic regression — risk factors) — Which factors predict adolescent suicide risk?\nAdolescents at risk of self-harm were measured on demographics, family environment, and music preferences (heavy metal among others). Using leni_17.jasp, fit a binary logistic regression with risk status as the outcome. Report each predictor’s odds ratio with its 95% CI and the Nagelkerke R².\n\n\n\n\n\n\nNote▸ Worked solution\n\n\n\n\n\n\nWalkthrough: Labcoat Leni — Heavy metal and risk of harm\nAnnotated JASP output: leni_17.html\n\n\n\n\n\n\nExercise 2 (binary logistic regression — developmental psychology) — Do age and theory-of-mind predict mastery of emotional display rules?\nA psychologist measured whether each child could correctly apply a “display rule” (pass/fail), their age in months, and their theory-of-mind score. Using display.jasp, fit a logistic regression with display-rule mastery as the binary outcome and age + theory-of-mind as predictors.\n\n\n\n\n\n\nNote▸ Worked solution\n\n\n\n\n\n\nWalkthrough: Smart Alex Task 17.1\nAnnotated JASP output: alex_17_01-02.html\n\n\n\n\n\n\nExercise 3 (binary logistic regression — social psychology) — Does social class (inferred from car) predict whether a driver cuts in?\nPiff et al. (2012) ranked drivers’ social class by the type of car they drove (1–5) and observed whether each driver cut in front of another at a busy intersection. Using piff_2012_vehicle.jasp, fit a logistic regression with vehicle_cut (yes/no) as the outcome and vehicle (1–5) as the predictor. Interpret the odds ratio for a one-step increase in vehicle class.\n\n\n\n\n\n\nNote▸ Worked solution\n\n\n\n\n\n\nWalkthrough: Smart Alex Task 17.3\nAnnotated JASP output: alex_17_03.html"
+  },
+  {
+    "objectID": "advanced/measurement-invariance.html",
+    "href": "advanced/measurement-invariance.html",
+    "title": "Measurement Invariance",
+    "section": "",
+    "text": "Advanced Topics"
+  },
+  {
+    "objectID": "advanced/measurement-invariance.html#section",
+    "href": "advanced/measurement-invariance.html#section",
+    "title": "Measurement Invariance",
+    "section": "🚧",
+    "text": "🚧\nThis page is under construction.\nContent covering measurement invariance testing — configural, metric, scalar, and strict invariance — will be added here."
+  },
+  {
+    "objectID": "advanced/measurement-invariance.html#what-this-page-will-cover",
+    "href": "advanced/measurement-invariance.html#what-this-page-will-cover",
+    "title": "Measurement Invariance",
+    "section": "What this page will cover",
+    "text": "What this page will cover\nMeasurement invariance (also called measurement equivalence) tests whether a scale measures the same construct in the same way across different groups (e.g., cultures, genders, time points). It is a prerequisite for meaningfully comparing latent means or factor structures across groups.\nLevels of invariance:\n\n\n\n\n\n\n\n\nLevel\nWhat is constrained\nWhat it allows\n\n\n\n\nConfigural\nNothing (same factor structure)\nComparing factor structure qualitatively\n\n\nMetric\nFactor loadings equal across groups\nComparing relationships (correlations, regressions)\n\n\nScalar\nLoadings + intercepts equal\nComparing latent means\n\n\nStrict\nLoadings + intercepts + residuals equal\nRarely required in practice\n\n\n\nIn practice: if scalar invariance holds, you can compare questionnaire means across groups. If only metric invariance holds (some intercepts differ = partial invariance), you can compare relationships but not means."
+  },
+  {
+    "objectID": "advanced/measurement-invariance.html#useful-resources-in-the-meantime",
+    "href": "advanced/measurement-invariance.html#useful-resources-in-the-meantime",
+    "title": "Measurement Invariance",
+    "section": "Useful resources in the meantime",
+    "text": "Useful resources in the meantime\n\nVandenberg, R. J., & Lance, C. E. (2000). A review and synthesis of the measurement invariance literature. Organizational Research Methods, 3(1), 4–70.\nPutnick, D. L., & Bornstein, M. H. (2016). Measurement invariance conventions and reporting. Developmental Review, 41, 71–90.\n\nMeasurement invariance testing uses CFA — make sure you are comfortable with the Factor Analysis page first."
+  }
+]

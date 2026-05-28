@@ -1,0 +1,96 @@
+/* Paddling Pool – custom styles */
+
+/* Navbar */
+.navbar {
+  background-color: #BC0031 !important;  /* UvA red */
+}
+.navbar-brand, .navbar .nav-link {
+  color: #fff !important;
+}
+.navbar .nav-link:hover {
+  color: #ffd5d5 !important;
+}
+
+/* Hero banner on home page */
+.hero-banner {
+  background: linear-gradient(135deg, #BC0031 0%, #8b0022 100%);
+  color: white;
+  padding: 3rem 2rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+}
+.hero-banner h1 { color: white; margin-top: 0; }
+.hero-banner p  { font-size: 1.15rem; opacity: 0.9; }
+
+/* Topic cards on home page */
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+  margin: 1.5rem 0;
+}
+.topic-card {
+  border: 1px solid #dee2e6;
+  border-radius: 0.5rem;
+  padding: 1.2rem;
+  transition: box-shadow 0.2s;
+}
+.topic-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+.topic-card h4 { margin-top: 0; color: #BC0031; }
+
+/* Section labels */
+.section-badge {
+  display: inline-block;
+  background: #BC0031;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.15rem 0.6rem;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+.section-badge.advanced { background: #5a6275; }
+
+/* Video containers */
+.video-container {
+  margin: 1rem 0 1.5rem;
+}
+.video-container video {
+  width: 100%;
+  max-width: 700px;
+  border-radius: 0.4rem;
+  border: 1px solid #dee2e6;
+}
+.video-label {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-top: 0.3rem;
+}
+
+/* Callout tweaks */
+.callout-tip { border-left-color: #198754; }
+.callout-note { border-left-color: #0d6efd; }
+.callout-warning { border-left-color: #ffc107; }
+
+/* Coming-soon pages */
+.coming-soon {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #6c757d;
+}
+.coming-soon h2 { font-size: 3rem; margin-bottom: 0.5rem; }
+
+/* Assumption checklist */
+.assumption-list li {
+  margin-bottom: 0.4rem;
+}
+
+/* Responsive video */
+@media (max-width: 768px) {
+  .video-container video { max-width: 100%; }
+  .topic-grid { grid-template-columns: 1fr; }
+}

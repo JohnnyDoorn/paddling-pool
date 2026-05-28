@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Mediation &amp; Moderation – Paddling Pool</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../assets/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-f7333b7c44a7c3d55afcc11699a363c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="../assets/custom.css">
+</head>
+
+<body class="floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Paddling Pool</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../getting-started.html"> 
+<span class="menu-text">Getting Started</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-basics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Basics</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-basics">    
+        <li>
+    <a class="dropdown-item" href="../core/descriptives.html">
+ <span class="dropdown-text">Descriptive Statistics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../core/t-tests.html">
+ <span class="dropdown-text">t-Tests</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../core/anova.html">
+ <span class="dropdown-text">ANOVA</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../core/regression.html">
+ <span class="dropdown-text">Correlation &amp; Regression</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../core/nonparametrics.html">
+ <span class="dropdown-text">Non-Parametric Tests</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../core/contingency-tables.html">
+ <span class="dropdown-text">Contingency Tables</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-advanced-topics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Advanced Topics</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-advanced-topics">    
+        <li>
+    <a class="dropdown-item" href="../advanced/mediation-moderation.html">
+ <span class="dropdown-text">Mediation &amp; Moderation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/logistic-regression.html">
+ <span class="dropdown-text">Logistic Regression</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/factor-analysis.html">
+ <span class="dropdown-text">Factor Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/power-analysis.html">
+ <span class="dropdown-text">Power Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/missing-data.html">
+ <span class="dropdown-text">Missing Data &amp; Imputation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/meta-analysis.html">
+ <span class="dropdown-text">Meta-Analysis</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../advanced/measurement-invariance.html">
+ <span class="dropdown-text">Measurement Invariance</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/path-modeling.html">
+ <span class="dropdown-text">Path Modeling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/latent-class.html">
+ <span class="dropdown-text">Latent Class / Profile Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/network-analysis.html">
+ <span class="dropdown-text">Network Analysis</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/jasp-stats"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://jasp-stats.org"> <i class="bi bi-suit-heart-fill" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#mediation" id="toc-mediation" class="nav-link active" data-scroll-target="#mediation">Mediation</a>
+  <ul class="collapse">
+  <li><a href="#what-is-it" id="toc-what-is-it" class="nav-link" data-scroll-target="#what-is-it">What is it?</a></li>
+  <li><a href="#assumptions" id="toc-assumptions" class="nav-link" data-scroll-target="#assumptions">Assumptions</a></li>
+  <li><a href="#inference-bootstrapping" id="toc-inference-bootstrapping" class="nav-link" data-scroll-target="#inference-bootstrapping">Inference: bootstrapping</a></li>
+  <li><a href="#how-to-do-it-in-jasp" id="toc-how-to-do-it-in-jasp" class="nav-link" data-scroll-target="#how-to-do-it-in-jasp">How to do it in JASP</a></li>
+  <li><a href="#interpreting-mediation-output" id="toc-interpreting-mediation-output" class="nav-link" data-scroll-target="#interpreting-mediation-output">Interpreting mediation output</a></li>
+  </ul></li>
+  <li><a href="#moderation" id="toc-moderation" class="nav-link" data-scroll-target="#moderation">Moderation</a>
+  <ul class="collapse">
+  <li><a href="#what-is-it-1" id="toc-what-is-it-1" class="nav-link" data-scroll-target="#what-is-it-1">What is it?</a></li>
+  <li><a href="#assumptions-1" id="toc-assumptions-1" class="nav-link" data-scroll-target="#assumptions-1">Assumptions</a></li>
+  <li><a href="#simple-slopes-and-interaction-plots" id="toc-simple-slopes-and-interaction-plots" class="nav-link" data-scroll-target="#simple-slopes-and-interaction-plots">Simple slopes and interaction plots</a></li>
+  <li><a href="#how-to-do-it-in-jasp-1" id="toc-how-to-do-it-in-jasp-1" class="nav-link" data-scroll-target="#how-to-do-it-in-jasp-1">How to do it in JASP</a></li>
+  </ul></li>
+  <li><a href="#moderated-mediation" id="toc-moderated-mediation" class="nav-link" data-scroll-target="#moderated-mediation">Moderated mediation</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further reading</a></li>
+  <li><a href="#further-viewing-ssr-lecture-recordings" id="toc-further-viewing-ssr-lecture-recordings" class="nav-link" data-scroll-target="#further-viewing-ssr-lecture-recordings">Further viewing — SSR lecture recordings</a></li>
+  <li><a href="#try-it-yourself" id="toc-try-it-yourself" class="nav-link" data-scroll-target="#try-it-yourself">Try it yourself</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-mediation-does-mate-value-mediate-the-age-gossiping-relationship" id="toc-exercise-1-mediation-does-mate-value-mediate-the-age-gossiping-relationship" class="nav-link" data-scroll-target="#exercise-1-mediation-does-mate-value-mediate-the-age-gossiping-relationship">Exercise 1 (mediation) — Does mate value mediate the age → gossiping relationship?</a></li>
+  <li><a href="#exercise-2-moderation-does-the-attractiveness-spousal-support-relationship-differ-for-husbands-vs-wives" id="toc-exercise-2-moderation-does-the-attractiveness-spousal-support-relationship-differ-for-husbands-vs-wives" class="nav-link" data-scroll-target="#exercise-2-moderation-does-the-attractiveness-spousal-support-relationship-differ-for-husbands-vs-wives">Exercise 2 (moderation) — Does the attractiveness → spousal-support relationship differ for husbands vs wives?</a></li>
+  <li><a href="#exercise-3-mediation-does-product-perceived-coolness-mediate-the-advert-desirability-path" id="toc-exercise-3-mediation-does-product-perceived-coolness-mediate-the-advert-desirability-path" class="nav-link" data-scroll-target="#exercise-3-mediation-does-product-perceived-coolness-mediate-the-advert-desirability-path">Exercise 3 (mediation) — Does product-perceived-coolness mediate the advert → desirability path?</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Mediation &amp; Moderation</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><span class="section-badge advanced">Advanced Topics</span></p>
+<p>Mediation and moderation both involve a third variable in the relationship between a predictor (X) and an outcome (Y) — but they ask fundamentally different questions.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Question</th>
+<th>Terminology</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Mediation</strong></td>
+<td><em>How</em> does X affect Y? (through what mechanism?)</td>
+<td>Indirect effect, mediator (M)</td>
+</tr>
+<tr class="even">
+<td><strong>Moderation</strong></td>
+<td><em>For whom</em> or <em>when</em> does X affect Y?</td>
+<td>Interaction effect, moderator (W)</td>
+</tr>
+</tbody>
+</table>
+<p>In JASP, both are estimated using the <strong>PROCESS module</strong>, developed by Andrew Hayes.</p>
+<hr>
+<section id="mediation" class="level2">
+<h2 class="anchored" data-anchor-id="mediation">Mediation</h2>
+<section id="what-is-it" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-it">What is it?</h3>
+<p>Mediation tests whether the effect of X on Y is <em>transmitted through</em> a third variable M (the mediator).</p>
+<pre><code>X → M → Y      (indirect effect)
+X → Y          (direct effect, controlling for M)</code></pre>
+<p>The <strong>total effect</strong> of X on Y is decomposed into:</p>
+<ul>
+<li><strong>Direct effect</strong>: the effect of X on Y after accounting for M</li>
+<li><strong>Indirect effect</strong> (<em>a × b</em>): the effect of X on Y that goes through M (= path <em>a</em> × path <em>b</em>)</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Decomposing the total effect
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The trick of mediation: the original X → Y relationship gets split into two pathways. The <em>direct</em> effect (X → Y, controlling for M) and the <em>indirect</em> effect (X → M → Y). A relationship that’s <em>completely mediated</em> by M tells a very different psychological story than one with no mediation at all.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="assumptions" class="level3">
+<h3 class="anchored" data-anchor-id="assumptions">Assumptions</h3>
+<div class="assumption-list">
+<ul>
+<li>The causal ordering X → M → Y must be theoretically justified — mediation analysis does not prove causality</li>
+<li>All variables are measured without error (impossible in practice, but a key limitation to acknowledge)</li>
+<li>There is no unmeasured confounding of the X → M, M → Y, or X → Y relationships</li>
+<li><strong>No interaction between X and M</strong> — if you suspect one, use moderated mediation (Hayes Model 8 or 14)</li>
+</ul>
+</div>
+</section>
+<section id="inference-bootstrapping" class="level3">
+<h3 class="anchored" data-anchor-id="inference-bootstrapping">Inference: bootstrapping</h3>
+<p>The indirect effect (<em>a × b</em>) is non-normally distributed. JASP uses <strong>bootstrapped confidence intervals</strong> (typically 5000–10000 samples). An indirect effect is considered significant if the 95% CI does not contain zero.</p>
+</section>
+<section id="how-to-do-it-in-jasp" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-do-it-in-jasp">How to do it in JASP</h3>
+<p>Install the PROCESS module: <strong>Modules (☰) → Available Modules → PROCESS</strong>.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>JASP Video Library — Mediation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Recordings at <a href="https://jasp-stats.github.io/jasp-video-library/All_PROCESS.html#mediation">jasp-stats.github.io/jasp-video-library/All_PROCESS.html#mediation</a>:</p>
+<ul>
+<li><a href="https://jasp-stats.github.io/jasp-video-library/All_PROCESS.html#load-module">▶ Load Module</a> — installing and opening the PROCESS module</li>
+<li><a href="https://jasp-stats.github.io/jasp-video-library/All_PROCESS.html#specify-model">▶ Specify Model</a> — assigning X, M, and Y; bootstrapped indirect effects</li>
+<li><a href="https://jasp-stats.github.io/jasp-video-library/All_PROCESS.html#specify-hayes-model">▶ Hayes Model</a> — using pre-defined Hayes templates (Model 4 for simple mediation)</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="interpreting-mediation-output" class="level3">
+<h3 class="anchored" data-anchor-id="interpreting-mediation-output">Interpreting mediation output</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Path</th>
+<th>What to look for</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Path <em>a</em></strong></td>
+<td>X → M: is the predictor associated with the mediator?</td>
+</tr>
+<tr class="even">
+<td><strong>Path <em>b</em></strong></td>
+<td>M → Y: does the mediator predict the outcome, controlling for X?</td>
+</tr>
+<tr class="odd">
+<td><strong>Direct effect</strong> (c’)</td>
+<td>X → Y controlling for M: has the effect changed from the total effect?</td>
+</tr>
+<tr class="even">
+<td><strong>Indirect effect</strong> (<em>a × b</em>)</td>
+<td>Is the 95% bootstrapped CI excluding zero?</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Full mediation</strong>: the direct effect becomes non-significant once M is included — X only affects Y through M. <strong>Partial mediation</strong>: both direct and indirect effects remain significant.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>APA reporting
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Report the indirect effect with its bootstrapped CI: <em>indirect effect</em> = [value], 95% CI [lower, upper]. For the direct and total effects, report <em>b</em>, SE, <em>t</em>, <em>p</em>.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="moderation" class="level2">
+<h2 class="anchored" data-anchor-id="moderation">Moderation</h2>
+<section id="what-is-it-1" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-it-1">What is it?</h3>
+<p>Moderation tests whether the effect of X on Y <strong>differs across levels of a third variable</strong> W (the moderator). Statistically, this is an <strong>interaction effect</strong>: you add the product term X × W to the regression model.</p>
+<p>If the X × W interaction is significant, the slope of X on Y is different at different values of W.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Moderation = interaction = “steering”
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A useful mnemonic: <em>to moderate</em> means to <em>steer</em> — to control how something unfolds. Statistically, moderation is just an interaction effect: one predictor steers how another predictor affects the outcome. Which of the two predictors gets called “the moderator” is somewhat arbitrary — it’s about which framing matches your theoretical question.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="assumptions-1" class="level3">
+<h3 class="anchored" data-anchor-id="assumptions-1">Assumptions</h3>
+<div class="assumption-list">
+<ul>
+<li>The same as multiple regression — see the <a href="../core/regression.html">Regression</a> page</li>
+<li><strong>Centering</strong>: for continuous moderators, it is good practice to mean-centre X and W before computing the product term. This reduces multicollinearity and makes the lower-order coefficients interpretable. JASP does this automatically</li>
+</ul>
+</div>
+</section>
+<section id="simple-slopes-and-interaction-plots" class="level3">
+<h3 class="anchored" data-anchor-id="simple-slopes-and-interaction-plots">Simple slopes and interaction plots</h3>
+<p>After a significant moderation, inspect <strong>simple slopes</strong>: the slope of X on Y at specific values of W (typically <em>M</em> − 1 <em>SD</em>, <em>M</em>, <em>M</em> + 1 <em>SD</em> for a continuous moderator). JASP provides simple slope plots and significance tests.</p>
+</section>
+<section id="how-to-do-it-in-jasp-1" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-do-it-in-jasp-1">How to do it in JASP</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>JASP Video Library — Moderation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Recordings at <a href="https://jasp-stats.github.io/jasp-video-library/All_PROCESS.html#moderation">jasp-stats.github.io/jasp-video-library/All_PROCESS.html#moderation</a>:</p>
+<ul>
+<li><a href="https://jasp-stats.github.io/jasp-video-library/All_PROCESS.html#specify-model-1">▶ Specify Model</a> — entering X, W, and the X×W product term</li>
+<li><a href="https://jasp-stats.github.io/jasp-video-library/All_PROCESS.html#specify-hayes-model-1">▶ Hayes Model 1</a> — simple moderation using a Hayes template</li>
+<li><a href="https://jasp-stats.github.io/jasp-video-library/All_PROCESS.html#flexplot">▶ Flexplot</a> — visualising the interaction</li>
+<li><a href="https://jasp-stats.github.io/jasp-video-library/All_PROCESS.html#statistical-plot">▶ Simple Slopes Plot</a> — effect of X at low/medium/high levels of W</li>
+</ul>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="moderated-mediation" class="level2">
+<h2 class="anchored" data-anchor-id="moderated-mediation">Moderated mediation</h2>
+<p>When moderation and mediation are combined — the indirect effect of X on Y through M depends on the level of W — this is <strong>moderated mediation</strong> (or <strong>conditional indirect effect</strong>). Hayes’ Model 8 and Model 14 are the most common configurations.</p>
+<p>The indirect effect is estimated separately at different values of W. A <strong>Johnson-Neyman interval</strong> identifies the exact range of W values for which the indirect effect is significant.</p>
+<hr>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
+<ul>
+<li><strong>DSUJ Chapter 10</strong> — <em>Moderation and mediation</em> — comprehensive treatment with PROCESS walkthroughs</li>
+<li><a href="https://www.guilford.com/books/Introduction-to-Mediation-Moderation-and-Conditional-Process-Analysis/Andrew-Hayes/9781462549030">Hayes, A. F. (2022). <em>Introduction to mediation, moderation, and conditional process analysis</em></a> — the definitive text</li>
+</ul>
+<hr>
+</section>
+<section id="further-viewing-ssr-lecture-recordings" class="level2">
+<h2 class="anchored" data-anchor-id="further-viewing-ssr-lecture-recordings">Further viewing — SSR lecture recordings</h2>
+<p>The 2026 SSR lectures cover moderation and mediation across two recordings (captions are available in the SharePoint player):</p>
+<ul>
+<li><a href="https://amsuni-my.sharepoint.com/:v:/g/personal/j_b_vandoorn_uva_nl/EfNB5ydwSIlHjivPr0yhlzkBc5X_fmr7HkcxVKaCNvrF6A?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=gYOVYt">▶ SSR Lecture 26 — Moderation</a></li>
+<li><a href="https://amsuni-my.sharepoint.com/:v:/g/personal/j_b_vandoorn_uva_nl/EUHEfkBgB5xKuP2bJkd2XbIBi88dHPwHTAY1aHHOLipkFw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=anM8Bi">▶ SSR Lecture 27 — Mediation</a></li>
+</ul>
+<hr>
+</section>
+<section id="try-it-yourself" class="level2">
+<h2 class="anchored" data-anchor-id="try-it-yourself">Try it yourself</h2>
+<p>Each exercise below ends with a collapsible solution. Try the analysis first, then expand to compare.</p>
+<section id="exercise-1-mediation-does-mate-value-mediate-the-age-gossiping-relationship" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1-mediation-does-mate-value-mediate-the-age-gossiping-relationship">Exercise 1 (mediation) — Does mate value mediate the age → gossiping relationship?</h3>
+<p>Older adults gossip more than younger adults — but is this transmitted through changes in perceived <strong>mate value</strong>? Using <a href="https://discoverjasp.com/repository/dsj1_leni/leni_10.jasp"><code>leni_10.jasp</code></a>, fit a Hayes Model 4 mediation with age as X, mate value as M, and gossiping tendency as Y. Report the indirect effect with its bootstrapped 95% CI.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>▸ Worked solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/labcoat_leni#i-heard-that-jane-has-a-boil-and-kissed-a-tramp">Labcoat Leni — I heard that Jane has a boil and kissed a tramp</a></li>
+<li><strong>Annotated JASP output</strong>: <a href="https://discoverjasp.com/repository/dsj1_leni/leni_10.html">leni_10.html</a></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-2-moderation-does-the-attractiveness-spousal-support-relationship-differ-for-husbands-vs-wives" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2-moderation-does-the-attractiveness-spousal-support-relationship-differ-for-husbands-vs-wives">Exercise 2 (moderation) — Does the attractiveness → spousal-support relationship differ for husbands vs wives?</h3>
+<p>McNulty et al.&nbsp;(2008) tested whether attractiveness predicts how much support newlyweds give their partner — and whether this relationship is <em>moderated</em> by being the husband vs the wife. Using <a href="https://discoverjasp.com/repository/dsj1_data/data/mcnulty_2008.jasp"><code>mcnulty_2008.jasp</code></a>, fit a Hayes Model 1 moderation with <code>attractiveness</code> as the continuous predictor, <code>spouse</code> as the categorical moderator, and <code>support</code> as the outcome. Inspect the simple slopes.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>▸ Worked solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/smart_alex#task-10.1">Smart Alex Task 10.1</a></li>
+<li><strong>Annotated JASP output</strong>: <a href="https://discoverjasp.com/repository/dsj1_alex/alex_10_01-03.html">alex_10_01-03.html</a></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-3-mediation-does-product-perceived-coolness-mediate-the-advert-desirability-path" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3-mediation-does-product-perceived-coolness-mediate-the-advert-desirability-path">Exercise 3 (mediation) — Does product-perceived-coolness mediate the advert → desirability path?</h3>
+<p>A company owner measured how cool people thought the <strong>advertising</strong> was, how cool they thought the <strong>product</strong> was, and how <strong>desirable</strong> they found the product. Using <a href="https://discoverjasp.com/repository/dsj1_data/data/tablets.jasp"><code>tablets.jasp</code></a>, test whether the relationship between advertising coolness and product desirability is mediated by product coolness.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>▸ Worked solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/smart_alex#task-10.5">Smart Alex Task 10.5</a></li>
+<li><strong>Annotated JASP output</strong>: <a href="https://discoverjasp.com/repository/dsj1_alex/alex_10_05.html">alex_10_05.html</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/johnnydoorn\.github\.io\/paddling-pool\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Paddling Pool &nbsp;|&nbsp; UvA Psychology &nbsp;|&nbsp; Built with <a href="https://jasp-stats.org">JASP</a> &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

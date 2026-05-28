@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Non-Parametric Tests – Paddling Pool</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../assets/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-f7333b7c44a7c3d55afcc11699a363c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="../assets/custom.css">
+</head>
+
+<body class="floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Paddling Pool</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../getting-started.html"> 
+<span class="menu-text">Getting Started</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-basics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Basics</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-basics">    
+        <li>
+    <a class="dropdown-item" href="../core/descriptives.html">
+ <span class="dropdown-text">Descriptive Statistics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../core/t-tests.html">
+ <span class="dropdown-text">t-Tests</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../core/anova.html">
+ <span class="dropdown-text">ANOVA</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../core/regression.html">
+ <span class="dropdown-text">Correlation &amp; Regression</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../core/nonparametrics.html">
+ <span class="dropdown-text">Non-Parametric Tests</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../core/contingency-tables.html">
+ <span class="dropdown-text">Contingency Tables</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-advanced-topics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Advanced Topics</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-advanced-topics">    
+        <li>
+    <a class="dropdown-item" href="../advanced/mediation-moderation.html">
+ <span class="dropdown-text">Mediation &amp; Moderation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/logistic-regression.html">
+ <span class="dropdown-text">Logistic Regression</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/factor-analysis.html">
+ <span class="dropdown-text">Factor Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/power-analysis.html">
+ <span class="dropdown-text">Power Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/missing-data.html">
+ <span class="dropdown-text">Missing Data &amp; Imputation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/meta-analysis.html">
+ <span class="dropdown-text">Meta-Analysis</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../advanced/measurement-invariance.html">
+ <span class="dropdown-text">Measurement Invariance</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/path-modeling.html">
+ <span class="dropdown-text">Path Modeling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/latent-class.html">
+ <span class="dropdown-text">Latent Class / Profile Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/network-analysis.html">
+ <span class="dropdown-text">Network Analysis</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/jasp-stats"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://jasp-stats.org"> <i class="bi bi-suit-heart-fill" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-do-they-actually-do" id="toc-what-do-they-actually-do" class="nav-link active" data-scroll-target="#what-do-they-actually-do">What do they actually do?</a></li>
+  <li><a href="#when-to-use-a-non-parametric-test" id="toc-when-to-use-a-non-parametric-test" class="nav-link" data-scroll-target="#when-to-use-a-non-parametric-test">When to use a non-parametric test</a></li>
+  <li><a href="#how-to-do-them-in-jasp" id="toc-how-to-do-them-in-jasp" class="nav-link" data-scroll-target="#how-to-do-them-in-jasp">How to do them in JASP</a></li>
+  <li><a href="#interpreting-the-output" id="toc-interpreting-the-output" class="nav-link" data-scroll-target="#interpreting-the-output">Interpreting the output</a></li>
+  <li><a href="#post-hoc-tests" id="toc-post-hoc-tests" class="nav-link" data-scroll-target="#post-hoc-tests">Post-hoc tests</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further reading</a></li>
+  <li><a href="#further-viewing-ssr-lecture-recording" id="toc-further-viewing-ssr-lecture-recording" class="nav-link" data-scroll-target="#further-viewing-ssr-lecture-recording">Further viewing — SSR lecture recording</a></li>
+  <li><a href="#try-it-yourself" id="toc-try-it-yourself" class="nav-link" data-scroll-target="#try-it-yourself">Try it yourself</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-wilcoxon-signed-rank-do-male-quails-fertilise-more-eggs-after-signaled-vs-control-mating-contexts" id="toc-exercise-1-wilcoxon-signed-rank-do-male-quails-fertilise-more-eggs-after-signaled-vs-control-mating-contexts" class="nav-link" data-scroll-target="#exercise-1-wilcoxon-signed-rank-do-male-quails-fertilise-more-eggs-after-signaled-vs-control-mating-contexts">Exercise 1 (Wilcoxon signed-rank) — Do male quails fertilise more eggs after signaled vs control mating contexts?</a></li>
+  <li><a href="#exercise-2-kruskalwallis-dunn-post-hoc-do-three-types-of-quail-fetish-differ-in-fertilisation-rate" id="toc-exercise-2-kruskalwallis-dunn-post-hoc-do-three-types-of-quail-fetish-differ-in-fertilisation-rate" class="nav-link" data-scroll-target="#exercise-2-kruskalwallis-dunn-post-hoc-do-three-types-of-quail-fetish-differ-in-fertilisation-rate">Exercise 2 (Kruskal–Wallis + Dunn post-hoc) — Do three types of “quail fetish” differ in fertilisation rate?</a></li>
+  <li><a href="#exercise-3-mannwhitney-wilcoxon-rank-sum-do-men-and-women-spend-different-amounts-of-time-shopping" id="toc-exercise-3-mannwhitney-wilcoxon-rank-sum-do-men-and-women-spend-different-amounts-of-time-shopping" class="nav-link" data-scroll-target="#exercise-3-mannwhitney-wilcoxon-rank-sum-do-men-and-women-spend-different-amounts-of-time-shopping">Exercise 3 (Mann–Whitney / Wilcoxon rank-sum) — Do men and women spend different amounts of time shopping?</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Non-Parametric Tests</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><span class="section-badge">Basics</span></p>
+<p>Non-parametric tests are rank-based alternatives to t-tests and ANOVA. They don’t assume the data follow a particular distribution — making them the go-to choice when the normality assumption is seriously violated (often in small samples, or with strong outliers or floor/ceiling effects).</p>
+<p>This page covers the four most commonly used non-parametric tests for group comparison, each one a counterpart to a parametric procedure you already know:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parametric test</th>
+<th>Non-parametric equivalent</th>
+<th>Design</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Independent-samples t-test</td>
+<td><strong>Wilcoxon rank-sum test</strong> (Mann–Whitney U)</td>
+<td>Two independent groups</td>
+</tr>
+<tr class="even">
+<td>Paired-samples t-test</td>
+<td><strong>Wilcoxon signed-rank test</strong></td>
+<td>Two related measurements</td>
+</tr>
+<tr class="odd">
+<td>One-way ANOVA (between)</td>
+<td><strong>Kruskal–Wallis test</strong></td>
+<td>Three or more independent groups</td>
+</tr>
+<tr class="even">
+<td>Repeated-measures ANOVA</td>
+<td><strong>Friedman test</strong></td>
+<td>Three or more related measurements</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<section id="what-do-they-actually-do" class="level2">
+<h2 class="anchored" data-anchor-id="what-do-they-actually-do">What do they actually do?</h2>
+<p>All four tests follow the same idea: <strong>convert your raw scores to ranks, then test whether the ranks differ between groups (or conditions)</strong>. Because ranks are bounded and don’t depend on the original metric, the resulting test statistic isn’t pulled around by outliers or skew the way a <em>t</em> or <em>F</em> statistic can be.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Why “rank” the data?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Imagine one participant in your dataset reports a reaction time of 12,000 ms while everyone else is between 200–800 ms. That single value drags the mean of their group up and inflates the variance of the difference — your <em>t</em> drops, your <em>p</em> climbs, and you may miss a real effect. Replace each raw score by its rank (1 = fastest, <em>N</em> = slowest), and that outlier becomes “the slowest one” — its influence is bounded. You trade away some information (the absolute spacing of the values) for robustness against extreme scores.</p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="when-to-use-a-non-parametric-test" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-use-a-non-parametric-test">When to use a non-parametric test</h2>
+<ul>
+<li>The <strong>normality</strong> assumption of the parametric test is seriously violated, <em>especially</em> in small samples (<em>n</em> &lt; ~30) where you can’t lean on the central limit theorem</li>
+<li>You have <strong>ordinal data</strong> (e.g.&nbsp;Likert items treated strictly as ranks), where means aren’t really meaningful</li>
+<li>You have <strong>strong outliers</strong> that you don’t want to remove and that distort the parametric test</li>
+<li>Sample sizes are small enough that visual checks (Q-Q plots, histograms per group) clearly look non-normal</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Non-parametric ≠ assumption-free
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The Mann–Whitney test does <em>not</em> test for equal medians unless the two distributions have the same shape. If group A is symmetric and group B is heavily skewed, a significant Mann–Whitney result could reflect that difference in shape — not a median shift. Always inspect the distributions before interpreting.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="how-to-do-them-in-jasp" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-do-them-in-jasp">How to do them in JASP</h2>
+<p>In JASP, every non-parametric test lives alongside its parametric counterpart:</p>
+<ul>
+<li><strong>Wilcoxon rank-sum / signed-rank</strong> → <em>T-Tests</em> menu → tick the <em>Wilcoxon</em> option</li>
+<li><strong>Kruskal–Wallis</strong> → <em>ANOVA</em> menu → tick the <em>Kruskal-Wallis test</em> option (under <em>Nonparametrics</em>)</li>
+<li><strong>Friedman</strong> → <em>Repeated Measures ANOVA</em> menu → tick the <em>Friedman</em> option</li>
+</ul>
+<p>JASP reports the rank-based statistic, a <em>p</em>-value, and a rank-biserial correlation as the effect size for the Wilcoxon tests.</p>
+<hr>
+</section>
+<section id="interpreting-the-output" class="level2">
+<h2 class="anchored" data-anchor-id="interpreting-the-output">Interpreting the output</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test</th>
+<th>Statistic</th>
+<th>Effect size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Wilcoxon rank-sum</td>
+<td><em>W</em> (or <em>U</em>)</td>
+<td>rank-biserial correlation</td>
+</tr>
+<tr class="even">
+<td>Wilcoxon signed-rank</td>
+<td><em>V</em></td>
+<td>rank-biserial correlation (matched-rank)</td>
+</tr>
+<tr class="odd">
+<td>Kruskal–Wallis</td>
+<td><em>H</em> (≈ χ²)</td>
+<td>ε² or η²<sub>H</sub></td>
+</tr>
+<tr class="even">
+<td>Friedman</td>
+<td>χ²<sub>F</sub></td>
+<td>Kendall’s <em>W</em></td>
+</tr>
+</tbody>
+</table>
+<p>Report the test statistic, <em>p</em>-value, and an effect size. Where relevant, also report group medians (and IQRs) rather than means.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>APA reporting example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><em>A Wilcoxon rank-sum test showed that reaction times were significantly higher in the alcohol condition (Mdn = 540, IQR = 180) than in the control condition (Mdn = 420, IQR = 140), W = 312, p = .008, rank-biserial r = .42.</em></p>
+</div>
+</div>
+<hr>
+</section>
+<section id="post-hoc-tests" class="level2">
+<h2 class="anchored" data-anchor-id="post-hoc-tests">Post-hoc tests</h2>
+<p>A significant Kruskal–Wallis or Friedman test tells you that <em>at least two</em> groups (conditions) differ — but not which. JASP offers <strong>Dunn’s post-hoc tests</strong> with Bonferroni or Holm correction directly in the same dialog.</p>
+<hr>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
+<ul>
+<li><strong>DSUJ Chapter 16</strong> — <em>Non-parametric tests</em> — covers all four tests with JASP walkthroughs, when to choose them, and how to interpret rank-based output</li>
+<li>JASP blog — <a href="https://jasp-stats.org/2018/02/27/release-jasp-0-8-6-bayesian-non-parametric-mann-whitney-test/">Bayesian Mann-Whitney U test</a> (if you want a Bayesian non-parametric alternative)</li>
+</ul>
+<hr>
+</section>
+<section id="further-viewing-ssr-lecture-recording" class="level2">
+<h2 class="anchored" data-anchor-id="further-viewing-ssr-lecture-recording">Further viewing — SSR lecture recording</h2>
+<p>The full 2026 SSR lecture covers all four tests in one recording (captions are available in the SharePoint player). Approximate timestamps:</p>
+<ul>
+<li><a href="https://amsuni-my.sharepoint.com/:v:/g/personal/j_b_vandoorn_uva_nl/Ef2Nmky2nMJMhvGu8vcNQqkB3d4_n1ngzHSvP5JxkY8IMQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&amp;e=0xVUhj">▶ SSR Lecture 20 — Non-Parametrics</a>
+<ul>
+<li><strong>~23:48</strong> — Wilcoxon rank-sum test (Mann–Whitney U) — independent groups</li>
+<li><strong>~44:13</strong> — Wilcoxon signed-rank test — paired/repeated measurements</li>
+<li><strong>~1:12:47</strong> — Kruskal–Wallis test — three or more independent groups</li>
+<li><strong>~1:23:48</strong> — Friedman test — three or more related measurements</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="try-it-yourself" class="level2">
+<h2 class="anchored" data-anchor-id="try-it-yourself">Try it yourself</h2>
+<p>Each exercise below ends with a collapsible solution. Try the analysis first, then expand to compare.</p>
+<section id="exercise-1-wilcoxon-signed-rank-do-male-quails-fertilise-more-eggs-after-signaled-vs-control-mating-contexts" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1-wilcoxon-signed-rank-do-male-quails-fertilise-more-eggs-after-signaled-vs-control-mating-contexts">Exercise 1 (Wilcoxon signed-rank) — Do male quails fertilise more eggs after signaled vs control mating contexts?</h3>
+<p>Each male quail experienced two mating contexts (signaled vs control) in counterbalanced order, and the number of fertilised eggs was counted. Using <a href="https://discoverjasp.com/repository/dsj1_leni/leni_15a.jasp"><code>leni_15a.jasp</code></a>, run a Wilcoxon signed-rank test on the within-subject difference, and report the rank-biserial effect size alongside the medians.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>▸ Worked solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/labcoat_leni#having-a-quail-of-a-time">Labcoat Leni — Having a quail of a time?</a></li>
+<li><strong>Annotated JASP output</strong>: <a href="https://discoverjasp.com/repository/dsj1_leni/leni_15a.html">leni_15a.html</a></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-2-kruskalwallis-dunn-post-hoc-do-three-types-of-quail-fetish-differ-in-fertilisation-rate" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2-kruskalwallis-dunn-post-hoc-do-three-types-of-quail-fetish-differ-in-fertilisation-rate">Exercise 2 (Kruskal–Wallis + Dunn post-hoc) — Do three types of “quail fetish” differ in fertilisation rate?</h3>
+<p>Male quails were classified into three fetish groups based on their behaviour around a terrycloth object, and fertilisation rate was compared across the three groups. Using <a href="https://discoverjasp.com/repository/dsj1_leni/leni_15b.jasp"><code>leni_15b.jasp</code></a>, fit a Kruskal–Wallis test and follow up with <strong>Dunn’s post-hoc</strong> (Bonferroni-corrected).</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>▸ Worked solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/labcoat_leni#eggs-traordinary">Labcoat Leni — Eggs-traordinary</a></li>
+<li><strong>Annotated JASP output</strong>: <a href="https://discoverjasp.com/repository/dsj1_leni/leni_15b.html">leni_15b.html</a></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-3-mannwhitney-wilcoxon-rank-sum-do-men-and-women-spend-different-amounts-of-time-shopping" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3-mannwhitney-wilcoxon-rank-sum-do-men-and-women-spend-different-amounts-of-time-shopping">Exercise 3 (Mann–Whitney / Wilcoxon rank-sum) — Do men and women spend different amounts of time shopping?</h3>
+<p>The <a href="https://discoverjasp.com/repository/dsj1_data/data/shopping.jasp"><code>shopping.jasp</code></a> dataset has shopping-trip durations (in minutes) for male and female participants. Run a Mann–Whitney test (i.e.&nbsp;Wilcoxon rank-sum) and interpret the result alongside the group medians.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>▸ Worked solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/smart_alex#task-15.7">Smart Alex Task 15.7</a></li>
+<li><strong>Annotated JASP output</strong>: <a href="https://discoverjasp.com/repository/dsj1_alex/alex_15_07-08.html">alex_15_07-08.html</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/johnnydoorn\.github\.io\/paddling-pool\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Paddling Pool &nbsp;|&nbsp; UvA Psychology &nbsp;|&nbsp; Built with <a href="https://jasp-stats.org">JASP</a> &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

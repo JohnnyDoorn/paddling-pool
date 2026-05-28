@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Meta-Analysis – Paddling Pool</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../assets/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-f7333b7c44a7c3d55afcc11699a363c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="../assets/custom.css">
+</head>
+
+<body class="floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Paddling Pool</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../getting-started.html"> 
+<span class="menu-text">Getting Started</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-basics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Basics</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-basics">    
+        <li>
+    <a class="dropdown-item" href="../core/descriptives.html">
+ <span class="dropdown-text">Descriptive Statistics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../core/t-tests.html">
+ <span class="dropdown-text">t-Tests</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../core/anova.html">
+ <span class="dropdown-text">ANOVA</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../core/regression.html">
+ <span class="dropdown-text">Correlation &amp; Regression</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../core/nonparametrics.html">
+ <span class="dropdown-text">Non-Parametric Tests</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../core/contingency-tables.html">
+ <span class="dropdown-text">Contingency Tables</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-advanced-topics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Advanced Topics</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-advanced-topics">    
+        <li>
+    <a class="dropdown-item" href="../advanced/mediation-moderation.html">
+ <span class="dropdown-text">Mediation &amp; Moderation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/logistic-regression.html">
+ <span class="dropdown-text">Logistic Regression</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/factor-analysis.html">
+ <span class="dropdown-text">Factor Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/power-analysis.html">
+ <span class="dropdown-text">Power Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/missing-data.html">
+ <span class="dropdown-text">Missing Data &amp; Imputation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/meta-analysis.html">
+ <span class="dropdown-text">Meta-Analysis</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../advanced/measurement-invariance.html">
+ <span class="dropdown-text">Measurement Invariance</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/path-modeling.html">
+ <span class="dropdown-text">Path Modeling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/latent-class.html">
+ <span class="dropdown-text">Latent Class / Profile Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../advanced/network-analysis.html">
+ <span class="dropdown-text">Network Analysis</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/jasp-stats"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://jasp-stats.org"> <i class="bi bi-suit-heart-fill" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#when-to-use-meta-analysis" id="toc-when-to-use-meta-analysis" class="nav-link active" data-scroll-target="#when-to-use-meta-analysis">When to use meta-analysis</a></li>
+  <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts">Key concepts</a>
+  <ul class="collapse">
+  <li><a href="#effect-size-metrics" id="toc-effect-size-metrics" class="nav-link" data-scroll-target="#effect-size-metrics">Effect size metrics</a></li>
+  <li><a href="#fixed-effects-vs.-random-effects-models" id="toc-fixed-effects-vs.-random-effects-models" class="nav-link" data-scroll-target="#fixed-effects-vs.-random-effects-models">Fixed-effects vs.&nbsp;random-effects models</a></li>
+  <li><a href="#heterogeneity" id="toc-heterogeneity" class="nav-link" data-scroll-target="#heterogeneity">Heterogeneity</a></li>
+  </ul></li>
+  <li><a href="#how-to-do-it-in-jasp" id="toc-how-to-do-it-in-jasp" class="nav-link" data-scroll-target="#how-to-do-it-in-jasp">How to do it in JASP</a></li>
+  <li><a href="#reading-a-forest-plot" id="toc-reading-a-forest-plot" class="nav-link" data-scroll-target="#reading-a-forest-plot">Reading a forest plot</a></li>
+  <li><a href="#publication-bias" id="toc-publication-bias" class="nav-link" data-scroll-target="#publication-bias">Publication bias</a></li>
+  <li><a href="#moderator-analysis" id="toc-moderator-analysis" class="nav-link" data-scroll-target="#moderator-analysis">Moderator analysis</a></li>
+  <li><a href="#interpreting-the-output" id="toc-interpreting-the-output" class="nav-link" data-scroll-target="#interpreting-the-output">Interpreting the output</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further reading</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Meta-Analysis</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><span class="section-badge advanced">Advanced Topics</span></p>
+<p>Meta-analysis is a statistical method for <strong>synthesising effect sizes across multiple studies</strong>. Rather than relying on a single study, a meta-analysis pools estimates to arrive at a more precise, generalisable conclusion about an effect.</p>
+<hr>
+<section id="when-to-use-meta-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-use-meta-analysis">When to use meta-analysis</h2>
+<ul>
+<li>You have collected effect sizes (or sufficient statistics) from multiple independent studies on the same research question</li>
+<li>Your thesis includes a systematic review with a quantitative synthesis component</li>
+<li>You want to quantify <strong>heterogeneity</strong> — do effect sizes vary across studies, and if so, why?</li>
+</ul>
+<hr>
+</section>
+<section id="key-concepts" class="level2">
+<h2 class="anchored" data-anchor-id="key-concepts">Key concepts</h2>
+<section id="effect-size-metrics" class="level3">
+<h3 class="anchored" data-anchor-id="effect-size-metrics">Effect size metrics</h3>
+<p>Choose the effect size metric appropriate for your data:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Data type</th>
+<th>Effect size metric</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Two group means (continuous DV)</td>
+<td>Cohen’s <em>d</em> / Hedges’ <em>g</em></td>
+</tr>
+<tr class="even">
+<td>Correlational data</td>
+<td>Fisher’s <em>z</em>-transformed <em>r</em></td>
+</tr>
+<tr class="odd">
+<td>Frequencies / proportions</td>
+<td>Log odds ratio (log OR)</td>
+</tr>
+<tr class="even">
+<td>Means across time / conditions</td>
+<td>Standardised mean change</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="fixed-effects-vs.-random-effects-models" class="level3">
+<h3 class="anchored" data-anchor-id="fixed-effects-vs.-random-effects-models">Fixed-effects vs.&nbsp;random-effects models</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>Assumption</th>
+<th>Use when</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Fixed-effects</strong></td>
+<td>All studies estimate the same true effect</td>
+<td>Exact replications — rarely appropriate</td>
+</tr>
+<tr class="even">
+<td><strong>Random-effects</strong></td>
+<td>Studies estimate different true effects drawn from a distribution</td>
+<td>Different studies, different populations — almost always preferred</td>
+</tr>
+</tbody>
+</table>
+<p>In a <strong>random-effects model</strong>, the variance of the distribution of true effects (τ²) is estimated. A larger τ² indicates more heterogeneity.</p>
+</section>
+<section id="heterogeneity" class="level3">
+<h3 class="anchored" data-anchor-id="heterogeneity">Heterogeneity</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Statistic</th>
+<th>What it tells you</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Q</strong></td>
+<td>Total variability in effect sizes; significant <em>Q</em> indicates heterogeneity beyond sampling error</td>
+</tr>
+<tr class="even">
+<td><strong>I²</strong></td>
+<td>Percentage of total variability due to true heterogeneity (not sampling error). I² = 25% (low), 50% (moderate), 75% (high) as rough guides</td>
+</tr>
+<tr class="odd">
+<td><strong>τ</strong> (tau)</td>
+<td>The standard deviation of the distribution of true effects — in the original effect size metric</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="how-to-do-it-in-jasp" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-do-it-in-jasp">How to do it in JASP</h2>
+<p>Install the Meta-Analysis module: <strong>Modules (☰) → Available Modules → Meta-Analysis</strong>.</p>
+<p>Then go to <strong>Meta-Analysis → Classical Meta-Analysis</strong>.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>JASP Video Library — Meta-Analysis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Recordings at <a href="https://jasp-stats.github.io/jasp-video-library/Meta-Analysis.html">jasp-stats.github.io/jasp-video-library/Meta-Analysis.html</a>:</p>
+<ul>
+<li><a href="https://jasp-stats.github.io/jasp-video-library/Meta-Analysis.html#effect-size-computation">▶ Effect Size Computation</a> — computing <em>d</em>, <em>r</em>, or log OR from raw statistics</li>
+<li><a href="https://jasp-stats.github.io/jasp-video-library/Meta-Analysis.html#main-analysis">▶ Main Analysis</a> — random-effects model, forest plot, heterogeneity statistics</li>
+</ul>
+</div>
+</div>
+<hr>
+</section>
+<section id="reading-a-forest-plot" class="level2">
+<h2 class="anchored" data-anchor-id="reading-a-forest-plot">Reading a forest plot</h2>
+<p>A forest plot shows:</p>
+<ul>
+<li>Each study as a horizontal line: the <strong>point estimate</strong> (square) and its <strong>confidence interval</strong> (the line)</li>
+<li>The size of the square is proportional to the study’s <strong>weight</strong> (usually inverse variance)</li>
+<li>The <strong>diamond</strong> at the bottom shows the pooled effect and its CI</li>
+<li>The dashed vertical line is the pooled effect; the solid vertical line at 0 (or 1 for ORs) is the null</li>
+</ul>
+<hr>
+</section>
+<section id="publication-bias" class="level2">
+<h2 class="anchored" data-anchor-id="publication-bias">Publication bias</h2>
+<p>Studies with null results are less likely to be published, which can inflate meta-analytic estimates. Assess with:</p>
+<ul>
+<li><strong>Funnel plot</strong>: plot effect size vs.&nbsp;standard error — asymmetry suggests publication bias</li>
+<li><strong>Egger’s test</strong>: a regression test for funnel plot asymmetry</li>
+<li><strong>Trim-and-fill method</strong>: imputes “missing” studies to correct for asymmetry</li>
+</ul>
+<p>All of these are available in JASP’s meta-analysis module.</p>
+<hr>
+</section>
+<section id="moderator-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="moderator-analysis">Moderator analysis</h2>
+<p>If I² is high (&gt; 50%), explore <strong>moderators</strong> — study-level variables (e.g., participant age, intervention type, publication year) that might explain heterogeneity. In JASP, add these as covariates in a <strong>meta-regression</strong>.</p>
+<hr>
+</section>
+<section id="interpreting-the-output" class="level2">
+<h2 class="anchored" data-anchor-id="interpreting-the-output">Interpreting the output</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>APA reporting example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A random-effects meta-analysis of <em>k</em> = 18 studies (total <em>N</em> = 2,341) yielded a pooled effect of <em>d</em> = 0.43, 95% CI [0.28, 0.58], <em>z</em> = 5.60, <em>p</em> &lt; .001. Heterogeneity was moderate, <em>Q</em>(17) = 34.2, <em>p</em> = .007, I² = 50%. There was no evidence of publication bias based on Egger’s test (<em>t</em>(16) = 1.21, <em>p</em> = .24).</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
+<ul>
+<li>Borenstein, M., Hedges, L. V., Higgins, J. P. T., &amp; Rothstein, H. R. (2009). <em>Introduction to meta-analysis</em>. Wiley. — The standard text</li>
+<li><a href="https://training.cochrane.org/handbook">Cochrane Handbook</a> — comprehensive guide for systematic reviews in health research</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/johnnydoorn\.github\.io\/paddling-pool\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Paddling Pool &nbsp;|&nbsp; UvA Psychology &nbsp;|&nbsp; Built with <a href="https://jasp-stats.org">JASP</a> &amp; <a href="https://quarto.org">Quarto</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
