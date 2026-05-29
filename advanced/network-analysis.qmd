@@ -4,33 +4,151 @@ title: "Network Analysis"
 
 <span class="section-badge advanced">Advanced Topics</span>
 
-::: {.coming-soon}
-## 🚧
+Psychometric network analysis models psychological constructs not as reflections of a single underlying latent variable, but as **systems of directly interacting components**. Instead of asking *"is there a common factor that explains why these symptoms covary?"*, the network approach asks *"how do these symptoms interact with one another to produce the observed covariation?"*. For depression: rather than five items reflecting a single "depression" factor, insomnia might directly cause fatigue, fatigue might directly cause concentration problems, and so on (Borsboom & Cramer, 2013; Isvoranu et al., 2022).
 
-**This page is under construction.**
+---
 
-Content covering psychometric network analysis will be added here.
+## The basic object: a pairwise Markov random field (PMRF)
+
+In a PMRF — the workhorse of network psychometrics — **nodes** represent variables (typically scale items or symptoms) and **edges** represent the strength of conditional association between two variables after controlling for all other variables in the network. An edge is present between two nodes only if the corresponding variables are **conditionally dependent** given the rest; an absent edge encodes **conditional independence** (Isvoranu et al., 2022, Ch 6).
+
+This is the key distinction from a correlation matrix: in a PMRF, a connection from A to B survives only after partialling out every other variable in the system. The remaining edge therefore represents a *unique* pairwise association — not driven by some third variable elsewhere in the network.
+
+| Data type | Standard PMRF | What edges encode |
+|---|---|---|
+| Continuous | **Gaussian Graphical Model (GGM)** | Partial correlations, bounded between −1 and 1 |
+| Binary | **Ising model** | Log-linear interaction parameters |
+| Mixed (continuous + categorical + count) | **Mixed Graphical Model (MGM)** | Regression coefficients from generalised linear models |
+
+In all three, an edge-weight of 0 means conditional independence; magnitudes encode strength.
+
+---
+
+## Why estimating networks is harder than estimating correlations
+
+If you naively estimate every pairwise partial correlation in a moderately sized network, you'll **overfit**. With *p* variables there are *p*(*p* − 1)/2 potential edges, and even pure-noise data will yield many small-but-nonzero estimates. The estimated network will look dense and uninterpretable, and won't replicate.
+
+Network psychometrics handles this with **model selection / sparsification**. Isvoranu et al. (Ch 7) describe four families:
+
+| Family | Idea | Common implementation |
+|---|---|---|
+| **Thresholding** | Estimate all edges, then set those below some cutoff (e.g. *p* > .05 or |edge| < .1) to zero | `bootnet` with `threshold = "sig"` |
+| **Pruning** | Re-estimate the model after removing non-significant edges | `bootnet` post-estimation step |
+| **Model search** | Compare many candidate sparse networks and pick the best by an information criterion | `IsingFit`, custom search |
+| **Regularisation** | Penalise edge weights toward zero during estimation; the strongest edges survive | **EBIC graphical LASSO** — the default in `qgraph` and `bootnet` |
+
+The most widely used pipeline in psychology — and the one JASP's network module is built on — is the **EBIC graphical LASSO** for GGM. The LASSO shrinks small partial correlations to exactly zero; the EBIC (Extended Bayesian Information Criterion; Chen & Chen, 2008) chooses the tuning parameter γ that balances fit and sparsity. Higher γ (commonly 0.5) yields sparser, more conservative networks.
+
+::: {.callout-tip collapse=true}
+## What is "regularisation", in one paragraph?
+The standard partial-correlation estimate from a sample maximises the likelihood of the data. Regularised estimation maximises *the likelihood penalised by the sum of |edge weights|*. Edges whose true value is close to zero collapse to exactly zero rather than wobbling around it. The cost: edges whose true value is small but nonzero get *underestimated*. The benefit: the estimated network is sparser, more interpretable, and replicates better.
 :::
 
 ---
 
-## What this page will cover
+## Centrality: which nodes matter most?
 
-Psychometric network analysis conceptualises psychological constructs as **networks of interacting components** rather than as reflections of a single latent variable. For example, depression might be modelled as a network of interrelated symptoms (insomnia, fatigue, anhedonia, etc.) rather than as a single underlying factor.
+A central question in network analysis is *which nodes play a special role in the system*. Three commonly reported centrality metrics (Isvoranu et al., Ch 3):
 
-Key methods:
+| Metric | What it captures | Caveat |
+|---|---|---|
+| **Strength** (or *node strength*) | Sum of absolute edge weights touching the node — direct connectivity | Most stable; recommended as the default centrality measure |
+| **Closeness** | Inverse of the mean shortest-path length from the node to every other — how quickly information can "spread" from this node | Less stable in small/noisy networks; interpret with caution |
+| **Betweenness** | The number of shortest paths between other nodes that pass through this node — "bridge" role | Even less stable; recent work (Bringmann et al., 2019; Isvoranu et al., Ch 3) warns against over-reliance |
 
-- **GGM (Gaussian Graphical Model)**: estimates partial correlations between variables, with edges representing direct relationships after controlling for all other variables
-- **EBIC graphical LASSO**: a regularisation method to estimate sparse networks and avoid over-fitting
-- **Centrality measures**: which nodes (variables) are most central to the network? (strength, betweenness, closeness)
-- **Community detection**: identifying clusters of closely connected nodes
-
-JASP has a Network Analysis module.
+::: {.callout-warning}
+## Centrality is not the same as causal importance
+A node high on strength is *statistically central* in the estimated network — many edges touch it. That is not the same as "intervening on this node will move the rest of the system". Treat centrality as descriptive of the estimated network, not as a recipe for treatment targeting (Bringmann et al., 2019; Dablander & Hinne, 2019).
+:::
 
 ---
 
-## Useful resources in the meantime
+## How stable is your network?
 
-- Borsboom, D., & Cramer, A. O. J. (2013). Network analysis: An integrative approach to the structure of psychopathology. *Annual Review of Clinical Psychology*, 9, 91–121.
-- Epskamp, S., & Fried, E. I. (2018). A tutorial on regularized partial correlation networks. *Psychological Methods*, 23(4), 617–634.
-- The **qgraph** R package: [cran.r-project.org/package=qgraph](https://cran.r-project.org/package=qgraph)
+Network estimates have **sampling variability** — the same population could yield a fairly different estimated network in another sample. Reporting a single point estimate without quantifying uncertainty is the network-analysis equivalent of reporting a *p*-value without an effect size. Isvoranu et al. (Ch 8) and Epskamp, Borsboom & Fried (2018) describe the standard checks, all implemented in **`bootnet`**:
+
+- **Bootstrap edge weights** — produces a confidence interval around each edge weight. Edges whose CI crosses zero shouldn't be over-interpreted, even if they survived regularisation.
+- **Bootstrap difference tests** — for any two edges (or two centralities), does the bootstrap support the conclusion that one is *larger than* the other? Often surprisingly few pairs differ reliably.
+- **Case-dropping subset bootstrap** — refit the network on subsets of cases and compute the **CS-coefficient** for each centrality metric. A CS coefficient < 0.25 means that centrality is **not stable enough to interpret**; > 0.5 is considered acceptable.
+- **Network Comparison Test (NCT)** — when comparing two networks (e.g. before vs after treatment, depressed vs control), tests whether they differ in overall structure or in specific edges (van Borkulo et al., 2022).
+
+---
+
+## Beyond cross-sectional GGM
+
+Most of what's described above applies to a single cross-section. Isvoranu et al. (Parts III–IV) discuss extensions for longitudinal and dynamic settings:
+
+- **Graphical Vector Auto-Regression (GVAR)** — for *N* = 1 time series or panel data; separates *contemporaneous* and *temporal* (lagged) effects.
+- **Multi-level GVAR** — pooled across multiple participants' time series.
+- **Time-varying network models** — allows the network structure itself to change over time.
+- **Ising-model simulations** — using estimated Ising parameters to simulate how the system would behave dynamically; useful for hypothesis generation.
+
+These methods sit outside JASP's current network module and require R (`graphicalVAR`, `mlVAR`, `tvNet`).
+
+---
+
+## How to do it in JASP
+
+<!-- JASP TODO: confirm the module name (Network Analysis vs Network) and the exact menu path. -->
+
+JASP has a **Network** analysis module that wraps `qgraph` / `bootnet` for cross-sectional GGM (and Ising for binary data). The typical workflow once the module is enabled:
+
+1. **Select your indicator variables** (the questionnaire items or symptoms).
+2. **Choose the estimator** — *EBIC graphical LASSO* is the standard for continuous data; *IsingFit* for binary. <!-- JASP TODO: verify these are the exact labels JASP uses -->
+3. **Set the EBIC tuning parameter γ** (typically 0.5; values between 0 and 0.5 are common).
+4. **Plot the network** (qgraph rendering) — JASP lets you adjust the layout (Fruchterman-Reingold is the default), edge transparency, and node grouping.
+5. **Request centrality plots** — strength, closeness, betweenness, expected influence.
+6. **Request stability checks** — bootstrapped edge CIs and CS-coefficients for centrality.
+
+For longitudinal / multi-level / temporal networks, JASP does not currently have built-in tooling; switch to R.
+
+---
+
+## Interpreting and reporting
+
+::: {.callout-tip}
+## Reporting a network analysis
+Following the consensus reporting standards (Burger et al., 2023; Epskamp & Fried, 2018), at minimum report:
+
+1. **The sample**: N, demographics, how it was recruited.
+2. **The items / variables** that made up the nodes, and how they were scored.
+3. **The estimator** used (e.g. "GGM estimated with the graphical LASSO, tuning parameter selected by EBIC with γ = 0.5") and the software / package version.
+4. **The estimated network**: a figure showing nodes, edges, and edge thickness, with a clear legend. Either share the partial-correlation matrix or the figure source.
+5. **Centrality estimates**, with both the values and a stability check (CS-coefficient).
+6. **Bootstrap diagnostics**: edge confidence intervals and (where relevant) edge-difference and centrality-difference tests.
+7. **Substantive interpretation**, tempered by what the stability analysis can actually support.
+:::
+
+::: {.callout-warning}
+## Three common over-interpretation pitfalls
+- "**This node is most central, so it is most important to treat**." → Centrality describes the *estimated* network; whether intervening will move the system is a separate claim that the network alone cannot support.
+- "**The network shows that depression is caused by insomnia**." → Cross-sectional PMRFs describe conditional dependence patterns, not causal direction. Use longitudinal designs for directional claims.
+- "**The two networks are different**." → Two networks can look qualitatively different but pass a formal Network Comparison Test as statistically indistinguishable. Always test the comparison formally before claiming difference.
+:::
+
+---
+
+## Further reading
+
+- **Isvoranu, A.-M., Epskamp, S., Waldorp, L. J., & Borsboom, D. (Eds.). (2022).** *Network psychometrics with R: A guide for behavioral and social scientists.* Routledge. — Comprehensive treatment of cross-sectional GGM/Ising/MGM, longitudinal extensions, and the causal/theoretical underpinnings.
+- **Borsboom, D., & Cramer, A. O. J. (2013).** Network analysis: An integrative approach to the structure of psychopathology. *Annual Review of Clinical Psychology*, 9, 91–121. — The classic theoretical paper.
+- **Epskamp, S., & Fried, E. I. (2018).** A tutorial on regularized partial correlation networks. *Psychological Methods*, 23(4), 617–634. — The most widely cited applied tutorial.
+- **Epskamp, S., Borsboom, D., & Fried, E. I. (2018).** Estimating psychological networks and their accuracy: A tutorial paper. *Behavior Research Methods*, 50, 195–212. — Detailed walkthrough of `bootnet` stability checks.
+- **Bringmann, L. F., Elmer, T., Epskamp, S., Krause, R. W., Schoch, D., Wichers, M., Wigman, J. T. W., & Snippe, E. (2019).** What do centrality measures measure in psychological networks? *Journal of Abnormal Psychology*, 128(8), 892–903. — Why "central node = important node" is more contested than it seems.
+- **Dablander, F., & Hinne, M. (2019).** Node centrality measures are a poor substitute for causal inference. *Scientific Reports*, 9, 6846. — Centrality describes structure; it does not identify intervention targets.
+- **van Borkulo, C. D., van Bork, R., Boschloo, L., Kossakowski, J. J., Tio, P., Schoevers, R. A., Borsboom, D., & Waldorp, L. J. (2022).** Comparing network structures on three aspects: A permutation test. *Psychological Methods*, 28(6), 1273–1285. — The Network Comparison Test (NCT).
+- **Chen, J., & Chen, Z. (2008).** Extended Bayesian information criteria for model selection with large model spaces. *Biometrika*, 95(3), 759–771. — Source of the EBIC used in graphical-LASSO model selection.
+- **Burger, J., Isvoranu, A.-M., Lunansky, G., Haslbeck, J. M. B., Epskamp, S., Hoekstra, R. H. A., Fried, E. I., Borsboom, D., & Blanken, T. F. (2023).** Reporting standards for psychological network analyses in cross-sectional data. *Psychological Methods*, 28(4), 806–824. — Current reporting checklist for cross-sectional networks.
+
+---
+
+## R packages worth knowing
+
+| Package | Purpose |
+|---|---|
+| `qgraph` | Network visualisation and basic GGM estimation |
+| `bootnet` | One-stop wrapper for estimation + stability checks |
+| `IsingFit` | Ising-model estimation for binary data |
+| `mgm` | Mixed Graphical Model estimation |
+| `graphicalVAR`, `mlVAR` | Temporal / longitudinal network models |
+| `NetworkComparisonTest` | Formal between-network comparison (van Borkulo et al.) |

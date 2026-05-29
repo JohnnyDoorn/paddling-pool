@@ -50,16 +50,50 @@ In a **random-effects model**, the variance of the distribution of true effects 
 
 ## How to do it in JASP
 
-Install the Meta-Analysis module: **Modules (☰) → Available Modules → Meta-Analysis**.
+Install the Meta-Analysis module: click the blue **+** icon in the top-right of the JASP window to open the module list, then enable **Meta-Analysis**.
 
-Then go to **Meta-Analysis → Classical Meta-Analysis**.
+The JASP Meta-Analysis module is a graphical interface to the R package **`metafor`** (Viechtbauer, 2010), with additional post-processing on top. Behind the scenes, every analysis maps to a `metafor` call, which means you get the full state-of-the-art set of methods — but through a point-and-click interface (Bartoš, Wagenmakers & Viechtbauer, 2025).
+
+The typical workflow has three stages: (1) compute effect sizes from the raw study results, (2) inspect the data with a funnel plot, (3) fit a meta-analytic model and visualise it with a forest plot. Each stage is its own analysis under the *Meta-Analysis* menu.
+
+### Stage 1 — Compute effect sizes from raw data
+
+Open **Meta-Analysis → Effect Size Computation**. In the *Design*, *Measurement*, and *Effect size* dropdowns, pick the configuration matching your data (e.g. *Independent groups*, *Binary*, *RR* for risk ratios; or *Independent groups*, *Continuous*, *SMD* for standardised mean differences). Then drag the relevant outcome and group-size columns into the boxes. The output panel reports how many effect sizes were computed successfully.
+
+![The *Effect Size Computation* dialog on the BCG-vaccine dataset: thirteen trials reporting positive (`tpos`) and negative (`tneg`) tuberculosis cases in vaccinated and control groups. JASP computes the log risk ratio and standard error for each study and stores them as new columns in the data.](../assets/images/blog/meta-analysis/bartos-003-000.png){fig-align="center" width=620}
+
+This stage calls `metafor::escalc()` behind the scenes — every effect-size choice that `escalc` supports (RR, OR, RD, SMD, ROM, ZCOR, PR, IR, …) is available in the dropdown. Chain multiple computations with the green **+** button if you have several outcomes.
+
+### Stage 2 — Inspect the data with a funnel plot
+
+Open **Meta-Analysis → Funnel Plot**. Drag the computed effect-size and standard-error columns into the input panel. JASP draws each study as a point in effect-size × standard-error space, with the *funnel* representing the sampling distribution under the chosen null. Asymmetry around the centre line is the visual hint of publication bias (formal tests live in the *Publication Bias / Sensitivity Analyses* section — see below).
+
+### Stage 3 — Fit a meta-analytic model and draw a forest plot
+
+Open **Meta-Analysis → Classical Meta-Analysis**. Drag *Effect Size* and *Effect Size Standard Error* into the data inputs. The defaults follow `metafor` recommendations: **REML** for the random-effects variance, and the **Knapp–Hartung** small-sample adjustment for the fixed-effects test (Knapp & Hartung, 2003). Tick *Forest Plot* to visualise; the figure renders alongside the pooled estimate, heterogeneity statistics, and the underlying `metafor` R code for reproducibility.
+
+![The *Classical Meta-Analysis* output for the BCG vaccine data. The model summary (top right) gives a pooled risk ratio of 0.49 with heterogeneity *Q*(12) = 152.23, *p* < .001. The forest plot (bottom right) shows each of the 13 trials, the diamond at the bottom is the pooled effect, and JASP exposes the `metafor` code at the bottom for export to R if needed.](../assets/images/blog/meta-analysis/bartos-005-002.png){fig-align="center" width=720}
+
+### Beyond the basics — meta-regression and moderators
+
+Drag one or more variables into the *Predictors* box of the Classical Meta-Analysis dialog to fit a **meta-regression** — the same model, but with covariates explaining between-study heterogeneity. Tick *Estimated Marginal Means and Contrasts* to get marginal means at specific predictor levels, and tick *Bubble Plot* to visualise the meta-regression slope:
+
+![A *meta-regression* on the writing-to-learn dataset (Example 2 of Bartoš et al., 2025) with two predictors. The output gives an omnibus test for each predictor (top right), individual coefficients, marginal-mean tables across levels of `feedback`, and a bubble plot of effect size against `length` with study weights encoded by bubble size.](../assets/images/blog/meta-analysis/bartos-006-004.png){fig-align="center" width=720}
+
+### Advanced models (multilevel, multivariate, cluster-robust SEs)
+
+For nested data (effect sizes within studies within research groups), open the *Random Effects / Model Components* section in the Classical Meta-Analysis dialog and add a **Nested (multilevel)** component, specifying the grouping variables at each level. For dependent effect sizes (e.g. several outcomes per study), the *Effect Size Variance-Covariance Matrix* analysis lets you specify the dependency structure that goes into the model. Both surfaces also support **cluster-robust standard errors** with one tickbox.
+
+These advanced models put JASP roughly on par with `metafor` itself for what's expressible through the GUI — multilevel, multivariate, location–scale meta-regression, and small-sample corrections are all accessible without writing a single line of R.
 
 ::: {.callout-note icon=false}
 ## JASP Video Library — Meta-Analysis
-Recordings at [jasp-stats.github.io/jasp-video-library/Meta-Analysis.html](https://jasp-stats.github.io/jasp-video-library/Meta-Analysis.html):
+Short walkthrough recordings at [jasp-stats.github.io/jasp-video-library/Meta-Analysis.html](https://jasp-stats.github.io/jasp-video-library/Meta-Analysis.html):
 
 - [▶ Effect Size Computation](https://jasp-stats.github.io/jasp-video-library/Meta-Analysis.html#effect-size-computation) — computing *d*, *r*, or log OR from raw statistics
 - [▶ Main Analysis](https://jasp-stats.github.io/jasp-video-library/Meta-Analysis.html#main-analysis) — random-effects model, forest plot, heterogeneity statistics
+
+For the full guided walkthrough on real datasets (BCG vaccines, writing-to-learn interventions, recidivism), see **Bartoš, F., Wagenmakers, E.-J., & Viechtbauer, W. (2025). Meta-Analysis with JASP, Part I: Classical Approaches.** arXiv:2509.09845. Annotated JASP files: [osf.io/mb56t](https://osf.io/mb56t/).
 :::
 
 ---
@@ -104,5 +138,32 @@ A random-effects meta-analysis of *k* = 18 studies (total *N* = 2,341) yielded a
 
 ## Further reading
 
-- Borenstein, M., Hedges, L. V., Higgins, J. P. T., & Rothstein, H. R. (2009). *Introduction to meta-analysis*. Wiley. — The standard text
-- [Cochrane Handbook](https://training.cochrane.org/handbook) — comprehensive guide for systematic reviews in health research
+- **Borenstein, M., Hedges, L. V., Higgins, J. P. T., & Rothstein, H. R. (2009).** *Introduction to meta-analysis*. Wiley. — The standard text.
+- **[Cochrane Handbook](https://training.cochrane.org/handbook)** — comprehensive guide for systematic reviews in health research.
+- **Viechtbauer, W. (2010).** Conducting meta-analyses in R with the `metafor` package. *Journal of Statistical Software*, 36(3), 1–48. — The R package JASP's Meta-Analysis module builds on.
+- **Bartoš, F., Wagenmakers, E.-J., & Viechtbauer, W. (2025).** Meta-analysis with JASP, Part I: Classical approaches. arXiv:2509.09845. — End-to-end tutorial with three worked examples (BCG vaccines, writing-to-learn, recidivism) covering effect-size computation through multilevel and multivariate models. Annotated JASP files at [osf.io/mb56t](https://osf.io/mb56t/).
+
+---
+
+## Try it yourself
+
+Meta-analysis is not part of the DSUJ Labcoat Leni / Smart Alex companion set, so there is no pre-packaged worked-solution dataset on discoverjasp. The examples below use the `metafor` package's bundled datasets, which JASP can import via the CSV/RData routes.
+
+### Exercise — Pool the BCG vaccine trials
+
+The classic meta-analysis teaching dataset is **`dat.bcg`** from the R package `metafor` — 13 trials of the BCG vaccine against tuberculosis with binary outcomes. Export it from R with `metafor::dat.bcg` and `write.csv(metafor::dat.bcg, "bcg.csv")`, then import into JASP. Fit a **random-effects** meta-analysis on the log risk ratios, request a **forest plot**, and inspect the heterogeneity statistics (Q and I²).
+
+::: {.callout-note collapse=true icon=false}
+## ▸ Worked walkthrough
+- **In R / metafor**: the `dat.bcg` example is documented in [the metafor analysis examples](https://www.metafor-project.org/doku.php/analyses) (the random-effects model with log RR is the standard demonstration).
+- **In JASP**: the [JASP Video Library — Meta-Analysis](https://jasp-stats.github.io/jasp-video-library/Meta-Analysis.html) shows the equivalent workflow end-to-end.
+:::
+
+### Exercise — Moderator analysis on the same data
+
+Using the same dataset, add **ablat** (absolute latitude of the trial) as a moderator. Does latitude explain a significant portion of the between-study heterogeneity? Reproduce the classic result that vaccine effectiveness increases with latitude.
+
+::: {.callout-note collapse=true icon=false}
+## ▸ Worked walkthrough
+- **`metafor`** users can fit this as `rma(yi, vi, mods = ~ ablat, data = dat.bcg, method = "REML")` and inspect the moderator's *p*-value, R², and residual heterogeneity. JASP's Meta-Analysis module exposes the same model via the *Moderators* input.
+:::

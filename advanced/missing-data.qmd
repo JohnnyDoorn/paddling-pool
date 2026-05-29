@@ -25,63 +25,58 @@ Before choosing a method, you need to think about *why* data are missing.
 - **MNAR**: all standard methods can produce biased results. Requires sensitivity analysis or specialised models.
 :::
 
-Testing MCAR: **Little's MCAR test** (available in SPSS and R; not yet in JASP). In practice, MCAR is often implausible — assume MAR unless you have strong reasons otherwise.
+In practice, MCAR is often implausible — assume MAR unless you have strong reasons otherwise.
 
 ---
 
-## Common approaches
+## How JASP handles missing data right now
 
-### 1. Listwise deletion (complete-case analysis)
+JASP currently offers two deletion-based approaches across the standard analysis modules.
 
-Only cases with complete data on all variables are included. This is the JASP default.
+### Listwise deletion (complete-case analysis) — the JASP default
 
-- **When it is acceptable**: MCAR and sample size remains adequate
-- **Problem**: throws away all information from partially complete cases; biased under MAR
+Only cases with complete data on all variables involved in the analysis are included.
 
-### 2. Pairwise deletion
+- **When it is acceptable**: MCAR (rare in practice), or MAR with a small proportion of missingness
+- **Problem**: throws away information from partially complete cases; **biased under MAR**; reduces sample size and statistical power
 
-Each analysis uses all cases available for the variables involved. Different analyses may use different subsets.
+### Pairwise deletion — available in some analyses (e.g., correlation matrices)
 
-- **Problem**: can lead to inconsistent estimates and negative definite correlation matrices
+Each pairwise statistic uses all cases that have valid data on the two variables involved. Different cells in a correlation matrix can therefore be based on different *n*.
 
-### 3. Mean substitution
+- **Problem**: can produce inconsistent estimates and occasionally yields correlation matrices that are not positive-definite — which then break downstream procedures like regression or factor analysis
 
-Replace missing values with the variable mean.
+### What about mean substitution?
 
-- **Avoid this**: it distorts the distribution, reduces variance, and biases correlations. It is almost never appropriate.
+Replacing missing values with the variable mean distorts the distribution, shrinks variance, and biases correlations. **Don't do it.** JASP does not offer it as a default option, and it should not be re-introduced manually.
 
-### 4. Multiple Imputation (MI) ✓ *Recommended*
+---
 
-MI creates *m* complete datasets by replacing each missing value with *m* plausible values drawn from the predictive distribution of the missing data given the observed data. Each dataset is analysed separately, and results are pooled using **Rubin's rules**.
+## What JASP does **not** currently do
 
-**Steps**:
-1. **Impute**: create *m* datasets (typically 20–100, though *m* = 5 is still common in older literature; more is better)
-2. **Analyse**: run your intended analysis on each imputed dataset
-3. **Pool**: combine estimates across datasets — JASP does this automatically
+### Multiple Imputation (MI)
 
-::: {.callout-tip}
-## Key principle
-The imputation model should include *all* variables you will use in the analysis, plus any auxiliary variables that predict missingness. A sparse imputation model produces biased results.
-:::
+MI is the recommended approach for MAR data in modern guidance — but it is **not yet available in JASP**. An integration of the R package [`mice`](https://amices.org/mice/) is in active development, but has not been released in the stable version of JASP at the time of writing. For now, MI has to be done outside JASP — in R (`mice`, `Amelia`), SPSS, or Mplus — and the pooled results reported manually.
 
-**In JASP**: go to **Missing Values → Multiple Imputation**. You can then run subsequent analyses that automatically use the imputed datasets.
+What MI does, conceptually: it creates *m* complete datasets (typically 20–100) by drawing plausible values for each missing cell from a model of the observed data; each dataset is analysed separately, and estimates are combined using **Rubin's rules** to give a single set of coefficients, standard errors, and *p*-values that correctly reflects the uncertainty introduced by missingness.
 
-### 5. Full Information Maximum Likelihood (FIML)
+### Little's MCAR test
 
-FIML estimates model parameters using all available information — including partially complete cases — without creating imputed datasets. It is the preferred approach for structural equation models (SEM) and is available in JASP's SEM module.
+Not currently in JASP. Available in SPSS, or in R via `naniar::mcar_test()`.
 
-| Approach | Valid under | JASP availability |
-|---|---|---|
-| Listwise deletion | MCAR only | Default |
-| Multiple Imputation | MAR (and MCAR) | Missing Values module |
-| FIML | MAR (and MCAR) | SEM module |
+---
+
+## FIML in structural-equation models
+
+JASP's structural-equation modelling (SEM) module is built on **lavaan**, which supports **Full Information Maximum Likelihood (FIML)** estimation under MAR. If you are fitting an SEM (path model, latent variable model, CFA), FIML is the preferred way to handle missing data: it uses all available information without imputing values. Set the missing-data option in the SEM analysis options.
 
 ---
 
 ## Diagnosing missingness in JASP
 
-1. **Descriptives**: the *N* in the descriptives table shows how many valid values each variable has. Compare to total N.
-2. **Missing value plots**: available in the Missing Values module — visualise which variables and cases have missing data, and whether missingness is patterned.
+1. **Descriptives**: the *Valid* column shows the number of non-missing values per variable. Compare to your total *N* to see where the gaps are.
+2. **By group**: split descriptives by a grouping variable to see whether missingness clusters in one group.
+3. **Detailed patterns**: for missing-value heatmaps or upset plots (which cases miss which combinations of variables), export the dataset to R and use `naniar` or `VIM`.
 
 ---
 
@@ -89,7 +84,11 @@ FIML estimates model parameters using all available information — including pa
 
 ::: {.callout-tip}
 ## Reporting missing data
-State (a) the percentage of missing data per variable, (b) the missingness mechanism assumed (MCAR/MAR/MNAR) and why, and (c) the method used to handle it. Example: "Data were missing on [variable] for 12% of participants. Little's MCAR test was non-significant (χ²(5) = 4.2, *p* = .52), and missingness appeared unrelated to observed study variables, so listwise deletion was used."
+State (a) the percentage of missing data per variable, (b) the missingness mechanism you assume (MCAR/MAR/MNAR) and why, and (c) the method used to handle it.
+
+*Example*: "Data were missing on [variable] for 12% of participants. Missingness appeared unrelated to observed study variables (assessed by comparing complete and incomplete cases on demographic and outcome variables), so listwise deletion was used."
+
+If you used multiple imputation outside JASP, also report *m* (the number of imputations), the imputation model (variables included), and the software used (e.g., R `mice` 3.x).
 :::
 
 ---

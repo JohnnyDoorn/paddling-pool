@@ -107,7 +107,9 @@ Logistic regression was used to predict survival from age and treatment group. T
 
 ## Multinomial logistic regression
 
-When the outcome has **three or more unordered categories**, use **multinomial logistic regression**. This runs separate binary logistic regressions comparing each category to a reference category. Available in JASP under **Regression → Logistic Regression** by changing the outcome type.
+When the outcome has **three or more unordered categories**, use **multinomial logistic regression**. This fits separate binary logistic regressions comparing each category to a reference category, but estimates them jointly.
+
+In JASP, multinomial logistic regression lives under the Generalized Linear Model interface. Go to **Regression → Generalized Linear Model**, set *Family* to **Other** and *Model* to **Multinomial logistic regression**, then drag the categorical outcome into *Dependent Variable* and your predictors into *Continuous Predictors* / *Categorical Predictors*.
 
 ---
 

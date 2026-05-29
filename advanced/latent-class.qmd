@@ -4,34 +4,170 @@ title: "Latent Class / Profile Analysis"
 
 <span class="section-badge advanced">Advanced Topics</span>
 
-::: {.coming-soon}
-## 🚧
+Latent Class Analysis (LCA) and Latent Profile Analysis (LPA) are **person-centred** approaches that identify unobserved subgroups in a population — "classes" or "profiles" of individuals who respond similarly across a set of indicators and differently from people in other subgroups. In contrast to **variable-centred** methods (factor analysis, regression), which describe how variables relate, LCA and LPA describe how *people* cluster (Collins & Lanza, 2010, §1.2.3).
 
-**This page is under construction.**
+| Technique | Indicator type | Typical application |
+|---|---|---|
+| **LCA** | Categorical (binary or polytomous) | Classifying respondents by symptom-presence patterns, diagnostic profiles, response-pattern groups |
+| **LPA** | Continuous | Identifying motivational profiles or trait profiles from several continuous scale scores |
 
-Content covering latent class analysis (LCA) and latent profile analysis (LPA) will be added here.
+Statistically, both are forms of **finite mixture modelling**: the assumption is that the population is a mixture of *k* unobserved subgroups, each with its own response distribution, and the data don't tell you which subgroup each respondent belongs to.
+
+---
+
+## The LCA model
+
+Following Collins & Lanza (2010, §2.5), the LCA model has two kinds of parameters:
+
+- **Latent class prevalences** (γ): the proportion of the population belonging to each class. With *C* classes, *C* − 1 are estimated (the last one is determined by 1 minus the sum).
+- **Item-response probabilities** (ρ): for each item and each response category, the probability of giving that response *conditional* on being in a particular class. With *J* items each having *R<sub>j</sub>* categories and *C* classes, *C* · Σ(*R<sub>j</sub>* − 1) item-response probabilities are estimated.
+
+The LPA analogue replaces the item-response probabilities with **within-class means and variances** for each continuous indicator.
+
+### Local independence — the defining assumption
+
+LCA assumes that **conditional on the latent class, the observed indicators are independent of each other** (Collins & Lanza, 2010, §2.5.2). Any correlation between two items is, under the model, *entirely* explained by their shared dependence on the latent class. If two items remain correlated even within a class, the local-independence assumption is violated and you'll likely need to either (a) extract more classes, (b) drop an item, or (c) freely estimate a residual covariance.
+
+::: {.callout-tip}
+## Why local independence is the LCA analogue of common-factor models
+A CFA models indicator covariances as arising from latent factors plus residuals. LCA models indicator covariances as arising entirely from class membership. Local independence is the corresponding assumption — if violated, the model is mis-specified the same way a CFA is mis-specified by an unmodelled cross-loading.
 :::
 
 ---
 
-## What this page will cover
+## Estimation
 
-Latent Class Analysis (LCA) and Latent Profile Analysis (LPA) are **person-centred** approaches that identify subgroups (classes or profiles) of individuals who are similar to each other and different from other subgroups.
+LCA and LPA parameters are estimated via **Maximum Likelihood**, almost always using the **EM algorithm** (Collins & Lanza, 2010, Ch 4). Two specifically LCA-ish estimation gotchas:
 
-| Technique | Variable type | Example |
-|---|---|---|
-| **LCA** | Categorical indicators | Classifying patients by symptom patterns (present/absent) |
-| **LPA** | Continuous indicators | Identifying motivational profiles from several continuous scale scores |
+### Label switching
 
-Both are forms of **mixture modelling** — the assumption is that the population is a mixture of *k* unobserved subgroups, and the goal is to identify those subgroups and assign individuals to them.
+The model is invariant to relabelling of the classes — calling one class "high-risk" and another "low-risk" vs the reverse gives statistically identical likelihoods. EM can converge to either labelling, and across multiple runs the labelling can change between solutions. This is harmless for the *likelihood* but it makes parameter comparisons across runs / draws messy. Report the substantive labels you've assigned to classes (based on their item-response probabilities), not the software-default numbering.
 
-**Key decisions**:
-- How many classes? Use BIC, AIC, entropy, and the Lo-Mendell-Rubin test to decide
-- Are classes meaningful and interpretable? Statistical fit is necessary but not sufficient
+### Multiple starting values are mandatory
+
+The LCA likelihood is multi-modal — local maxima are common. **Always run from many (e.g. 100–1000) random starting values** and keep the solution with the highest likelihood (Collins & Lanza, 2010, §4.4–4.5). If your "best" solution is not replicated across multiple starts, the model is empirically unidentified at that class size — try fewer classes or simplify the model.
 
 ---
 
-## Useful resources in the meantime
+## How many classes?
 
-- Masyn, K. E. (2013). Latent class analysis and finite mixture modeling. In *The Oxford handbook of quantitative methods* (Vol. 2). Oxford University Press.
-- The **Mplus** software is frequently used for complex mixture models: [statmodel.com](https://www.statmodel.com)
+This is the central question in LCA, and there is no single oracle (Collins & Lanza, 2010, §4.6). The standard workflow is to fit a *series* of solutions (1 class, 2 classes, …, *K* classes) and compare them on:
+
+### Information criteria
+- **BIC** (Bayesian information criterion) — usually the **default recommended index** for LCA; penalises model complexity more heavily than AIC and tends to favour parsimonious solutions.
+- **aBIC** (sample-size adjusted BIC; Sclove, 1987) — modified for smaller samples.
+- **AIC** — tends to over-extract classes (favours more complex models) and is less commonly used for class enumeration.
+- **CAIC** — between BIC and AIC in penalty.
+
+Lower is better for all of these. Plot them as a line across *k* and look for an **elbow** (a sharp slowing of improvement) — the *k* at the elbow is the parsimonious choice.
+
+### Likelihood-ratio tests for k vs (k − 1) classes
+The standard χ² difference test does **not** apply to comparing mixture models with different numbers of classes (regularity conditions are violated). Use instead:
+
+- **Lo-Mendell-Rubin adjusted LRT (LMR)** — a parametric correction. Significant *p* means *k* classes fit better than *k* − 1.
+- **Bootstrap Likelihood Ratio Test (BLRT)** — non-parametric; widely considered more reliable. Same interpretation.
+
+Both are available in Mplus.
+
+### G² and absolute fit (for LCA only)
+The **likelihood-ratio G² statistic** compares observed and expected response-pattern frequencies against a χ² distribution (Collins & Lanza, 2010, §4.3.2). Use with caution: with even modestly many items, the response-pattern contingency table becomes **sparse** (*N* / *W* < 5), and the χ² approximation breaks down. Sparseness is the rule, not the exception — most LCA solutions can't be tested for absolute fit this way.
+
+---
+
+## How well does each class hang together?
+
+Even after picking *k*, you should check that the classes are substantively interpretable and well-separated.
+
+### Homogeneity
+A class is **homogeneous** if its item-response probabilities are close to 0 or close to 1 — i.e. members of the class share a clear response profile (Collins & Lanza, 2010, §3.3). Probabilities clustered around .5 mean the class doesn't have a distinct profile on that item.
+
+### Latent class separation
+**Separation** is the extent to which the classes have distinguishable item-response patterns. High homogeneity *within* classes plus large differences in those probabilities *between* classes = good separation. You can have high homogeneity but poor separation (two classes are both homogeneous but look similar) — in which case the second class isn't really informative.
+
+### Posterior classification quality
+Each respondent has an estimated **posterior probability** of belonging to each class. A model with good separation will assign respondents to classes with posteriors near 1; a model with poor separation will produce posteriors near 1/*k* (essentially guessing).
+
+| Diagnostic | Definition | Threshold for "good" |
+|---|---|---|
+| **Mean posterior probability per class** | Average posterior of being in class *c*, among respondents assigned to *c* | ≥ .80 (rule of thumb) |
+| **Odds of correct classification (OCC)** | The class-specific assignment accuracy normalised by chance (Nagin, 2005) | ≥ 5 per class (Nagin, 2005, pp. 88–89) |
+| **Entropy** (Ramaswamy et al., 1993) | A single-number summary of overall classification certainty; 0 ≤ E ≤ 1 | Higher = better separation |
+
+::: {.callout-warning}
+## Don't use entropy for class enumeration
+Entropy is useful for *describing* the separation quality of a chosen model — but it tends to decrease as the number of classes increases for purely artefactual reasons. Picking the *k* with highest entropy will systematically under-extract classes. Use BIC and LRT-based tests for class enumeration, and entropy for *post-hoc* interpretation only (Collins & Lanza, 2010, §3.5).
+:::
+
+---
+
+## Beyond a single cross-section
+
+### Multiple-group LCA
+Asks whether the *same* latent class structure holds across groups (e.g. men vs women, cohorts), and whether classes are equally prevalent across them. The analogue of measurement invariance testing in CFA: fit a configural model and progressively constrain item-response probabilities to equality (Collins & Lanza, 2010, Ch 5). Partial measurement invariance is also possible (§5.10).
+
+### LCA with covariates
+Once classes are identified, you may want to predict class membership from individual-level covariates (sex, age, intervention condition) — this is a **multinomial logistic regression** of class membership on the covariates. Two ways to do this: (a) the *one-step* approach, where covariates enter the LCA model directly, and (b) the *three-step* approach (Vermunt, 2010), where you fit the LCA, assign cases to their most likely class, and regress class on covariates with a correction for assignment error. The three-step approach is now the standard recommendation (Collins & Lanza, 2010, Ch 6).
+
+### Latent Transition Analysis (LTA)
+The longitudinal extension. Each respondent is in some class at each measurement occasion, and the model estimates **transition probabilities** between classes across occasions (Collins & Lanza, 2010, Ch 7–8). Useful for studying stage-sequential development, recovery patterns, intervention effects on group membership.
+
+---
+
+## How to do it in JASP
+
+<!-- JASP TODO: verify whether JASP has any LCA/LPA functionality in its core modules, the Mixture Models module, or any community add-on. As of writing, the standard tools are Mplus and R packages. -->
+
+JASP does **not** currently have a dedicated LCA / LPA module in its standard distribution. For these analyses, the field's standard software is:
+
+- **Mplus** (Muthén & Muthén) — the de facto reference for mixture modelling. Long history; comprehensive feature set (multiple-group, covariates, three-step, LTA, growth mixture models). Commercial.
+- **R `poLCA`** (Linzer & Lewis, 2011) — open-source LCA for categorical indicators.
+- **R `tidyLPA`** (Rosenberg et al.) — accessible LPA wrapper around `mclust`; integrates with the tidyverse.
+- **R `mclust`** (Scrucca et al., 2016) — general-purpose Gaussian mixture modelling, including LPA.
+- **R `depmixS4`** — LCA + hidden Markov models for transitions over time.
+- **Latent GOLD** — another commercial alternative with a strong GUI.
+
+If you're new to mixture modelling and have continuous indicators, `tidyLPA` is the gentlest entry point. For categorical LCA in R, `poLCA` is the standard.
+
+---
+
+## Reporting
+
+::: {.callout-tip}
+## Reporting an LCA / LPA study
+At minimum:
+
+1. **Conceptual rationale**: why a person-centred / mixture approach for this question, not a variable-centred one.
+2. **Indicators**: the set of items / scales used as class indicators, with descriptive statistics and (for LCA) frequency tables.
+3. **Model selection**: a table of fit indices (BIC, aBIC, AIC, LMR, BLRT, entropy) for *k* = 1, 2, …, *K* classes; explicit justification for the chosen *k* combining statistical fit and interpretability.
+4. **Estimation details**: software + version, number of random starting values used, whether the best log-likelihood was replicated.
+5. **Class characterisation**: the item-response probabilities (LCA) or within-class means and SDs (LPA), in a table or profile plot; a substantive label per class.
+6. **Class quality**: mean posterior probability per class, OCC values, and overall entropy.
+7. **Substantive interpretation**: what each class represents, with appropriate hedging if separation is modest.
+8. For multi-group / covariate / longitudinal extensions: details of which approach was used (one-step vs three-step; configural vs invariant; etc.).
+:::
+
+---
+
+## Further reading
+
+- **Collins, L. M., & Lanza, S. T. (2010).** *Latent class and latent transition analysis: With applications in the social, behavioral, and health sciences.* Wiley. — The standard reference: model + notation (Ch 2), measurement quality (Ch 3), estimation and model selection (Ch 4), multi-group LCA (Ch 5), covariates (Ch 6), latent transition models (Ch 7–8).
+- **Masyn, K. E. (2013).** Latent class analysis and finite mixture modeling. In T. D. Little (Ed.), *The Oxford handbook of quantitative methods* (Vol. 2). Oxford University Press. — Compact chapter-length treatment with up-to-date model-selection recommendations.
+- **Hagenaars, J. A., & McCutcheon, A. L. (Eds.). (2002).** *Applied latent class analysis.* Cambridge University Press. — Edited handbook with substantive applications.
+- **Nylund-Gibson, K., & Choi, A. Y. (2018).** Ten frequently asked questions about latent class analysis. *Translational Issues in Psychological Science*, 4(4), 440–461. — Excellent FAQ-style introduction.
+- **Berlin, K. S., Williams, N. A., & Parra, G. R. (2014).** An introduction to latent variable mixture modeling (part 1): Overview and cross-sectional latent class and latent profile analyses. *Journal of Pediatric Psychology*, 39(2), 174–187. — Accessible applied tutorial.
+- **Vermunt, J. K. (2010).** Latent class modeling with covariates: Two improved three-step approaches. *Political Analysis*, 18(4), 450–469. — The three-step covariate approach.
+- **Nagin, D. S. (2005).** *Group-based modeling of development.* Harvard University Press. — Source of the OCC diagnostic.
+
+---
+
+## Software notes
+
+| Software | LCA | LPA | LTA | Notes |
+|---|---|---|---|---|
+| **Mplus** | ✓ | ✓ | ✓ | Field standard for mixture modelling; commercial |
+| **R: `poLCA`** | ✓ | ✗ | ✗ | Open-source LCA for categorical indicators |
+| **R: `tidyLPA`** | ✗ | ✓ | ✗ | Open-source LPA wrapper around `mclust` |
+| **R: `mclust`** | ✗ | ✓ | ✗ | General Gaussian mixture modelling |
+| **R: `depmixS4`** | ✓ | ✓ | ✓ | Includes hidden Markov / transition models |
+| **Latent GOLD** | ✓ | ✓ | ✓ | Commercial GUI alternative to Mplus |
+| **JASP** | <!-- JASP TODO: confirm whether any LCA/LPA module is available --> | | | Not standard in core JASP at present |

@@ -23,10 +23,11 @@ Each topic page follows the same structure:
 - **What is it?** — a short conceptual overview
 - **When to use it** — decision guide: which research question, which data type
 - **Assumptions** — what to check before interpreting your results
-- **How to do it in JASP** — screen recordings
+- **How to do it in JASP** — menu paths and links to short screen recordings in the JASP Video Library
 - **Interpreting the output** — what to report and how to read the numbers
-- **Further reading** — DSUJ chapter, blog posts
-- **Try it yourself** — downloadable JASP file and practice exercises
+- **Further reading** — textbook chapters (DSUJ, Agresti, plus discipline-specific references on the advanced pages) and blog posts
+- **Further viewing** — links to the full SSR lecture recording for the topic, where applicable
+- **Try it yourself** — concrete exercises with a linked JASP dataset and a collapsible worked solution
 :::
 
 ---
@@ -93,10 +94,22 @@ Understand the types of missingness (MCAR, MAR, MNAR) and when multiple imputati
 #### [Meta-Analysis](advanced/meta-analysis.qmd)
 Synthesise effect sizes across studies. Forest plots, heterogeneity, and moderator analysis in JASP.
 :::
+::: {.topic-card}
+#### [Measurement Invariance](advanced/measurement-invariance.qmd)
+Test whether a scale behaves the same way across groups. Configural, metric, scalar, and strict invariance via multi-group CFA.
 :::
-
-::: {.callout-note}
-**Coming soon:** Measurement Invariance, Path Modeling, Latent Class / Profile Analysis, and Network Analysis. These are more specialised topics currently being developed.
+::: {.topic-card}
+#### [Path Modeling](advanced/path-modeling.qmd)
+Model systems of directed relationships among variables. Recursive vs. nonrecursive models, direct and indirect effects, full SEM.
+:::
+::: {.topic-card}
+#### [Latent Class / Profile Analysis](advanced/latent-class.qmd)
+Identify unobserved subgroups of people from categorical (LCA) or continuous (LPA) indicators. A person-centred approach.
+:::
+::: {.topic-card}
+#### [Network Analysis](advanced/network-analysis.qmd)
+Conceptualise constructs as networks of interacting components rather than reflections of a latent factor. GGM, regularisation, centrality.
+:::
 :::
 
 ---
@@ -105,7 +118,7 @@ Synthesise effect sizes across studies. Forest plots, heterogeneity, and moderat
 
 | Resource | Description |
 |---|---|
-| [Discovering Statistics Using JASP (DSUJ)](https://profandyfield.com/discoverse/dsuj/) | The main textbook this site is built around. Available in the UvA library. |
-| [How to Use JASP](https://jasp-stats.org/how-to-use-jasp/) | Step-by-step blog posts for specific analyses on the JASP website. |
 | [JASP Download](https://jasp-stats.org/download/) | Free, open-source statistical software used throughout this site. |
-| [JASP Video Library](https://jasp-stats.org) | The full collection of screen recordings we draw from. |
+| [Discovering Statistics Using JASP (DSUJ)](https://discoverjasp.com/) | The main textbook this site is built around (available in the UvA library). The linked companion site, *discoverjasp.com*, hosts open-access materials including datasets, worked examples, Labcoat Leni studies, and Smart Alex exercises that will be referenced throughout the paddling pool. |
+| [How to Use JASP](https://jasp-stats.org/how-to-use-jasp/) | Step-by-step blog posts and gifs for specific analyses on the JASP website. |
+| [JASP Video Library](https://jasp-stats.github.io/jasp-video-library/) | The full collection of screen recordings we draw from, illustrating where to click in JASP. |

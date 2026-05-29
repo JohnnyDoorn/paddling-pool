@@ -42,7 +42,6 @@ website:
             href: advanced/missing-data.qmd
           - text: "Meta-Analysis"
             href: advanced/meta-analysis.qmd
-          - text: "---"
           - text: "Measurement Invariance"
             href: advanced/measurement-invariance.qmd
           - text: "Path Modeling"

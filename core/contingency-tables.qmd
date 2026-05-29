@@ -100,17 +100,6 @@ The chi-square statistic only *approximately* follows the χ² distribution; the
 
 ---
 
-## Bayesian alternative
-
-JASP also offers a **Bayesian contingency table** analysis, which returns a Bayes factor for the alternative model (variables are related) over the null (independent). Useful when you want to quantify evidence for *either* hypothesis, including evidence *for* independence.
-
-::: {.callout-note icon=false}
-## JASP Video Library — Bayesian Contingency Tables
-- [▶ Bayesian Contingency Tables](https://jasp-stats.github.io/jasp-video-library/All_Frequencies.html#bayesian-contingency-main-analysis) — setting up the analysis, interpreting the Bayes factor
-:::
-
----
-
 ## Further reading
 
 - **DSUJ Chapter 19** — *Categorical data* — chi-square, Fisher's exact, and odds ratios with JASP walkthroughs
@@ -150,9 +139,9 @@ Three groups of professionals rated each other on three different happiness-rela
 - **Annotated JASP output**: [leni_16b.html](https://discoverjasp.com/repository/dsj1_leni/leni_16b.html)
 :::
 
-### Exercise 3 (chi-square + Bayesian alternative) — Does time-pressure at work affect off-hours psychological detachment?
+### Exercise 3 (chi-square on a large sample) — Does time-pressure at work affect off-hours psychological detachment?
 
-Sonnentag (2012) surveyed 1709 employees on their work time-pressure (5 ordered levels) and whether they could psychologically *detach* from work in their off-hours. Using [`sonnentag_2012.jasp`](https://discoverjasp.com/repository/dsj1_data/data/sonnentag_2012.jasp), set up the contingency table with `time_pressure` in *Rows*, `detachment` in *Columns*, and `frequency` in *Counts*. Run a classical chi-square test **and** a Bayesian contingency-table analysis — compare what the *p*-value and the Bayes factor each tell you.
+Sonnentag (2012) surveyed 1709 employees on their work time-pressure (5 ordered levels) and whether they could psychologically *detach* from work in their off-hours. Using [`sonnentag_2012.jasp`](https://discoverjasp.com/repository/dsj1_data/data/sonnentag_2012.jasp), set up the contingency table with `time_pressure` in *Rows*, `detachment` in *Columns*, and `frequency` in *Counts*. Run the chi-square test, report Cramér's V, and inspect the standardised residuals to see which levels of time-pressure drive the association.
 
 ::: {.callout-note collapse=true icon=false}
 ## ▸ Worked solution

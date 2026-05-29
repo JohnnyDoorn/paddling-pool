@@ -13,3 +13,5 @@ _site/
 2026-SSR-Recordings/
 snippets/
 lecture-recording-links
+
+/.quarto/

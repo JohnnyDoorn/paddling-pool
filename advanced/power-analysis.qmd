@@ -4,122 +4,171 @@ title: "Power Analysis"
 
 <span class="section-badge advanced">Advanced Topics</span>
 
-A **power analysis** determines the sample size needed to detect an effect of a given size with a specified probability, given a chosen significance threshold. Running a power analysis before data collection is a core component of preregistration and transparent science.
+A **power analysis** answers the question: *given my study design, what sample size will I need to detect the effect I care about?* Done before data collection, it is the standard tool for sample-size justification in (pre-)registered studies and a core component of transparent statistical practice (Lakens, 2022).
 
 ---
 
-## Key concepts
+## Type I and Type II errors
 
-**Statistical power** (1 − β) is the probability of correctly rejecting a false null hypothesis. Conventional minimum: **.80** (80%), meaning a 20% chance of a false negative.
+A statistical test can be wrong in two ways (DSUJ §2.10.7; Agresti, Franklin & Klingenberg §9.4):
 
-Four quantities are mathematically related — if you know three, you can calculate the fourth:
-
-| Quantity | Symbol | Typical default |
+| | Reality: H₀ true (no effect) | Reality: H₁ true (effect exists) |
 |---|---|---|
-| Sample size | *N* | To be determined |
-| Effect size | *d*, *f*, *r*, etc. | From prior research or theory |
-| Significance level | α | .05 |
-| Power | 1 − β | .80 |
+| **Decision: don't reject H₀** | Correct | **Type II error** (false negative) |
+| **Decision: reject H₀** | **Type I error** (false positive) | Correct |
 
-Most commonly: specify the expected effect size, α = .05, power = .80 → solve for *N*.
+- **α** = probability of a Type I error. By convention .05.
+- **β** = probability of a Type II error. Cohen (1988, 1992) suggested .20 as the maximum acceptable value, and this has become the conventional minimum — meaning we are willing to miss a real effect at most once every five replications.
+- **Power** = 1 − β = the probability of *correctly* rejecting a false null hypothesis. Conventional minimum: **.80** (= 80%).
 
----
-
-## Effect sizes for power analysis
-
-Use the effect size metric appropriate for your planned analysis:
-
-| Analysis | Effect size |
-|---|---|
-| t-test | Cohen's *d* |
-| ANOVA | Cohen's *f* (or η²: f = √(η²/(1−η²))) |
-| Correlation / regression | Pearson's *r* or Cohen's *f²* |
-| Chi-square | Cohen's *w* |
-
-**Where do I get the expected effect size?**
-
-1. **Previous studies**: the effect size from published research on the same or closely related topic
-2. **Meta-analyses**: if one exists for your research question, use the meta-analytic estimate
-3. **Pilot data**: run a small pilot study first (though pilot estimates are unreliable with small N)
-4. **Smallest effect size of interest (SESOI)**: what is the minimum effect that would be theoretically or practically meaningful? This is increasingly recommended over using published estimates, which may be inflated.
-
-::: {.callout-warning}
-## Publication bias inflates effect sizes
-Published effect sizes are often inflated due to selective reporting. Using them naively will lead to underpowered studies. Where possible, use meta-analytic estimates or pre-specify a conservative (smaller) effect size.
+::: {.callout-tip collapse=true}
+## The trade-off between α and β
+For a fixed sample size, making α smaller (e.g., .01 instead of .05) raises the bar for "evidence" and so reduces Type I error — but increases Type II error, because real effects also produce smaller test statistics. To shrink both α *and* β simultaneously, you need a larger sample size. Agresti, Franklin & Klingenberg (§9.4) describe this as "the two probabilities are inversely related" for a given *N*. Power analysis is the formal calculation of how large *N* must be to keep both errors acceptably small (Cohen, 1988).
 :::
 
 ---
 
-## Tools for power analysis
+## The four quantities
 
-### G*Power (recommended)
+Power, α, sample size, and effect size are mathematically linked: given any **three**, the fourth is determined. Most planning questions fall into one of three modes:
 
-[G*Power](https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower) is free, widely used, and covers all common analyses including t-tests, ANOVA, regression, and correlation.
+| Mode | What you fix | What you solve for | When to use |
+|---|---|---|---|
+| **A priori** | Effect size, α, power | **Sample size** *N* | Planning a new study |
+| **Sensitivity** | *N*, α, power | **Minimum detectable effect size** | When *N* is constrained (clinical trial with limited recruitment); answers "what is the smallest effect I could realistically catch?" |
+| **Post hoc / achieved** | *N*, effect size, α | **Power** | Reporting realised power for a published study |
 
-Steps:
-1. Select **Test family** (e.g., *t*-tests)
-2. Select **Statistical test** (e.g., *Means: Difference between two independent means*)
-3. Set **Type of power analysis** to *A priori* (for planning)
-4. Enter effect size, α, and desired power → click **Calculate**
-
-### JASP: jpower module
-
-JASP includes a **jpower** module for power analysis. Install it via **Modules (☰) → Available Modules → jpower**.
-
-### Online tools
-
-- [pwr2ppl](https://jakewestfall.shinyapps.io/pwr2ppl/) — Shiny app for a variety of designs
-- [Superpower](https://arcaldwell49.shinyapps.io/anova-exact/) — power for ANOVA designs including repeated measures
-- [WebPower](https://webpower.psychstat.org) — comprehensive online power calculator
+A priori power analysis is the dominant mode and the only one suitable for sample-size *justification* in pre-registration. Post-hoc power calculated from the *observed* effect size in the same data has well-known mathematical problems and should not be reported (Lakens, 2022).
 
 ---
 
-## Power analysis for common designs
+## The central question: what effect size?
 
-### Independent-samples t-test
+Effect size is the input that drives sample-size estimation. The temptation is to use a published estimate from a similar study; the problem is that **published effect sizes are systematically inflated** by publication bias and other selection processes. Lakens (2022) argues for a different framing.
 
-Effect size: Cohen's *d* = (μ₁ − μ₂) / σ_pooled
+### Smallest effect size of interest (SESOI)
 
-| Desired power | *d* = 0.2 (small) | *d* = 0.5 (medium) | *d* = 0.8 (large) |
+The most defensible approach is to plan for the **smallest effect size that would be theoretically or practically meaningful** to detect. This is what the JASP Power module asks for in its UI — the input is literally labelled *"Minimal effect size of interest"* (δ). Picking the SESOI requires you to commit, before data collection, to what would count as a non-trivial effect — exactly the substantive question you should be answering anyway.
+
+In practice, SESOI is justified by:
+
+1. **Theoretical considerations** — what is the minimum effect that the theory would predict, or the minimum effect that would change theory if observed?
+2. **Practical / clinical relevance** — what is the smallest effect that would matter for the intervention, the decision, or the patient?
+3. **Resource constraints** — what is the smallest effect that your available *N* could realistically detect, used in a sensitivity analysis to declare what you can and cannot say?
+4. **Cohen's benchmarks** — small / medium / large conventions per analysis type. Useful as a fallback when no substantive anchor is available, but explicitly second-best.
+
+| Analysis | Effect-size metric | Cohen's "small" | "medium" | "large" |
+|---|---|---|---|---|
+| t-test | Cohen's *d* | 0.20 | 0.50 | 0.80 |
+| Correlation | *r* | .10 | .30 | .50 |
+| ANOVA | Cohen's *f* | 0.10 | 0.25 | 0.40 |
+| Multiple regression | *f²* | 0.02 | 0.15 | 0.35 |
+| Chi-square | *w* | 0.10 | 0.30 | 0.50 |
+
+::: {.callout-warning}
+## Don't reverse-engineer the effect size to fit your sample
+Picking the effect size that *exactly* fits your available *N* at .80 power tells you nothing other than that you've found a tautology. Always commit to the SESOI on substantive grounds *first*, then solve for *N*. If your available *N* can't support that SESOI, run a sensitivity analysis and be honest about the limits in the discussion.
+:::
+
+---
+
+## How to do it in JASP — the **Power** module
+
+JASP's **Power** module (`jaspPower`, originally based on Richard Morey's `jpower`) is installed by clicking the blue **+** icon in the top-right of the JASP window to open the module list, then enabling **Power**. Once enabled, it appears as a top-level analysis menu.
+
+The module is built around the **`pwr` R package** and handles closed-form power calculations for the following tests:
+
+| Test | What it computes |
+|---|---|
+| **Independent-samples t-test** | Two-group comparison; supports unequal sample-size ratio (N₁/N₂) |
+| **Paired-samples t-test** | Within-subjects design |
+| **One-sample t-test** | Sample mean vs known value |
+| **One-sample z-test** | When σ is known |
+| **One-sample proportion test** | Single proportion vs hypothesised value |
+| **Two-samples proportion test** | Two independent proportions |
+| **One-sample variance-ratio test** | Sample variance vs reference |
+| **Two-samples variance-ratio test** | Comparing two variances |
+
+::: {.callout-warning}
+## ANOVA, regression, and chi-square are not (yet) in jaspPower
+At the time of writing, the module covers the tests above. ANOVA, multiple regression, and chi-square power analyses are not yet implemented in JASP — see the "Complementary tools" section below.
+:::
+
+### Workflow
+
+1. Pick the **Statistical test** from the top dropdown.
+2. Pick what to **calculate**: *Sample Size N*, *Power*, or *Effect size* — this sets the mode (a priori, post hoc, or sensitivity).
+3. Enter the other two quantities (e.g., for a priori: effect size + power; α defaults to .05).
+4. Choose the **alternative hypothesis** (two-sided / one-sided).
+5. For two-group tests, set the **sample-size ratio** (N₁/N₂; defaults to 1).
+6. Tick the **plots** you want under *Plots*:
+   - **Power contour plot** — the trade-off surface across effect size and *N*.
+   - **Power demonstration** — overlaid null and alternative sampling distributions, with the shaded rejection region — useful for teaching.
+   - **Power curve by effect size** — power as a function of effect size for the chosen *N*.
+   - **Power curve by N** — power as a function of *N* for the chosen effect size.
+   - **Explanatory text** — JASP writes out a plain-language interpretation of the calculation.
+7. (Optional) Open the **Data Generation** section to simulate a synthetic dataset matching your power-analysis parameters — useful for piloting an analysis pipeline before real data arrive.
+
+---
+
+## Complementary tools for the tests jaspPower doesn't cover yet
+
+| Tool | Strengths | When to use |
+|---|---|---|
+| [**G\*Power**](https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower) | Free; comprehensive coverage including **ANOVA**, **multiple regression**, **logistic regression**, **chi-square**, **MANOVA**. | When you need a test that jaspPower does not yet implement. |
+| **R: `pwr` package** | Underpins jaspPower; offers t-tests, one-way ANOVA, correlation, two-proportion, χ², general linear model, scriptable. | Programmatic / batch power calculations. |
+| **R: `Superpower`** | Simulation-based power for factorial ANOVA and repeated-measures designs. | Complex ANOVA designs beyond G*Power's analytic formulas. |
+| [**WebPower**](https://webpower.psychstat.org) | Comprehensive online calculator including SEM and multilevel models. | Quick power calc without installing anything; advanced models. |
+
+---
+
+## Quick-reference tables
+
+These are convenience values from `pwr` (α = .05, two-sided, power = .80 unless noted). They are not substitutes for running the actual calculation — but useful for sanity-checking the order of magnitude.
+
+### Independent-samples t-test (per group)
+
+| Power | *d* = 0.2 (small) | *d* = 0.5 (medium) | *d* = 0.8 (large) |
 |---|---|---|---|
-| .80 | *N* = 394/group | *N* = 64/group | *N* = 26/group |
-| .90 | *N* = 527/group | *N* = 85/group | *N* = 34/group |
-
-*(Two-tailed, α = .05, equal group sizes)*
+| .80 | *N* = 394 / group | *N* = 64 / group | *N* = 26 / group |
+| .90 | *N* = 527 / group | *N* = 86 / group | *N* = 34 / group |
 
 ### Pearson correlation
 
-| Desired power | *r* = .10 (small) | *r* = .30 (medium) | *r* = .50 (large) |
+| Power | *r* = .10 (small) | *r* = .30 (medium) | *r* = .50 (large) |
 |---|---|---|---|
-| .80 | *N* = 782 | *N* = 84 | *N* = 28 |
+| .80 | *N* = 783 | *N* = 84 | *N* = 29 |
 
-### One-way ANOVA (3 groups)
+### One-way ANOVA, 3 groups (total *N*)
 
-Effect size: Cohen's *f* = 0.10 (small), 0.25 (medium), 0.40 (large)
-
-| Desired power | *f* = 0.10 | *f* = 0.25 | *f* = 0.40 |
+| Power | *f* = 0.10 (small) | *f* = 0.25 (medium) | *f* = 0.40 (large) |
 |---|---|---|---|
-| .80 | *N* = 969 total | *N* = 159 total | *N* = 66 total |
-
----
-
-## Sensitivity analysis
-
-If your sample size is already fixed (e.g., a clinical trial limited by patient availability), conduct a **sensitivity analysis**: given my N, α, and desired power, what is the minimum effect size I can detect? This helps set realistic expectations.
+| .80 | *N* = 969 | *N* = 159 | *N* = 66 |
 
 ---
 
 ## Reporting power analysis
 
 ::: {.callout-tip}
-## APA reporting example
-A priori power analysis (G*Power 3.1) indicated that a sample of *N* = 128 (64 per group) would provide 80% power to detect a medium-sized effect (*d* = 0.50) with α = .05 (two-tailed independent-samples *t*-test).
+## What a sample-size justification should contain (Lakens, 2022)
+1. **The smallest effect size of interest** and its justification — why this size and not smaller.
+2. **The intended analysis** (test, alpha level, alternative hypothesis).
+3. **The desired power** and the calculation mode (a priori, sensitivity).
+4. **The software** used (e.g., "JASP 0.18 Power module" or "G\*Power 3.1") with version.
+5. **The resulting target *N*** (for a priori) or **minimum detectable effect** (for sensitivity).
+6. **Any deviations** from the plan after data collection, with rationale.
+
+*Example:* "We aimed to detect a between-groups effect of at least *d* = 0.40 — the smallest effect we considered theoretically meaningful, anchored on a meta-analytic estimate of the literature minus a publication-bias correction. An a priori power analysis with the JASP Power module (α = .05 two-sided, 1 − β = .80, two-sample t-test) returned a required *N* = 100 per group (200 total). We pre-registered this target and collected to that *N*."
 :::
 
 ---
 
 ## Further reading
 
-- Cohen, J. (1992). A power primer. *Psychological Bulletin*, 112(1), 155–159. — The classic reference
-- [G*Power user manual](https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower)
-- Lakens, D. (2022). Sample size justification. *Collabra: Psychology*. — A modern guide to justifying sample sizes
+- **Lakens, D. (2022).** Sample size justification. *Collabra: Psychology*, 8(1), 33267. — The current best-practice guide. Reframes power analysis around the **smallest effect size of interest** rather than published effect sizes.
+- **Cohen, J. (1988).** *Statistical power analysis for the behavioral sciences* (2nd ed.). Lawrence Erlbaum. — The foundational reference; source of the small/medium/large conventions.
+- **Cohen, J. (1992).** A power primer. *Psychological Bulletin*, 112(1), 155–159. — The concise version of Cohen (1988); still widely cited and still useful.
+- **DSUJ §2.10.7 (Type I and Type II errors).** — The conceptual framing used here; reproduces Cohen's β ≤ .20 convention.
+- **Agresti, Franklin & Klingenberg §9.4 + §9.6 (Decisions, errors, and power).** — Accessible textbook treatment of the conceptual foundations.
+- **Faul, F., Erdfelder, E., Lang, A.-G., & Buchner, A. (2007).** G\*Power 3: A flexible statistical power analysis program for the social, behavioral, and biomedical sciences. *Behavior Research Methods*, 39(2), 175–191.
+- **Champely, S. (2020).** `pwr`: Basic Functions for Power Analysis. R package — the engine behind jaspPower.

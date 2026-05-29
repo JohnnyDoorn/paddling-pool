@@ -132,16 +132,27 @@ Cronbach's α is available in JASP under **Factor → Reliability Analysis**. No
 
 ## Further reading
 
-- **DSUJ Chapter** on factor analysis (check your edition) — EFA and CFA with JASP
-- Brown, T. A. (2015). *Confirmatory factor analysis for applied research*. Guilford Press.
+- **DSUJ** chapter on factor analysis (check your edition) — EFA and CFA in JASP with worked examples.
+- **Brown, T. A. (2015).** *Confirmatory factor analysis for applied research* (2nd ed.). Guilford Press. — The applied CFA standard; chapters 1–5 cover the EFA/CFA distinction, model specification, fit, and revision.
+- **Kline, R. B. (2023).** *Principles and practice of structural equation modeling* (5th ed.). Guilford Press. — Chapter 14 gives a compact CFA treatment in the broader SEM context.
+- For measurement equivalence across groups, see the [Measurement Invariance](measurement-invariance.qmd) page.
 
 ---
 
 ## Try it yourself
 
-- **Dataset**: [exam_anxiety.jasp](https://discoverjasp.com/repository/dsj1_data/data/exam_anxiety.jasp) — exam performance, anxiety, and revision time. Explore correlations between scale variables as a starting point before fitting a factor model.
+The DSUJ companion site (Labcoat Leni / Smart Alex) does not include a packaged factor-analysis worked solution at the time of writing, so the exercise below uses a smaller JASP demo dataset and points to the rendered output as a check.
 
-::: {.callout-note}
-## DSUJ exercises
-The factor analysis chapter self-tests and Smart Alex tasks are available with solutions at the [discoverjasp companion site](https://discoverjasp.com/pages/smart_alex).
+### Exercise — Explore the latent structure of an exam-anxiety dataset
+
+Using [`exam_anxiety.jasp`](https://discoverjasp.com/repository/dsj1_data/data/exam_anxiety.jasp), inspect the correlation matrix among the continuous variables. Then fit an **EFA** and decide on the number of factors using the parallel-analysis option and the scree plot. Finally, fit a single-factor **CFA** and inspect the fit indices.
+
+::: {.callout-note collapse=true icon=false}
+## ▸ Annotated DSUJ output
+- [exam_anxiety.html](https://discoverjasp.com/repository/dsj1_data/html/exam_anxiety.html) — the DSUJ-rendered output for this dataset (descriptives and correlations; not a full factor-analysis walkthrough).
+:::
+
+::: {.callout-tip}
+## For more substantial practice
+A genuine multi-item scale is more informative than a four-variable demo. The **Big Five Inventory** (50 Likert items, freely available from the [Open Psychometrics Project](https://openpsychometrics.org/_rawdata/)) is a classic worked example: import the CSV into JASP, fit an EFA with five factors and oblimin rotation, and inspect whether the resulting loadings recover the OCEAN dimensions.
 :::
