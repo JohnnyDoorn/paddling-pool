@@ -55,7 +55,7 @@ Quantify relationships and predict outcomes. Pearson correlation, simple regress
 :::
 ::: {.topic-card}
 #### [Non-Parametric Tests](core/nonparametrics.qmd)
-Rank-based alternatives when normality is violated. Mann–Whitney, Wilcoxon signed-rank, Kruskal–Wallis, and Friedman.
+Rank-based alternatives for ordinal data, small samples, strong outliers, or non-normal distributions. Mann–Whitney (independent t-test), Wilcoxon signed-rank (paired t-test), Kruskal–Wallis (one-way ANOVA), and Friedman (repeated-measures ANOVA).
 :::
 ::: {.topic-card}
 #### [Contingency Tables](core/contingency-tables.qmd)
@@ -109,6 +109,23 @@ Identify unobserved subgroups of people from categorical (LCA) or continuous (LP
 ::: {.topic-card}
 #### [Network Analysis](advanced/network-analysis.qmd)
 Conceptualise constructs as networks of interacting components rather than reflections of a latent factor. GGM, regularisation, centrality.
+:::
+:::
+
+---
+
+## Reference pages
+
+Two cross-cutting pages that pull together material referenced from every topic.
+
+::: {.topic-grid}
+::: {.topic-card}
+#### [Which test should I use?](which-test.qmd)
+A decision flowchart and lookup table from your research question and data to the matching test, with links into the relevant topic page.
+:::
+::: {.topic-card}
+#### [Reporting & effect sizes](reporting.qmd)
+APA-style reporting templates for every test on this site, alongside the standard effect-size conventions and the most common reporting mistakes to avoid.
 :::
 :::
 

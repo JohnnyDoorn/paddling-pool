@@ -1,0 +1,103 @@
+---
+title: "Which test should I use?"
+---
+
+<span class="section-badge">Reference</span>
+
+Picking the right analysis is mostly a matter of answering four questions about your design and your variables. The flowchart below walks through the most common cases; if your design fits neatly into one of them, the page link at the bottom of each branch is where to go next.
+
+::: {.callout-tip}
+## The four questions
+1. **What is your research question?** Comparing groups, quantifying a relationship, classifying people, or predicting an outcome?
+2. **What is the measurement level of your outcome?** Categorical (nominal/ordinal) or continuous (scale)?
+3. **How many groups / variables are involved?** One, two, three or more?
+4. **Are the groups independent or related?** Between-subjects (different people) or within-subjects (same people, repeated)?
+:::
+
+---
+
+## Decision flowchart
+
+```{mermaid}
+flowchart TD
+    Q[What is the research question?] --> R1[Comparing means or medians]
+    Q --> R2[Quantifying a relationship]
+    Q --> R3[Predicting a categorical outcome]
+    Q --> R4[Identifying structure / subgroups]
+
+    R1 --> A1[How many groups?]
+    A1 --> A1a[One group<br/>vs reference value] --> A1a1["One-sample <i>t</i>-test"]:::core
+    A1 --> A1b[Two groups]
+    A1b --> A1b1[Independent groups] --> A1b1a["Independent-samples <i>t</i>-test<br/>(or Mann-Whitney if not normal)"]:::core
+    A1b --> A1b2[Same participants twice] --> A1b2a["Paired-samples <i>t</i>-test<br/>(or Wilcoxon signed-rank)"]:::core
+    A1 --> A1c["Three or more groups"]
+    A1c --> A1c1["Independent groups, one factor"] --> A1c1a["One-way ANOVA<br/>(or Kruskal-Wallis)"]:::core
+    A1c --> A1c2["Independent groups, 2+ factors"] --> A1c2a["Factorial ANOVA"]:::core
+    A1c --> A1c3["Repeated measures"] --> A1c3a["Repeated-measures ANOVA<br/>(or Friedman)"]:::core
+
+    R2 --> B1{Both variables continuous?}
+    B1 -- yes --> B1a["Pearson correlation<br/>or simple regression"]:::core
+    B1 -- "one binary, one continuous" --> B1b["Independent-samples <i>t</i>-test or<br/>point-biserial correlation"]:::core
+    B1 -- "both categorical" --> B1c["Chi-square test of independence"]:::core
+    B1 -- "ordinal" --> B1d["Spearman correlation"]:::core
+
+    R3 --> C1{How many categories in the outcome?}
+    C1 -- "two" --> C1a["Binary logistic regression"]:::adv
+    C1 -- "3+ unordered" --> C1b["Multinomial logistic regression"]:::adv
+    C1 -- "3+ ordered" --> C1c["Ordinal logistic regression"]:::adv
+
+    R4 --> D1{What kind of structure?}
+    D1 -- "items into latent factors" --> D1a["Factor analysis<br/>(EFA / CFA)"]:::adv
+    D1 -- "people into latent classes" --> D1b["LCA / LPA"]:::adv
+    D1 -- "items into a network" --> D1c["Network analysis"]:::adv
+    D1 -- "system of paths between variables" --> D1d["Path modeling / SEM"]:::adv
+
+    classDef core fill:#cfe5f8,stroke:#3a506b,stroke-width:2px,color:#1c2541
+    classDef adv  fill:#dbecb6,stroke:#3a506b,stroke-width:2px,color:#1c2541
+```
+
+Blue = **Basics**; green = **Advanced topics**. Click the topic name in the navbar to jump to its page.
+
+---
+
+## Decision table (compact)
+
+If you'd rather see it as a table:
+
+| Your question | Continuous outcome | Categorical outcome |
+|---|---|---|
+| **Compare one group to a known value** | [One-sample t-test](core/t-tests.qmd) | [Chi-square goodness-of-fit](core/contingency-tables.qmd) |
+| **Compare two independent groups** | [Independent t-test](core/t-tests.qmd) (or [Mann–Whitney](core/nonparametrics.qmd)) | [Chi-square test of independence](core/contingency-tables.qmd) |
+| **Compare two related measurements** | [Paired t-test](core/t-tests.qmd) (or [Wilcoxon signed-rank](core/nonparametrics.qmd)) | McNemar test (not yet on this site) |
+| **Compare 3+ independent groups (one factor)** | [One-way ANOVA](core/anova.qmd) (or [Kruskal–Wallis](core/nonparametrics.qmd)) | Chi-square (extended) |
+| **Compare 3+ independent groups (2+ factors)** | [Factorial ANOVA](core/anova.qmd) | Log-linear analysis (advanced) |
+| **Compare 3+ repeated measurements** | [Repeated-measures ANOVA](core/anova.qmd) (or [Friedman](core/nonparametrics.qmd)) | Cochran's Q (not yet on this site) |
+| **Quantify a relationship between two continuous variables** | [Correlation / simple regression](core/regression.qmd) | — |
+| **Quantify a relationship between several predictors and one outcome** | [Multiple regression](core/regression.qmd) | [Binary](advanced/logistic-regression.qmd) / [multinomial](advanced/logistic-regression.qmd) logistic regression |
+| **Test whether an effect is transmitted through a third variable** | [Mediation](advanced/mediation-moderation.qmd) | — |
+| **Test whether an effect depends on a third variable** | [Moderation](advanced/mediation-moderation.qmd) | — |
+| **Reduce many items to a few underlying dimensions** | [Factor analysis (EFA / CFA)](advanced/factor-analysis.qmd) | — |
+| **Identify subgroups of people from response patterns** | [LPA](advanced/latent-class.qmd) | [LCA](advanced/latent-class.qmd) |
+| **Compare a scale across groups (cross-cultural, sex, time)** | [Measurement invariance](advanced/measurement-invariance.qmd) | — |
+| **Synthesise effect sizes across published studies** | [Meta-analysis](advanced/meta-analysis.qmd) | — |
+| **Plan a sample size for a future study** | [Power analysis](advanced/power-analysis.qmd) | [Power analysis](advanced/power-analysis.qmd) |
+
+---
+
+## Some practical rules of thumb
+
+::: {.callout-note}
+## Match the design, not just the data
+The most common student mistake is to pick a test from the *outcome variable alone* and ignore the design. Two questionnaire scores from the same person are **not** two independent observations — even though the spreadsheet has two columns. Always identify whether your rows are independent before picking a test.
+:::
+
+::: {.callout-note}
+## When in doubt, default to the linear model
+Most of the inferential tests above are *the same model* underneath — the linear model with different choices of outcome distribution and link function. A *t*-test is a regression with one binary predictor; an ANOVA is regression with dummy-coded categorical predictors; logistic regression is the linear model with a logit link. If a textbook test doesn't quite fit your situation, the linear-model framing usually has an answer.
+:::
+
+::: {.callout-tip}
+## Need more depth?
+- The JASP Video Library has a [▶ Statistical Test Flowchart](https://jasp-stats.github.io/jasp-video-library/Getting-Started.html#statistical-test-flowchart) (~3 min).
+- For a deeper walk through the decision logic, see DSUJ §1.5 and §2.10.
+:::

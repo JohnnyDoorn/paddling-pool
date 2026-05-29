@@ -1,0 +1,19 @@
+---
+title: "Page not found"
+toc: false
+---
+
+The page you were looking for isn't here — it may have moved, been renamed, or the link may be wrong.
+
+## Where you can go instead
+
+- **[Home](index.qmd)** — overview of every topic
+- **[Getting Started](getting-started.qmd)** — JASP setup and data preparation
+- **[Which test should I use?](which-test.qmd)** — decision tree
+- **[Reporting & effect sizes](reporting.qmd)** — APA reporting and effect-size conventions
+
+Or jump to a specific topic via the navigation bar at the top.
+
+## Spotted a broken link?
+
+If you arrived here by clicking a link on this site, please flag it on the [GitHub issue tracker](https://github.com/JohnnyDoorn/paddling-pool/issues) so it can be fixed.

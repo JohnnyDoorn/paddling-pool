@@ -6,7 +6,7 @@ website:
   title: "Paddling Pool"
   description: "Statistics refresher for master's psychology students"
   site-url: "https://johnnydoorn.github.io/paddling-pool/"
-  favicon: assets/favicon.png
+  favicon: assets/favicon.svg
   navbar:
     pinned: true
     left:
@@ -50,9 +50,15 @@ website:
             href: advanced/latent-class.qmd
           - text: "Network Analysis"
             href: advanced/network-analysis.qmd
+      - text: "Reference"
+        menu:
+          - text: "Which test should I use?"
+            href: which-test.qmd
+          - text: "Reporting & effect sizes"
+            href: reporting.qmd
     right:
       - icon: github
-        href: https://github.com/jasp-stats
+        href: https://github.com/JohnnyDoorn/paddling-pool
       - icon: suit-heart-fill
         href: https://jasp-stats.org
   search:
@@ -76,8 +82,12 @@ format:
     css: assets/custom.css
     toc: true
     toc-depth: 3
-    toc-location: left
+    toc-location: right
     toc-title: "On this page"
     anchor-sections: true
     smooth-scroll: true
     footnotes-hover: true
+    code-copy: hover
+    lightbox: true
+    link-external-newwindow: true
+    link-external-icon: true

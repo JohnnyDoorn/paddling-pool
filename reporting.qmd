@@ -1,0 +1,136 @@
+---
+title: "Reporting & effect sizes"
+---
+
+<span class="section-badge">Reference</span>
+
+The standards for reporting statistical results have converged in the last decade. This page collects the **APA-style reporting templates** and **effect-size conventions** that appear scattered across the topic pages, in one place you can use as a write-up checklist.
+
+::: {.callout-tip}
+## What every result should report
+1. **Sample size** (and, where relevant, sample sizes per group).
+2. **Descriptive statistics** for the variables involved — means and SDs for continuous, frequencies for categorical.
+3. **The test statistic with its degrees of freedom** — *t*(53), *F*(2, 87), χ²(3), etc.
+4. **The exact *p*-value** to three decimal places (or "< .001" if smaller).
+5. **An effect size with its 95% confidence interval** — *not* "small/medium/large" alone.
+6. **A one-sentence substantive interpretation** in plain language.
+
+If your result is missing any of these, you're not done reporting.
+:::
+
+---
+
+## Effect-size conventions
+
+The labels *small*, *medium*, *large* come from Cohen (1988, 1992) and are widely used as default benchmarks. Use them only when no domain-specific benchmark exists — and always alongside the raw value and CI.
+
+| Analysis | Effect size | Small | Medium | Large |
+|---|---|---|---|---|
+| t-test (independent or paired) | **Cohen's *d*** | 0.20 | 0.50 | 0.80 |
+| ANOVA (one-way or factorial) | **η² (eta-squared)** | .01 | .06 | .14 |
+| ANOVA — alternative | **ω² (omega-squared)** | .01 | .06 | .14 |
+| ANOVA — Cohen's | **f** | 0.10 | 0.25 | 0.40 |
+| Correlation | **r** | .10 | .30 | .50 |
+| Multiple regression | **f²** | 0.02 | 0.15 | 0.35 |
+| Chi-square (2 × 2) | **φ (phi)** | .10 | .30 | .50 |
+| Chi-square (larger) | **Cramér's V** | .10 | .30 | .50 |
+| Logistic regression | **Odds ratio** | 1.5 | 2.5 | 4.3 |
+| Non-parametric (Wilcoxon) | **rank-biserial r** | .10 | .30 | .50 |
+| Non-parametric (Kruskal–Wallis) | **ε² (epsilon-squared)** | .01 | .08 | .26 |
+
+::: {.callout-warning}
+## Don't rely on the labels alone
+Cohen's benchmarks were derived from typical effect sizes in 1960s psychology. They overstate what "large" means in many modern domains. Where you can, anchor effect sizes against:
+
+- A **meta-analytic estimate** for similar studies.
+- A **smallest effect size of interest (SESOI)** justified on theoretical or practical grounds (see the [Power Analysis](advanced/power-analysis.qmd) page for the SESOI argument).
+- The effect size you would consider **substantively meaningful** in your specific application.
+:::
+
+---
+
+## APA reporting templates
+
+The templates below use APA 7th-edition conventions. Italicise statistical symbols (*t*, *F*, *p*, *r*, *N*); don't italicise variable names.
+
+### t-test (independent samples)
+
+> An independent-samples *t*-test showed that anxiety ratings of participants exposed to a picture of a spider (*M* = 47.0, *SD* = 9.3, *n* = 12) were higher than those of participants exposed to a real spider (*M* = 40.0, *SD* = 9.3, *n* = 12), *t*(21.4) = 1.68, *p* = .108, *d* = 0.71, 95% CI [-0.12, 1.53].
+
+Note: Welch's df reported as a decimal (21.4) because it adjusts for unequal variances.
+
+### t-test (paired samples)
+
+> A paired-samples *t*-test indicated that anxiety scores were lower at follow-up (*M* = 32.5, *SD* = 7.1) than at baseline (*M* = 41.2, *SD* = 8.0; *N* = 48 pairs), *t*(47) = 5.32, *p* < .001, *d* = 0.77, 95% CI [0.45, 1.08].
+
+### One-way ANOVA
+
+> A one-way ANOVA examined the effect of music type on dancing time. There were significant differences between the three groups, *F*(2, 57) = 4.32, *p* = .018, η² = .13, 95% CI [.01, .27]. Tukey HSD post-hoc tests showed that the rock group (*M* = 23.4, *SD* = 5.1) danced longer than the classical group (*M* = 16.7, *SD* = 4.8, *p* = .021), but did not differ from the silence group (*M* = 19.2, *SD* = 6.0, *p* = .089).
+
+### Repeated-measures ANOVA (with sphericity correction)
+
+> A repeated-measures ANOVA on serial recall showed a significant effect of music type, *F*(1.76, 46.5) = 5.21, *p* = .011, η²_g = .17 (Greenhouse-Geisser corrected because Mauchly's test indicated a violation of sphericity, *p* = .034).
+
+### Correlation
+
+> Hours of sleep and exam performance were positively correlated, *r*(98) = .42, *p* < .001, 95% CI [.24, .57].
+
+### Simple regression
+
+> Album sales were significantly predicted by advertising budget, *b* = 0.096, 95% CI [0.076, 0.115], β = .578, *t*(196) = 9.98, *p* < .001. The model explained 33% of the variance in album sales, *F*(1, 198) = 99.6, *p* < .001, adjusted *R*² = .33.
+
+### Multiple regression
+
+> A multiple regression with three predictors (advertising, radio airplay, band image) significantly predicted album sales, *F*(3, 196) = 129.5, *p* < .001, adjusted *R*² = .66. Each predictor contributed significantly: advertising, β = .51, *t*(196) = 12.26, *p* < .001; radio airplay, β = .51, *t*(196) = 12.51, *p* < .001; band image, β = .19, *t*(196) = 4.59, *p* < .001.
+
+### Hierarchical regression
+
+> A hierarchical regression entered demographic controls in Model 0 (*R*² = .04), added extraversion in Model 1 (Δ*R*² = .03, Δ*F*(1, 256) = 8.41, *p* = .004), and narcissism in Model 2 (Δ*R*² = .02, Δ*F*(1, 255) = 6.32, *p* = .012). Narcissism predicted status-update frequency above and beyond extraversion, β = .15, *t*(255) = 2.51, *p* = .012.
+
+### Logistic regression
+
+> A binary logistic regression predicting recovery from age and treatment group was significant, χ²(2) = 14.3, *p* < .001, Nagelkerke *R*² = .23. Treatment group significantly predicted recovery, *b* = 1.42, *OR* = 4.14, 95% CI [1.87, 9.17], *p* = .001 — patients in the treatment condition had over four times the odds of recovery compared with controls.
+
+### Chi-square test of independence
+
+> A chi-square test of independence showed a significant association between age group and party preference, χ²(4, *N* = 487) = 18.6, *p* < .001, Cramér's V = .24. Inspection of the standardised residuals indicated that voters aged 51+ were over-represented among Party A supporters (*z* = 2.8).
+
+### Mediation
+
+> The total effect of age on gossiping was significant (*b* = 0.14, 95% CI [0.07, 0.20]). The indirect effect through perceived mate value was significant (*ab* = 0.06, bootstrapped 95% CI [0.02, 0.11]) — supporting partial mediation. The direct effect remained significant (*b* = 0.08, 95% CI [0.02, 0.14]).
+
+### Non-parametric test (Wilcoxon rank-sum / Mann–Whitney)
+
+> A Wilcoxon rank-sum test showed that shopping duration differed between men (*Mdn* = 47, *IQR* = 33) and women (*Mdn* = 62, *IQR* = 41), *W* = 312, *p* = .008, rank-biserial *r* = .42, 95% CI [.13, .65].
+
+### Meta-analysis
+
+> A random-effects meta-analysis of *k* = 18 studies (total *N* = 2,341) yielded a pooled effect of *d* = 0.43, 95% CI [0.28, 0.58], *z* = 5.60, *p* < .001. Heterogeneity was moderate, *Q*(17) = 34.2, *p* = .007, *I*² = 50%. There was no evidence of publication bias based on Egger's test (*t*(16) = 1.21, *p* = .24).
+
+### SEM / path model
+
+> The hypothesised structural model fitted the data acceptably, χ²(45) = 78.4, *p* = .002, CFI = .961, RMSEA = .052 [.034, .069], SRMR = .047. The indirect effect of X on Y through M was significant (standardised *ab* = .14, bootstrapped 95% CI [.07, .23]).
+
+---
+
+## Things to *avoid*
+
+::: {.callout-warning}
+## Common reporting mistakes
+1. **"*p* > .05, so there is no effect."** A non-significant result means the data didn't provide strong evidence for an effect, not that the effect is zero. Report the estimate with its CI and let the reader judge.
+2. **Rounding *p* to ".000".** Always write "< .001" instead — *p* is never exactly zero.
+3. **Reporting only *p* with no effect size.** With large *N*, every test is "significant"; without an effect size, the reader can't tell whether the result matters.
+4. **Reporting the standardised coefficient (β) without the unstandardised (*b*).** Many readers want the original-units interpretation for translation back to practice.
+5. **Italicising the wrong things.** Variable names (`age`, `condition`) are not italicised; statistical symbols (*t*, *F*, *p*, *r*, *N*, *M*, *SD*) are. *df* is italicised; brackets are not.
+6. **Mixing decimals.** Use leading zeros for statistics that can exceed 1 (*M* = 0.42); drop leading zeros for statistics bounded by 1 (*p* = .42, *r* = .42, β = .42).
+:::
+
+---
+
+## Further reading
+
+- **APA (2020).** *Publication manual of the American Psychological Association* (7th ed.). The authoritative reference for reporting style.
+- **Cohen, J. (1992).** A power primer. *Psychological Bulletin*, 112(1), 155–159.
+- **Cumming, G. (2014).** The new statistics: Why and how. *Psychological Science*, 25(1), 7–29. — The case for estimation + CIs over NHST-only reporting.
+- **Lakens, D. (2022).** Sample size justification. *Collabra: Psychology*, 8(1). — Modern thinking on effect-size benchmarks and what counts as a meaningful effect.
+- **DSUJ Chapter 3** — *The Phoenix of Statistics* — covers effect sizes, Bayesian alternatives, and reporting in depth.
