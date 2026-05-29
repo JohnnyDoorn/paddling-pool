@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Logistic Regression – Paddling Pool</title>
+<title>Which test should I use? – Paddling Pool</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,23 +26,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../assets/favicon.svg" rel="icon" type="image/svg+xml">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-5a7edf553ce6f37e40c66d907d0f4061.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-5a7edf553ce6f37e40c66d907d0f4061.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,38 +70,12 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="../assets/custom.css">
+<link rel="stylesheet" href="assets/custom.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -111,7 +85,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Paddling Pool</span>
     </a>
   </div>
@@ -122,11 +96,11 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../getting-started.html"> 
+    <a class="nav-link" href="./getting-started.html"> 
 <span class="menu-text">Getting Started</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -135,27 +109,27 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-basics">    
         <li>
-    <a class="dropdown-item" href="../core/descriptives.html">
+    <a class="dropdown-item" href="./core/descriptives.html">
  <span class="dropdown-text">Descriptive Statistics</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../core/t-tests.html">
+    <a class="dropdown-item" href="./core/t-tests.html">
  <span class="dropdown-text">t-Tests</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../core/anova.html">
+    <a class="dropdown-item" href="./core/anova.html">
  <span class="dropdown-text">ANOVA</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../core/regression.html">
+    <a class="dropdown-item" href="./core/regression.html">
  <span class="dropdown-text">Correlation &amp; Regression</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../core/nonparametrics.html">
+    <a class="dropdown-item" href="./core/nonparametrics.html">
  <span class="dropdown-text">Non-Parametric Tests</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../core/contingency-tables.html">
+    <a class="dropdown-item" href="./core/contingency-tables.html">
  <span class="dropdown-text">Contingency Tables</span></a>
   </li>  
     </ul>
@@ -166,43 +140,43 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-advanced-topics">    
         <li>
-    <a class="dropdown-item" href="../advanced/mediation-moderation.html">
+    <a class="dropdown-item" href="./advanced/mediation-moderation.html">
  <span class="dropdown-text">Mediation &amp; Moderation</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../advanced/logistic-regression.html">
+    <a class="dropdown-item" href="./advanced/logistic-regression.html">
  <span class="dropdown-text">Logistic Regression</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../advanced/factor-analysis.html">
+    <a class="dropdown-item" href="./advanced/factor-analysis.html">
  <span class="dropdown-text">Factor Analysis</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../advanced/power-analysis.html">
+    <a class="dropdown-item" href="./advanced/power-analysis.html">
  <span class="dropdown-text">Power Analysis</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../advanced/missing-data.html">
+    <a class="dropdown-item" href="./advanced/missing-data.html">
  <span class="dropdown-text">Missing Data &amp; Imputation</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../advanced/meta-analysis.html">
+    <a class="dropdown-item" href="./advanced/meta-analysis.html">
  <span class="dropdown-text">Meta-Analysis</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../advanced/measurement-invariance.html">
+    <a class="dropdown-item" href="./advanced/measurement-invariance.html">
  <span class="dropdown-text">Measurement Invariance</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../advanced/path-modeling.html">
+    <a class="dropdown-item" href="./advanced/path-modeling.html">
  <span class="dropdown-text">Path Modeling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../advanced/latent-class.html">
+    <a class="dropdown-item" href="./advanced/latent-class.html">
  <span class="dropdown-text">Latent Class / Profile Analysis</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../advanced/network-analysis.html">
+    <a class="dropdown-item" href="./advanced/network-analysis.html">
  <span class="dropdown-text">Network Analysis</span></a>
   </li>  
     </ul>
@@ -213,11 +187,11 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
         <li>
-    <a class="dropdown-item" href="../which-test.html">
+    <a class="dropdown-item" href="./which-test.html">
  <span class="dropdown-text">Which test should I use?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../reporting.html">
+    <a class="dropdown-item" href="./reporting.html">
  <span class="dropdown-text">Reporting &amp; effect sizes</span></a>
   </li>  
     </ul>
@@ -250,23 +224,9 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-is-it" id="toc-what-is-it" class="nav-link active" data-scroll-target="#what-is-it">What is it?</a>
-  <ul class="collapse">
-  <li><a href="#odds-ratios" id="toc-odds-ratios" class="nav-link" data-scroll-target="#odds-ratios">Odds ratios</a></li>
-  </ul></li>
-  <li><a href="#when-to-use-logistic-regression" id="toc-when-to-use-logistic-regression" class="nav-link" data-scroll-target="#when-to-use-logistic-regression">When to use logistic regression</a></li>
-  <li><a href="#assumptions" id="toc-assumptions" class="nav-link" data-scroll-target="#assumptions">Assumptions</a></li>
-  <li><a href="#model-fit" id="toc-model-fit" class="nav-link" data-scroll-target="#model-fit">Model fit</a></li>
-  <li><a href="#how-to-do-it-in-jasp" id="toc-how-to-do-it-in-jasp" class="nav-link" data-scroll-target="#how-to-do-it-in-jasp">How to do it in JASP</a></li>
-  <li><a href="#interpreting-the-output" id="toc-interpreting-the-output" class="nav-link" data-scroll-target="#interpreting-the-output">Interpreting the output</a></li>
-  <li><a href="#multinomial-logistic-regression" id="toc-multinomial-logistic-regression" class="nav-link" data-scroll-target="#multinomial-logistic-regression">Multinomial logistic regression</a></li>
-  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further reading</a></li>
-  <li><a href="#try-it-yourself" id="toc-try-it-yourself" class="nav-link" data-scroll-target="#try-it-yourself">Try it yourself</a>
-  <ul class="collapse">
-  <li><a href="#exercise-1-binary-logistic-regression-risk-factors-which-factors-predict-adolescent-suicide-risk" id="toc-exercise-1-binary-logistic-regression-risk-factors-which-factors-predict-adolescent-suicide-risk" class="nav-link" data-scroll-target="#exercise-1-binary-logistic-regression-risk-factors-which-factors-predict-adolescent-suicide-risk">Exercise 1 (binary logistic regression — risk factors) — Which factors predict adolescent suicide risk?</a></li>
-  <li><a href="#exercise-2-binary-logistic-regression-developmental-psychology-do-age-and-theory-of-mind-predict-mastery-of-emotional-display-rules" id="toc-exercise-2-binary-logistic-regression-developmental-psychology-do-age-and-theory-of-mind-predict-mastery-of-emotional-display-rules" class="nav-link" data-scroll-target="#exercise-2-binary-logistic-regression-developmental-psychology-do-age-and-theory-of-mind-predict-mastery-of-emotional-display-rules">Exercise 2 (binary logistic regression — developmental psychology) — Do age and theory-of-mind predict mastery of emotional display rules?</a></li>
-  <li><a href="#exercise-3-binary-logistic-regression-social-psychology-does-social-class-inferred-from-car-predict-whether-a-driver-cuts-in" id="toc-exercise-3-binary-logistic-regression-social-psychology-does-social-class-inferred-from-car-predict-whether-a-driver-cuts-in" class="nav-link" data-scroll-target="#exercise-3-binary-logistic-regression-social-psychology-does-social-class-inferred-from-car-predict-whether-a-driver-cuts-in">Exercise 3 (binary logistic regression — social psychology) — Does social class (inferred from car) predict whether a driver cuts in?</a></li>
-  </ul></li>
+  <li><a href="#decision-flowchart" id="toc-decision-flowchart" class="nav-link active" data-scroll-target="#decision-flowchart">Decision flowchart</a></li>
+  <li><a href="#decision-table-compact" id="toc-decision-table-compact" class="nav-link" data-scroll-target="#decision-table-compact">Decision table (compact)</a></li>
+  <li><a href="#some-practical-rules-of-thumb" id="toc-some-practical-rules-of-thumb" class="nav-link" data-scroll-target="#some-practical-rules-of-thumb">Some practical rules of thumb</a></li>
   </ul>
 </nav>
     </div>
@@ -275,7 +235,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Logistic Regression</h1>
+<h1 class="title">Which test should I use?</h1>
 </div>
 
 
@@ -292,268 +252,215 @@ window.Quarto = {
 </header>
 
 
-<p><span class="section-badge advanced">Advanced Topics</span></p>
-<p>Use logistic regression when your <strong>outcome variable is categorical</strong> — most commonly binary (yes/no, clinical/control, recovered/not recovered). Linear regression is inappropriate for binary outcomes because it can produce predicted probabilities below 0 or above 1, and it violates homoscedasticity.</p>
-<hr>
-<section id="what-is-it" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-it">What is it?</h2>
-<p>Binary logistic regression models the <strong>log-odds</strong> (logit) of the outcome as a linear function of the predictors:</p>
-<p><span class="math display">\[\log\!\left(\frac{p}{1-p}\right) = b_0 + b_1 X_1 + b_2 X_2 + \ldots\]</span></p>
-<p>The model predicts the <strong>probability</strong> that a case belongs to the “outcome = 1” category. Predictors can be continuous, binary, or categorical (with dummy coding).</p>
-<section id="odds-ratios" class="level3">
-<h3 class="anchored" data-anchor-id="odds-ratios">Odds ratios</h3>
-<p>The exponentiated coefficients (<em>e^b</em>) are <strong>odds ratios (OR)</strong>:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>OR</th>
-<th>Interpretation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>&gt; 1</td>
-<td>A one-unit increase in X is associated with <em>increased</em> odds of the outcome</td>
-</tr>
-<tr class="even">
-<td>&lt; 1</td>
-<td>A one-unit increase in X is associated with <em>decreased</em> odds of the outcome</td>
-</tr>
-<tr class="odd">
-<td>= 1</td>
-<td>No association</td>
-</tr>
-</tbody>
-</table>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Odds ≠ probability
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>An OR of 2 does not mean the outcome is “twice as likely” — it means the <em>odds</em> are doubled. Probabilities and odds are related but not the same. Always report predicted probabilities or absolute risk when communicating results to a non-statistical audience.</p>
-</div>
-</div>
-<hr>
-</section>
-</section>
-<section id="when-to-use-logistic-regression" class="level2">
-<h2 class="anchored" data-anchor-id="when-to-use-logistic-regression">When to use logistic regression</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Situation</th>
-<th>Appropriate method</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Binary outcome (2 categories)</td>
-<td>Binary logistic regression</td>
-</tr>
-<tr class="even">
-<td>Nominal outcome (3+ unordered categories)</td>
-<td>Multinomial logistic regression</td>
-</tr>
-<tr class="odd">
-<td>Ordinal outcome (3+ ordered categories)</td>
-<td>Ordinal logistic regression</td>
-</tr>
-</tbody>
-</table>
-<p>This page focuses on <strong>binary logistic regression</strong> — the most common case in psychology research.</p>
-<hr>
-</section>
-<section id="assumptions" class="level2">
-<h2 class="anchored" data-anchor-id="assumptions">Assumptions</h2>
-<div class="assumption-list">
-<ul>
-<li><strong>Binary outcome</strong>: the DV must have exactly two categories</li>
-<li><strong>Independence of observations</strong>: each participant contributes one row</li>
-<li><strong>No multicollinearity</strong>: predictors should not be highly correlated — check VIF as in regular regression</li>
-<li><strong>Sufficient cell sizes</strong>: especially important when predictors are categorical; very small cells can cause convergence problems</li>
-<li><strong>No complete separation</strong>: if a predictor perfectly predicts the outcome, the model cannot estimate coefficients</li>
-<li><strong>Linearity of continuous predictors with the log-odds</strong>: check using Box-Tidwell test or visual inspection (available as an option in JASP)</li>
-</ul>
-</div>
-<p><em>Note</em>: logistic regression does <strong>not</strong> require normality of residuals or homoscedasticity — these are linear regression assumptions that do not apply here.</p>
-<hr>
-</section>
-<section id="model-fit" class="level2">
-<h2 class="anchored" data-anchor-id="model-fit">Model fit</h2>
-<p>Unlike linear regression, logistic regression uses maximum likelihood estimation. Model fit statistics:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Statistic</th>
-<th>What it tells you</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>−2 Log Likelihood (−2LL)</strong></td>
-<td>Overall fit — smaller is better</td>
-</tr>
-<tr class="even">
-<td><strong>Nagelkerke R²</strong></td>
-<td>Pseudo-R²: approximate proportion of variance explained — treat as an effect size, not a literal R²</td>
-</tr>
-<tr class="odd">
-<td><strong>Hosmer-Lemeshow test</strong></td>
-<td>Goodness of fit — a non-significant result indicates adequate fit</td>
-</tr>
-<tr class="even">
-<td><strong>Classification table</strong></td>
-<td>Percentage of cases correctly classified by the model</td>
-</tr>
-</tbody>
-</table>
-<p>Model comparison: test whether adding predictors improves fit using the <strong>likelihood ratio test</strong> (χ² difference in −2LL with corresponding df).</p>
-<hr>
-</section>
-<section id="how-to-do-it-in-jasp" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-do-it-in-jasp">How to do it in JASP</h2>
-<p>Go to <strong>Regression → Logistic Regression</strong>.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>JASP Video Library — Logistic Regression
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Recording at <a href="https://jasp-stats.github.io/jasp-video-library/All_Regression.html#logistic-regression">jasp-stats.github.io/jasp-video-library/All_Regression.html#logistic-regression</a>:</p>
-<ul>
-<li><a href="https://jasp-stats.github.io/jasp-video-library/All_Regression.html#logistic-regression">▶ Logistic Regression</a> — setup, odds ratios, classification table, model fit</li>
-</ul>
-</div>
-</div>
-<hr>
-</section>
-<section id="interpreting-the-output" class="level2">
-<h2 class="anchored" data-anchor-id="interpreting-the-output">Interpreting the output</h2>
-<p><strong>Omnibus test</strong>: tests whether the model with predictors fits better than an intercept-only model. A significant χ² (<em>p</em> &lt; .05) indicates the model explains a significant amount of variance.</p>
-<p><strong>Coefficients table</strong>: for each predictor, report: - <em>b</em>: the log-odds coefficient (hard to interpret directly) - <em>OR</em> (= <em>e^b</em>): the odds ratio — more interpretable - 95% CI for the OR: does it include 1.0? If not, the predictor is significant - <em>p</em>-value</p>
+<p><span class="section-badge">Reference</span></p>
+<p>Picking the right analysis is mostly a matter of answering four questions about your design and your variables. The flowchart below walks through the most common cases; if your design fits neatly into one of them, the page link at the bottom of each branch is where to go next.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>APA reporting example
+<span class="screen-reader-only">Tip</span>The four questions
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Logistic regression was used to predict survival from age and treatment group. The model was significant, χ²(2) = 14.3, <em>p</em> &lt; .001, Nagelkerke R² = .23. Treatment group was a significant predictor, <em>b</em> = 1.42, OR = 4.14, 95% CI [1.87, 9.17], <em>p</em> = .001.</p>
+<ol type="1">
+<li><strong>What is your research question?</strong> Comparing groups, quantifying a relationship, classifying people, or predicting an outcome?</li>
+<li><strong>What is the measurement level of your outcome?</strong> Categorical (nominal/ordinal) or continuous (scale)?</li>
+<li><strong>How many groups / variables are involved?</strong> One, two, three or more?</li>
+<li><strong>Are the groups independent or related?</strong> Between-subjects (different people) or within-subjects (same people, repeated)?</li>
+</ol>
 </div>
 </div>
 <hr>
-</section>
-<section id="multinomial-logistic-regression" class="level2">
-<h2 class="anchored" data-anchor-id="multinomial-logistic-regression">Multinomial logistic regression</h2>
-<p>When the outcome has <strong>three or more unordered categories</strong>, use <strong>multinomial logistic regression</strong>. This fits separate binary logistic regressions comparing each category to a reference category, but estimates them jointly.</p>
-<p>In JASP, multinomial logistic regression lives under the Generalized Linear Model interface. Go to <strong>Regression → Generalized Linear Model</strong>, set <em>Family</em> to <strong>Other</strong> and <em>Model</em> to <strong>Multinomial logistic regression</strong>, then drag the categorical outcome into <em>Dependent Variable</em> and your predictors into <em>Continuous Predictors</em> / <em>Categorical Predictors</em>.</p>
+<section id="decision-flowchart" class="level2">
+<h2 class="anchored" data-anchor-id="decision-flowchart">Decision flowchart</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    Q[What is the research question?] --&gt; R1[Comparing means or medians]
+    Q --&gt; R2[Quantifying a relationship]
+    Q --&gt; R3[Predicting a categorical outcome]
+    Q --&gt; R4[Identifying structure / subgroups]
+
+    R1 --&gt; A1[How many groups?]
+    A1 --&gt; A1a[One group&lt;br/&gt;vs reference value] --&gt; A1a1["One-sample &lt;i&gt;t&lt;/i&gt;-test"]:::core
+    A1 --&gt; A1b[Two groups]
+    A1b --&gt; A1b1[Independent groups] --&gt; A1b1a["Independent-samples &lt;i&gt;t&lt;/i&gt;-test&lt;br/&gt;(or Mann-Whitney if not normal)"]:::core
+    A1b --&gt; A1b2[Same participants twice] --&gt; A1b2a["Paired-samples &lt;i&gt;t&lt;/i&gt;-test&lt;br/&gt;(or Wilcoxon signed-rank)"]:::core
+    A1 --&gt; A1c["Three or more groups"]
+    A1c --&gt; A1c1["Independent groups, one factor"] --&gt; A1c1a["One-way ANOVA&lt;br/&gt;(or Kruskal-Wallis)"]:::core
+    A1c --&gt; A1c2["Independent groups, 2+ factors"] --&gt; A1c2a["Factorial ANOVA"]:::core
+    A1c --&gt; A1c3["Repeated measures"] --&gt; A1c3a["Repeated-measures ANOVA&lt;br/&gt;(or Friedman)"]:::core
+
+    R2 --&gt; B1{Both variables continuous?}
+    B1 -- yes --&gt; B1a["Pearson correlation&lt;br/&gt;or simple regression"]:::core
+    B1 -- "one binary, one continuous" --&gt; B1b["Independent-samples &lt;i&gt;t&lt;/i&gt;-test or&lt;br/&gt;point-biserial correlation"]:::core
+    B1 -- "both categorical" --&gt; B1c["Chi-square test of independence"]:::core
+    B1 -- "ordinal" --&gt; B1d["Spearman correlation"]:::core
+
+    R3 --&gt; C1{How many categories in the outcome?}
+    C1 -- "two" --&gt; C1a["Binary logistic regression"]:::adv
+    C1 -- "3+ unordered" --&gt; C1b["Multinomial logistic regression"]:::adv
+    C1 -- "3+ ordered" --&gt; C1c["Ordinal logistic regression"]:::adv
+
+    R4 --&gt; D1{What kind of structure?}
+    D1 -- "items into latent factors" --&gt; D1a["Factor analysis&lt;br/&gt;(EFA / CFA)"]:::adv
+    D1 -- "people into latent classes" --&gt; D1b["LCA / LPA"]:::adv
+    D1 -- "items into a network" --&gt; D1c["Network analysis"]:::adv
+    D1 -- "system of paths between variables" --&gt; D1d["Path modeling / SEM"]:::adv
+
+    classDef core fill:#cfe5f8,stroke:#3a506b,stroke-width:2px,color:#1c2541
+    classDef adv  fill:#dbecb6,stroke:#3a506b,stroke-width:2px,color:#1c2541
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Blue = <strong>Basics</strong>; green = <strong>Advanced topics</strong>. Click the topic name in the navbar to jump to its page.</p>
 <hr>
 </section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
-<ul>
-<li><strong>DSUJ Chapter 17</strong> — <em>Logistic regression</em> — binary and multinomial logistic regression with JASP walkthroughs</li>
-</ul>
+<section id="decision-table-compact" class="level2">
+<h2 class="anchored" data-anchor-id="decision-table-compact">Decision table (compact)</h2>
+<p>If you’d rather see it as a table:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Your question</th>
+<th>Continuous outcome</th>
+<th>Categorical outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Compare one group to a known value</strong></td>
+<td><a href="./core/t-tests.html">One-sample t-test</a></td>
+<td><a href="./core/contingency-tables.html">Chi-square goodness-of-fit</a></td>
+</tr>
+<tr class="even">
+<td><strong>Compare two independent groups</strong></td>
+<td><a href="./core/t-tests.html">Independent t-test</a> (or <a href="./core/nonparametrics.html">Mann–Whitney</a>)</td>
+<td><a href="./core/contingency-tables.html">Chi-square test of independence</a></td>
+</tr>
+<tr class="odd">
+<td><strong>Compare two related measurements</strong></td>
+<td><a href="./core/t-tests.html">Paired t-test</a> (or <a href="./core/nonparametrics.html">Wilcoxon signed-rank</a>)</td>
+<td>McNemar test (not yet on this site)</td>
+</tr>
+<tr class="even">
+<td><strong>Compare 3+ independent groups (one factor)</strong></td>
+<td><a href="./core/anova.html">One-way ANOVA</a> (or <a href="./core/nonparametrics.html">Kruskal–Wallis</a>)</td>
+<td>Chi-square (extended)</td>
+</tr>
+<tr class="odd">
+<td><strong>Compare 3+ independent groups (2+ factors)</strong></td>
+<td><a href="./core/anova.html">Factorial ANOVA</a></td>
+<td>Log-linear analysis (advanced)</td>
+</tr>
+<tr class="even">
+<td><strong>Compare 3+ repeated measurements</strong></td>
+<td><a href="./core/anova.html">Repeated-measures ANOVA</a> (or <a href="./core/nonparametrics.html">Friedman</a>)</td>
+<td>Cochran’s Q (not yet on this site)</td>
+</tr>
+<tr class="odd">
+<td><strong>Quantify a relationship between two continuous variables</strong></td>
+<td><a href="./core/regression.html">Correlation / simple regression</a></td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td><strong>Quantify a relationship between several predictors and one outcome</strong></td>
+<td><a href="./core/regression.html">Multiple regression</a></td>
+<td><a href="./advanced/logistic-regression.html">Binary</a> / <a href="./advanced/logistic-regression.html">multinomial</a> logistic regression</td>
+</tr>
+<tr class="odd">
+<td><strong>Test whether an effect is transmitted through a third variable</strong></td>
+<td><a href="./advanced/mediation-moderation.html">Mediation</a></td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td><strong>Test whether an effect depends on a third variable</strong></td>
+<td><a href="./advanced/mediation-moderation.html">Moderation</a></td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td><strong>Reduce many items to a few underlying dimensions</strong></td>
+<td><a href="./advanced/factor-analysis.html">Factor analysis (EFA / CFA)</a></td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td><strong>Identify subgroups of people from response patterns</strong></td>
+<td><a href="./advanced/latent-class.html">LPA</a></td>
+<td><a href="./advanced/latent-class.html">LCA</a></td>
+</tr>
+<tr class="odd">
+<td><strong>Compare a scale across groups (cross-cultural, sex, time)</strong></td>
+<td><a href="./advanced/measurement-invariance.html">Measurement invariance</a></td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td><strong>Synthesise effect sizes across published studies</strong></td>
+<td><a href="./advanced/meta-analysis.html">Meta-analysis</a></td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td><strong>Plan a sample size for a future study</strong></td>
+<td><a href="./advanced/power-analysis.html">Power analysis</a></td>
+<td><a href="./advanced/power-analysis.html">Power analysis</a></td>
+</tr>
+</tbody>
+</table>
 <hr>
 </section>
-<section id="try-it-yourself" class="level2">
-<h2 class="anchored" data-anchor-id="try-it-yourself">Try it yourself</h2>
-<p>Each exercise below ends with a collapsible solution. Try the analysis first, then expand to compare.</p>
-<section id="exercise-1-binary-logistic-regression-risk-factors-which-factors-predict-adolescent-suicide-risk" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-1-binary-logistic-regression-risk-factors-which-factors-predict-adolescent-suicide-risk">Exercise 1 (binary logistic regression — risk factors) — Which factors predict adolescent suicide risk?</h3>
-<p>Adolescents at risk of self-harm were measured on demographics, family environment, and <strong>music preferences</strong> (heavy metal among others). Using <a href="https://discoverjasp.com/repository/dsj1_leni/leni_17.jasp"><code>leni_17.jasp</code></a>, fit a binary logistic regression with risk status as the outcome. Report each predictor’s odds ratio with its 95% CI and the Nagelkerke R².</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<section id="some-practical-rules-of-thumb" class="level2">
+<h2 class="anchored" data-anchor-id="some-practical-rules-of-thumb">Some practical rules of thumb</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>▸ Worked solution
+<span class="screen-reader-only">Note</span>Match the design, not just the data
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/labcoat_leni#heavy-metal-and-risk-of-harm">Labcoat Leni — Heavy metal and risk of harm</a></li>
-<li><strong>Annotated JASP output</strong>: <a href="https://discoverjasp.com/repository/dsj1_leni/leni_17.html">leni_17.html</a></li>
-</ul>
+<p>The most common student mistake is to pick a test from the <em>outcome variable alone</em> and ignore the design. Two questionnaire scores from the same person are <strong>not</strong> two independent observations — even though the spreadsheet has two columns. Always identify whether your rows are independent before picking a test.</p>
 </div>
 </div>
-</div>
-</section>
-<section id="exercise-2-binary-logistic-regression-developmental-psychology-do-age-and-theory-of-mind-predict-mastery-of-emotional-display-rules" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-2-binary-logistic-regression-developmental-psychology-do-age-and-theory-of-mind-predict-mastery-of-emotional-display-rules">Exercise 2 (binary logistic regression — developmental psychology) — Do age and theory-of-mind predict mastery of emotional display rules?</h3>
-<p>A psychologist measured whether each child could correctly apply a “display rule” (pass/fail), their age in months, and their theory-of-mind score. Using <a href="https://discoverjasp.com/repository/dsj1_data/data/display.jasp"><code>display.jasp</code></a>, fit a logistic regression with display-rule mastery as the binary outcome and age + theory-of-mind as predictors.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>▸ Worked solution
+<span class="screen-reader-only">Note</span>When in doubt, default to the linear model
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/smart_alex#task-17.1">Smart Alex Task 17.1</a></li>
-<li><strong>Annotated JASP output</strong>: <a href="https://discoverjasp.com/repository/dsj1_alex/alex_17_01-02.html">alex_17_01-02.html</a></li>
-</ul>
+<p>Most of the inferential tests above are <em>the same model</em> underneath — the linear model with different choices of outcome distribution and link function. A <em>t</em>-test is a regression with one binary predictor; an ANOVA is regression with dummy-coded categorical predictors; logistic regression is the linear model with a logit link. If a textbook test doesn’t quite fit your situation, the linear-model framing usually has an answer.</p>
 </div>
 </div>
-</div>
-</section>
-<section id="exercise-3-binary-logistic-regression-social-psychology-does-social-class-inferred-from-car-predict-whether-a-driver-cuts-in" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-3-binary-logistic-regression-social-psychology-does-social-class-inferred-from-car-predict-whether-a-driver-cuts-in">Exercise 3 (binary logistic regression — social psychology) — Does social class (inferred from car) predict whether a driver cuts in?</h3>
-<p>Piff et al.&nbsp;(2012) ranked drivers’ social class by the type of car they drove (1–5) and observed whether each driver cut in front of another at a busy intersection. Using <a href="https://discoverjasp.com/repository/dsj1_data/data/piff_2012_vehicle.jasp"><code>piff_2012_vehicle.jasp</code></a>, fit a logistic regression with <code>vehicle_cut</code> (yes/no) as the outcome and <code>vehicle</code> (1–5) as the predictor. Interpret the odds ratio for a one-step increase in vehicle class.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>▸ Worked solution
+<span class="screen-reader-only">Tip</span>Need more depth?
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/smart_alex#task-17.3">Smart Alex Task 17.3</a></li>
-<li><strong>Annotated JASP output</strong>: <a href="https://discoverjasp.com/repository/dsj1_alex/alex_17_03.html">alex_17_03.html</a></li>
+<li>The JASP Video Library has a <a href="https://jasp-stats.github.io/jasp-video-library/Getting-Started.html#statistical-test-flowchart">▶ Statistical Test Flowchart</a> (~3 min).</li>
+<li>For a deeper walk through the decision logic, see DSUJ §1.5 and §2.10.</li>
 </ul>
-</div>
 </div>
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -982,5 +889,5 @@ window.Quarto = {
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

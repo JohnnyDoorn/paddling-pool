@@ -32,7 +32,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../assets/favicon.png" rel="icon" type="image/png">
+<link href="../assets/favicon.svg" rel="icon" type="image/svg+xml">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -43,6 +43,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-5a7edf553ce6f37e40c66d907d0f4061.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -75,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../assets/custom.css">
 </head>
 
-<body class="floating nav-fixed quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -178,10 +181,25 @@ ul.task-list li input[type="checkbox"] {
   </li>  
     </ul>
   </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="../which-test.html">
+ <span class="dropdown-text">Which test should I use?</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reporting.html">
+ <span class="dropdown-text">Reporting &amp; effect sizes</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/jasp-stats"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/JohnnyDoorn/paddling-pool"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -200,8 +218,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <nav id="TOC" role="doc-toc" class="toc-active">
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
@@ -232,10 +251,6 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   </ul>
 </nav>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -374,7 +389,11 @@ ul.task-list li input[type="checkbox"] {
 <p>Open <strong>Meta-Analysis → Effect Size Computation</strong>. In the <em>Design</em>, <em>Measurement</em>, and <em>Effect size</em> dropdowns, pick the configuration matching your data (e.g.&nbsp;<em>Independent groups</em>, <em>Binary</em>, <em>RR</em> for risk ratios; or <em>Independent groups</em>, <em>Continuous</em>, <em>SMD</em> for standardised mean differences). Then drag the relevant outcome and group-size columns into the boxes. The output panel reports how many effect sizes were computed successfully.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../assets/images/blog/meta-analysis/bartos-003-000.png" class="img-fluid figure-img" width="620"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../assets/images/blog/meta-analysis/bartos-003-000.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="The Effect Size Computation dialog on the BCG-vaccine dataset: thirteen trials reporting positive (tpos) and negative (tneg) tuberculosis cases in vaccinated and control groups. JASP computes the log risk ratio and standard error for each study and stores them as new columns in the data."><img src="../assets/images/blog/meta-analysis/bartos-003-000.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="620" alt="The Effect Size Computation dialog on the BCG-vaccine dataset: thirteen trials reporting positive (tpos) and negative (tneg) tuberculosis cases in vaccinated and control groups. JASP computes the log risk ratio and standard error for each study and stores them as new columns in the data."></a></p>
+</figure>
+</div>
 <figcaption>The <em>Effect Size Computation</em> dialog on the BCG-vaccine dataset: thirteen trials reporting positive (<code>tpos</code>) and negative (<code>tneg</code>) tuberculosis cases in vaccinated and control groups. JASP computes the log risk ratio and standard error for each study and stores them as new columns in the data.</figcaption>
 </figure>
 </div>
@@ -389,7 +408,11 @@ ul.task-list li input[type="checkbox"] {
 <p>Open <strong>Meta-Analysis → Classical Meta-Analysis</strong>. Drag <em>Effect Size</em> and <em>Effect Size Standard Error</em> into the data inputs. The defaults follow <code>metafor</code> recommendations: <strong>REML</strong> for the random-effects variance, and the <strong>Knapp–Hartung</strong> small-sample adjustment for the fixed-effects test (Knapp &amp; Hartung, 2003). Tick <em>Forest Plot</em> to visualise; the figure renders alongside the pooled estimate, heterogeneity statistics, and the underlying <code>metafor</code> R code for reproducibility.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../assets/images/blog/meta-analysis/bartos-005-002.png" class="img-fluid figure-img" width="720"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../assets/images/blog/meta-analysis/bartos-005-002.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="The Classical Meta-Analysis output for the BCG vaccine data. The model summary (top right) gives a pooled risk ratio of 0.49 with heterogeneity Q(12) = 152.23, p < .001. The forest plot (bottom right) shows each of the 13 trials, the diamond at the bottom is the pooled effect, and JASP exposes the metafor code at the bottom for export to R if needed."><img src="../assets/images/blog/meta-analysis/bartos-005-002.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="720" alt="The Classical Meta-Analysis output for the BCG vaccine data. The model summary (top right) gives a pooled risk ratio of 0.49 with heterogeneity Q(12) = 152.23, p < .001. The forest plot (bottom right) shows each of the 13 trials, the diamond at the bottom is the pooled effect, and JASP exposes the metafor code at the bottom for export to R if needed."></a></p>
+</figure>
+</div>
 <figcaption>The <em>Classical Meta-Analysis</em> output for the BCG vaccine data. The model summary (top right) gives a pooled risk ratio of 0.49 with heterogeneity <em>Q</em>(12) = 152.23, <em>p</em> &lt; .001. The forest plot (bottom right) shows each of the 13 trials, the diamond at the bottom is the pooled effect, and JASP exposes the <code>metafor</code> code at the bottom for export to R if needed.</figcaption>
 </figure>
 </div>
@@ -399,7 +422,11 @@ ul.task-list li input[type="checkbox"] {
 <p>Drag one or more variables into the <em>Predictors</em> box of the Classical Meta-Analysis dialog to fit a <strong>meta-regression</strong> — the same model, but with covariates explaining between-study heterogeneity. Tick <em>Estimated Marginal Means and Contrasts</em> to get marginal means at specific predictor levels, and tick <em>Bubble Plot</em> to visualise the meta-regression slope:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../assets/images/blog/meta-analysis/bartos-006-004.png" class="img-fluid figure-img" width="720"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../assets/images/blog/meta-analysis/bartos-006-004.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="A meta-regression on the writing-to-learn dataset (Example 2 of Bartoš et al., 2025) with two predictors. The output gives an omnibus test for each predictor (top right), individual coefficients, marginal-mean tables across levels of feedback, and a bubble plot of effect size against length with study weights encoded by bubble size."><img src="../assets/images/blog/meta-analysis/bartos-006-004.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="720" alt="A meta-regression on the writing-to-learn dataset (Example 2 of Bartoš et al., 2025) with two predictors. The output gives an omnibus test for each predictor (top right), individual coefficients, marginal-mean tables across levels of feedback, and a bubble plot of effect size against length with study weights encoded by bubble size."></a></p>
+</figure>
+</div>
 <figcaption>A <em>meta-regression</em> on the writing-to-learn dataset (Example 2 of Bartoš et al., 2025) with two predictors. The output gives an omnibus test for each predictor (top right), individual coefficients, marginal-mean tables across levels of <code>feedback</code>, and a bubble plot of effect size against <code>length</code> with study weights encoded by bubble size.</figcaption>
 </figure>
 </div>
@@ -623,6 +650,13 @@ ul.task-list li input[type="checkbox"] {
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -950,6 +984,38 @@ ul.task-list li input[type="checkbox"] {
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

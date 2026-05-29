@@ -32,7 +32,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./assets/favicon.png" rel="icon" type="image/png">
+<link href="./assets/favicon.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -43,6 +43,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-5a7edf553ce6f37e40c66d907d0f4061.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -75,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="assets/custom.css">
 </head>
 
-<body class="floating nav-fixed quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -178,10 +181,25 @@ ul.task-list li input[type="checkbox"] {
   </li>  
     </ul>
   </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="./which-test.html">
+ <span class="dropdown-text">Which test should I use?</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./reporting.html">
+ <span class="dropdown-text">Reporting &amp; effect sizes</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/jasp-stats"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/JohnnyDoorn/paddling-pool"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -200,8 +218,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <nav id="TOC" role="doc-toc" class="toc-active">
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
@@ -227,10 +246,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#ready-to-start" id="toc-ready-to-start" class="nav-link" data-scroll-target="#ready-to-start">Ready to start?</a></li>
   </ul>
 </nav>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -257,7 +272,11 @@ ul.task-list li input[type="checkbox"] {
 <p>JASP is free, open-source statistical software developed at the University of Amsterdam. It is designed to make statistical analyses intuitive and interactive — output updates in real time as you change settings.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="assets/images/getting-started/dsuj_Figure_4.2.png" class="img-fluid figure-img" width="560"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="assets/images/getting-started/dsuj_Figure_4.2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="The JASP welcome screen. The toolbar across the top is the analysis menu — Descriptives, T-Tests, ANOVA, etc. The blue + in the top-right opens the module manager."><img src="assets/images/getting-started/dsuj_Figure_4.2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="560" alt="The JASP welcome screen. The toolbar across the top is the analysis menu — Descriptives, T-Tests, ANOVA, etc. The blue + in the top-right opens the module manager."></a></p>
+</figure>
+</div>
 <figcaption>The JASP welcome screen. The toolbar across the top is the analysis menu — Descriptives, T-Tests, ANOVA, etc. The blue <strong>+</strong> in the top-right opens the module manager.</figcaption>
 </figure>
 </div>
@@ -289,7 +308,11 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="assets/images/getting-started/dsuj_Figure_4.3.png" class="img-fluid figure-img" width="620"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="assets/images/getting-started/dsuj_Figure_4.3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="The File panel. The left column has the standard Open / Save / Save As / Export actions; the Data Library row in the middle column reveals JASP’s bundled practice datasets, grouped by analysis topic."><img src="assets/images/getting-started/dsuj_Figure_4.3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="620" alt="The File panel. The left column has the standard Open / Save / Save As / Export actions; the Data Library row in the middle column reveals JASP’s bundled practice datasets, grouped by analysis topic."></a></p>
+</figure>
+</div>
 <figcaption>The <em>File</em> panel. The left column has the standard <em>Open / Save / Save As / Export</em> actions; the <em>Data Library</em> row in the middle column reveals JASP’s bundled practice datasets, grouped by analysis topic.</figcaption>
 </figure>
 </div>
@@ -327,7 +350,11 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="assets/images/getting-started/dsuj_Figure_4.4.png" class="img-fluid figure-img" width="640"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="assets/images/getting-started/dsuj_Figure_4.4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="The data-editor toolbar. Analyses flips back to the analysis view, Synchronisation controls whether JASP re-reads the underlying file on disk, Resize Data, Insert and Remove rows/columns, and Undo/Redo the last data edits."><img src="assets/images/getting-started/dsuj_Figure_4.4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="640" alt="The data-editor toolbar. Analyses flips back to the analysis view, Synchronisation controls whether JASP re-reads the underlying file on disk, Resize Data, Insert and Remove rows/columns, and Undo/Redo the last data edits."></a></p>
+</figure>
+</div>
 <figcaption>The data-editor toolbar. <strong>Analyses</strong> flips back to the analysis view, <strong>Synchronisation</strong> controls whether JASP re-reads the underlying file on disk, <strong>Resize Data</strong>, <strong>Insert</strong> and <strong>Remove</strong> rows/columns, and <strong>Undo/Redo</strong> the last data edits.</figcaption>
 </figure>
 </div>
@@ -439,7 +466,11 @@ ul.task-list li input[type="checkbox"] {
 <p>JASP automatically treats the strings <code>NA</code>, <code>NaN</code>, <code>nan</code>, and <code>.</code> as missing (DSUJ §4.6.3). Empty cells also count as missing. If your dataset uses a sentinel value like <code>999</code> or <code>-99</code> for missing, declare it: open the variable’s settings, go to the <strong>Missing values</strong> tab, tick <strong>Custom missing values</strong>, and enter the sentinel. JASP will then exclude those rows from analyses that involve the variable, instead of treating them as real data.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="assets/images/getting-started/dsuj_Figure_4.6.png" class="img-fluid figure-img" width="620"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="assets/images/getting-started/dsuj_Figure_4.6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="The variable settings panel. The Label editor tab (shown) lets you rename categories and toggle the Filter checkbox; the Missing values tab adjacent to it is where you declare custom missing-value codes."><img src="assets/images/getting-started/dsuj_Figure_4.6.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="620" alt="The variable settings panel. The Label editor tab (shown) lets you rename categories and toggle the Filter checkbox; the Missing values tab adjacent to it is where you declare custom missing-value codes."></a></p>
+</figure>
+</div>
 <figcaption>The variable settings panel. The <em>Label editor</em> tab (shown) lets you rename categories and toggle the Filter checkbox; the <em>Missing values</em> tab adjacent to it is where you declare custom missing-value codes.</figcaption>
 </figure>
 </div>
@@ -509,7 +540,11 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="assets/images/getting-started/dsuj_Figure_4.10.png" class="img-fluid figure-img" width="620"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="assets/images/getting-started/dsuj_Figure_4.10.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Anatomy of a typical analysis dialog (Descriptive Statistics shown). The list on the left is your dataset’s variables; arrows move them into the boxes on the right. Output regenerates on the right-hand panel of the main window as soon as you change anything."><img src="assets/images/getting-started/dsuj_Figure_4.10.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="620" alt="Anatomy of a typical analysis dialog (Descriptive Statistics shown). The list on the left is your dataset’s variables; arrows move them into the boxes on the right. Output regenerates on the right-hand panel of the main window as soon as you change anything."></a></p>
+</figure>
+</div>
 <figcaption>Anatomy of a typical analysis dialog (Descriptive Statistics shown). The list on the left is your dataset’s variables; arrows move them into the boxes on the right. Output regenerates on the right-hand panel of the main window as soon as you change anything.</figcaption>
 </figure>
 </div>
@@ -668,6 +703,13 @@ ul.task-list li input[type="checkbox"] {
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -995,6 +1037,38 @@ ul.task-list li input[type="checkbox"] {
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

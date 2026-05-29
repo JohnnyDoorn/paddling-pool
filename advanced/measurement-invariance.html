@@ -67,7 +67,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../assets/favicon.png" rel="icon" type="image/png">
+<link href="../assets/favicon.svg" rel="icon" type="image/svg+xml">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -78,6 +78,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-5a7edf553ce6f37e40c66d907d0f4061.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -110,7 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../assets/custom.css">
 </head>
 
-<body class="floating nav-fixed quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -213,10 +216,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
     </ul>
   </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="../which-test.html">
+ <span class="dropdown-text">Which test should I use?</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reporting.html">
+ <span class="dropdown-text">Reporting &amp; effect sizes</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/jasp-stats"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/JohnnyDoorn/paddling-pool"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -235,8 +253,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <nav id="TOC" role="doc-toc" class="toc-active">
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
@@ -261,10 +280,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#software-notes" id="toc-software-notes" class="nav-link" data-scroll-target="#software-notes">Software notes</a></li>
   </ul>
 </nav>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -461,14 +476,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>speed   <span class="ot">=</span><span class="er">~</span> x7 <span class="sc">+</span> x8 <span class="sc">+</span> x9</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../assets/images/blog/measurement-invariance/SEMInVar2.png" class="img-fluid figure-img" width="560"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../assets/images/blog/measurement-invariance/SEMInVar2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="The base CFA: three factors (visual, textual, speed) each measured by three items."><img src="../assets/images/blog/measurement-invariance/SEMInVar2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="560" alt="The base CFA: three factors (visual, textual, speed) each measured by three items."></a></p>
+</figure>
+</div>
 <figcaption>The base CFA: three factors (<code>visual</code>, <code>textual</code>, <code>speed</code>) each measured by three items.</figcaption>
 </figure>
 </div>
 <p>Press <strong>Ctrl+Enter</strong> to fit the model. JASP estimates this configural model separately in each group (all parameters free).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../assets/images/blog/measurement-invariance/SEMInVar5.png" class="img-fluid figure-img" width="420"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../assets/images/blog/measurement-invariance/SEMInVar5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="The SEM model panel after entering the configural syntax for Model 1."><img src="../assets/images/blog/measurement-invariance/SEMInVar5.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="420" alt="The SEM model panel after entering the configural syntax for Model 1."></a></p>
+</figure>
+</div>
 <figcaption>The SEM model panel after entering the configural syntax for Model 1.</figcaption>
 </figure>
 </div>
@@ -482,7 +505,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Press Ctrl+Enter again. JASP now fits Model 2 alongside Model 1 and reports a <strong>model-comparison table</strong> with χ², df, ΔCFI, AIC/BIC, and the χ² difference test:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../assets/images/blog/measurement-invariance/SEMInVar111.png" class="img-fluid figure-img" width="620"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../assets/images/blog/measurement-invariance/SEMInVar111.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Model 1 (configural) vs Model 2 (metric / loadings constrained). The difference test is non-significant (Δχ²(6) = 8.19, p = .224), so metric invariance is supported."><img src="../assets/images/blog/measurement-invariance/SEMInVar111.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="620" alt="Model 1 (configural) vs Model 2 (metric / loadings constrained). The difference test is non-significant (Δχ²(6) = 8.19, p = .224), so metric invariance is supported."></a></p>
+</figure>
+</div>
 <figcaption>Model 1 (configural) vs Model 2 (metric / loadings constrained). The difference test is non-significant (Δχ²(6) = 8.19, <em>p</em> = .224), so metric invariance is supported.</figcaption>
 </figure>
 </div>
@@ -505,7 +532,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The model-comparison table now compares all three nested models in one place:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../assets/images/blog/measurement-invariance/SEMInVar14.png" class="img-fluid figure-img" width="620"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../assets/images/blog/measurement-invariance/SEMInVar14.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="All three nested models. In this example metric invariance held (Δχ² p = .224 between Models 1 and 2) but scalar invariance was rejected (Δχ²(9) = 40.06, p < .001 between Models 2 and 3) — meaning the items’ baseline levels differ between schools and latent-mean comparisons are not defensible without further partial-invariance work."><img src="../assets/images/blog/measurement-invariance/SEMInVar14.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="620" alt="All three nested models. In this example metric invariance held (Δχ² p = .224 between Models 1 and 2) but scalar invariance was rejected (Δχ²(9) = 40.06, p < .001 between Models 2 and 3) — meaning the items’ baseline levels differ between schools and latent-mean comparisons are not defensible without further partial-invariance work."></a></p>
+</figure>
+</div>
 <figcaption>All three nested models. In this example metric invariance held (Δχ² <em>p</em> = .224 between Models 1 and 2) but <strong>scalar invariance was rejected</strong> (Δχ²(9) = 40.06, <em>p</em> &lt; .001 between Models 2 and 3) — meaning the items’ baseline levels differ between schools and latent-mean comparisons are not defensible without further partial-invariance work.</figcaption>
 </figure>
 </div>
@@ -702,6 +733,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -1029,6 +1067,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

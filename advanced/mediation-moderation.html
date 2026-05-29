@@ -32,7 +32,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../assets/favicon.png" rel="icon" type="image/png">
+<link href="../assets/favicon.svg" rel="icon" type="image/svg+xml">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -43,6 +43,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-5a7edf553ce6f37e40c66d907d0f4061.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -75,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../assets/custom.css">
 </head>
 
-<body class="floating nav-fixed quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -178,10 +181,25 @@ ul.task-list li input[type="checkbox"] {
   </li>  
     </ul>
   </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="../which-test.html">
+ <span class="dropdown-text">Which test should I use?</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../reporting.html">
+ <span class="dropdown-text">Reporting &amp; effect sizes</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/jasp-stats"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/JohnnyDoorn/paddling-pool"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -200,8 +218,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <nav id="TOC" role="doc-toc" class="toc-active">
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
@@ -240,10 +259,6 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   </ul>
 </nav>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -499,7 +514,11 @@ X → Y          (direct effect, controlling for M)</code></pre>
 <p>After installing the <em>Process (beta)</em> module, open <strong>Process → Classic Process Model</strong>. Drag the outcome into <em>Dependent Variable</em> and every predictor / mediator / moderator into <em>Continuous Predictors</em> or <em>Categorical Predictors</em>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../assets/images/blog/process/figure-3.png" class="img-fluid figure-img" width="620"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../assets/images/blog/process/figure-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Variable assignment in the Process dialog. Fatigue is the outcome; the four candidate mediators (AudAttention, HearImpair, Memory, MoodDisturb) and the focal predictor Age go into Continuous Predictors."><img src="../assets/images/blog/process/figure-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="620" alt="Variable assignment in the Process dialog. Fatigue is the outcome; the four candidate mediators (AudAttention, HearImpair, Memory, MoodDisturb) and the focal predictor Age go into Continuous Predictors."></a></p>
+</figure>
+</div>
 <figcaption>Variable assignment in the Process dialog. <code>Fatigue</code> is the outcome; the four candidate mediators (<code>AudAttention</code>, <code>HearImpair</code>, <code>Memory</code>, <code>MoodDisturb</code>) and the focal predictor <code>Age</code> go into <em>Continuous Predictors</em>.</figcaption>
 </figure>
 </div>
@@ -509,7 +528,11 @@ X → Y          (direct effect, controlling for M)</code></pre>
 <p>In the <em>Models</em> section, click the green <strong>+</strong> for each path you want in the model. For every path, pick variables in the <em>From</em> and <em>To</em> dropdowns and a <em>Process Type</em> (<em>Direct</em>, <em>Mediator</em>, or <em>Moderation</em>). The example below codes a multi-mediator model: age has a direct effect on fatigue, plus indirect effects through auditory attention, hearing impairment, and memory.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../assets/images/blog/process/figure-5.png" class="img-fluid figure-img" width="480"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../assets/images/blog/process/figure-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="The causal-graph view of the Lüken et al.&nbsp;(2024) Model 1 — age (left) influences fatigue (right) directly and through three parallel mediators (auditory attention, hearing impairment, memory)."><img src="../assets/images/blog/process/figure-5.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="480" alt="The causal-graph view of the Lüken et al.&nbsp;(2024) Model 1 — age (left) influences fatigue (right) directly and through three parallel mediators (auditory attention, hearing impairment, memory)."></a></p>
+</figure>
+</div>
 <figcaption>The causal-graph view of the Lüken et al.&nbsp;(2024) Model 1 — age (left) influences fatigue (right) directly and through three parallel mediators (auditory attention, hearing impairment, memory).</figcaption>
 </figure>
 </div>
@@ -519,7 +542,11 @@ X → Y          (direct effect, controlling for M)</code></pre>
 <p>Under <em>Options</em>, request <strong>Bootstrap</strong> confidence intervals (the default for indirect effects). To check whether the implied causal model is consistent with the data, tick <strong>Local tests</strong> under <em>Tests</em> — these test the conditional-independence implications of your DAG, and significant ones flag model misspecification:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../assets/images/blog/process/figure-11.png" class="img-fluid figure-img" width="560"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../assets/images/blog/process/figure-11.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Per-model options. Mediation parameter estimates are on by default; tick Local tests under Tests to test the model’s implied conditional independencies."><img src="../assets/images/blog/process/figure-11.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="560" alt="Per-model options. Mediation parameter estimates are on by default; tick Local tests under Tests to test the model’s implied conditional independencies."></a></p>
+</figure>
+</div>
 <figcaption>Per-model options. <em>Mediation</em> parameter estimates are on by default; tick <em>Local tests</em> under <em>Tests</em> to test the model’s implied conditional independencies.</figcaption>
 </figure>
 </div>
@@ -529,7 +556,11 @@ X → Y          (direct effect, controlling for M)</code></pre>
 <p>The headline output is the <em>Mediation effects</em> table, which breaks down the total effect of X on Y into the direct effect plus each specific indirect path, with bootstrapped CIs:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../assets/images/blog/process/figure-7.png" class="img-fluid figure-img" width="720"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../assets/images/blog/process/figure-7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Decomposition of the age → fatigue relationship. The direct effect is significant and negative (older adults report less fatigue, holding the mediators constant). Among the indirect paths, only age → HearImpair → Fatigue is significant (95% CI [0.031, 0.115]) — older adults perceive more hearing impairment, which in turn predicts more fatigue."><img src="../assets/images/blog/process/figure-7.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="720" alt="Decomposition of the age → fatigue relationship. The direct effect is significant and negative (older adults report less fatigue, holding the mediators constant). Among the indirect paths, only age → HearImpair → Fatigue is significant (95% CI [0.031, 0.115]) — older adults perceive more hearing impairment, which in turn predicts more fatigue."></a></p>
+</figure>
+</div>
 <figcaption>Decomposition of the age → fatigue relationship. The direct effect is significant and negative (older adults report less fatigue, holding the mediators constant). Among the indirect paths, only <strong>age → HearImpair → Fatigue</strong> is significant (95% CI [0.031, 0.115]) — older adults perceive more hearing impairment, which in turn predicts more fatigue.</figcaption>
 </figure>
 </div>
@@ -731,6 +762,13 @@ X → Y          (direct effect, controlling for M)</code></pre>
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -1058,6 +1096,38 @@ X → Y          (direct effect, controlling for M)</code></pre>
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
