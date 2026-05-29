@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-f7333b7c44a7c3d55afcc11699a363c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-5a7edf553ce6f37e40c66d907d0f4061.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -160,7 +160,6 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="./advanced/meta-analysis.html">
  <span class="dropdown-text">Meta-Analysis</span></a>
   </li>  
-        <li><hr class="dropdown-divider"></li>
         <li>
     <a class="dropdown-item" href="./advanced/measurement-invariance.html">
  <span class="dropdown-text">Measurement Invariance</span></a>
@@ -207,22 +206,24 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#download-and-install-jasp" id="toc-download-and-install-jasp" class="nav-link active" data-scroll-target="#download-and-install-jasp">Download and install JASP</a></li>
-  <li><a href="#loading-data-into-jasp" id="toc-loading-data-into-jasp" class="nav-link" data-scroll-target="#loading-data-into-jasp">Loading data into JASP</a>
-  <ul class="collapse">
-  <li><a href="#getting-started-video" id="toc-getting-started-video" class="nav-link" data-scroll-target="#getting-started-video">Getting started video</a></li>
-  </ul></li>
+  <li><a href="#loading-data-into-jasp" id="toc-loading-data-into-jasp" class="nav-link" data-scroll-target="#loading-data-into-jasp">Loading data into JASP</a></li>
   <li><a href="#the-jasp-interface" id="toc-the-jasp-interface" class="nav-link" data-scroll-target="#the-jasp-interface">The JASP interface</a>
   <ul class="collapse">
   <li><a href="#variable-types" id="toc-variable-types" class="nav-link" data-scroll-target="#variable-types">Variable types</a></li>
   </ul></li>
+  <li><a href="#editing-and-preparing-your-data" id="toc-editing-and-preparing-your-data" class="nav-link" data-scroll-target="#editing-and-preparing-your-data">Editing and preparing your data</a>
+  <ul class="collapse">
+  <li><a href="#categories-rename-reorder-reverse-code" id="toc-categories-rename-reorder-reverse-code" class="nav-link" data-scroll-target="#categories-rename-reorder-reverse-code">Categories: rename, reorder, reverse-code</a></li>
+  <li><a href="#variable-transformations" id="toc-variable-transformations" class="nav-link" data-scroll-target="#variable-transformations">Variable transformations</a></li>
+  <li><a href="#sum-scores-and-row-level-summaries" id="toc-sum-scores-and-row-level-summaries" class="nav-link" data-scroll-target="#sum-scores-and-row-level-summaries">Sum scores and row-level summaries</a></li>
+  <li><a href="#missing-values" id="toc-missing-values" class="nav-link" data-scroll-target="#missing-values">Missing values</a></li>
+  </ul></li>
+  <li><a href="#filtering-data" id="toc-filtering-data" class="nav-link" data-scroll-target="#filtering-data">Filtering data</a></li>
+  <li><a href="#modules" id="toc-modules" class="nav-link" data-scroll-target="#modules">Modules</a></li>
   <li><a href="#running-an-analysis" id="toc-running-an-analysis" class="nav-link" data-scroll-target="#running-an-analysis">Running an analysis</a></li>
   <li><a href="#saving-your-work" id="toc-saving-your-work" class="nav-link" data-scroll-target="#saving-your-work">Saving your work</a></li>
   <li><a href="#where-to-get-help" id="toc-where-to-get-help" class="nav-link" data-scroll-target="#where-to-get-help">Where to get help</a></li>
   <li><a href="#further-viewing-ssr-lecture-recordings" id="toc-further-viewing-ssr-lecture-recordings" class="nav-link" data-scroll-target="#further-viewing-ssr-lecture-recordings">Further viewing — SSR lecture recordings</a></li>
-  <li><a href="#try-it-yourself" id="toc-try-it-yourself" class="nav-link" data-scroll-target="#try-it-yourself">Try it yourself</a>
-  <ul class="collapse">
-  <li><a href="#warm-up-exercise-enter-an-ultimatum-game-dataset-by-hand" id="toc-warm-up-exercise-enter-an-ultimatum-game-dataset-by-hand" class="nav-link" data-scroll-target="#warm-up-exercise-enter-an-ultimatum-game-dataset-by-hand">Warm-up exercise — Enter an ultimatum-game dataset by hand</a></li>
-  </ul></li>
   <li><a href="#ready-to-start" id="toc-ready-to-start" class="nav-link" data-scroll-target="#ready-to-start">Ready to start?</a></li>
   </ul>
 </nav>
@@ -254,6 +255,12 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>JASP is free, open-source statistical software developed at the University of Amsterdam. It is designed to make statistical analyses intuitive and interactive — output updates in real time as you change settings.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/images/getting-started/dsuj_Figure_4.2.png" class="img-fluid figure-img" width="560"></p>
+<figcaption>The JASP welcome screen. The toolbar across the top is the analysis menu — Descriptives, T-Tests, ANOVA, etc. The blue <strong>+</strong> in the top-right opens the module manager.</figcaption>
+</figure>
+</div>
 <section id="download-and-install-jasp" class="level2">
 <h2 class="anchored" data-anchor-id="download-and-install-jasp">Download and install JASP</h2>
 <p>Go to <a href="https://jasp-stats.org/download/">jasp-stats.org/download</a> and download the installer for your operating system (Windows, macOS, or Linux). Installation is straightforward; no licence is required.</p>
@@ -267,7 +274,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Always download the latest stable release. If you are working on a university computer that already has JASP installed, make sure it is version 0.18 or later — some modules used in this course require a recent version.</p>
+<p>Always download the latest stable release. If you are working on a university computer that already has JASP installed, make sure it is reasonably recent — some modules used on this site require a recent version.</p>
 </div>
 </div>
 <hr>
@@ -275,13 +282,19 @@ ul.task-list li input[type="checkbox"] {
 <section id="loading-data-into-jasp" class="level2">
 <h2 class="anchored" data-anchor-id="loading-data-into-jasp">Loading data into JASP</h2>
 <p>JASP can open several file formats: <code>.jasp</code> (JASP’s own format), <code>.csv</code>, <code>.sav</code> (SPSS), <code>.xlsx</code>, <code>.ods</code>, and more.</p>
-<p><strong>Opening a .jasp file</strong> — this is the easiest way to practise. A <code>.jasp</code> file contains both the dataset and any pre-configured analyses. Double-click the file or use <em>File → Open</em> in JASP.</p>
-<p><strong>Opening a .csv or .sav file</strong> — use <em>File → Open</em> and navigate to your file. After opening, JASP shows the spreadsheet. Check that your variables have the correct measurement level (nominal, ordinal, or scale) by clicking the variable type icon next to the column header.</p>
-<section id="getting-started-video" class="level3">
-<h3 class="anchored" data-anchor-id="getting-started-video">Getting started video</h3>
-<p><a href="https://jasp-stats.github.io/jasp-video-library/Getting-Started.html">▶ Removing an outlier in JASP</a> — a short example from the JASP Video Library.</p>
+<ul>
+<li><strong>A <code>.jasp</code> file</strong> contains both the dataset and any pre-configured analyses, so opening one drops you straight into the analysis. Double-click it or use <em>File → Open</em>.</li>
+<li><strong>A <code>.csv</code> / <code>.sav</code> / <code>.xlsx</code> file</strong> opens as a plain spreadsheet — after opening, check that every variable has the correct measurement level (the small icon next to the column header).</li>
+<li><strong>A dataset from the built-in Data Library</strong> — JASP ships with a curated set of practice datasets organised by topic. <em>File → Open → Data Library</em> lets you browse and load any of them in one click; each comes with a short description.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/images/getting-started/dsuj_Figure_4.3.png" class="img-fluid figure-img" width="620"></p>
+<figcaption>The <em>File</em> panel. The left column has the standard <em>Open / Save / Save As / Export</em> actions; the <em>Data Library</em> row in the middle column reveals JASP’s bundled practice datasets, grouped by analysis topic.</figcaption>
+</figure>
+</div>
+<p>→ <a href="https://jasp-stats.github.io/jasp-video-library/Getting-Started.html#loading-data">▶ Loading Data</a> (JASP Video Library, ~1 min) walks through opening a file and inspecting it.</p>
 <hr>
-</section>
 </section>
 <section id="the-jasp-interface" class="level2">
 <h2 class="anchored" data-anchor-id="the-jasp-interface">The JASP interface</h2>
@@ -312,34 +325,216 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/images/getting-started/dsuj_Figure_4.4.png" class="img-fluid figure-img" width="640"></p>
+<figcaption>The data-editor toolbar. <strong>Analyses</strong> flips back to the analysis view, <strong>Synchronisation</strong> controls whether JASP re-reads the underlying file on disk, <strong>Resize Data</strong>, <strong>Insert</strong> and <strong>Remove</strong> rows/columns, and <strong>Undo/Redo</strong> the last data edits.</figcaption>
+</figure>
+</div>
 <section id="variable-types" class="level3">
 <h3 class="anchored" data-anchor-id="variable-types">Variable types</h3>
-<p>JASP uses three measurement levels:</p>
+<p>JASP recognises three measurement levels (DSUJ §4.6.2). The icon next to each column header tells you which is currently assigned; click it to change.</p>
 <ul>
-<li><strong>Nominal</strong> — unordered categories (e.g., treatment group, gender)</li>
-<li><strong>Ordinal</strong> — ordered categories (e.g., Likert scales treated as ordinal)</li>
-<li><strong>Scale</strong> (continuous/interval/ratio) — numeric measurements (e.g., reaction time, score)</li>
+<li><img src="assets/images/getting-started/variable-nominal.svg" style="vertical-align: middle" height="18"> <strong>Nominal</strong> — unordered categories (e.g.&nbsp;treatment group, gender identity).</li>
+<li><img src="assets/images/getting-started/variable-ordinal.svg" style="vertical-align: middle" height="18"> <strong>Ordinal</strong> — ordered categories with no guaranteed equal spacing (e.g.&nbsp;Likert items if you want to be conservative, education level, satisfaction rating).</li>
+<li><img src="assets/images/getting-started/variable-scale.svg" style="vertical-align: middle" height="18"> <strong>Scale</strong> (continuous / interval / ratio) — numeric measurements with meaningful spacing (e.g.&nbsp;reaction time, exam score, IQ).</li>
 </ul>
-<p>Assigning the correct variable type matters because JASP uses it to determine which analyses are available and how to display your data.</p>
+<p>The measurement level matters because JASP uses it to determine which analyses become available, how to dummy-code in regression, and how to render plots. Each variable also carries a <strong>value</strong> (what JASP computes on) and a <strong>label</strong> (what the output shows) — nominal and ordinal variables can have non-numeric labels, but scale variables need numeric values.</p>
 <hr>
 </section>
+</section>
+<section id="editing-and-preparing-your-data" class="level2">
+<h2 class="anchored" data-anchor-id="editing-and-preparing-your-data">Editing and preparing your data</h2>
+<p>A surprising amount of time in any analysis goes into data preparation. JASP’s data editor handles most of what you’d otherwise use SPSS <em>Transform</em> or R <code>dplyr</code> for, including:</p>
+<section id="categories-rename-reorder-reverse-code" class="level3">
+<h3 class="anchored" data-anchor-id="categories-rename-reorder-reverse-code">Categories: rename, reorder, reverse-code</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>JASP Video Library</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rename a category’s label (e.g.&nbsp;“1” → “control”)</td>
+<td><a href="https://jasp-stats.github.io/jasp-video-library/Getting-Started.html#renaming-categories">▶ Renaming Categories</a></td>
+</tr>
+<tr class="even">
+<td>Reorder ordinal categories</td>
+<td><a href="https://jasp-stats.github.io/jasp-video-library/Getting-Started.html#reordering-categories">▶ Reordering Categories</a></td>
+</tr>
+<tr class="odd">
+<td>Add a missing category level</td>
+<td><a href="https://jasp-stats.github.io/jasp-video-library/Getting-Started.html#add-levels">▶ Add Levels</a></td>
+</tr>
+<tr class="even">
+<td>Reverse-code a Likert item (single)</td>
+<td><a href="https://jasp-stats.github.io/jasp-video-library/Getting-Started.html#reverse-code-single">▶ Reverse Code Single</a></td>
+</tr>
+<tr class="odd">
+<td>Reverse-code several items at once</td>
+<td><a href="https://jasp-stats.github.io/jasp-video-library/Getting-Started.html#reverse-code-multiple">▶ Reverse Code Multiple</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="variable-transformations" class="level3">
+<h3 class="anchored" data-anchor-id="variable-transformations">Variable transformations</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>JASP Video Library</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Compute a new column from an existing one</td>
+<td><a href="https://jasp-stats.github.io/jasp-video-library/Getting-Started.html#compute-new-column">▶ Compute New Column</a></td>
+</tr>
+<tr class="even">
+<td>Conditional recode (if/else logic)</td>
+<td><a href="https://jasp-stats.github.io/jasp-video-library/Getting-Started.html#use-if-else">▶ Use If Else</a></td>
+</tr>
+<tr class="odd">
+<td>Centre / standardise a continuous variable (z-scores)</td>
+<td><a href="https://jasp-stats.github.io/jasp-video-library/Getting-Started.html#center-variable">▶ Center Variable</a></td>
+</tr>
+<tr class="even">
+<td>Convert a continuous variable to its ranks</td>
+<td><a href="https://jasp-stats.github.io/jasp-video-library/Getting-Started.html#convert-to-ranks">▶ Convert to Ranks</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sum-scores-and-row-level-summaries" class="level3">
+<h3 class="anchored" data-anchor-id="sum-scores-and-row-level-summaries">Sum scores and row-level summaries</h3>
+<p>Aggregating multiple items into a single scale score (e.g.&nbsp;summing the seven items of a depression questionnaire) is a one-step drag-and-drop in JASP, with R-code alternatives for reproducibility:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>JASP Video Library</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Row sum (sum scores) — drag and drop</td>
+<td><a href="https://jasp-stats.github.io/jasp-video-library/Getting-Started.html#drag-and-drop-rowsum">▶ Drag and Drop RowSum</a></td>
+</tr>
+<tr class="even">
+<td>Row mean (averaged scale score) — drag and drop</td>
+<td><a href="https://jasp-stats.github.io/jasp-video-library/Getting-Started.html#drag-and-drop-rowmean">▶ Drag and Drop RowMean</a></td>
+</tr>
+<tr class="odd">
+<td>Same, scripted in R</td>
+<td><a href="https://jasp-stats.github.io/jasp-video-library/Getting-Started.html#r-rowsum">▶ R RowSum</a> · <a href="https://jasp-stats.github.io/jasp-video-library/Getting-Started.html#r-rowmean">▶ R RowMean</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="missing-values" class="level3">
+<h3 class="anchored" data-anchor-id="missing-values">Missing values</h3>
+<p>JASP automatically treats the strings <code>NA</code>, <code>NaN</code>, <code>nan</code>, and <code>.</code> as missing (DSUJ §4.6.3). Empty cells also count as missing. If your dataset uses a sentinel value like <code>999</code> or <code>-99</code> for missing, declare it: open the variable’s settings, go to the <strong>Missing values</strong> tab, tick <strong>Custom missing values</strong>, and enter the sentinel. JASP will then exclude those rows from analyses that involve the variable, instead of treating them as real data.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/images/getting-started/dsuj_Figure_4.6.png" class="img-fluid figure-img" width="620"></p>
+<figcaption>The variable settings panel. The <em>Label editor</em> tab (shown) lets you rename categories and toggle the Filter checkbox; the <em>Missing values</em> tab adjacent to it is where you declare custom missing-value codes.</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Don’t leave coded-missing values undeclared
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Forgetting to declare <code>999</code> as missing is one of the most common silent errors in psychology data. The analysis runs, the numbers look fine, but every mean is inflated by the un-recoded missing values. Always inspect the <em>Valid</em> column in <em>Descriptives</em> against the dataset’s row count — they should match if there’s no missingness.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="filtering-data" class="level2">
+<h2 class="anchored" data-anchor-id="filtering-data">Filtering data</h2>
+<p>Use a filter when you want to run analyses on a subset of cases — e.g.&nbsp;only female participants, only the within-budget condition, only respondents above a threshold (DSUJ §4.6.4). JASP has three ways:</p>
+<ol type="1">
+<li><strong>Tick boxes on a categorical variable</strong> — open Variable settings, switch to the Filter column, untick categories you want to exclude.</li>
+<li><strong>Drag-and-drop filter builder</strong> — click the funnel (▼) icon at the top-left of the data window to open a graphical filter. Drag a variable across, pick an operator (<code>&gt;</code>, <code>&lt;</code>, <code>==</code>, <code>!=</code>, …), enter a value, and apply.</li>
+<li><strong>R code</strong> — for more complex conditions (e.g.&nbsp;interactions of multiple variables), the same dialog has an R-code field. Useful when you want the filter logic to live alongside the dataset for reproducibility.</li>
+</ol>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>JASP Video Library</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Quick filter by category</td>
+<td><a href="https://jasp-stats.github.io/jasp-video-library/Getting-Started.html#filter-by-group">▶ Filter by Group</a></td>
+</tr>
+<tr class="even">
+<td>Drag-and-drop filter (categorical)</td>
+<td><a href="https://jasp-stats.github.io/jasp-video-library/Getting-Started.html#filter-drag-and-drop-categorical">▶ Filter Drag and Drop Categorical</a></td>
+</tr>
+<tr class="odd">
+<td>Drag-and-drop filter (continuous)</td>
+<td><a href="https://jasp-stats.github.io/jasp-video-library/Getting-Started.html#filter-drag-and-drop-scale">▶ Filter Drag and Drop Scale</a></td>
+</tr>
+</tbody>
+</table>
+<p>JASP greys out filtered-out rows in the data view, and adds a small filter icon next to the column doing the filtering — so you always know what’s active.</p>
+<hr>
+</section>
+<section id="modules" class="level2">
+<h2 class="anchored" data-anchor-id="modules">Modules</h2>
+<p>JASP’s analyses are organised into modules. The basic modules (Descriptives, T-Tests, ANOVA, Regression, Frequencies, Factor) are enabled by default. For everything else — SEM, PROCESS, Network, Meta-Analysis, Bayesian extensions, Machine Learning — you enable the module first.</p>
+<p><strong>To install a module</strong>: click the blue <strong>+</strong> icon in the top-right of the JASP window. The module list appears; toggle on the ones you need. Enabled modules appear as new entries in the analysis menu bar.</p>
+<p>→ <a href="https://jasp-stats.github.io/jasp-video-library/Getting-Started.html#enable-r-module">▶ Enable R Module</a> shows the workflow, using the R-scripting module as an example.</p>
+<hr>
 </section>
 <section id="running-an-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="running-an-analysis">Running an analysis</h2>
 <ol type="1">
-<li>Select the relevant menu item (e.g., <em>T-Tests → Independent Samples T-Test</em>)</li>
-<li>Drag variables into the appropriate boxes (dependent variable, grouping variable)</li>
-<li>Tick the options you need (effect size, assumption checks, plots)</li>
-<li>Output appears immediately in the right panel</li>
+<li>Select the relevant menu item (e.g., <em>T-Tests → Independent Samples T-Test</em>).</li>
+<li>Drag variables into the appropriate boxes (dependent variable, grouping variable).</li>
+<li>Tick the options you need (effect size, assumption checks, plots).</li>
+<li>Output appears immediately in the right panel.</li>
 </ol>
-<p>There is no “Run” button — JASP updates results live.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/images/getting-started/dsuj_Figure_4.10.png" class="img-fluid figure-img" width="620"></p>
+<figcaption>Anatomy of a typical analysis dialog (Descriptive Statistics shown). The list on the left is your dataset’s variables; arrows move them into the boxes on the right. Output regenerates on the right-hand panel of the main window as soon as you change anything.</figcaption>
+</figure>
+</div>
+<p>There is no “Run” button — JASP updates results live as you click options.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Not sure which test to use?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The JASP Video Library has a short <a href="https://jasp-stats.github.io/jasp-video-library/Getting-Started.html#statistical-test-flowchart">▶ Statistical Test Flowchart</a> that walks through the standard decision tree (data type, number of groups, paired vs independent, etc.).</p>
+</div>
+</div>
 <hr>
 </section>
 <section id="saving-your-work" class="level2">
 <h2 class="anchored" data-anchor-id="saving-your-work">Saving your work</h2>
 <ul>
-<li><em>File → Save</em> saves a <code>.jasp</code> file containing both data and current analyses</li>
-<li>To export the output, click the downward triangle (▼) next to any result table or figure and choose <em>Copy</em>, <em>Save as image</em>, or similar</li>
+<li><em>File → Save</em> writes a <code>.jasp</code> file containing the data, all current analyses, <em>and</em> their settings — open it again later and pick up where you left off.</li>
+<li>To export a single result table or figure, click the <strong>downward triangle (▼)</strong> next to the result and choose <em>Copy</em>, <em>Save as image</em>, or similar.</li>
+<li>To export everything as a report, <em>File → Export Results</em> writes an HTML or PDF report of the full output.</li>
 </ul>
 <hr>
 </section>
@@ -358,8 +553,8 @@ ul.task-list li input[type="checkbox"] {
 <td><a href="https://jasp-stats.org/how-to-use-jasp/" class="uri">https://jasp-stats.org/how-to-use-jasp/</a></td>
 </tr>
 <tr class="even">
-<td>JASP forum</td>
-<td><a href="https://forum.cogsci.nl/categories/jasp" class="uri">https://forum.cogsci.nl/categories/jasp</a></td>
+<td>JASP Video Library (full)</td>
+<td><a href="https://jasp-stats.github.io/jasp-video-library/" class="uri">https://jasp-stats.github.io/jasp-video-library/</a></td>
 </tr>
 <tr class="odd">
 <td>Discovering Statistics Using JASP (DSUJ)</td>
@@ -373,36 +568,10 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="further-viewing-ssr-lecture-recordings">Further viewing — SSR lecture recordings</h2>
 <p>Two SSR lectures are useful before diving into the analysis topics (captions are available in the SharePoint player):</p>
 <ul>
-<li><a href="https://amsuni-my.sharepoint.com/:v:/g/personal/r_a_voskens_uva_nl/ET2tzHtsP4BMpjvy-LvhZrYB2ofWdiACW8JgRAYd1h-AiA?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&amp;e=3lX7UQ">▶ SSR Lecture 4 — Introduction to Statistics &amp; NHST</a> — populations, samples, distributions, inference; jump to <strong>~32:19</strong> for the null-hypothesis-significance-testing (NHST) section</li>
-<li><a href="https://amsuni-my.sharepoint.com/:v:/g/personal/r_a_voskens_uva_nl/EXVZr9oM-jVLquRgPwzAEEYB1mR9oVHqZYeURLGOkffzWw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&amp;e=MaZfdw">▶ SSR Lecture 5 — Introduction to JASP</a> — jump to <strong>~6:12</strong> for the JASP walkthrough proper (the first six minutes are course logistics and the lecture agenda)</li>
+<li><a href="https://amsuni-my.sharepoint.com/:v:/g/personal/r_a_voskens_uva_nl/ET2tzHtsP4BMpjvy-LvhZrYB2ofWdiACW8JgRAYd1h-AiA?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&amp;e=3lX7UQ">▶ SSR Lecture 4 — Introduction to Statistics &amp; NHST</a> — populations, samples, distributions, inference; jump to <strong>~32:19</strong> for the null-hypothesis-significance-testing (NHST) section.</li>
+<li><a href="https://amsuni-my.sharepoint.com/:v:/g/personal/r_a_voskens_uva_nl/EXVZr9oM-jVLquRgPwzAEEYB1mR9oVHqZYeURLGOkffzWw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&amp;e=MaZfdw">▶ SSR Lecture 5 — Introduction to JASP</a> — jump to <strong>~6:12</strong> for the JASP walkthrough proper (the first six minutes are course logistics and the lecture agenda).</li>
 </ul>
 <hr>
-</section>
-<section id="try-it-yourself" class="level2">
-<h2 class="anchored" data-anchor-id="try-it-yourself">Try it yourself</h2>
-<section id="warm-up-exercise-enter-an-ultimatum-game-dataset-by-hand" class="level3">
-<h3 class="anchored" data-anchor-id="warm-up-exercise-enter-an-ultimatum-game-dataset-by-hand">Warm-up exercise — Enter an ultimatum-game dataset by hand</h3>
-<p>Before launching into analyses, get comfortable with the JASP data view. Open <a href="https://discoverjasp.com/repository/dsj1_data/data/acdc.jasp"><code>acdc.jasp</code></a> — a dataset where listeners hearing AC/DC songs (under either Bon Scott or Brian Johnson) were asked what ultimatum-game offer they’d accept. Check the variable types in the column headers, add value labels for the singer factor, and produce a basic descriptive summary.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>▸ Worked solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/labcoat_leni#gonna-be-a-rock-n-roll-singer">Labcoat Leni — Gonna be a rock ‘n’ roll singer</a></li>
-</ul>
-</div>
-</div>
-</div>
-<hr>
-</section>
 </section>
 <section id="ready-to-start" class="level2">
 <h2 class="anchored" data-anchor-id="ready-to-start">Ready to start?</h2>

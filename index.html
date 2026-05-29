@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-f7333b7c44a7c3d55afcc11699a363c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-5a7edf553ce6f37e40c66d907d0f4061.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -160,7 +160,6 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="./advanced/meta-analysis.html">
  <span class="dropdown-text">Meta-Analysis</span></a>
   </li>  
-        <li><hr class="dropdown-divider"></li>
         <li>
     <a class="dropdown-item" href="./advanced/measurement-invariance.html">
  <span class="dropdown-text">Measurement Invariance</span></a>
@@ -267,10 +266,11 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>What is it?</strong> — a short conceptual overview</li>
 <li><strong>When to use it</strong> — decision guide: which research question, which data type</li>
 <li><strong>Assumptions</strong> — what to check before interpreting your results</li>
-<li><strong>How to do it in JASP</strong> — screen recordings</li>
+<li><strong>How to do it in JASP</strong> — menu paths and links to short screen recordings in the JASP Video Library</li>
 <li><strong>Interpreting the output</strong> — what to report and how to read the numbers</li>
-<li><strong>Further reading</strong> — DSUJ chapter, blog posts</li>
-<li><strong>Try it yourself</strong> — downloadable JASP file and practice exercises</li>
+<li><strong>Further reading</strong> — textbook chapters (DSUJ, Agresti, plus discipline-specific references on the advanced pages) and blog posts</li>
+<li><strong>Further viewing</strong> — links to the full SSR lecture recording for the topic, where applicable</li>
+<li><strong>Try it yourself</strong> — concrete exercises with a linked JASP dataset and a collapsible worked solution</li>
 </ul>
 </div>
 </div>
@@ -335,19 +335,22 @@ ul.task-list li input[type="checkbox"] {
 <h4 class="anchored" data-anchor-id="meta-analysis"><a href="./advanced/meta-analysis.html">Meta-Analysis</a></h4>
 <p>Synthesise effect sizes across studies. Forest plots, heterogeneity, and moderator analysis in JASP.</p>
 </section>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Coming soon:</strong> Measurement Invariance, Path Modeling, Latent Class / Profile Analysis, and Network Analysis. These are more specialised topics currently being developed.</p>
-</div>
+<section id="measurement-invariance" class="level4 topic-card">
+<h4 class="anchored" data-anchor-id="measurement-invariance"><a href="./advanced/measurement-invariance.html">Measurement Invariance</a></h4>
+<p>Test whether a scale behaves the same way across groups. Configural, metric, scalar, and strict invariance via multi-group CFA.</p>
+</section>
+<section id="path-modeling" class="level4 topic-card">
+<h4 class="anchored" data-anchor-id="path-modeling"><a href="./advanced/path-modeling.html">Path Modeling</a></h4>
+<p>Model systems of directed relationships among variables. Recursive vs.&nbsp;nonrecursive models, direct and indirect effects, full SEM.</p>
+</section>
+<section id="latent-class-profile-analysis" class="level4 topic-card">
+<h4 class="anchored" data-anchor-id="latent-class-profile-analysis"><a href="./advanced/latent-class.html">Latent Class / Profile Analysis</a></h4>
+<p>Identify unobserved subgroups of people from categorical (LCA) or continuous (LPA) indicators. A person-centred approach.</p>
+</section>
+<section id="network-analysis" class="level4 topic-card">
+<h4 class="anchored" data-anchor-id="network-analysis"><a href="./advanced/network-analysis.html">Network Analysis</a></h4>
+<p>Conceptualise constructs as networks of interacting components rather than reflections of a latent factor. GGM, regularisation, centrality.</p>
+</section>
 </div>
 <hr>
 </section>
@@ -362,20 +365,20 @@ Note
 </thead>
 <tbody>
 <tr class="odd">
-<td><a href="https://profandyfield.com/discoverse/dsuj/">Discovering Statistics Using JASP (DSUJ)</a></td>
-<td>The main textbook this site is built around. Available in the UvA library.</td>
-</tr>
-<tr class="even">
-<td><a href="https://jasp-stats.org/how-to-use-jasp/">How to Use JASP</a></td>
-<td>Step-by-step blog posts for specific analyses on the JASP website.</td>
-</tr>
-<tr class="odd">
 <td><a href="https://jasp-stats.org/download/">JASP Download</a></td>
 <td>Free, open-source statistical software used throughout this site.</td>
 </tr>
 <tr class="even">
-<td><a href="https://jasp-stats.org">JASP Video Library</a></td>
-<td>The full collection of screen recordings we draw from.</td>
+<td><a href="https://discoverjasp.com/">Discovering Statistics Using JASP (DSUJ)</a></td>
+<td>The main textbook this site is built around (available in the UvA library). The linked companion site, <em>discoverjasp.com</em>, hosts open-access materials including datasets, worked examples, Labcoat Leni studies, and Smart Alex exercises that will be referenced throughout the paddling pool.</td>
+</tr>
+<tr class="odd">
+<td><a href="https://jasp-stats.org/how-to-use-jasp/">How to Use JASP</a></td>
+<td>Step-by-step blog posts and gifs for specific analyses on the JASP website.</td>
+</tr>
+<tr class="even">
+<td><a href="https://jasp-stats.github.io/jasp-video-library/">JASP Video Library</a></td>
+<td>The full collection of screen recordings we draw from, illustrating where to click in JASP.</td>
 </tr>
 </tbody>
 </table>

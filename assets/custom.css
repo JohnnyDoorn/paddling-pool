@@ -1,28 +1,87 @@
-/* Paddling Pool – custom styles */
+/* Paddling Pool — JASP-inspired styling
+ * Palette borrowed from jasp-stats.github.io/jasp-video-library
+ *   slate-navy   #3a506b   primary text/navbar/headings
+ *   deep navy    #1c2541   hover / emphasis
+ *   light cyan   #f0fafe   sidebar/section background
+ *   JASP blue    #4990CD   accent (links, buttons, badges)
+ *   JASP green   #84B848   complementary accent (Basics badge)
+ */
 
-/* Navbar */
+/* Use Lato to match JASP visual identity */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+body, .quarto-title-block, p, li, td {
+  font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* === JASP-style wave banners — blue at top, green at bottom ===
+   Source images are 1936x200 (~9.7:1). Using `100% auto` so the image is
+   shown at its natural aspect ratio (no top/bottom cropping of the wave). */
+body::before,
+body::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 80px;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  opacity: 0.75;
+  pointer-events: none;
+}
+body::before {
+  background-image: url("images/wave_blue_up.jpg");
+  background-position: bottom center;  /* keep the curve that meets the page content */
+  margin-bottom: 1em;
+}
+body::after {
+  background-image: url("images/wave_green_down.jpg");
+  background-position: top center;     /* keep the curve that rises from the footer */
+  margin-top: 2em;
+}
+
+/* === Typography === */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  color: #3a506b;
+}
+
+a { color: #4990CD; }
+a:hover { color: #1c2541; }
+
+/* === Navbar — slate navy === */
 .navbar {
-  background-color: #BC0031 !important;  /* UvA red */
+  background-color: #3a506b !important;
 }
 .navbar-brand, .navbar .nav-link {
   color: #fff !important;
 }
 .navbar .nav-link:hover {
-  color: #ffd5d5 !important;
+  color: #cfe5f8 !important;
+}
+.navbar .dropdown-menu {
+  background-color: #f0fafe;
+}
+.navbar .dropdown-item {
+  color: #3a506b;
+}
+.navbar .dropdown-item:hover {
+  background-color: #cfe5f8;
+  color: #1c2541;
 }
 
-/* Hero banner on home page */
+/* === Hero banner on home page === */
 .hero-banner {
-  background: linear-gradient(135deg, #BC0031 0%, #8b0022 100%);
+  background: linear-gradient(135deg, #4990CD 0%, #84B848 100%);
   color: white;
   padding: 3rem 2rem;
   border-radius: 0.5rem;
   margin-bottom: 2rem;
 }
-.hero-banner h1 { color: white; margin-top: 0; }
-.hero-banner p  { font-size: 1.15rem; opacity: 0.9; }
+.hero-banner h1 { color: white; margin-top: 0; font-family: "Lato", sans-serif; font-weight: 700; }
+.hero-banner p  { font-size: 1.15rem; opacity: 0.95; }
 
-/* Topic cards on home page */
+/* === Topic cards on the home page === */
 .topic-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -30,32 +89,52 @@
   margin: 1.5rem 0;
 }
 .topic-card {
-  border: 1px solid #dee2e6;
+  border: 1px solid #d6e3ec;
   border-radius: 0.5rem;
   padding: 1.2rem;
-  transition: box-shadow 0.2s;
+  background-color: #f0fafe;
+  transition: box-shadow 0.2s, transform 0.2s;
 }
 .topic-card:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  box-shadow: 0 4px 14px rgba(58, 80, 107, 0.18);
+  transform: translateY(-2px);
 }
-.topic-card h4 { margin-top: 0; color: #BC0031; }
+.topic-card h4 {
+  margin-top: 0;
+  color: #3a506b;
+}
+.topic-card a {
+  color: #3a506b;
+  text-decoration: none;
+}
+.topic-card a:hover {
+  color: #1c2541;
+}
 
-/* Section labels */
+/* === Section badges (Basics / Advanced) === */
 .section-badge {
   display: inline-block;
-  background: #BC0031;
+  background: #84B848;          /* JASP green for the foundational basics */
   color: white;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   padding: 0.15rem 0.6rem;
   border-radius: 3px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 0.5rem;
 }
-.section-badge.advanced { background: #5a6275; }
+.section-badge.advanced {
+  background: #3a506b;          /* slate-navy for advanced topics */
+}
 
-/* Video containers */
+/* === Callout tweaks — line them up with the JASP palette === */
+.callout-note { border-left-color: #4990CD !important; }
+.callout-tip  { border-left-color: #84B848 !important; }
+.callout-warning { border-left-color: #f0a124 !important; }
+.callout-important { border-left-color: #bc3f3f !important; }
+
+/* === Video containers (legacy; kept for any local <video> embeds) === */
 .video-container {
   margin: 1rem 0 1.5rem;
 }
@@ -63,7 +142,7 @@
   width: 100%;
   max-width: 700px;
   border-radius: 0.4rem;
-  border: 1px solid #dee2e6;
+  border: 1px solid #d6e3ec;
 }
 .video-label {
   font-size: 0.85rem;
@@ -71,26 +150,31 @@
   margin-top: 0.3rem;
 }
 
-/* Callout tweaks */
-.callout-tip { border-left-color: #198754; }
-.callout-note { border-left-color: #0d6efd; }
-.callout-warning { border-left-color: #ffc107; }
-
-/* Coming-soon pages */
-.coming-soon {
-  text-align: center;
-  padding: 4rem 2rem;
-  color: #6c757d;
-}
-.coming-soon h2 { font-size: 3rem; margin-bottom: 0.5rem; }
-
-/* Assumption checklist */
+/* === Assumption checklist === */
 .assumption-list li {
   margin-bottom: 0.4rem;
 }
 
-/* Responsive video */
+/* === Tables — gentle JASP-flavoured borders === */
+.table th {
+  background-color: #f0fafe;
+  color: #3a506b;
+  border-bottom: 2px solid #4990CD;
+}
+.table td, .table th { border-color: #d6e3ec; }
+
+/* === Sidebar / TOC === */
+#TOC, .toc-active {
+  border-left-color: #4990CD;
+}
+.sidebar-item .sidebar-link.active {
+  color: #4990CD !important;
+  font-weight: 700;
+}
+
+/* === Responsive video / grid === */
 @media (max-width: 768px) {
   .video-container video { max-width: 100%; }
   .topic-grid { grid-template-columns: 1fr; }
+  body::before, body::after { height: 50px; }
 }

@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f7333b7c44a7c3d55afcc11699a363c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-5a7edf553ce6f37e40c66d907d0f4061.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -160,7 +160,6 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../advanced/meta-analysis.html">
  <span class="dropdown-text">Meta-Analysis</span></a>
   </li>  
-        <li><hr class="dropdown-divider"></li>
         <li>
     <a class="dropdown-item" href="../advanced/measurement-invariance.html">
  <span class="dropdown-text">Measurement Invariance</span></a>
@@ -213,12 +212,24 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#fixed-effects-vs.-random-effects-models" id="toc-fixed-effects-vs.-random-effects-models" class="nav-link" data-scroll-target="#fixed-effects-vs.-random-effects-models">Fixed-effects vs.&nbsp;random-effects models</a></li>
   <li><a href="#heterogeneity" id="toc-heterogeneity" class="nav-link" data-scroll-target="#heterogeneity">Heterogeneity</a></li>
   </ul></li>
-  <li><a href="#how-to-do-it-in-jasp" id="toc-how-to-do-it-in-jasp" class="nav-link" data-scroll-target="#how-to-do-it-in-jasp">How to do it in JASP</a></li>
+  <li><a href="#how-to-do-it-in-jasp" id="toc-how-to-do-it-in-jasp" class="nav-link" data-scroll-target="#how-to-do-it-in-jasp">How to do it in JASP</a>
+  <ul class="collapse">
+  <li><a href="#stage-1-compute-effect-sizes-from-raw-data" id="toc-stage-1-compute-effect-sizes-from-raw-data" class="nav-link" data-scroll-target="#stage-1-compute-effect-sizes-from-raw-data">Stage 1 — Compute effect sizes from raw data</a></li>
+  <li><a href="#stage-2-inspect-the-data-with-a-funnel-plot" id="toc-stage-2-inspect-the-data-with-a-funnel-plot" class="nav-link" data-scroll-target="#stage-2-inspect-the-data-with-a-funnel-plot">Stage 2 — Inspect the data with a funnel plot</a></li>
+  <li><a href="#stage-3-fit-a-meta-analytic-model-and-draw-a-forest-plot" id="toc-stage-3-fit-a-meta-analytic-model-and-draw-a-forest-plot" class="nav-link" data-scroll-target="#stage-3-fit-a-meta-analytic-model-and-draw-a-forest-plot">Stage 3 — Fit a meta-analytic model and draw a forest plot</a></li>
+  <li><a href="#beyond-the-basics-meta-regression-and-moderators" id="toc-beyond-the-basics-meta-regression-and-moderators" class="nav-link" data-scroll-target="#beyond-the-basics-meta-regression-and-moderators">Beyond the basics — meta-regression and moderators</a></li>
+  <li><a href="#advanced-models-multilevel-multivariate-cluster-robust-ses" id="toc-advanced-models-multilevel-multivariate-cluster-robust-ses" class="nav-link" data-scroll-target="#advanced-models-multilevel-multivariate-cluster-robust-ses">Advanced models (multilevel, multivariate, cluster-robust SEs)</a></li>
+  </ul></li>
   <li><a href="#reading-a-forest-plot" id="toc-reading-a-forest-plot" class="nav-link" data-scroll-target="#reading-a-forest-plot">Reading a forest plot</a></li>
   <li><a href="#publication-bias" id="toc-publication-bias" class="nav-link" data-scroll-target="#publication-bias">Publication bias</a></li>
   <li><a href="#moderator-analysis" id="toc-moderator-analysis" class="nav-link" data-scroll-target="#moderator-analysis">Moderator analysis</a></li>
   <li><a href="#interpreting-the-output" id="toc-interpreting-the-output" class="nav-link" data-scroll-target="#interpreting-the-output">Interpreting the output</a></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further reading</a></li>
+  <li><a href="#try-it-yourself" id="toc-try-it-yourself" class="nav-link" data-scroll-target="#try-it-yourself">Try it yourself</a>
+  <ul class="collapse">
+  <li><a href="#exercise-pool-the-bcg-vaccine-trials" id="toc-exercise-pool-the-bcg-vaccine-trials" class="nav-link" data-scroll-target="#exercise-pool-the-bcg-vaccine-trials">Exercise — Pool the BCG vaccine trials</a></li>
+  <li><a href="#exercise-moderator-analysis-on-the-same-data" id="toc-exercise-moderator-analysis-on-the-same-data" class="nav-link" data-scroll-target="#exercise-moderator-analysis-on-the-same-data">Exercise — Moderator analysis on the same data</a></li>
+  </ul></li>
   </ul>
 </nav>
 </nav>
@@ -355,8 +366,48 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="how-to-do-it-in-jasp" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-do-it-in-jasp">How to do it in JASP</h2>
-<p>Install the Meta-Analysis module: <strong>Modules (☰) → Available Modules → Meta-Analysis</strong>.</p>
-<p>Then go to <strong>Meta-Analysis → Classical Meta-Analysis</strong>.</p>
+<p>Install the Meta-Analysis module: click the blue <strong>+</strong> icon in the top-right of the JASP window to open the module list, then enable <strong>Meta-Analysis</strong>.</p>
+<p>The JASP Meta-Analysis module is a graphical interface to the R package <strong><code>metafor</code></strong> (Viechtbauer, 2010), with additional post-processing on top. Behind the scenes, every analysis maps to a <code>metafor</code> call, which means you get the full state-of-the-art set of methods — but through a point-and-click interface (Bartoš, Wagenmakers &amp; Viechtbauer, 2025).</p>
+<p>The typical workflow has three stages: (1) compute effect sizes from the raw study results, (2) inspect the data with a funnel plot, (3) fit a meta-analytic model and visualise it with a forest plot. Each stage is its own analysis under the <em>Meta-Analysis</em> menu.</p>
+<section id="stage-1-compute-effect-sizes-from-raw-data" class="level3">
+<h3 class="anchored" data-anchor-id="stage-1-compute-effect-sizes-from-raw-data">Stage 1 — Compute effect sizes from raw data</h3>
+<p>Open <strong>Meta-Analysis → Effect Size Computation</strong>. In the <em>Design</em>, <em>Measurement</em>, and <em>Effect size</em> dropdowns, pick the configuration matching your data (e.g.&nbsp;<em>Independent groups</em>, <em>Binary</em>, <em>RR</em> for risk ratios; or <em>Independent groups</em>, <em>Continuous</em>, <em>SMD</em> for standardised mean differences). Then drag the relevant outcome and group-size columns into the boxes. The output panel reports how many effect sizes were computed successfully.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/blog/meta-analysis/bartos-003-000.png" class="img-fluid figure-img" width="620"></p>
+<figcaption>The <em>Effect Size Computation</em> dialog on the BCG-vaccine dataset: thirteen trials reporting positive (<code>tpos</code>) and negative (<code>tneg</code>) tuberculosis cases in vaccinated and control groups. JASP computes the log risk ratio and standard error for each study and stores them as new columns in the data.</figcaption>
+</figure>
+</div>
+<p>This stage calls <code>metafor::escalc()</code> behind the scenes — every effect-size choice that <code>escalc</code> supports (RR, OR, RD, SMD, ROM, ZCOR, PR, IR, …) is available in the dropdown. Chain multiple computations with the green <strong>+</strong> button if you have several outcomes.</p>
+</section>
+<section id="stage-2-inspect-the-data-with-a-funnel-plot" class="level3">
+<h3 class="anchored" data-anchor-id="stage-2-inspect-the-data-with-a-funnel-plot">Stage 2 — Inspect the data with a funnel plot</h3>
+<p>Open <strong>Meta-Analysis → Funnel Plot</strong>. Drag the computed effect-size and standard-error columns into the input panel. JASP draws each study as a point in effect-size × standard-error space, with the <em>funnel</em> representing the sampling distribution under the chosen null. Asymmetry around the centre line is the visual hint of publication bias (formal tests live in the <em>Publication Bias / Sensitivity Analyses</em> section — see below).</p>
+</section>
+<section id="stage-3-fit-a-meta-analytic-model-and-draw-a-forest-plot" class="level3">
+<h3 class="anchored" data-anchor-id="stage-3-fit-a-meta-analytic-model-and-draw-a-forest-plot">Stage 3 — Fit a meta-analytic model and draw a forest plot</h3>
+<p>Open <strong>Meta-Analysis → Classical Meta-Analysis</strong>. Drag <em>Effect Size</em> and <em>Effect Size Standard Error</em> into the data inputs. The defaults follow <code>metafor</code> recommendations: <strong>REML</strong> for the random-effects variance, and the <strong>Knapp–Hartung</strong> small-sample adjustment for the fixed-effects test (Knapp &amp; Hartung, 2003). Tick <em>Forest Plot</em> to visualise; the figure renders alongside the pooled estimate, heterogeneity statistics, and the underlying <code>metafor</code> R code for reproducibility.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/blog/meta-analysis/bartos-005-002.png" class="img-fluid figure-img" width="720"></p>
+<figcaption>The <em>Classical Meta-Analysis</em> output for the BCG vaccine data. The model summary (top right) gives a pooled risk ratio of 0.49 with heterogeneity <em>Q</em>(12) = 152.23, <em>p</em> &lt; .001. The forest plot (bottom right) shows each of the 13 trials, the diamond at the bottom is the pooled effect, and JASP exposes the <code>metafor</code> code at the bottom for export to R if needed.</figcaption>
+</figure>
+</div>
+</section>
+<section id="beyond-the-basics-meta-regression-and-moderators" class="level3">
+<h3 class="anchored" data-anchor-id="beyond-the-basics-meta-regression-and-moderators">Beyond the basics — meta-regression and moderators</h3>
+<p>Drag one or more variables into the <em>Predictors</em> box of the Classical Meta-Analysis dialog to fit a <strong>meta-regression</strong> — the same model, but with covariates explaining between-study heterogeneity. Tick <em>Estimated Marginal Means and Contrasts</em> to get marginal means at specific predictor levels, and tick <em>Bubble Plot</em> to visualise the meta-regression slope:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/blog/meta-analysis/bartos-006-004.png" class="img-fluid figure-img" width="720"></p>
+<figcaption>A <em>meta-regression</em> on the writing-to-learn dataset (Example 2 of Bartoš et al., 2025) with two predictors. The output gives an omnibus test for each predictor (top right), individual coefficients, marginal-mean tables across levels of <code>feedback</code>, and a bubble plot of effect size against <code>length</code> with study weights encoded by bubble size.</figcaption>
+</figure>
+</div>
+</section>
+<section id="advanced-models-multilevel-multivariate-cluster-robust-ses" class="level3">
+<h3 class="anchored" data-anchor-id="advanced-models-multilevel-multivariate-cluster-robust-ses">Advanced models (multilevel, multivariate, cluster-robust SEs)</h3>
+<p>For nested data (effect sizes within studies within research groups), open the <em>Random Effects / Model Components</em> section in the Classical Meta-Analysis dialog and add a <strong>Nested (multilevel)</strong> component, specifying the grouping variables at each level. For dependent effect sizes (e.g.&nbsp;several outcomes per study), the <em>Effect Size Variance-Covariance Matrix</em> analysis lets you specify the dependency structure that goes into the model. Both surfaces also support <strong>cluster-robust standard errors</strong> with one tickbox.</p>
+<p>These advanced models put JASP roughly on par with <code>metafor</code> itself for what’s expressible through the GUI — multilevel, multivariate, location–scale meta-regression, and small-sample corrections are all accessible without writing a single line of R.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -367,14 +418,16 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Recordings at <a href="https://jasp-stats.github.io/jasp-video-library/Meta-Analysis.html">jasp-stats.github.io/jasp-video-library/Meta-Analysis.html</a>:</p>
+<p>Short walkthrough recordings at <a href="https://jasp-stats.github.io/jasp-video-library/Meta-Analysis.html">jasp-stats.github.io/jasp-video-library/Meta-Analysis.html</a>:</p>
 <ul>
 <li><a href="https://jasp-stats.github.io/jasp-video-library/Meta-Analysis.html#effect-size-computation">▶ Effect Size Computation</a> — computing <em>d</em>, <em>r</em>, or log OR from raw statistics</li>
 <li><a href="https://jasp-stats.github.io/jasp-video-library/Meta-Analysis.html#main-analysis">▶ Main Analysis</a> — random-effects model, forest plot, heterogeneity statistics</li>
 </ul>
+<p>For the full guided walkthrough on real datasets (BCG vaccines, writing-to-learn interventions, recidivism), see <strong>Bartoš, F., Wagenmakers, E.-J., &amp; Viechtbauer, W. (2025). Meta-Analysis with JASP, Part I: Classical Approaches.</strong> arXiv:2509.09845. Annotated JASP files: <a href="https://osf.io/mb56t/">osf.io/mb56t</a>.</p>
 </div>
 </div>
 <hr>
+</section>
 </section>
 <section id="reading-a-forest-plot" class="level2">
 <h2 class="anchored" data-anchor-id="reading-a-forest-plot">Reading a forest plot</h2>
@@ -423,11 +476,63 @@ ul.task-list li input[type="checkbox"] {
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
 <ul>
-<li>Borenstein, M., Hedges, L. V., Higgins, J. P. T., &amp; Rothstein, H. R. (2009). <em>Introduction to meta-analysis</em>. Wiley. — The standard text</li>
-<li><a href="https://training.cochrane.org/handbook">Cochrane Handbook</a> — comprehensive guide for systematic reviews in health research</li>
+<li><strong>Borenstein, M., Hedges, L. V., Higgins, J. P. T., &amp; Rothstein, H. R. (2009).</strong> <em>Introduction to meta-analysis</em>. Wiley. — The standard text.</li>
+<li><strong><a href="https://training.cochrane.org/handbook">Cochrane Handbook</a></strong> — comprehensive guide for systematic reviews in health research.</li>
+<li><strong>Viechtbauer, W. (2010).</strong> Conducting meta-analyses in R with the <code>metafor</code> package. <em>Journal of Statistical Software</em>, 36(3), 1–48. — The R package JASP’s Meta-Analysis module builds on.</li>
+<li><strong>Bartoš, F., Wagenmakers, E.-J., &amp; Viechtbauer, W. (2025).</strong> Meta-analysis with JASP, Part I: Classical approaches. arXiv:2509.09845. — End-to-end tutorial with three worked examples (BCG vaccines, writing-to-learn, recidivism) covering effect-size computation through multilevel and multivariate models. Annotated JASP files at <a href="https://osf.io/mb56t/">osf.io/mb56t</a>.</li>
 </ul>
+<hr>
+</section>
+<section id="try-it-yourself" class="level2">
+<h2 class="anchored" data-anchor-id="try-it-yourself">Try it yourself</h2>
+<p>Meta-analysis is not part of the DSUJ Labcoat Leni / Smart Alex companion set, so there is no pre-packaged worked-solution dataset on discoverjasp. The examples below use the <code>metafor</code> package’s bundled datasets, which JASP can import via the CSV/RData routes.</p>
+<section id="exercise-pool-the-bcg-vaccine-trials" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-pool-the-bcg-vaccine-trials">Exercise — Pool the BCG vaccine trials</h3>
+<p>The classic meta-analysis teaching dataset is <strong><code>dat.bcg</code></strong> from the R package <code>metafor</code> — 13 trials of the BCG vaccine against tuberculosis with binary outcomes. Export it from R with <code>metafor::dat.bcg</code> and <code>write.csv(metafor::dat.bcg, "bcg.csv")</code>, then import into JASP. Fit a <strong>random-effects</strong> meta-analysis on the log risk ratios, request a <strong>forest plot</strong>, and inspect the heterogeneity statistics (Q and I²).</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>▸ Worked walkthrough
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>In R / metafor</strong>: the <code>dat.bcg</code> example is documented in <a href="https://www.metafor-project.org/doku.php/analyses">the metafor analysis examples</a> (the random-effects model with log RR is the standard demonstration).</li>
+<li><strong>In JASP</strong>: the <a href="https://jasp-stats.github.io/jasp-video-library/Meta-Analysis.html">JASP Video Library — Meta-Analysis</a> shows the equivalent workflow end-to-end.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-moderator-analysis-on-the-same-data" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-moderator-analysis-on-the-same-data">Exercise — Moderator analysis on the same data</h3>
+<p>Using the same dataset, add <strong>ablat</strong> (absolute latitude of the trial) as a moderator. Does latitude explain a significant portion of the between-study heterogeneity? Reproduce the classic result that vaccine effectiveness increases with latitude.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>▸ Worked walkthrough
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong><code>metafor</code></strong> users can fit this as <code>rma(yi, vi, mods = ~ ablat, data = dat.bcg, method = "REML")</code> and inspect the moderator’s <em>p</em>-value, R², and residual heterogeneity. JASP’s Meta-Analysis module exposes the same model via the <em>Moderators</em> input.</li>
+</ul>
+</div>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

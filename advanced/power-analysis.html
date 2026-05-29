@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f7333b7c44a7c3d55afcc11699a363c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-5a7edf553ce6f37e40c66d907d0f4061.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -160,7 +160,6 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../advanced/meta-analysis.html">
  <span class="dropdown-text">Meta-Analysis</span></a>
   </li>  
-        <li><hr class="dropdown-divider"></li>
         <li>
     <a class="dropdown-item" href="../advanced/measurement-invariance.html">
  <span class="dropdown-text">Measurement Invariance</span></a>
@@ -206,21 +205,23 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link active" data-scroll-target="#key-concepts">Key concepts</a></li>
-  <li><a href="#effect-sizes-for-power-analysis" id="toc-effect-sizes-for-power-analysis" class="nav-link" data-scroll-target="#effect-sizes-for-power-analysis">Effect sizes for power analysis</a></li>
-  <li><a href="#tools-for-power-analysis" id="toc-tools-for-power-analysis" class="nav-link" data-scroll-target="#tools-for-power-analysis">Tools for power analysis</a>
+  <li><a href="#type-i-and-type-ii-errors" id="toc-type-i-and-type-ii-errors" class="nav-link active" data-scroll-target="#type-i-and-type-ii-errors">Type I and Type II errors</a></li>
+  <li><a href="#the-four-quantities" id="toc-the-four-quantities" class="nav-link" data-scroll-target="#the-four-quantities">The four quantities</a></li>
+  <li><a href="#the-central-question-what-effect-size" id="toc-the-central-question-what-effect-size" class="nav-link" data-scroll-target="#the-central-question-what-effect-size">The central question: what effect size?</a>
   <ul class="collapse">
-  <li><a href="#gpower-recommended" id="toc-gpower-recommended" class="nav-link" data-scroll-target="#gpower-recommended">G*Power (recommended)</a></li>
-  <li><a href="#jasp-jpower-module" id="toc-jasp-jpower-module" class="nav-link" data-scroll-target="#jasp-jpower-module">JASP: jpower module</a></li>
-  <li><a href="#online-tools" id="toc-online-tools" class="nav-link" data-scroll-target="#online-tools">Online tools</a></li>
+  <li><a href="#smallest-effect-size-of-interest-sesoi" id="toc-smallest-effect-size-of-interest-sesoi" class="nav-link" data-scroll-target="#smallest-effect-size-of-interest-sesoi">Smallest effect size of interest (SESOI)</a></li>
   </ul></li>
-  <li><a href="#power-analysis-for-common-designs" id="toc-power-analysis-for-common-designs" class="nav-link" data-scroll-target="#power-analysis-for-common-designs">Power analysis for common designs</a>
+  <li><a href="#how-to-do-it-in-jasp-the-power-module" id="toc-how-to-do-it-in-jasp-the-power-module" class="nav-link" data-scroll-target="#how-to-do-it-in-jasp-the-power-module">How to do it in JASP — the <strong>Power</strong> module</a>
   <ul class="collapse">
-  <li><a href="#independent-samples-t-test" id="toc-independent-samples-t-test" class="nav-link" data-scroll-target="#independent-samples-t-test">Independent-samples t-test</a></li>
+  <li><a href="#workflow" id="toc-workflow" class="nav-link" data-scroll-target="#workflow">Workflow</a></li>
+  </ul></li>
+  <li><a href="#complementary-tools-for-the-tests-jasppower-doesnt-cover-yet" id="toc-complementary-tools-for-the-tests-jasppower-doesnt-cover-yet" class="nav-link" data-scroll-target="#complementary-tools-for-the-tests-jasppower-doesnt-cover-yet">Complementary tools for the tests jaspPower doesn’t cover yet</a></li>
+  <li><a href="#quick-reference-tables" id="toc-quick-reference-tables" class="nav-link" data-scroll-target="#quick-reference-tables">Quick-reference tables</a>
+  <ul class="collapse">
+  <li><a href="#independent-samples-t-test-per-group" id="toc-independent-samples-t-test-per-group" class="nav-link" data-scroll-target="#independent-samples-t-test-per-group">Independent-samples t-test (per group)</a></li>
   <li><a href="#pearson-correlation" id="toc-pearson-correlation" class="nav-link" data-scroll-target="#pearson-correlation">Pearson correlation</a></li>
-  <li><a href="#one-way-anova-3-groups" id="toc-one-way-anova-3-groups" class="nav-link" data-scroll-target="#one-way-anova-3-groups">One-way ANOVA (3 groups)</a></li>
+  <li><a href="#one-way-anova-3-groups-total-n" id="toc-one-way-anova-3-groups-total-n" class="nav-link" data-scroll-target="#one-way-anova-3-groups-total-n">One-way ANOVA, 3 groups (total <em>N</em>)</a></li>
   </ul></li>
-  <li><a href="#sensitivity-analysis" id="toc-sensitivity-analysis" class="nav-link" data-scroll-target="#sensitivity-analysis">Sensitivity analysis</a></li>
   <li><a href="#reporting-power-analysis" id="toc-reporting-power-analysis" class="nav-link" data-scroll-target="#reporting-power-analysis">Reporting power analysis</a></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further reading</a></li>
   </ul>
@@ -253,123 +254,63 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><span class="section-badge advanced">Advanced Topics</span></p>
-<p>A <strong>power analysis</strong> determines the sample size needed to detect an effect of a given size with a specified probability, given a chosen significance threshold. Running a power analysis before data collection is a core component of preregistration and transparent science.</p>
+<p>A <strong>power analysis</strong> answers the question: <em>given my study design, what sample size will I need to detect the effect I care about?</em> Done before data collection, it is the standard tool for sample-size justification in (pre-)registered studies and a core component of transparent statistical practice (Lakens, 2022).</p>
 <hr>
-<section id="key-concepts" class="level2">
-<h2 class="anchored" data-anchor-id="key-concepts">Key concepts</h2>
-<p><strong>Statistical power</strong> (1 − β) is the probability of correctly rejecting a false null hypothesis. Conventional minimum: <strong>.80</strong> (80%), meaning a 20% chance of a false negative.</p>
-<p>Four quantities are mathematically related — if you know three, you can calculate the fourth:</p>
+<section id="type-i-and-type-ii-errors" class="level2">
+<h2 class="anchored" data-anchor-id="type-i-and-type-ii-errors">Type I and Type II errors</h2>
+<p>A statistical test can be wrong in two ways (DSUJ §2.10.7; Agresti, Franklin &amp; Klingenberg §9.4):</p>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
 <tr class="header">
-<th>Quantity</th>
-<th>Symbol</th>
-<th>Typical default</th>
+<th></th>
+<th>Reality: H₀ true (no effect)</th>
+<th>Reality: H₁ true (effect exists)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Sample size</td>
-<td><em>N</em></td>
-<td>To be determined</td>
+<td><strong>Decision: don’t reject H₀</strong></td>
+<td>Correct</td>
+<td><strong>Type II error</strong> (false negative)</td>
 </tr>
 <tr class="even">
-<td>Effect size</td>
-<td><em>d</em>, <em>f</em>, <em>r</em>, etc.</td>
-<td>From prior research or theory</td>
-</tr>
-<tr class="odd">
-<td>Significance level</td>
-<td>α</td>
-<td>.05</td>
-</tr>
-<tr class="even">
-<td>Power</td>
-<td>1 − β</td>
-<td>.80</td>
+<td><strong>Decision: reject H₀</strong></td>
+<td><strong>Type I error</strong> (false positive)</td>
+<td>Correct</td>
 </tr>
 </tbody>
 </table>
-<p>Most commonly: specify the expected effect size, α = .05, power = .80 → solve for <em>N</em>.</p>
-<hr>
-</section>
-<section id="effect-sizes-for-power-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="effect-sizes-for-power-analysis">Effect sizes for power analysis</h2>
-<p>Use the effect size metric appropriate for your planned analysis:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Analysis</th>
-<th>Effect size</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>t-test</td>
-<td>Cohen’s <em>d</em></td>
-</tr>
-<tr class="even">
-<td>ANOVA</td>
-<td>Cohen’s <em>f</em> (or η²: f = √(η²/(1−η²)))</td>
-</tr>
-<tr class="odd">
-<td>Correlation / regression</td>
-<td>Pearson’s <em>r</em> or Cohen’s <em>f²</em></td>
-</tr>
-<tr class="even">
-<td>Chi-square</td>
-<td>Cohen’s <em>w</em></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Where do I get the expected effect size?</strong></p>
-<ol type="1">
-<li><strong>Previous studies</strong>: the effect size from published research on the same or closely related topic</li>
-<li><strong>Meta-analyses</strong>: if one exists for your research question, use the meta-analytic estimate</li>
-<li><strong>Pilot data</strong>: run a small pilot study first (though pilot estimates are unreliable with small N)</li>
-<li><strong>Smallest effect size of interest (SESOI)</strong>: what is the minimum effect that would be theoretically or practically meaningful? This is increasingly recommended over using published estimates, which may be inflated.</li>
-</ol>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
+<ul>
+<li><strong>α</strong> = probability of a Type I error. By convention .05.</li>
+<li><strong>β</strong> = probability of a Type II error. Cohen (1988, 1992) suggested .20 as the maximum acceptable value, and this has become the conventional minimum — meaning we are willing to miss a real effect at most once every five replications.</li>
+<li><strong>Power</strong> = 1 − β = the probability of <em>correctly</em> rejecting a false null hypothesis. Conventional minimum: <strong>.80</strong> (= 80%).</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Publication bias inflates effect sizes
+<span class="screen-reader-only">Tip</span>The trade-off between α and β
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Published effect sizes are often inflated due to selective reporting. Using them naively will lead to underpowered studies. Where possible, use meta-analytic estimates or pre-specify a conservative (smaller) effect size.</p>
+<p>For a fixed sample size, making α smaller (e.g., .01 instead of .05) raises the bar for “evidence” and so reduces Type I error — but increases Type II error, because real effects also produce smaller test statistics. To shrink both α <em>and</em> β simultaneously, you need a larger sample size. Agresti, Franklin &amp; Klingenberg (§9.4) describe this as “the two probabilities are inversely related” for a given <em>N</em>. Power analysis is the formal calculation of how large <em>N</em> must be to keep both errors acceptably small (Cohen, 1988).</p>
+</div>
 </div>
 </div>
 <hr>
 </section>
-<section id="tools-for-power-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="tools-for-power-analysis">Tools for power analysis</h2>
-<section id="gpower-recommended" class="level3">
-<h3 class="anchored" data-anchor-id="gpower-recommended">G*Power (recommended)</h3>
-<p><a href="https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower">G*Power</a> is free, widely used, and covers all common analyses including t-tests, ANOVA, regression, and correlation.</p>
-<p>Steps: 1. Select <strong>Test family</strong> (e.g., <em>t</em>-tests) 2. Select <strong>Statistical test</strong> (e.g., <em>Means: Difference between two independent means</em>) 3. Set <strong>Type of power analysis</strong> to <em>A priori</em> (for planning) 4. Enter effect size, α, and desired power → click <strong>Calculate</strong></p>
-</section>
-<section id="jasp-jpower-module" class="level3">
-<h3 class="anchored" data-anchor-id="jasp-jpower-module">JASP: jpower module</h3>
-<p>JASP includes a <strong>jpower</strong> module for power analysis. Install it via <strong>Modules (☰) → Available Modules → jpower</strong>.</p>
-</section>
-<section id="online-tools" class="level3">
-<h3 class="anchored" data-anchor-id="online-tools">Online tools</h3>
-<ul>
-<li><a href="https://jakewestfall.shinyapps.io/pwr2ppl/">pwr2ppl</a> — Shiny app for a variety of designs</li>
-<li><a href="https://arcaldwell49.shinyapps.io/anova-exact/">Superpower</a> — power for ANOVA designs including repeated measures</li>
-<li><a href="https://webpower.psychstat.org">WebPower</a> — comprehensive online power calculator</li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="power-analysis-for-common-designs" class="level2">
-<h2 class="anchored" data-anchor-id="power-analysis-for-common-designs">Power analysis for common designs</h2>
-<section id="independent-samples-t-test" class="level3">
-<h3 class="anchored" data-anchor-id="independent-samples-t-test">Independent-samples t-test</h3>
-<p>Effect size: Cohen’s <em>d</em> = (μ₁ − μ₂) / σ_pooled</p>
+<section id="the-four-quantities" class="level2">
+<h2 class="anchored" data-anchor-id="the-four-quantities">The four quantities</h2>
+<p>Power, α, sample size, and effect size are mathematically linked: given any <strong>three</strong>, the fourth is determined. Most planning questions fall into one of three modes:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 25%">
@@ -379,7 +320,241 @@ ul.task-list li input[type="checkbox"] {
 </colgroup>
 <thead>
 <tr class="header">
-<th>Desired power</th>
+<th>Mode</th>
+<th>What you fix</th>
+<th>What you solve for</th>
+<th>When to use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>A priori</strong></td>
+<td>Effect size, α, power</td>
+<td><strong>Sample size</strong> <em>N</em></td>
+<td>Planning a new study</td>
+</tr>
+<tr class="even">
+<td><strong>Sensitivity</strong></td>
+<td><em>N</em>, α, power</td>
+<td><strong>Minimum detectable effect size</strong></td>
+<td>When <em>N</em> is constrained (clinical trial with limited recruitment); answers “what is the smallest effect I could realistically catch?”</td>
+</tr>
+<tr class="odd">
+<td><strong>Post hoc / achieved</strong></td>
+<td><em>N</em>, effect size, α</td>
+<td><strong>Power</strong></td>
+<td>Reporting realised power for a published study</td>
+</tr>
+</tbody>
+</table>
+<p>A priori power analysis is the dominant mode and the only one suitable for sample-size <em>justification</em> in pre-registration. Post-hoc power calculated from the <em>observed</em> effect size in the same data has well-known mathematical problems and should not be reported (Lakens, 2022).</p>
+<hr>
+</section>
+<section id="the-central-question-what-effect-size" class="level2">
+<h2 class="anchored" data-anchor-id="the-central-question-what-effect-size">The central question: what effect size?</h2>
+<p>Effect size is the input that drives sample-size estimation. The temptation is to use a published estimate from a similar study; the problem is that <strong>published effect sizes are systematically inflated</strong> by publication bias and other selection processes. Lakens (2022) argues for a different framing.</p>
+<section id="smallest-effect-size-of-interest-sesoi" class="level3">
+<h3 class="anchored" data-anchor-id="smallest-effect-size-of-interest-sesoi">Smallest effect size of interest (SESOI)</h3>
+<p>The most defensible approach is to plan for the <strong>smallest effect size that would be theoretically or practically meaningful</strong> to detect. This is what the JASP Power module asks for in its UI — the input is literally labelled <em>“Minimal effect size of interest”</em> (δ). Picking the SESOI requires you to commit, before data collection, to what would count as a non-trivial effect — exactly the substantive question you should be answering anyway.</p>
+<p>In practice, SESOI is justified by:</p>
+<ol type="1">
+<li><strong>Theoretical considerations</strong> — what is the minimum effect that the theory would predict, or the minimum effect that would change theory if observed?</li>
+<li><strong>Practical / clinical relevance</strong> — what is the smallest effect that would matter for the intervention, the decision, or the patient?</li>
+<li><strong>Resource constraints</strong> — what is the smallest effect that your available <em>N</em> could realistically detect, used in a sensitivity analysis to declare what you can and cannot say?</li>
+<li><strong>Cohen’s benchmarks</strong> — small / medium / large conventions per analysis type. Useful as a fallback when no substantive anchor is available, but explicitly second-best.</li>
+</ol>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Analysis</th>
+<th>Effect-size metric</th>
+<th>Cohen’s “small”</th>
+<th>“medium”</th>
+<th>“large”</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>t-test</td>
+<td>Cohen’s <em>d</em></td>
+<td>0.20</td>
+<td>0.50</td>
+<td>0.80</td>
+</tr>
+<tr class="even">
+<td>Correlation</td>
+<td><em>r</em></td>
+<td>.10</td>
+<td>.30</td>
+<td>.50</td>
+</tr>
+<tr class="odd">
+<td>ANOVA</td>
+<td>Cohen’s <em>f</em></td>
+<td>0.10</td>
+<td>0.25</td>
+<td>0.40</td>
+</tr>
+<tr class="even">
+<td>Multiple regression</td>
+<td><em>f²</em></td>
+<td>0.02</td>
+<td>0.15</td>
+<td>0.35</td>
+</tr>
+<tr class="odd">
+<td>Chi-square</td>
+<td><em>w</em></td>
+<td>0.10</td>
+<td>0.30</td>
+<td>0.50</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Don’t reverse-engineer the effect size to fit your sample
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Picking the effect size that <em>exactly</em> fits your available <em>N</em> at .80 power tells you nothing other than that you’ve found a tautology. Always commit to the SESOI on substantive grounds <em>first</em>, then solve for <em>N</em>. If your available <em>N</em> can’t support that SESOI, run a sensitivity analysis and be honest about the limits in the discussion.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="how-to-do-it-in-jasp-the-power-module" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-do-it-in-jasp-the-power-module">How to do it in JASP — the <strong>Power</strong> module</h2>
+<p>JASP’s <strong>Power</strong> module (<code>jaspPower</code>, originally based on Richard Morey’s <code>jpower</code>) is installed by clicking the blue <strong>+</strong> icon in the top-right of the JASP window to open the module list, then enabling <strong>Power</strong>. Once enabled, it appears as a top-level analysis menu.</p>
+<p>The module is built around the <strong><code>pwr</code> R package</strong> and handles closed-form power calculations for the following tests:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test</th>
+<th>What it computes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Independent-samples t-test</strong></td>
+<td>Two-group comparison; supports unequal sample-size ratio (N₁/N₂)</td>
+</tr>
+<tr class="even">
+<td><strong>Paired-samples t-test</strong></td>
+<td>Within-subjects design</td>
+</tr>
+<tr class="odd">
+<td><strong>One-sample t-test</strong></td>
+<td>Sample mean vs known value</td>
+</tr>
+<tr class="even">
+<td><strong>One-sample z-test</strong></td>
+<td>When σ is known</td>
+</tr>
+<tr class="odd">
+<td><strong>One-sample proportion test</strong></td>
+<td>Single proportion vs hypothesised value</td>
+</tr>
+<tr class="even">
+<td><strong>Two-samples proportion test</strong></td>
+<td>Two independent proportions</td>
+</tr>
+<tr class="odd">
+<td><strong>One-sample variance-ratio test</strong></td>
+<td>Sample variance vs reference</td>
+</tr>
+<tr class="even">
+<td><strong>Two-samples variance-ratio test</strong></td>
+<td>Comparing two variances</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>ANOVA, regression, and chi-square are not (yet) in jaspPower
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>At the time of writing, the module covers the tests above. ANOVA, multiple regression, and chi-square power analyses are not yet implemented in JASP — see the “Complementary tools” section below.</p>
+</div>
+</div>
+<section id="workflow" class="level3">
+<h3 class="anchored" data-anchor-id="workflow">Workflow</h3>
+<ol type="1">
+<li>Pick the <strong>Statistical test</strong> from the top dropdown.</li>
+<li>Pick what to <strong>calculate</strong>: <em>Sample Size N</em>, <em>Power</em>, or <em>Effect size</em> — this sets the mode (a priori, post hoc, or sensitivity).</li>
+<li>Enter the other two quantities (e.g., for a priori: effect size + power; α defaults to .05).</li>
+<li>Choose the <strong>alternative hypothesis</strong> (two-sided / one-sided).</li>
+<li>For two-group tests, set the <strong>sample-size ratio</strong> (N₁/N₂; defaults to 1).</li>
+<li>Tick the <strong>plots</strong> you want under <em>Plots</em>:
+<ul>
+<li><strong>Power contour plot</strong> — the trade-off surface across effect size and <em>N</em>.</li>
+<li><strong>Power demonstration</strong> — overlaid null and alternative sampling distributions, with the shaded rejection region — useful for teaching.</li>
+<li><strong>Power curve by effect size</strong> — power as a function of effect size for the chosen <em>N</em>.</li>
+<li><strong>Power curve by N</strong> — power as a function of <em>N</em> for the chosen effect size.</li>
+<li><strong>Explanatory text</strong> — JASP writes out a plain-language interpretation of the calculation.</li>
+</ul></li>
+<li>(Optional) Open the <strong>Data Generation</strong> section to simulate a synthetic dataset matching your power-analysis parameters — useful for piloting an analysis pipeline before real data arrive.</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="complementary-tools-for-the-tests-jasppower-doesnt-cover-yet" class="level2">
+<h2 class="anchored" data-anchor-id="complementary-tools-for-the-tests-jasppower-doesnt-cover-yet">Complementary tools for the tests jaspPower doesn’t cover yet</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>Strengths</th>
+<th>When to use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower"><strong>G*Power</strong></a></td>
+<td>Free; comprehensive coverage including <strong>ANOVA</strong>, <strong>multiple regression</strong>, <strong>logistic regression</strong>, <strong>chi-square</strong>, <strong>MANOVA</strong>.</td>
+<td>When you need a test that jaspPower does not yet implement.</td>
+</tr>
+<tr class="even">
+<td><strong>R: <code>pwr</code> package</strong></td>
+<td>Underpins jaspPower; offers t-tests, one-way ANOVA, correlation, two-proportion, χ², general linear model, scriptable.</td>
+<td>Programmatic / batch power calculations.</td>
+</tr>
+<tr class="odd">
+<td><strong>R: <code>Superpower</code></strong></td>
+<td>Simulation-based power for factorial ANOVA and repeated-measures designs.</td>
+<td>Complex ANOVA designs beyond G*Power’s analytic formulas.</td>
+</tr>
+<tr class="even">
+<td><a href="https://webpower.psychstat.org"><strong>WebPower</strong></a></td>
+<td>Comprehensive online calculator including SEM and multilevel models.</td>
+<td>Quick power calc without installing anything; advanced models.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="quick-reference-tables" class="level2">
+<h2 class="anchored" data-anchor-id="quick-reference-tables">Quick-reference tables</h2>
+<p>These are convenience values from <code>pwr</code> (α = .05, two-sided, power = .80 unless noted). They are not substitutes for running the actual calculation — but useful for sanity-checking the order of magnitude.</p>
+<section id="independent-samples-t-test-per-group" class="level3">
+<h3 class="anchored" data-anchor-id="independent-samples-t-test-per-group">Independent-samples t-test (per group)</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Power</th>
 <th><em>d</em> = 0.2 (small)</th>
 <th><em>d</em> = 0.5 (medium)</th>
 <th><em>d</em> = 0.8 (large)</th>
@@ -388,22 +563,42 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td>.80</td>
-<td><em>N</em> = 394/group</td>
-<td><em>N</em> = 64/group</td>
-<td><em>N</em> = 26/group</td>
+<td><em>N</em> = 394 / group</td>
+<td><em>N</em> = 64 / group</td>
+<td><em>N</em> = 26 / group</td>
 </tr>
 <tr class="even">
 <td>.90</td>
-<td><em>N</em> = 527/group</td>
-<td><em>N</em> = 85/group</td>
-<td><em>N</em> = 34/group</td>
+<td><em>N</em> = 527 / group</td>
+<td><em>N</em> = 86 / group</td>
+<td><em>N</em> = 34 / group</td>
 </tr>
 </tbody>
 </table>
-<p><em>(Two-tailed, α = .05, equal group sizes)</em></p>
 </section>
 <section id="pearson-correlation" class="level3">
 <h3 class="anchored" data-anchor-id="pearson-correlation">Pearson correlation</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Power</th>
+<th><em>r</em> = .10 (small)</th>
+<th><em>r</em> = .30 (medium)</th>
+<th><em>r</em> = .50 (large)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>.80</td>
+<td><em>N</em> = 783</td>
+<td><em>N</em> = 84</td>
+<td><em>N</em> = 29</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="one-way-anova-3-groups-total-n" class="level3">
+<h3 class="anchored" data-anchor-id="one-way-anova-3-groups-total-n">One-way ANOVA, 3 groups (total <em>N</em>)</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 25%">
@@ -413,50 +608,23 @@ ul.task-list li input[type="checkbox"] {
 </colgroup>
 <thead>
 <tr class="header">
-<th>Desired power</th>
-<th><em>r</em> = .10 (small)</th>
-<th><em>r</em> = .30 (medium)</th>
-<th><em>r</em> = .50 (large)</th>
+<th>Power</th>
+<th><em>f</em> = 0.10 (small)</th>
+<th><em>f</em> = 0.25 (medium)</th>
+<th><em>f</em> = 0.40 (large)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>.80</td>
-<td><em>N</em> = 782</td>
-<td><em>N</em> = 84</td>
-<td><em>N</em> = 28</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="one-way-anova-3-groups" class="level3">
-<h3 class="anchored" data-anchor-id="one-way-anova-3-groups">One-way ANOVA (3 groups)</h3>
-<p>Effect size: Cohen’s <em>f</em> = 0.10 (small), 0.25 (medium), 0.40 (large)</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Desired power</th>
-<th><em>f</em> = 0.10</th>
-<th><em>f</em> = 0.25</th>
-<th><em>f</em> = 0.40</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>.80</td>
-<td><em>N</em> = 969 total</td>
-<td><em>N</em> = 159 total</td>
-<td><em>N</em> = 66 total</td>
+<td><em>N</em> = 969</td>
+<td><em>N</em> = 159</td>
+<td><em>N</em> = 66</td>
 </tr>
 </tbody>
 </table>
 <hr>
 </section>
-</section>
-<section id="sensitivity-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="sensitivity-analysis">Sensitivity analysis</h2>
-<p>If your sample size is already fixed (e.g., a clinical trial limited by patient availability), conduct a <strong>sensitivity analysis</strong>: given my N, α, and desired power, what is the minimum effect size I can detect? This helps set realistic expectations.</p>
-<hr>
 </section>
 <section id="reporting-power-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="reporting-power-analysis">Reporting power analysis</h2>
@@ -466,11 +634,19 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>APA reporting example
+<span class="screen-reader-only">Tip</span>What a sample-size justification should contain (Lakens, 2022)
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A priori power analysis (G<em>Power 3.1) indicated that a sample of </em>N* = 128 (64 per group) would provide 80% power to detect a medium-sized effect (<em>d</em> = 0.50) with α = .05 (two-tailed independent-samples <em>t</em>-test).</p>
+<ol type="1">
+<li><strong>The smallest effect size of interest</strong> and its justification — why this size and not smaller.</li>
+<li><strong>The intended analysis</strong> (test, alpha level, alternative hypothesis).</li>
+<li><strong>The desired power</strong> and the calculation mode (a priori, sensitivity).</li>
+<li><strong>The software</strong> used (e.g., “JASP 0.18 Power module” or “G*Power 3.1”) with version.</li>
+<li><strong>The resulting target <em>N</em></strong> (for a priori) or <strong>minimum detectable effect</strong> (for sensitivity).</li>
+<li><strong>Any deviations</strong> from the plan after data collection, with rationale.</li>
+</ol>
+<p><em>Example:</em> “We aimed to detect a between-groups effect of at least <em>d</em> = 0.40 — the smallest effect we considered theoretically meaningful, anchored on a meta-analytic estimate of the literature minus a publication-bias correction. An a priori power analysis with the JASP Power module (α = .05 two-sided, 1 − β = .80, two-sample t-test) returned a required <em>N</em> = 100 per group (200 total). We pre-registered this target and collected to that <em>N</em>.”</p>
 </div>
 </div>
 <hr>
@@ -478,9 +654,13 @@ ul.task-list li input[type="checkbox"] {
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
 <ul>
-<li>Cohen, J. (1992). A power primer. <em>Psychological Bulletin</em>, 112(1), 155–159. — The classic reference</li>
-<li><a href="https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower">G*Power user manual</a></li>
-<li>Lakens, D. (2022). Sample size justification. <em>Collabra: Psychology</em>. — A modern guide to justifying sample sizes</li>
+<li><strong>Lakens, D. (2022).</strong> Sample size justification. <em>Collabra: Psychology</em>, 8(1), 33267. — The current best-practice guide. Reframes power analysis around the <strong>smallest effect size of interest</strong> rather than published effect sizes.</li>
+<li><strong>Cohen, J. (1988).</strong> <em>Statistical power analysis for the behavioral sciences</em> (2nd ed.). Lawrence Erlbaum. — The foundational reference; source of the small/medium/large conventions.</li>
+<li><strong>Cohen, J. (1992).</strong> A power primer. <em>Psychological Bulletin</em>, 112(1), 155–159. — The concise version of Cohen (1988); still widely cited and still useful.</li>
+<li><strong>DSUJ §2.10.7 (Type I and Type II errors).</strong> — The conceptual framing used here; reproduces Cohen’s β ≤ .20 convention.</li>
+<li><strong>Agresti, Franklin &amp; Klingenberg §9.4 + §9.6 (Decisions, errors, and power).</strong> — Accessible textbook treatment of the conceptual foundations.</li>
+<li><strong>Faul, F., Erdfelder, E., Lang, A.-G., &amp; Buchner, A. (2007).</strong> G*Power 3: A flexible statistical power analysis program for the social, behavioral, and biomedical sciences. <em>Behavior Research Methods</em>, 39(2), 175–191.</li>
+<li><strong>Champely, S. (2020).</strong> <code>pwr</code>: Basic Functions for Power Analysis. R package — the engine behind jaspPower.</li>
 </ul>
 
 

@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f7333b7c44a7c3d55afcc11699a363c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-5a7edf553ce6f37e40c66d907d0f4061.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,6 +71,35 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../assets/custom.css">
 </head>
@@ -160,7 +189,6 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../advanced/meta-analysis.html">
  <span class="dropdown-text">Meta-Analysis</span></a>
   </li>  
-        <li><hr class="dropdown-divider"></li>
         <li>
     <a class="dropdown-item" href="../advanced/measurement-invariance.html">
  <span class="dropdown-text">Measurement Invariance</span></a>
@@ -206,9 +234,26 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">🚧</a></li>
-  <li><a href="#what-this-page-will-cover" id="toc-what-this-page-will-cover" class="nav-link" data-scroll-target="#what-this-page-will-cover">What this page will cover</a></li>
-  <li><a href="#useful-resources-in-the-meantime" id="toc-useful-resources-in-the-meantime" class="nav-link" data-scroll-target="#useful-resources-in-the-meantime">Useful resources in the meantime</a></li>
+  <li><a href="#what-does-a-path-model-look-like" id="toc-what-does-a-path-model-look-like" class="nav-link active" data-scroll-target="#what-does-a-path-model-look-like">What does a path model look like?</a></li>
+  <li><a href="#recursive-nonrecursive-and-partially-recursive" id="toc-recursive-nonrecursive-and-partially-recursive" class="nav-link" data-scroll-target="#recursive-nonrecursive-and-partially-recursive">Recursive, nonrecursive, and partially recursive</a></li>
+  <li><a href="#direct-indirect-and-total-effects" id="toc-direct-indirect-and-total-effects" class="nav-link" data-scroll-target="#direct-indirect-and-total-effects">Direct, indirect, and total effects</a></li>
+  <li><a href="#identification" id="toc-identification" class="nav-link" data-scroll-target="#identification">Identification</a></li>
+  <li><a href="#estimation" id="toc-estimation" class="nav-link" data-scroll-target="#estimation">Estimation</a></li>
+  <li><a href="#global-model-fit" id="toc-global-model-fit" class="nav-link" data-scroll-target="#global-model-fit">Global model fit</a></li>
+  <li><a href="#local-fit-and-respecification" id="toc-local-fit-and-respecification" class="nav-link" data-scroll-target="#local-fit-and-respecification">Local fit and respecification</a></li>
+  <li><a href="#comparing-nested-models" id="toc-comparing-nested-models" class="nav-link" data-scroll-target="#comparing-nested-models">Comparing nested models</a></li>
+  <li><a href="#multi-group-path-models" id="toc-multi-group-path-models" class="nav-link" data-scroll-target="#multi-group-path-models">Multi-group path models</a></li>
+  <li><a href="#latent-growth-curve-modelling-a-longitudinal-special-case" id="toc-latent-growth-curve-modelling-a-longitudinal-special-case" class="nav-link" data-scroll-target="#latent-growth-curve-modelling-a-longitudinal-special-case">Latent growth curve modelling (a longitudinal special case)</a>
+  <ul class="collapse">
+  <li><a href="#specifying-it-in-jasp" id="toc-specifying-it-in-jasp" class="nav-link" data-scroll-target="#specifying-it-in-jasp">Specifying it in JASP</a></li>
+  <li><a href="#reading-the-output" id="toc-reading-the-output" class="nav-link" data-scroll-target="#reading-the-output">Reading the output</a></li>
+  <li><a href="#common-extensions" id="toc-common-extensions" class="nav-link" data-scroll-target="#common-extensions">Common extensions</a></li>
+  <li><a href="#caveats" id="toc-caveats" class="nav-link" data-scroll-target="#caveats">Caveats</a></li>
+  </ul></li>
+  <li><a href="#how-to-do-it-in-jasp" id="toc-how-to-do-it-in-jasp" class="nav-link" data-scroll-target="#how-to-do-it-in-jasp">How to do it in JASP</a></li>
+  <li><a href="#reporting" id="toc-reporting" class="nav-link" data-scroll-target="#reporting">Reporting</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further reading</a></li>
+  <li><a href="#software-notes" id="toc-software-notes" class="nav-link" data-scroll-target="#software-notes">Software notes</a></li>
   </ul>
 </nav>
 </nav>
@@ -239,31 +284,476 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><span class="section-badge advanced">Advanced Topics</span></p>
-<section id="section" class="level2 coming-soon">
-<h2 class="anchored" data-anchor-id="section">🚧</h2>
-<p><strong>This page is under construction.</strong></p>
-<p>Content covering path modeling — and its relationship to SEM — will be added here.</p>
-</section>
-<hr>
-<section id="what-this-page-will-cover" class="level2">
-<h2 class="anchored" data-anchor-id="what-this-page-will-cover">What this page will cover</h2>
-<p>Path modeling extends multiple regression to systems of equations with multiple dependent variables. It allows you to:</p>
+<p>Path modeling extends multiple regression to <strong>systems of simultaneous equations</strong> with multiple outcomes. Instead of a single dependent variable, you specify a network of directed relationships where one variable can be both predictor <em>and</em> outcome (in different equations), and indirect effects propagate through the system. When the variables in the network are <em>observed</em> (no latent constructs), this is <strong>path analysis</strong>. When latent variables are added, the full system is a <strong>structural equation model (SEM)</strong>, of which path analysis is the historically older, more limited case (Kline, 2023, Ch 1).</p>
+<p>Path modeling and CFA are the two basic building blocks of SEM:</p>
 <ul>
-<li>Estimate <strong>direct</strong> and <strong>indirect</strong> effects simultaneously across a network of variables</li>
-<li>Test theoretical models about causal pathways</li>
-<li>Include <strong>latent variables</strong> (measured variables with error) — the combination of path modeling and latent variables is <strong>structural equation modeling (SEM)</strong></li>
+<li><strong>CFA</strong> (covered on the <a href="../advanced/factor-analysis.html">Factor Analysis</a> page) tells you that a set of items reflects a latent construct — the <em>measurement</em> model.</li>
+<li><strong>Path modeling</strong> tells you how variables (latent or observed) are <em>causally</em> related to each other — the <em>structural</em> model.</li>
+<li>Combined, they yield the full SEM (Kline, 2023, Ch 15 calls this a <strong>structural regression model</strong>).</li>
 </ul>
-<p>Common applications in psychology: cross-lagged panel models (measuring variables at two time points to examine reciprocal relationships), growth curve models, and complex mediation models with multiple mediators.</p>
-<p><strong>Relationship to mediation</strong>: a simple mediation model (X → M → Y) is a path model. The <a href="../advanced/mediation-moderation.html">Mediation &amp; Moderation</a> page covers simple cases using PROCESS. This page will cover more complex path structures.</p>
+<p>This page focuses on <strong>observed-variable path analysis</strong>: the structural model in isolation. The CFA piece is on the other page.</p>
+<hr>
+<section id="what-does-a-path-model-look-like" class="level2">
+<h2 class="anchored" data-anchor-id="what-does-a-path-model-look-like">What does a path model look like?</h2>
+<p>The conventional notation (Kline, 2023, Ch 7):</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Symbol</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rectangle</td>
+<td>Observed (manifest) variable</td>
+</tr>
+<tr class="even">
+<td>Oval / circle</td>
+<td>Latent variable (not in pure path analysis, but you’ll see them once you move to full SEM)</td>
+</tr>
+<tr class="odd">
+<td>Single-headed arrow →</td>
+<td>Hypothesised directed (causal) effect</td>
+</tr>
+<tr class="even">
+<td>Double-headed arrow ↔︎</td>
+<td>Covariance / unanalysed association — used between exogenous variables and between disturbance terms</td>
+</tr>
+<tr class="odd">
+<td>Small arrow into a variable from “nowhere”</td>
+<td>The <strong>disturbance</strong> — unexplained variance, analogous to the regression residual</td>
+</tr>
+</tbody>
+</table>
+<p>A path model is essentially a directed acyclic graph (DAG) over your variables, with the strengths of the arrows being the parameters you estimate.</p>
 <hr>
 </section>
-<section id="useful-resources-in-the-meantime" class="level2">
-<h2 class="anchored" data-anchor-id="useful-resources-in-the-meantime">Useful resources in the meantime</h2>
+<section id="recursive-nonrecursive-and-partially-recursive" class="level2">
+<h2 class="anchored" data-anchor-id="recursive-nonrecursive-and-partially-recursive">Recursive, nonrecursive, and partially recursive</h2>
+<p>Kline (Ch 7) classifies path models by whether feedback loops are present:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Definition</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Recursive</strong></td>
+<td>All causal arrows point “forward”; no feedback loops, and disturbances of endogenous variables are uncorrelated</td>
+<td>A linear chain X → M → Y</td>
+</tr>
+<tr class="even">
+<td><strong>Nonrecursive</strong></td>
+<td>Contains a feedback loop (X → Y → X) OR correlated disturbances between variables that affect each other</td>
+<td>Simultaneous-equation models in economics; reciprocal influence between two related constructs</td>
+</tr>
+<tr class="odd">
+<td><strong>Partially recursive</strong></td>
+<td>Mostly recursive, but with correlated disturbances among some pairs of endogenous variables</td>
+<td>A common pattern in psychological mediation models</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why it matters</strong>: recursive models are easier to identify, estimate, and interpret. Nonrecursive models require special identification conditions (the <em>order</em> and <em>rank</em> conditions; Kline Ch 19) and instrumental variables. Recursive is the default — only step into nonrecursive territory when theory genuinely requires it.</p>
+<hr>
+</section>
+<section id="direct-indirect-and-total-effects" class="level2">
+<h2 class="anchored" data-anchor-id="direct-indirect-and-total-effects">Direct, indirect, and total effects</h2>
+<p>In a path with X → M → Y plus X → Y:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Effect</th>
+<th>Definition</th>
+<th>How to compute</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Direct effect of X on Y</strong></td>
+<td>The arrow from X to Y, holding everything else constant</td>
+<td>The regression coefficient on the X → Y path</td>
+</tr>
+<tr class="even">
+<td><strong>Indirect effect of X on Y through M</strong></td>
+<td>The product of X → M and M → Y</td>
+<td><code>a × b</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Total effect of X on Y</strong></td>
+<td>Direct + sum of all indirect paths</td>
+<td><code>c' + a × b</code></td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>specific indirect effect</strong> for each pathway should be reported separately when there are multiple mediators — not just the total indirect effect (Kline, 2023, Ch 20). Standard errors and CIs for indirect effects are non-normal; use <strong>bootstrapping</strong> (≥ 5000 resamples) to obtain bias-corrected percentile CIs.</p>
+<p>The <a href="../advanced/mediation-moderation.html">Mediation &amp; Moderation</a> page covers the simple X → M → Y case using the PROCESS module. Path modeling generalises this to arbitrarily complex DAGs with multiple mediators, multiple outcomes, and (optionally) latent variables.</p>
+<hr>
+</section>
+<section id="identification" class="level2">
+<h2 class="anchored" data-anchor-id="identification">Identification</h2>
+<p>A model is <strong>identified</strong> if every parameter has a unique solution given the observed covariance matrix. The basic requirement is:</p>
+<p><span class="math display">\[\text{model df} = \text{number of unique elements in the covariance matrix} - \text{number of free parameters} \geq 0\]</span></p>
+<p>With <em>p</em> observed variables, the covariance matrix has <em>p</em>(<em>p</em> + 1)/2 unique elements (variances + covariances). Subtract the free parameters you want to estimate (path coefficients, variances, covariances). If df &lt; 0, the model is <strong>under-identified</strong> and cannot be estimated. df = 0 is <strong>just-identified</strong> (saturated) — the model fits perfectly by construction and cannot be falsified. df &gt; 0 is <strong>over-identified</strong> — the model imposes restrictions that the data may or may not support; this is where fit testing becomes informative.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>A worked example of the counting rule
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>With 4 observed variables, the covariance matrix has 4 × 5 / 2 = 10 unique elements. Suppose you specify a model with 7 free parameters (3 path coefficients, 4 variances). Then df = 10 − 7 = 3. The model is over-identified with 3 degrees of freedom — it imposes 3 restrictions on the data, and a χ² test of model fit has df = 3.</p>
+</div>
+</div>
+</div>
+<p>For nonrecursive models with feedback loops, the <strong>order and rank conditions</strong> must additionally be satisfied (Kline, Ch 19). The order condition is necessary; the rank condition is sufficient.</p>
+<hr>
+</section>
+<section id="estimation" class="level2">
+<h2 class="anchored" data-anchor-id="estimation">Estimation</h2>
+<p>Most path models are estimated by <strong>Maximum Likelihood (ML)</strong> (Kline, Ch 9). ML assumes multivariate normality of the endogenous variables. Variants:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>When to use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Default ML</strong></td>
+<td>Continuous endogenous variables, multivariate normality plausible</td>
+</tr>
+<tr class="even">
+<td><strong>Robust ML (MLM / MLR)</strong></td>
+<td>Continuous endogenous variables, but non-normal distribution (heavy tails, skew) — gives Satorra-Bentler scaled χ² and robust SEs</td>
+</tr>
+<tr class="odd">
+<td><strong>FIML</strong></td>
+<td>Missing data on the endogenous variables, MAR mechanism — uses all available cases; the gold-standard alternative to listwise deletion or multiple imputation in SEM</td>
+</tr>
+<tr class="even">
+<td><strong>WLSMV / DWLS</strong></td>
+<td>Ordinal or categorical endogenous variables (e.g.&nbsp;Likert items treated as ordered)</td>
+</tr>
+</tbody>
+</table>
+<p>In <code>lavaan</code>: <code>sem(model, data, estimator = "ML" / "MLR" / "WLSMV", missing = "fiml")</code>.</p>
+<hr>
+</section>
+<section id="global-model-fit" class="level2">
+<h2 class="anchored" data-anchor-id="global-model-fit">Global model fit</h2>
+<p>The starting point is the <strong>model χ²</strong> test (Kline, Ch 10): under the null that the model is correctly specified, model χ² follows a chi-square distribution. A <strong>non</strong>-significant χ² means the model fits — but for large samples, χ² is so powerful that essentially every interesting model fails it. In practice, χ² is reported alongside <em>approximate fit indices</em> (AFIs):</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Index</th>
+<th>What it captures</th>
+<th>Conventional cutoff for “acceptable fit”</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>RMSEA</strong></td>
+<td>Penalised badness-of-fit per df</td>
+<td>≤ .06 (good), .06–.08 (acceptable), &gt; .10 (poor)</td>
+</tr>
+<tr class="even">
+<td><strong>CFI</strong></td>
+<td>Improvement over the null model</td>
+<td>≥ .95 (good), ≥ .90 (acceptable)</td>
+</tr>
+<tr class="odd">
+<td><strong>SRMR</strong></td>
+<td>Standardised residual covariances</td>
+<td>≤ .08 (good)</td>
+</tr>
+<tr class="even">
+<td><strong>TLI</strong> (NNFI)</td>
+<td>Like CFI but penalised for complexity</td>
+<td>≥ .95</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Cutoffs are conventions, not laws
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Hu &amp; Bentler’s (1999) cutoffs (CFI ≥ .95, RMSEA ≤ .06, SRMR ≤ .08) are widely used but were derived under specific simulation conditions. Kline (Ch 10) cautions against rigid thresholds and recommends evaluating model fit in light of model complexity, sample size, and the substantive plausibility of the structure. Report multiple AFIs and don’t treat any single cutoff as decisive.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="local-fit-and-respecification" class="level2">
+<h2 class="anchored" data-anchor-id="local-fit-and-respecification">Local fit and respecification</h2>
+<p>Global fit indices tell you whether the model fits <em>overall</em>, but not <em>where</em> the misfit lives. For local diagnostics (Kline Ch 11):</p>
 <ul>
-<li>Kline, R. B. (2023). <em>Principles and practice of structural equation modeling</em> (5th ed.). Guilford Press.</li>
-<li>The <strong>lavaan</strong> R package is widely used for SEM: <a href="https://lavaan.ugent.be">lavaan.org</a></li>
+<li><strong>Standardised residuals</strong> of the covariance matrix — values |z| &gt; 2.58 (|z| &gt; 1.96 in some conventions) flag specific cell-by-cell discrepancies.</li>
+<li><strong>Modification indices (MIs)</strong> — for each fixed parameter, the expected reduction in χ² if it were freed. Large MIs suggest where the model could be improved.</li>
 </ul>
-<p>Start with the <a href="../advanced/mediation-moderation.html">Mediation &amp; Moderation</a> and <a href="../advanced/factor-analysis.html">Factor Analysis</a> pages before tackling full path models.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Respecification has costs
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Adding a parameter because the MI suggests it is <strong>empirical respecification</strong> — it capitalises on sample-specific noise and reduces the probability that the modified model will replicate. Kline (Ch 11, “Empirical versus theoretical respecification”) is firm: every freed parameter should have a <strong>theoretical justification</strong>, not merely an MI. Always explicitly label respecifications as a priori or post hoc, and validate post-hoc changes in a held-out sample where possible.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="comparing-nested-models" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-nested-models">Comparing nested models</h2>
+<p>Two models are <strong>nested</strong> when one is a constrained version of the other (i.e.&nbsp;one fixes parameters that the other estimates). Comparison is via the <strong>χ² difference test</strong>:</p>
+<p><span class="math display">\[\Delta\chi^2 = \chi^2_{\text{constrained}} - \chi^2_{\text{free}} \quad \text{with} \quad \Delta\text{df} = \text{df}_{\text{constrained}} - \text{df}_{\text{free}}\]</span></p>
+<p>A significant Δχ² means the constraints worsened fit, and the free model is preferred. As with global χ², this test is sample-size sensitive — report ΔCFI alongside Δχ² for large samples (analogously to the practical thresholds discussed on the <a href="../advanced/measurement-invariance.html">Measurement Invariance</a> page).</p>
+<p>For <strong>non-nested</strong> model comparison, use information criteria (AIC, BIC) rather than χ² difference.</p>
+<hr>
+</section>
+<section id="multi-group-path-models" class="level2">
+<h2 class="anchored" data-anchor-id="multi-group-path-models">Multi-group path models</h2>
+<p>Path models can be fit simultaneously to two or more groups. This lets you ask whether the <em>structural</em> paths (and not just the measurement model) are equivalent across groups. Kline (Ch 12) walks through this for the path-model case; the underlying machinery is the same as for multi-group CFA — fit a configural model with all parameters free across groups, then impose increasingly restrictive equality constraints and test via Δχ² and ΔCFI.</p>
+<p>In <code>lavaan</code>: <code>sem(model, data, group = "G", group.equal = c("regressions", "intercepts"))</code>.</p>
+<hr>
+</section>
+<section id="latent-growth-curve-modelling-a-longitudinal-special-case" class="level2">
+<h2 class="anchored" data-anchor-id="latent-growth-curve-modelling-a-longitudinal-special-case">Latent growth curve modelling (a longitudinal special case)</h2>
+<p>A <strong>latent growth curve model (LGCM)</strong> is a particular path model for <strong>repeated measures on the same outcome over time</strong>. Instead of treating the six waves of an outcome as six correlated indicators of a single construct, an LGCM decomposes them into two (or more) latent factors that describe <em>each respondent’s individual trajectory</em>:</p>
+<ul>
+<li>an <strong>intercept</strong> factor (I) — each person’s baseline level</li>
+<li>a <strong>linear slope</strong> factor (S or L) — each person’s rate of change per unit of time</li>
+</ul>
+<p>The trick is that the slope’s factor loadings are <strong>fixed to the time codes</strong> (e.g.&nbsp;0, 1, 2, 3, 4, 5 for six equally-spaced waves), while the intercept’s loadings are all fixed to 1. Everything else is estimated. The result is a path model whose parameters answer two distinct questions: <em>what is the average trajectory?</em> (means of I and S) and <em>how much do individuals differ around it?</em> (variances of I and S, and their covariance).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/blog/lgcm/LGCM_9.jpg" class="img-fluid figure-img" width="420"></p>
+<figcaption>A linear LGCM with six waves. The intercept (I) loads on every wave with weight 1; the slope (L) loads with weights 0–5 fixed to the time codes.</figcaption>
+</figure>
+</div>
+<section id="specifying-it-in-jasp" class="level3">
+<h3 class="anchored" data-anchor-id="specifying-it-in-jasp">Specifying it in JASP</h3>
+<p>In JASP’s <strong>SEM → Latent Growth</strong> dialog, drag the six waves of the outcome into <em>Variables</em>. The <em>Timings</em> panel beneath shows the implied time codes (0, 1, 2, …) — adjust them if your measurement occasions are unequally spaced.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/blog/lgcm/LGCM_2.jpg" class="img-fluid figure-img" width="420"></p>
+<figcaption>The JASP Latent Growth dialog: GPA waves 1–6 enter as <em>Variables</em>, with the linear time codes shown in the <em>Timings</em> panel.</figcaption>
+</figure>
+</div>
+</section>
+<section id="reading-the-output" class="level3">
+<h3 class="anchored" data-anchor-id="reading-the-output">Reading the output</h3>
+<p>The headline table reports the <strong>means</strong> and <strong>variances</strong> of the latent intercept and slope, plus their <strong>covariance</strong>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/blog/lgcm/LGCM_3.jpg" class="img-fluid figure-img" width="520"></p>
+<figcaption>Parameter estimates from a linear LGCM fit to the GPA dataset: the average baseline GPA is 2.60, the average semester-on-semester slope is +0.11 (<em>p</em> &lt; .001), and there is significant between-person variation in both.</figcaption>
+</figure>
+</div>
+<p>Interpretation of each row:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Substantive meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Intercept – Mean</strong></td>
+<td>The average outcome at the reference timepoint (time = 0).</td>
+</tr>
+<tr class="even">
+<td><strong>Intercept – Variance</strong></td>
+<td>How much people differ in their starting level. A significant variance means there <em>is</em> meaningful between-person variation to explain with covariates.</td>
+</tr>
+<tr class="odd">
+<td><strong>Slope – Mean</strong></td>
+<td>The average rate of change per unit of time. A significant non-zero mean is the headline result for “is there growth on average?”.</td>
+</tr>
+<tr class="even">
+<td><strong>Slope – Variance</strong></td>
+<td>Whether people differ in their rate of change — the prerequisite for asking what predicts those individual differences.</td>
+</tr>
+<tr class="odd">
+<td><strong>Intercept ↔︎ Slope covariance</strong></td>
+<td>Whether starting higher is associated with steeper (positive cov.) or shallower (negative cov.) growth.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="common-extensions" class="level3">
+<h3 class="anchored" data-anchor-id="common-extensions">Common extensions</h3>
+<ul>
+<li><strong>Predictors of growth</strong> — drag time-invariant covariates (e.g.&nbsp;sex, baseline scores) into <em>Regressions</em> (continuous) or <em>Factor</em> (categorical). Their coefficients quantify how those covariates predict the intercept and slope factors <em>separately</em>. <em>Note: the current JASP release does not handle time-varying covariates — switch to <code>lavaan</code> directly if those matter for your model.</em></li>
+<li><strong>Quadratic growth</strong> — tick the <em>Quadratic</em> option in <em>Model Options</em> to add a second slope factor with loadings fixed to 0, 1, 4, 9, 16, 25. This lets trajectories bend, which is often the more realistic picture once you look at the individual lines:</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/blog/lgcm/LGCM_14.png" class="img-fluid figure-img" width="520"></p>
+<figcaption>A quadratic LGCM on the GPA dataset: students with lower starting GPAs tend to bend upward; high starters bend slightly downward.</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Multi-group LGCM</strong> — fit the same growth model separately in two or more groups, then test whether the average intercept and slope differ across groups using the multi-group machinery described above.</li>
+</ul>
+</section>
+<section id="caveats" class="level3">
+<h3 class="anchored" data-anchor-id="caveats">Caveats</h3>
+<p>The blog tutorial (van Kesteren, Heo &amp; Koch, 2022) flags two practical points worth repeating:</p>
+<ol type="1">
+<li><strong>Fit indices may disagree.</strong> In the GPA example, CFI and TLI were comfortably &gt; 0.95 but RMSEA was 0.093 (above the conventional 0.06 cutoff) and the model χ² was significant. With longitudinal data this kind of disagreement is common — lean on the <em>substantive</em> plausibility of the trajectories alongside the numerical fit.</li>
+<li><strong>Visualise the curves.</strong> Numerical estimates alone hide what individual trajectories look like. Always request the curve plot — it is usually more informative for interpretation than the parameter table.</li>
+</ol>
+<p>→ <strong>Full tutorial</strong>: <a href="https://jasp-stats.org/2022/02/22/latent-growth-curve-modeling-lgcm-in-jasp/">van Kesteren, E.-J., Heo, I., &amp; Koch, M. (2022). Latent growth curve modeling (LGCM) in JASP</a> — JASP blog. The walkthrough uses the GPA dataset from Hox, Moerbeek &amp; van de Schoot (2017) and goes deeper into the quadratic and covariate extensions.</p>
+<hr>
+</section>
+</section>
+<section id="how-to-do-it-in-jasp" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-do-it-in-jasp">How to do it in JASP</h2>
+<!-- JASP TODO: verify exact menu path, option labels, and whether JASP exposes lavaan's full group.equal vocabulary. -->
+<p>JASP’s <strong>SEM</strong> module wraps <code>lavaan</code>. The typical workflow:</p>
+<ol type="1">
+<li><strong>Specify the model</strong> using lavaan syntax — e.g.&nbsp;<code>Y ~ X + M; M ~ X</code> (each line is a regression equation).</li>
+<li><strong>Choose the estimator</strong> — ML by default; MLR for non-normal data; FIML via the missing-data option for incomplete cases.</li>
+<li><strong>Run the model</strong> and inspect:
+<ul>
+<li>The <strong>fit table</strong> (χ², df, <em>p</em>, CFI, RMSEA, SRMR).</li>
+<li>The <strong>regression-coefficients table</strong> (path estimates, standard errors, z-tests).</li>
+<li><strong>Standardised</strong> estimates for cross-path comparison.</li>
+</ul></li>
+<li><strong>Request indirect effects</strong> if mediators are present — JASP supports bootstrapped CIs for indirect effects via lavaan’s <code>:=</code> syntax.</li>
+<li><strong>Request modification indices</strong> for local diagnostics, with the caveats above.</li>
+</ol>
+<p>For multi-group analysis, set the grouping variable in the SEM dialog and add group-equality constraints incrementally. For full SEM (path + CFA combined), define your latent variables with <code>=~</code> and your structural paths with <code>~</code>.</p>
+<hr>
+</section>
+<section id="reporting" class="level2">
+<h2 class="anchored" data-anchor-id="reporting">Reporting</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Reporting a path/SEM analysis (per APA JARS-Quant)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The 2018 APA Journal Article Reporting Standards for quantitative research (Appelbaum et al., 2018; reproduced in Kline, 2023, Table 3.1) lay out the expected sections. At minimum:</p>
+<ol type="1">
+<li><strong>Justify directionality assumptions</strong> in the introduction — why X → Y rather than the reverse.</li>
+<li><strong>Full model specification</strong>: describe each measured variable, every free / fixed / constrained parameter, and verify identification (count parameters and report df).</li>
+<li><strong>Estimation details</strong>: software + version, estimator (ML / MLR / WLSMV), missing data treatment (FIML / MI / listwise).</li>
+<li><strong>Global fit</strong> with at least two AFIs (Kline insists on RMSEA + CFI + SRMR as a triplet), interpreted against conventional thresholds.</li>
+<li><strong>Local fit</strong> — describe residual or modification-index inspection, and any respecifications (a priori vs post hoc).</li>
+<li><strong>All free parameter estimates</strong> with standard errors — <em>both</em> unstandardised and standardised.</li>
+<li><strong>Indirect effects</strong> with bootstrapped standard errors and CIs, and the analysis strategy.</li>
+<li><strong>Equivalent / near-equivalent models</strong> — justify why the retained model is preferred over plausible alternatives that fit equally well.</li>
+</ol>
+</div>
+</div>
+<hr>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
+<ul>
+<li><strong>Kline, R. B. (2023).</strong> <em>Principles and practice of structural equation modeling</em> (5th ed.). Guilford Press. — The standard text. Chapter 6–7 (causal models, path diagrams), 9 (estimation), 10 (fit), 11 (comparison), 12 (multi-group), 15 (full SEM), 20 (mediation).</li>
+<li><strong>Bollen, K. A. (1989).</strong> <em>Structural equations with latent variables.</em> Wiley. — The classical mathematical reference; older but still widely cited.</li>
+<li><strong>Rosseel, Y. (2012).</strong> lavaan: An R package for structural equation modeling. <em>Journal of Statistical Software</em>, 48(2), 1–36. — The lavaan paper. Online docs at <a href="https://lavaan.ugent.be">lavaan.ugent.be</a>.</li>
+<li><strong>Appelbaum, M., Cooper, H., Kline, R. B., Mayo-Wilson, E., Nezu, A. M., &amp; Rao, S. M. (2018).</strong> Journal article reporting standards for quantitative research in psychology: The APA Publications and Communications Board Task Force report. <em>American Psychologist</em>, 73(1), 3–25.</li>
+<li>For mediation specifically: <strong>Hayes, A. F. (2022).</strong> <em>Introduction to mediation, moderation, and conditional process analysis</em> (3rd ed.). Guilford Press.</li>
+</ul>
+<hr>
+</section>
+<section id="software-notes" class="level2">
+<h2 class="anchored" data-anchor-id="software-notes">Software notes</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Software</th>
+<th>What it does</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>JASP (SEM module)</strong></td>
+<td>Path analysis + full SEM via lavaan</td>
+<td><!-- JASP TODO: confirm UI labels for indirect-effect estimation and group-equality constraints --></td>
+</tr>
+<tr class="even">
+<td>R: <code>lavaan</code></td>
+<td>The de facto open-source standard</td>
+<td>Free; flexible syntax; integrates with <code>semTools</code> for invariance testing, <code>lavaanPlot</code> for diagrams</td>
+</tr>
+<tr class="odd">
+<td>R: <code>piecewiseSEM</code></td>
+<td>Local-estimation SEM (Lefcheck, 2020)</td>
+<td>Useful for non-normal outcomes and small samples where global ML is fragile</td>
+</tr>
+<tr class="even">
+<td>Mplus</td>
+<td>Long-time field standard</td>
+<td>Commercial; comprehensive coverage of advanced models (LCA, multilevel SEM)</td>
+</tr>
+<tr class="odd">
+<td>AMOS (SPSS)</td>
+<td>GUI-driven SEM</td>
+<td>Commercial; popular in clinical/health psychology</td>
+</tr>
+</tbody>
+</table>
 
 
 </section>

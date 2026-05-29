@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f7333b7c44a7c3d55afcc11699a363c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-5a7edf553ce6f37e40c66d907d0f4061.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -189,7 +189,6 @@ window.Quarto = {
     <a class="dropdown-item" href="../advanced/meta-analysis.html">
  <span class="dropdown-text">Meta-Analysis</span></a>
   </li>  
-        <li><hr class="dropdown-divider"></li>
         <li>
     <a class="dropdown-item" href="../advanced/measurement-invariance.html">
  <span class="dropdown-text">Measurement Invariance</span></a>
@@ -246,14 +245,13 @@ window.Quarto = {
   </ul></li>
   <li><a href="#chi-square-goodness-of-fit" id="toc-chi-square-goodness-of-fit" class="nav-link" data-scroll-target="#chi-square-goodness-of-fit">Chi-square goodness-of-fit</a></li>
   <li><a href="#fishers-exact-test" id="toc-fishers-exact-test" class="nav-link" data-scroll-target="#fishers-exact-test">Fisher’s exact test</a></li>
-  <li><a href="#bayesian-alternative" id="toc-bayesian-alternative" class="nav-link" data-scroll-target="#bayesian-alternative">Bayesian alternative</a></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further reading</a></li>
   <li><a href="#further-viewing-ssr-lecture-recording" id="toc-further-viewing-ssr-lecture-recording" class="nav-link" data-scroll-target="#further-viewing-ssr-lecture-recording">Further viewing — SSR lecture recording</a></li>
   <li><a href="#try-it-yourself" id="toc-try-it-yourself" class="nav-link" data-scroll-target="#try-it-yourself">Try it yourself</a>
   <ul class="collapse">
   <li><a href="#exercise-1-chi-square-does-image-type-sexualised-vs-performance-shape-womens-reactions-to-female-athletes" id="toc-exercise-1-chi-square-does-image-type-sexualised-vs-performance-shape-womens-reactions-to-female-athletes" class="nav-link" data-scroll-target="#exercise-1-chi-square-does-image-type-sexualised-vs-performance-shape-womens-reactions-to-female-athletes">Exercise 1 (chi-square) — Does image type (sexualised vs performance) shape women’s reactions to female athletes?</a></li>
   <li><a href="#exercise-2-chi-square-three-outcomes-are-perceptions-of-happiness-associated-with-the-professional-group-rated" id="toc-exercise-2-chi-square-three-outcomes-are-perceptions-of-happiness-associated-with-the-professional-group-rated" class="nav-link" data-scroll-target="#exercise-2-chi-square-three-outcomes-are-perceptions-of-happiness-associated-with-the-professional-group-rated">Exercise 2 (chi-square × three outcomes) — Are perceptions of happiness associated with the professional group rated?</a></li>
-  <li><a href="#exercise-3-chi-square-bayesian-alternative-does-time-pressure-at-work-affect-off-hours-psychological-detachment" id="toc-exercise-3-chi-square-bayesian-alternative-does-time-pressure-at-work-affect-off-hours-psychological-detachment" class="nav-link" data-scroll-target="#exercise-3-chi-square-bayesian-alternative-does-time-pressure-at-work-affect-off-hours-psychological-detachment">Exercise 3 (chi-square + Bayesian alternative) — Does time-pressure at work affect off-hours psychological detachment?</a></li>
+  <li><a href="#exercise-3-chi-square-on-a-large-sample-does-time-pressure-at-work-affect-off-hours-psychological-detachment" id="toc-exercise-3-chi-square-on-a-large-sample-does-time-pressure-at-work-affect-off-hours-psychological-detachment" class="nav-link" data-scroll-target="#exercise-3-chi-square-on-a-large-sample-does-time-pressure-at-work-affect-off-hours-psychological-detachment">Exercise 3 (chi-square on a large sample) — Does time-pressure at work affect off-hours psychological detachment?</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -444,26 +442,6 @@ window.Quarto = {
 </div>
 <hr>
 </section>
-<section id="bayesian-alternative" class="level2">
-<h2 class="anchored" data-anchor-id="bayesian-alternative">Bayesian alternative</h2>
-<p>JASP also offers a <strong>Bayesian contingency table</strong> analysis, which returns a Bayes factor for the alternative model (variables are related) over the null (independent). Useful when you want to quantify evidence for <em>either</em> hypothesis, including evidence <em>for</em> independence.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>JASP Video Library — Bayesian Contingency Tables
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li><a href="https://jasp-stats.github.io/jasp-video-library/All_Frequencies.html#bayesian-contingency-main-analysis">▶ Bayesian Contingency Tables</a> — setting up the analysis, interpreting the Bayes factor</li>
-</ul>
-</div>
-</div>
-<hr>
-</section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
 <ul>
@@ -487,7 +465,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="exercise-1-chi-square-does-image-type-sexualised-vs-performance-shape-womens-reactions-to-female-athletes">Exercise 1 (chi-square) — Does image type (sexualised vs performance) shape women’s reactions to female athletes?</h3>
 <p>Daniels (2012) showed women either sexualised or performance-focused images of female athletes, then coded each participant’s open-ended response for whether it expressed <strong>self-objectification</strong> (yes/no). Using <a href="https://discoverjasp.com/repository/dsj1_leni/leni_16a.jasp"><code>leni_16a.jasp</code></a>, run a chi-square test of independence on image type × self-objectification. Inspect the <strong>standardised residuals</strong> to see which cells drive the result.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -496,7 +474,7 @@ window.Quarto = {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/labcoat_leni#the-impact-of-sexualized-images-on-womens-self-evaluations">Labcoat Leni — The impact of sexualised images on women’s self-evaluations</a></li>
@@ -510,6 +488,29 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="exercise-2-chi-square-three-outcomes-are-perceptions-of-happiness-associated-with-the-professional-group-rated">Exercise 2 (chi-square × three outcomes) — Are perceptions of happiness associated with the professional group rated?</h3>
 <p>Three groups of professionals rated each other on three different happiness-related measures. Using <a href="https://discoverjasp.com/repository/dsj1_leni/leni_16b.jasp"><code>leni_16b.jasp</code></a>, run a chi-square test for <strong>each</strong> of the three outcomes. Report Cramér’s V and discuss whether you should adjust for multiple testing.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>▸ Worked solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/labcoat_leni#is-the-black-american-happy">Labcoat Leni — Is the Black American happy?</a></li>
+<li><strong>Annotated JASP output</strong>: <a href="https://discoverjasp.com/repository/dsj1_leni/leni_16b.html">leni_16b.html</a></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-3-chi-square-on-a-large-sample-does-time-pressure-at-work-affect-off-hours-psychological-detachment" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3-chi-square-on-a-large-sample-does-time-pressure-at-work-affect-off-hours-psychological-detachment">Exercise 3 (chi-square on a large sample) — Does time-pressure at work affect off-hours psychological detachment?</h3>
+<p>Sonnentag (2012) surveyed 1709 employees on their work time-pressure (5 ordered levels) and whether they could psychologically <em>detach</em> from work in their off-hours. Using <a href="https://discoverjasp.com/repository/dsj1_data/data/sonnentag_2012.jasp"><code>sonnentag_2012.jasp</code></a>, set up the contingency table with <code>time_pressure</code> in <em>Rows</em>, <code>detachment</code> in <em>Columns</em>, and <code>frequency</code> in <em>Counts</em>. Run the chi-square test, report Cramér’s V, and inspect the standardised residuals to see which levels of time-pressure drive the association.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -520,29 +521,6 @@ window.Quarto = {
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/labcoat_leni#is-the-black-american-happy">Labcoat Leni — Is the Black American happy?</a></li>
-<li><strong>Annotated JASP output</strong>: <a href="https://discoverjasp.com/repository/dsj1_leni/leni_16b.html">leni_16b.html</a></li>
-</ul>
-</div>
-</div>
-</div>
-</section>
-<section id="exercise-3-chi-square-bayesian-alternative-does-time-pressure-at-work-affect-off-hours-psychological-detachment" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-3-chi-square-bayesian-alternative-does-time-pressure-at-work-affect-off-hours-psychological-detachment">Exercise 3 (chi-square + Bayesian alternative) — Does time-pressure at work affect off-hours psychological detachment?</h3>
-<p>Sonnentag (2012) surveyed 1709 employees on their work time-pressure (5 ordered levels) and whether they could psychologically <em>detach</em> from work in their off-hours. Using <a href="https://discoverjasp.com/repository/dsj1_data/data/sonnentag_2012.jasp"><code>sonnentag_2012.jasp</code></a>, set up the contingency table with <code>time_pressure</code> in <em>Rows</em>, <code>detachment</code> in <em>Columns</em>, and <code>frequency</code> in <em>Counts</em>. Run a classical chi-square test <strong>and</strong> a Bayesian contingency-table analysis — compare what the <em>p</em>-value and the Bayes factor each tell you.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>▸ Worked solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/smart_alex#task-16.1">Smart Alex Task 16.1</a></li>

@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f7333b7c44a7c3d55afcc11699a363c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-5a7edf553ce6f37e40c66d907d0f4061.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -160,7 +160,6 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../advanced/meta-analysis.html">
  <span class="dropdown-text">Meta-Analysis</span></a>
   </li>  
-        <li><hr class="dropdown-divider"></li>
         <li>
     <a class="dropdown-item" href="../advanced/measurement-invariance.html">
  <span class="dropdown-text">Measurement Invariance</span></a>
@@ -206,9 +205,15 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">🚧</a></li>
-  <li><a href="#what-this-page-will-cover" id="toc-what-this-page-will-cover" class="nav-link" data-scroll-target="#what-this-page-will-cover">What this page will cover</a></li>
-  <li><a href="#useful-resources-in-the-meantime" id="toc-useful-resources-in-the-meantime" class="nav-link" data-scroll-target="#useful-resources-in-the-meantime">Useful resources in the meantime</a></li>
+  <li><a href="#the-basic-object-a-pairwise-markov-random-field-pmrf" id="toc-the-basic-object-a-pairwise-markov-random-field-pmrf" class="nav-link active" data-scroll-target="#the-basic-object-a-pairwise-markov-random-field-pmrf">The basic object: a pairwise Markov random field (PMRF)</a></li>
+  <li><a href="#why-estimating-networks-is-harder-than-estimating-correlations" id="toc-why-estimating-networks-is-harder-than-estimating-correlations" class="nav-link" data-scroll-target="#why-estimating-networks-is-harder-than-estimating-correlations">Why estimating networks is harder than estimating correlations</a></li>
+  <li><a href="#centrality-which-nodes-matter-most" id="toc-centrality-which-nodes-matter-most" class="nav-link" data-scroll-target="#centrality-which-nodes-matter-most">Centrality: which nodes matter most?</a></li>
+  <li><a href="#how-stable-is-your-network" id="toc-how-stable-is-your-network" class="nav-link" data-scroll-target="#how-stable-is-your-network">How stable is your network?</a></li>
+  <li><a href="#beyond-cross-sectional-ggm" id="toc-beyond-cross-sectional-ggm" class="nav-link" data-scroll-target="#beyond-cross-sectional-ggm">Beyond cross-sectional GGM</a></li>
+  <li><a href="#how-to-do-it-in-jasp" id="toc-how-to-do-it-in-jasp" class="nav-link" data-scroll-target="#how-to-do-it-in-jasp">How to do it in JASP</a></li>
+  <li><a href="#interpreting-and-reporting" id="toc-interpreting-and-reporting" class="nav-link" data-scroll-target="#interpreting-and-reporting">Interpreting and reporting</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further reading</a></li>
+  <li><a href="#r-packages-worth-knowing" id="toc-r-packages-worth-knowing" class="nav-link" data-scroll-target="#r-packages-worth-knowing">R packages worth knowing</a></li>
   </ul>
 </nav>
 </nav>
@@ -239,32 +244,290 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><span class="section-badge advanced">Advanced Topics</span></p>
-<section id="section" class="level2 coming-soon">
-<h2 class="anchored" data-anchor-id="section">🚧</h2>
-<p><strong>This page is under construction.</strong></p>
-<p>Content covering psychometric network analysis will be added here.</p>
-</section>
+<p>Psychometric network analysis models psychological constructs not as reflections of a single underlying latent variable, but as <strong>systems of directly interacting components</strong>. Instead of asking <em>“is there a common factor that explains why these symptoms covary?”</em>, the network approach asks <em>“how do these symptoms interact with one another to produce the observed covariation?”</em>. For depression: rather than five items reflecting a single “depression” factor, insomnia might directly cause fatigue, fatigue might directly cause concentration problems, and so on (Borsboom &amp; Cramer, 2013; Isvoranu et al., 2022).</p>
 <hr>
-<section id="what-this-page-will-cover" class="level2">
-<h2 class="anchored" data-anchor-id="what-this-page-will-cover">What this page will cover</h2>
-<p>Psychometric network analysis conceptualises psychological constructs as <strong>networks of interacting components</strong> rather than as reflections of a single latent variable. For example, depression might be modelled as a network of interrelated symptoms (insomnia, fatigue, anhedonia, etc.) rather than as a single underlying factor.</p>
-<p>Key methods:</p>
-<ul>
-<li><strong>GGM (Gaussian Graphical Model)</strong>: estimates partial correlations between variables, with edges representing direct relationships after controlling for all other variables</li>
-<li><strong>EBIC graphical LASSO</strong>: a regularisation method to estimate sparse networks and avoid over-fitting</li>
-<li><strong>Centrality measures</strong>: which nodes (variables) are most central to the network? (strength, betweenness, closeness)</li>
-<li><strong>Community detection</strong>: identifying clusters of closely connected nodes</li>
-</ul>
-<p>JASP has a Network Analysis module.</p>
+<section id="the-basic-object-a-pairwise-markov-random-field-pmrf" class="level2">
+<h2 class="anchored" data-anchor-id="the-basic-object-a-pairwise-markov-random-field-pmrf">The basic object: a pairwise Markov random field (PMRF)</h2>
+<p>In a PMRF — the workhorse of network psychometrics — <strong>nodes</strong> represent variables (typically scale items or symptoms) and <strong>edges</strong> represent the strength of conditional association between two variables after controlling for all other variables in the network. An edge is present between two nodes only if the corresponding variables are <strong>conditionally dependent</strong> given the rest; an absent edge encodes <strong>conditional independence</strong> (Isvoranu et al., 2022, Ch 6).</p>
+<p>This is the key distinction from a correlation matrix: in a PMRF, a connection from A to B survives only after partialling out every other variable in the system. The remaining edge therefore represents a <em>unique</em> pairwise association — not driven by some third variable elsewhere in the network.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Data type</th>
+<th>Standard PMRF</th>
+<th>What edges encode</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Continuous</td>
+<td><strong>Gaussian Graphical Model (GGM)</strong></td>
+<td>Partial correlations, bounded between −1 and 1</td>
+</tr>
+<tr class="even">
+<td>Binary</td>
+<td><strong>Ising model</strong></td>
+<td>Log-linear interaction parameters</td>
+</tr>
+<tr class="odd">
+<td>Mixed (continuous + categorical + count)</td>
+<td><strong>Mixed Graphical Model (MGM)</strong></td>
+<td>Regression coefficients from generalised linear models</td>
+</tr>
+</tbody>
+</table>
+<p>In all three, an edge-weight of 0 means conditional independence; magnitudes encode strength.</p>
 <hr>
 </section>
-<section id="useful-resources-in-the-meantime" class="level2">
-<h2 class="anchored" data-anchor-id="useful-resources-in-the-meantime">Useful resources in the meantime</h2>
+<section id="why-estimating-networks-is-harder-than-estimating-correlations" class="level2">
+<h2 class="anchored" data-anchor-id="why-estimating-networks-is-harder-than-estimating-correlations">Why estimating networks is harder than estimating correlations</h2>
+<p>If you naively estimate every pairwise partial correlation in a moderately sized network, you’ll <strong>overfit</strong>. With <em>p</em> variables there are <em>p</em>(<em>p</em> − 1)/2 potential edges, and even pure-noise data will yield many small-but-nonzero estimates. The estimated network will look dense and uninterpretable, and won’t replicate.</p>
+<p>Network psychometrics handles this with <strong>model selection / sparsification</strong>. Isvoranu et al.&nbsp;(Ch 7) describe four families:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Family</th>
+<th>Idea</th>
+<th>Common implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Thresholding</strong></td>
+<td>Estimate all edges, then set those below some cutoff (e.g.&nbsp;<em>p</em> &gt; .05 or</td>
+<td>edge</td>
+</tr>
+<tr class="even">
+<td><strong>Pruning</strong></td>
+<td>Re-estimate the model after removing non-significant edges</td>
+<td><code>bootnet</code> post-estimation step</td>
+</tr>
+<tr class="odd">
+<td><strong>Model search</strong></td>
+<td>Compare many candidate sparse networks and pick the best by an information criterion</td>
+<td><code>IsingFit</code>, custom search</td>
+</tr>
+<tr class="even">
+<td><strong>Regularisation</strong></td>
+<td>Penalise edge weights toward zero during estimation; the strongest edges survive</td>
+<td><strong>EBIC graphical LASSO</strong> — the default in <code>qgraph</code> and <code>bootnet</code></td>
+</tr>
+</tbody>
+</table>
+<p>The most widely used pipeline in psychology — and the one JASP’s network module is built on — is the <strong>EBIC graphical LASSO</strong> for GGM. The LASSO shrinks small partial correlations to exactly zero; the EBIC (Extended Bayesian Information Criterion; Chen &amp; Chen, 2008) chooses the tuning parameter γ that balances fit and sparsity. Higher γ (commonly 0.5) yields sparser, more conservative networks.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>What is “regularisation”, in one paragraph?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The standard partial-correlation estimate from a sample maximises the likelihood of the data. Regularised estimation maximises <em>the likelihood penalised by the sum of |edge weights|</em>. Edges whose true value is close to zero collapse to exactly zero rather than wobbling around it. The cost: edges whose true value is small but nonzero get <em>underestimated</em>. The benefit: the estimated network is sparser, more interpretable, and replicates better.</p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="centrality-which-nodes-matter-most" class="level2">
+<h2 class="anchored" data-anchor-id="centrality-which-nodes-matter-most">Centrality: which nodes matter most?</h2>
+<p>A central question in network analysis is <em>which nodes play a special role in the system</em>. Three commonly reported centrality metrics (Isvoranu et al., Ch 3):</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>What it captures</th>
+<th>Caveat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Strength</strong> (or <em>node strength</em>)</td>
+<td>Sum of absolute edge weights touching the node — direct connectivity</td>
+<td>Most stable; recommended as the default centrality measure</td>
+</tr>
+<tr class="even">
+<td><strong>Closeness</strong></td>
+<td>Inverse of the mean shortest-path length from the node to every other — how quickly information can “spread” from this node</td>
+<td>Less stable in small/noisy networks; interpret with caution</td>
+</tr>
+<tr class="odd">
+<td><strong>Betweenness</strong></td>
+<td>The number of shortest paths between other nodes that pass through this node — “bridge” role</td>
+<td>Even less stable; recent work (Bringmann et al., 2019; Isvoranu et al., Ch 3) warns against over-reliance</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Centrality is not the same as causal importance
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A node high on strength is <em>statistically central</em> in the estimated network — many edges touch it. That is not the same as “intervening on this node will move the rest of the system”. Treat centrality as descriptive of the estimated network, not as a recipe for treatment targeting (Bringmann et al., 2019; Dablander &amp; Hinne, 2019).</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="how-stable-is-your-network" class="level2">
+<h2 class="anchored" data-anchor-id="how-stable-is-your-network">How stable is your network?</h2>
+<p>Network estimates have <strong>sampling variability</strong> — the same population could yield a fairly different estimated network in another sample. Reporting a single point estimate without quantifying uncertainty is the network-analysis equivalent of reporting a <em>p</em>-value without an effect size. Isvoranu et al.&nbsp;(Ch 8) and Epskamp, Borsboom &amp; Fried (2018) describe the standard checks, all implemented in <strong><code>bootnet</code></strong>:</p>
 <ul>
-<li>Borsboom, D., &amp; Cramer, A. O. J. (2013). Network analysis: An integrative approach to the structure of psychopathology. <em>Annual Review of Clinical Psychology</em>, 9, 91–121.</li>
-<li>Epskamp, S., &amp; Fried, E. I. (2018). A tutorial on regularized partial correlation networks. <em>Psychological Methods</em>, 23(4), 617–634.</li>
-<li>The <strong>qgraph</strong> R package: <a href="https://cran.r-project.org/package=qgraph">cran.r-project.org/package=qgraph</a></li>
+<li><strong>Bootstrap edge weights</strong> — produces a confidence interval around each edge weight. Edges whose CI crosses zero shouldn’t be over-interpreted, even if they survived regularisation.</li>
+<li><strong>Bootstrap difference tests</strong> — for any two edges (or two centralities), does the bootstrap support the conclusion that one is <em>larger than</em> the other? Often surprisingly few pairs differ reliably.</li>
+<li><strong>Case-dropping subset bootstrap</strong> — refit the network on subsets of cases and compute the <strong>CS-coefficient</strong> for each centrality metric. A CS coefficient &lt; 0.25 means that centrality is <strong>not stable enough to interpret</strong>; &gt; 0.5 is considered acceptable.</li>
+<li><strong>Network Comparison Test (NCT)</strong> — when comparing two networks (e.g.&nbsp;before vs after treatment, depressed vs control), tests whether they differ in overall structure or in specific edges (van Borkulo et al., 2022).</li>
 </ul>
+<hr>
+</section>
+<section id="beyond-cross-sectional-ggm" class="level2">
+<h2 class="anchored" data-anchor-id="beyond-cross-sectional-ggm">Beyond cross-sectional GGM</h2>
+<p>Most of what’s described above applies to a single cross-section. Isvoranu et al.&nbsp;(Parts III–IV) discuss extensions for longitudinal and dynamic settings:</p>
+<ul>
+<li><strong>Graphical Vector Auto-Regression (GVAR)</strong> — for <em>N</em> = 1 time series or panel data; separates <em>contemporaneous</em> and <em>temporal</em> (lagged) effects.</li>
+<li><strong>Multi-level GVAR</strong> — pooled across multiple participants’ time series.</li>
+<li><strong>Time-varying network models</strong> — allows the network structure itself to change over time.</li>
+<li><strong>Ising-model simulations</strong> — using estimated Ising parameters to simulate how the system would behave dynamically; useful for hypothesis generation.</li>
+</ul>
+<p>These methods sit outside JASP’s current network module and require R (<code>graphicalVAR</code>, <code>mlVAR</code>, <code>tvNet</code>).</p>
+<hr>
+</section>
+<section id="how-to-do-it-in-jasp" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-do-it-in-jasp">How to do it in JASP</h2>
+<!-- JASP TODO: confirm the module name (Network Analysis vs Network) and the exact menu path. -->
+<p>JASP has a <strong>Network</strong> analysis module that wraps <code>qgraph</code> / <code>bootnet</code> for cross-sectional GGM (and Ising for binary data). The typical workflow once the module is enabled:</p>
+<ol type="1">
+<li><strong>Select your indicator variables</strong> (the questionnaire items or symptoms).</li>
+<li><strong>Choose the estimator</strong> — <em>EBIC graphical LASSO</em> is the standard for continuous data; <em>IsingFit</em> for binary. <!-- JASP TODO: verify these are the exact labels JASP uses --></li>
+<li><strong>Set the EBIC tuning parameter γ</strong> (typically 0.5; values between 0 and 0.5 are common).</li>
+<li><strong>Plot the network</strong> (qgraph rendering) — JASP lets you adjust the layout (Fruchterman-Reingold is the default), edge transparency, and node grouping.</li>
+<li><strong>Request centrality plots</strong> — strength, closeness, betweenness, expected influence.</li>
+<li><strong>Request stability checks</strong> — bootstrapped edge CIs and CS-coefficients for centrality.</li>
+</ol>
+<p>For longitudinal / multi-level / temporal networks, JASP does not currently have built-in tooling; switch to R.</p>
+<hr>
+</section>
+<section id="interpreting-and-reporting" class="level2">
+<h2 class="anchored" data-anchor-id="interpreting-and-reporting">Interpreting and reporting</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Reporting a network analysis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Following the consensus reporting standards (Burger et al., 2023; Epskamp &amp; Fried, 2018), at minimum report:</p>
+<ol type="1">
+<li><strong>The sample</strong>: N, demographics, how it was recruited.</li>
+<li><strong>The items / variables</strong> that made up the nodes, and how they were scored.</li>
+<li><strong>The estimator</strong> used (e.g.&nbsp;“GGM estimated with the graphical LASSO, tuning parameter selected by EBIC with γ = 0.5”) and the software / package version.</li>
+<li><strong>The estimated network</strong>: a figure showing nodes, edges, and edge thickness, with a clear legend. Either share the partial-correlation matrix or the figure source.</li>
+<li><strong>Centrality estimates</strong>, with both the values and a stability check (CS-coefficient).</li>
+<li><strong>Bootstrap diagnostics</strong>: edge confidence intervals and (where relevant) edge-difference and centrality-difference tests.</li>
+<li><strong>Substantive interpretation</strong>, tempered by what the stability analysis can actually support.</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Three common over-interpretation pitfalls
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>“<strong>This node is most central, so it is most important to treat</strong>.” → Centrality describes the <em>estimated</em> network; whether intervening will move the system is a separate claim that the network alone cannot support.</li>
+<li>“<strong>The network shows that depression is caused by insomnia</strong>.” → Cross-sectional PMRFs describe conditional dependence patterns, not causal direction. Use longitudinal designs for directional claims.</li>
+<li>“<strong>The two networks are different</strong>.” → Two networks can look qualitatively different but pass a formal Network Comparison Test as statistically indistinguishable. Always test the comparison formally before claiming difference.</li>
+</ul>
+</div>
+</div>
+<hr>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
+<ul>
+<li><strong>Isvoranu, A.-M., Epskamp, S., Waldorp, L. J., &amp; Borsboom, D. (Eds.). (2022).</strong> <em>Network psychometrics with R: A guide for behavioral and social scientists.</em> Routledge. — Comprehensive treatment of cross-sectional GGM/Ising/MGM, longitudinal extensions, and the causal/theoretical underpinnings.</li>
+<li><strong>Borsboom, D., &amp; Cramer, A. O. J. (2013).</strong> Network analysis: An integrative approach to the structure of psychopathology. <em>Annual Review of Clinical Psychology</em>, 9, 91–121. — The classic theoretical paper.</li>
+<li><strong>Epskamp, S., &amp; Fried, E. I. (2018).</strong> A tutorial on regularized partial correlation networks. <em>Psychological Methods</em>, 23(4), 617–634. — The most widely cited applied tutorial.</li>
+<li><strong>Epskamp, S., Borsboom, D., &amp; Fried, E. I. (2018).</strong> Estimating psychological networks and their accuracy: A tutorial paper. <em>Behavior Research Methods</em>, 50, 195–212. — Detailed walkthrough of <code>bootnet</code> stability checks.</li>
+<li><strong>Bringmann, L. F., Elmer, T., Epskamp, S., Krause, R. W., Schoch, D., Wichers, M., Wigman, J. T. W., &amp; Snippe, E. (2019).</strong> What do centrality measures measure in psychological networks? <em>Journal of Abnormal Psychology</em>, 128(8), 892–903. — Why “central node = important node” is more contested than it seems.</li>
+<li><strong>Dablander, F., &amp; Hinne, M. (2019).</strong> Node centrality measures are a poor substitute for causal inference. <em>Scientific Reports</em>, 9, 6846. — Centrality describes structure; it does not identify intervention targets.</li>
+<li><strong>van Borkulo, C. D., van Bork, R., Boschloo, L., Kossakowski, J. J., Tio, P., Schoevers, R. A., Borsboom, D., &amp; Waldorp, L. J. (2022).</strong> Comparing network structures on three aspects: A permutation test. <em>Psychological Methods</em>, 28(6), 1273–1285. — The Network Comparison Test (NCT).</li>
+<li><strong>Chen, J., &amp; Chen, Z. (2008).</strong> Extended Bayesian information criteria for model selection with large model spaces. <em>Biometrika</em>, 95(3), 759–771. — Source of the EBIC used in graphical-LASSO model selection.</li>
+<li><strong>Burger, J., Isvoranu, A.-M., Lunansky, G., Haslbeck, J. M. B., Epskamp, S., Hoekstra, R. H. A., Fried, E. I., Borsboom, D., &amp; Blanken, T. F. (2023).</strong> Reporting standards for psychological network analyses in cross-sectional data. <em>Psychological Methods</em>, 28(4), 806–824. — Current reporting checklist for cross-sectional networks.</li>
+</ul>
+<hr>
+</section>
+<section id="r-packages-worth-knowing" class="level2">
+<h2 class="anchored" data-anchor-id="r-packages-worth-knowing">R packages worth knowing</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Package</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>qgraph</code></td>
+<td>Network visualisation and basic GGM estimation</td>
+</tr>
+<tr class="even">
+<td><code>bootnet</code></td>
+<td>One-stop wrapper for estimation + stability checks</td>
+</tr>
+<tr class="odd">
+<td><code>IsingFit</code></td>
+<td>Ising-model estimation for binary data</td>
+</tr>
+<tr class="even">
+<td><code>mgm</code></td>
+<td>Mixed Graphical Model estimation</td>
+</tr>
+<tr class="odd">
+<td><code>graphicalVAR</code>, <code>mlVAR</code></td>
+<td>Temporal / longitudinal network models</td>
+</tr>
+<tr class="even">
+<td><code>NetworkComparisonTest</code></td>
+<td>Formal between-network comparison (van Borkulo et al.)</td>
+</tr>
+</tbody>
+</table>
 
 
 </section>

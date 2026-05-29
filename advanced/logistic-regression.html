@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f7333b7c44a7c3d55afcc11699a363c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-5a7edf553ce6f37e40c66d907d0f4061.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -189,7 +189,6 @@ window.Quarto = {
     <a class="dropdown-item" href="../advanced/meta-analysis.html">
  <span class="dropdown-text">Meta-Analysis</span></a>
   </li>  
-        <li><hr class="dropdown-divider"></li>
         <li>
     <a class="dropdown-item" href="../advanced/measurement-invariance.html">
  <span class="dropdown-text">Measurement Invariance</span></a>
@@ -458,7 +457,8 @@ window.Quarto = {
 </section>
 <section id="multinomial-logistic-regression" class="level2">
 <h2 class="anchored" data-anchor-id="multinomial-logistic-regression">Multinomial logistic regression</h2>
-<p>When the outcome has <strong>three or more unordered categories</strong>, use <strong>multinomial logistic regression</strong>. This runs separate binary logistic regressions comparing each category to a reference category. Available in JASP under <strong>Regression → Logistic Regression</strong> by changing the outcome type.</p>
+<p>When the outcome has <strong>three or more unordered categories</strong>, use <strong>multinomial logistic regression</strong>. This fits separate binary logistic regressions comparing each category to a reference category, but estimates them jointly.</p>
+<p>In JASP, multinomial logistic regression lives under the Generalized Linear Model interface. Go to <strong>Regression → Generalized Linear Model</strong>, set <em>Family</em> to <strong>Other</strong> and <em>Model</em> to <strong>Multinomial logistic regression</strong>, then drag the categorical outcome into <em>Dependent Variable</em> and your predictors into <em>Continuous Predictors</em> / <em>Categorical Predictors</em>.</p>
 <hr>
 </section>
 <section id="further-reading" class="level2">

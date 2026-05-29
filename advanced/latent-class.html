@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f7333b7c44a7c3d55afcc11699a363c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-5a7edf553ce6f37e40c66d907d0f4061.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -160,7 +160,6 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../advanced/meta-analysis.html">
  <span class="dropdown-text">Meta-Analysis</span></a>
   </li>  
-        <li><hr class="dropdown-divider"></li>
         <li>
     <a class="dropdown-item" href="../advanced/measurement-invariance.html">
  <span class="dropdown-text">Measurement Invariance</span></a>
@@ -206,9 +205,37 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">🚧</a></li>
-  <li><a href="#what-this-page-will-cover" id="toc-what-this-page-will-cover" class="nav-link" data-scroll-target="#what-this-page-will-cover">What this page will cover</a></li>
-  <li><a href="#useful-resources-in-the-meantime" id="toc-useful-resources-in-the-meantime" class="nav-link" data-scroll-target="#useful-resources-in-the-meantime">Useful resources in the meantime</a></li>
+  <li><a href="#the-lca-model" id="toc-the-lca-model" class="nav-link active" data-scroll-target="#the-lca-model">The LCA model</a>
+  <ul class="collapse">
+  <li><a href="#local-independence-the-defining-assumption" id="toc-local-independence-the-defining-assumption" class="nav-link" data-scroll-target="#local-independence-the-defining-assumption">Local independence — the defining assumption</a></li>
+  </ul></li>
+  <li><a href="#estimation" id="toc-estimation" class="nav-link" data-scroll-target="#estimation">Estimation</a>
+  <ul class="collapse">
+  <li><a href="#label-switching" id="toc-label-switching" class="nav-link" data-scroll-target="#label-switching">Label switching</a></li>
+  <li><a href="#multiple-starting-values-are-mandatory" id="toc-multiple-starting-values-are-mandatory" class="nav-link" data-scroll-target="#multiple-starting-values-are-mandatory">Multiple starting values are mandatory</a></li>
+  </ul></li>
+  <li><a href="#how-many-classes" id="toc-how-many-classes" class="nav-link" data-scroll-target="#how-many-classes">How many classes?</a>
+  <ul class="collapse">
+  <li><a href="#information-criteria" id="toc-information-criteria" class="nav-link" data-scroll-target="#information-criteria">Information criteria</a></li>
+  <li><a href="#likelihood-ratio-tests-for-k-vs-k-1-classes" id="toc-likelihood-ratio-tests-for-k-vs-k-1-classes" class="nav-link" data-scroll-target="#likelihood-ratio-tests-for-k-vs-k-1-classes">Likelihood-ratio tests for k vs (k − 1) classes</a></li>
+  <li><a href="#g²-and-absolute-fit-for-lca-only" id="toc-g²-and-absolute-fit-for-lca-only" class="nav-link" data-scroll-target="#g²-and-absolute-fit-for-lca-only">G² and absolute fit (for LCA only)</a></li>
+  </ul></li>
+  <li><a href="#how-well-does-each-class-hang-together" id="toc-how-well-does-each-class-hang-together" class="nav-link" data-scroll-target="#how-well-does-each-class-hang-together">How well does each class hang together?</a>
+  <ul class="collapse">
+  <li><a href="#homogeneity" id="toc-homogeneity" class="nav-link" data-scroll-target="#homogeneity">Homogeneity</a></li>
+  <li><a href="#latent-class-separation" id="toc-latent-class-separation" class="nav-link" data-scroll-target="#latent-class-separation">Latent class separation</a></li>
+  <li><a href="#posterior-classification-quality" id="toc-posterior-classification-quality" class="nav-link" data-scroll-target="#posterior-classification-quality">Posterior classification quality</a></li>
+  </ul></li>
+  <li><a href="#beyond-a-single-cross-section" id="toc-beyond-a-single-cross-section" class="nav-link" data-scroll-target="#beyond-a-single-cross-section">Beyond a single cross-section</a>
+  <ul class="collapse">
+  <li><a href="#multiple-group-lca" id="toc-multiple-group-lca" class="nav-link" data-scroll-target="#multiple-group-lca">Multiple-group LCA</a></li>
+  <li><a href="#lca-with-covariates" id="toc-lca-with-covariates" class="nav-link" data-scroll-target="#lca-with-covariates">LCA with covariates</a></li>
+  <li><a href="#latent-transition-analysis-lta" id="toc-latent-transition-analysis-lta" class="nav-link" data-scroll-target="#latent-transition-analysis-lta">Latent Transition Analysis (LTA)</a></li>
+  </ul></li>
+  <li><a href="#how-to-do-it-in-jasp" id="toc-how-to-do-it-in-jasp" class="nav-link" data-scroll-target="#how-to-do-it-in-jasp">How to do it in JASP</a></li>
+  <li><a href="#reporting" id="toc-reporting" class="nav-link" data-scroll-target="#reporting">Reporting</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further reading</a></li>
+  <li><a href="#software-notes" id="toc-software-notes" class="nav-link" data-scroll-target="#software-notes">Software notes</a></li>
   </ul>
 </nav>
 </nav>
@@ -239,15 +266,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><span class="section-badge advanced">Advanced Topics</span></p>
-<section id="section" class="level2 coming-soon">
-<h2 class="anchored" data-anchor-id="section">🚧</h2>
-<p><strong>This page is under construction.</strong></p>
-<p>Content covering latent class analysis (LCA) and latent profile analysis (LPA) will be added here.</p>
-</section>
-<hr>
-<section id="what-this-page-will-cover" class="level2">
-<h2 class="anchored" data-anchor-id="what-this-page-will-cover">What this page will cover</h2>
-<p>Latent Class Analysis (LCA) and Latent Profile Analysis (LPA) are <strong>person-centred</strong> approaches that identify subgroups (classes or profiles) of individuals who are similar to each other and different from other subgroups.</p>
+<p>Latent Class Analysis (LCA) and Latent Profile Analysis (LPA) are <strong>person-centred</strong> approaches that identify unobserved subgroups in a population — “classes” or “profiles” of individuals who respond similarly across a set of indicators and differently from people in other subgroups. In contrast to <strong>variable-centred</strong> methods (factor analysis, regression), which describe how variables relate, LCA and LPA describe how <em>people</em> cluster (Collins &amp; Lanza, 2010, §1.2.3).</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -257,33 +276,296 @@ ul.task-list li input[type="checkbox"] {
 <thead>
 <tr class="header">
 <th>Technique</th>
-<th>Variable type</th>
-<th>Example</th>
+<th>Indicator type</th>
+<th>Typical application</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><strong>LCA</strong></td>
-<td>Categorical indicators</td>
-<td>Classifying patients by symptom patterns (present/absent)</td>
+<td>Categorical (binary or polytomous)</td>
+<td>Classifying respondents by symptom-presence patterns, diagnostic profiles, response-pattern groups</td>
 </tr>
 <tr class="even">
 <td><strong>LPA</strong></td>
-<td>Continuous indicators</td>
-<td>Identifying motivational profiles from several continuous scale scores</td>
+<td>Continuous</td>
+<td>Identifying motivational profiles or trait profiles from several continuous scale scores</td>
 </tr>
 </tbody>
 </table>
-<p>Both are forms of <strong>mixture modelling</strong> — the assumption is that the population is a mixture of <em>k</em> unobserved subgroups, and the goal is to identify those subgroups and assign individuals to them.</p>
-<p><strong>Key decisions</strong>: - How many classes? Use BIC, AIC, entropy, and the Lo-Mendell-Rubin test to decide - Are classes meaningful and interpretable? Statistical fit is necessary but not sufficient</p>
+<p>Statistically, both are forms of <strong>finite mixture modelling</strong>: the assumption is that the population is a mixture of <em>k</em> unobserved subgroups, each with its own response distribution, and the data don’t tell you which subgroup each respondent belongs to.</p>
+<hr>
+<section id="the-lca-model" class="level2">
+<h2 class="anchored" data-anchor-id="the-lca-model">The LCA model</h2>
+<p>Following Collins &amp; Lanza (2010, §2.5), the LCA model has two kinds of parameters:</p>
+<ul>
+<li><strong>Latent class prevalences</strong> (γ): the proportion of the population belonging to each class. With <em>C</em> classes, <em>C</em> − 1 are estimated (the last one is determined by 1 minus the sum).</li>
+<li><strong>Item-response probabilities</strong> (ρ): for each item and each response category, the probability of giving that response <em>conditional</em> on being in a particular class. With <em>J</em> items each having <em>R<sub>j</sub></em> categories and <em>C</em> classes, <em>C</em> · Σ(<em>R<sub>j</sub></em> − 1) item-response probabilities are estimated.</li>
+</ul>
+<p>The LPA analogue replaces the item-response probabilities with <strong>within-class means and variances</strong> for each continuous indicator.</p>
+<section id="local-independence-the-defining-assumption" class="level3">
+<h3 class="anchored" data-anchor-id="local-independence-the-defining-assumption">Local independence — the defining assumption</h3>
+<p>LCA assumes that <strong>conditional on the latent class, the observed indicators are independent of each other</strong> (Collins &amp; Lanza, 2010, §2.5.2). Any correlation between two items is, under the model, <em>entirely</em> explained by their shared dependence on the latent class. If two items remain correlated even within a class, the local-independence assumption is violated and you’ll likely need to either (a) extract more classes, (b) drop an item, or (c) freely estimate a residual covariance.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Why local independence is the LCA analogue of common-factor models
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A CFA models indicator covariances as arising from latent factors plus residuals. LCA models indicator covariances as arising entirely from class membership. Local independence is the corresponding assumption — if violated, the model is mis-specified the same way a CFA is mis-specified by an unmodelled cross-loading.</p>
+</div>
+</div>
 <hr>
 </section>
-<section id="useful-resources-in-the-meantime" class="level2">
-<h2 class="anchored" data-anchor-id="useful-resources-in-the-meantime">Useful resources in the meantime</h2>
+</section>
+<section id="estimation" class="level2">
+<h2 class="anchored" data-anchor-id="estimation">Estimation</h2>
+<p>LCA and LPA parameters are estimated via <strong>Maximum Likelihood</strong>, almost always using the <strong>EM algorithm</strong> (Collins &amp; Lanza, 2010, Ch 4). Two specifically LCA-ish estimation gotchas:</p>
+<section id="label-switching" class="level3">
+<h3 class="anchored" data-anchor-id="label-switching">Label switching</h3>
+<p>The model is invariant to relabelling of the classes — calling one class “high-risk” and another “low-risk” vs the reverse gives statistically identical likelihoods. EM can converge to either labelling, and across multiple runs the labelling can change between solutions. This is harmless for the <em>likelihood</em> but it makes parameter comparisons across runs / draws messy. Report the substantive labels you’ve assigned to classes (based on their item-response probabilities), not the software-default numbering.</p>
+</section>
+<section id="multiple-starting-values-are-mandatory" class="level3">
+<h3 class="anchored" data-anchor-id="multiple-starting-values-are-mandatory">Multiple starting values are mandatory</h3>
+<p>The LCA likelihood is multi-modal — local maxima are common. <strong>Always run from many (e.g.&nbsp;100–1000) random starting values</strong> and keep the solution with the highest likelihood (Collins &amp; Lanza, 2010, §4.4–4.5). If your “best” solution is not replicated across multiple starts, the model is empirically unidentified at that class size — try fewer classes or simplify the model.</p>
+<hr>
+</section>
+</section>
+<section id="how-many-classes" class="level2">
+<h2 class="anchored" data-anchor-id="how-many-classes">How many classes?</h2>
+<p>This is the central question in LCA, and there is no single oracle (Collins &amp; Lanza, 2010, §4.6). The standard workflow is to fit a <em>series</em> of solutions (1 class, 2 classes, …, <em>K</em> classes) and compare them on:</p>
+<section id="information-criteria" class="level3">
+<h3 class="anchored" data-anchor-id="information-criteria">Information criteria</h3>
 <ul>
-<li>Masyn, K. E. (2013). Latent class analysis and finite mixture modeling. In <em>The Oxford handbook of quantitative methods</em> (Vol. 2). Oxford University Press.</li>
-<li>The <strong>Mplus</strong> software is frequently used for complex mixture models: <a href="https://www.statmodel.com">statmodel.com</a></li>
+<li><strong>BIC</strong> (Bayesian information criterion) — usually the <strong>default recommended index</strong> for LCA; penalises model complexity more heavily than AIC and tends to favour parsimonious solutions.</li>
+<li><strong>aBIC</strong> (sample-size adjusted BIC; Sclove, 1987) — modified for smaller samples.</li>
+<li><strong>AIC</strong> — tends to over-extract classes (favours more complex models) and is less commonly used for class enumeration.</li>
+<li><strong>CAIC</strong> — between BIC and AIC in penalty.</li>
 </ul>
+<p>Lower is better for all of these. Plot them as a line across <em>k</em> and look for an <strong>elbow</strong> (a sharp slowing of improvement) — the <em>k</em> at the elbow is the parsimonious choice.</p>
+</section>
+<section id="likelihood-ratio-tests-for-k-vs-k-1-classes" class="level3">
+<h3 class="anchored" data-anchor-id="likelihood-ratio-tests-for-k-vs-k-1-classes">Likelihood-ratio tests for k vs (k − 1) classes</h3>
+<p>The standard χ² difference test does <strong>not</strong> apply to comparing mixture models with different numbers of classes (regularity conditions are violated). Use instead:</p>
+<ul>
+<li><strong>Lo-Mendell-Rubin adjusted LRT (LMR)</strong> — a parametric correction. Significant <em>p</em> means <em>k</em> classes fit better than <em>k</em> − 1.</li>
+<li><strong>Bootstrap Likelihood Ratio Test (BLRT)</strong> — non-parametric; widely considered more reliable. Same interpretation.</li>
+</ul>
+<p>Both are available in Mplus.</p>
+</section>
+<section id="g²-and-absolute-fit-for-lca-only" class="level3">
+<h3 class="anchored" data-anchor-id="g²-and-absolute-fit-for-lca-only">G² and absolute fit (for LCA only)</h3>
+<p>The <strong>likelihood-ratio G² statistic</strong> compares observed and expected response-pattern frequencies against a χ² distribution (Collins &amp; Lanza, 2010, §4.3.2). Use with caution: with even modestly many items, the response-pattern contingency table becomes <strong>sparse</strong> (<em>N</em> / <em>W</em> &lt; 5), and the χ² approximation breaks down. Sparseness is the rule, not the exception — most LCA solutions can’t be tested for absolute fit this way.</p>
+<hr>
+</section>
+</section>
+<section id="how-well-does-each-class-hang-together" class="level2">
+<h2 class="anchored" data-anchor-id="how-well-does-each-class-hang-together">How well does each class hang together?</h2>
+<p>Even after picking <em>k</em>, you should check that the classes are substantively interpretable and well-separated.</p>
+<section id="homogeneity" class="level3">
+<h3 class="anchored" data-anchor-id="homogeneity">Homogeneity</h3>
+<p>A class is <strong>homogeneous</strong> if its item-response probabilities are close to 0 or close to 1 — i.e.&nbsp;members of the class share a clear response profile (Collins &amp; Lanza, 2010, §3.3). Probabilities clustered around .5 mean the class doesn’t have a distinct profile on that item.</p>
+</section>
+<section id="latent-class-separation" class="level3">
+<h3 class="anchored" data-anchor-id="latent-class-separation">Latent class separation</h3>
+<p><strong>Separation</strong> is the extent to which the classes have distinguishable item-response patterns. High homogeneity <em>within</em> classes plus large differences in those probabilities <em>between</em> classes = good separation. You can have high homogeneity but poor separation (two classes are both homogeneous but look similar) — in which case the second class isn’t really informative.</p>
+</section>
+<section id="posterior-classification-quality" class="level3">
+<h3 class="anchored" data-anchor-id="posterior-classification-quality">Posterior classification quality</h3>
+<p>Each respondent has an estimated <strong>posterior probability</strong> of belonging to each class. A model with good separation will assign respondents to classes with posteriors near 1; a model with poor separation will produce posteriors near 1/<em>k</em> (essentially guessing).</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Diagnostic</th>
+<th>Definition</th>
+<th>Threshold for “good”</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Mean posterior probability per class</strong></td>
+<td>Average posterior of being in class <em>c</em>, among respondents assigned to <em>c</em></td>
+<td>≥ .80 (rule of thumb)</td>
+</tr>
+<tr class="even">
+<td><strong>Odds of correct classification (OCC)</strong></td>
+<td>The class-specific assignment accuracy normalised by chance (Nagin, 2005)</td>
+<td>≥ 5 per class (Nagin, 2005, pp.&nbsp;88–89)</td>
+</tr>
+<tr class="odd">
+<td><strong>Entropy</strong> (Ramaswamy et al., 1993)</td>
+<td>A single-number summary of overall classification certainty; 0 ≤ E ≤ 1</td>
+<td>Higher = better separation</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Don’t use entropy for class enumeration
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Entropy is useful for <em>describing</em> the separation quality of a chosen model — but it tends to decrease as the number of classes increases for purely artefactual reasons. Picking the <em>k</em> with highest entropy will systematically under-extract classes. Use BIC and LRT-based tests for class enumeration, and entropy for <em>post-hoc</em> interpretation only (Collins &amp; Lanza, 2010, §3.5).</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="beyond-a-single-cross-section" class="level2">
+<h2 class="anchored" data-anchor-id="beyond-a-single-cross-section">Beyond a single cross-section</h2>
+<section id="multiple-group-lca" class="level3">
+<h3 class="anchored" data-anchor-id="multiple-group-lca">Multiple-group LCA</h3>
+<p>Asks whether the <em>same</em> latent class structure holds across groups (e.g.&nbsp;men vs women, cohorts), and whether classes are equally prevalent across them. The analogue of measurement invariance testing in CFA: fit a configural model and progressively constrain item-response probabilities to equality (Collins &amp; Lanza, 2010, Ch 5). Partial measurement invariance is also possible (§5.10).</p>
+</section>
+<section id="lca-with-covariates" class="level3">
+<h3 class="anchored" data-anchor-id="lca-with-covariates">LCA with covariates</h3>
+<p>Once classes are identified, you may want to predict class membership from individual-level covariates (sex, age, intervention condition) — this is a <strong>multinomial logistic regression</strong> of class membership on the covariates. Two ways to do this: (a) the <em>one-step</em> approach, where covariates enter the LCA model directly, and (b) the <em>three-step</em> approach (Vermunt, 2010), where you fit the LCA, assign cases to their most likely class, and regress class on covariates with a correction for assignment error. The three-step approach is now the standard recommendation (Collins &amp; Lanza, 2010, Ch 6).</p>
+</section>
+<section id="latent-transition-analysis-lta" class="level3">
+<h3 class="anchored" data-anchor-id="latent-transition-analysis-lta">Latent Transition Analysis (LTA)</h3>
+<p>The longitudinal extension. Each respondent is in some class at each measurement occasion, and the model estimates <strong>transition probabilities</strong> between classes across occasions (Collins &amp; Lanza, 2010, Ch 7–8). Useful for studying stage-sequential development, recovery patterns, intervention effects on group membership.</p>
+<hr>
+</section>
+</section>
+<section id="how-to-do-it-in-jasp" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-do-it-in-jasp">How to do it in JASP</h2>
+<!-- JASP TODO: verify whether JASP has any LCA/LPA functionality in its core modules, the Mixture Models module, or any community add-on. As of writing, the standard tools are Mplus and R packages. -->
+<p>JASP does <strong>not</strong> currently have a dedicated LCA / LPA module in its standard distribution. For these analyses, the field’s standard software is:</p>
+<ul>
+<li><strong>Mplus</strong> (Muthén &amp; Muthén) — the de facto reference for mixture modelling. Long history; comprehensive feature set (multiple-group, covariates, three-step, LTA, growth mixture models). Commercial.</li>
+<li><strong>R <code>poLCA</code></strong> (Linzer &amp; Lewis, 2011) — open-source LCA for categorical indicators.</li>
+<li><strong>R <code>tidyLPA</code></strong> (Rosenberg et al.) — accessible LPA wrapper around <code>mclust</code>; integrates with the tidyverse.</li>
+<li><strong>R <code>mclust</code></strong> (Scrucca et al., 2016) — general-purpose Gaussian mixture modelling, including LPA.</li>
+<li><strong>R <code>depmixS4</code></strong> — LCA + hidden Markov models for transitions over time.</li>
+<li><strong>Latent GOLD</strong> — another commercial alternative with a strong GUI.</li>
+</ul>
+<p>If you’re new to mixture modelling and have continuous indicators, <code>tidyLPA</code> is the gentlest entry point. For categorical LCA in R, <code>poLCA</code> is the standard.</p>
+<hr>
+</section>
+<section id="reporting" class="level2">
+<h2 class="anchored" data-anchor-id="reporting">Reporting</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Reporting an LCA / LPA study
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>At minimum:</p>
+<ol type="1">
+<li><strong>Conceptual rationale</strong>: why a person-centred / mixture approach for this question, not a variable-centred one.</li>
+<li><strong>Indicators</strong>: the set of items / scales used as class indicators, with descriptive statistics and (for LCA) frequency tables.</li>
+<li><strong>Model selection</strong>: a table of fit indices (BIC, aBIC, AIC, LMR, BLRT, entropy) for <em>k</em> = 1, 2, …, <em>K</em> classes; explicit justification for the chosen <em>k</em> combining statistical fit and interpretability.</li>
+<li><strong>Estimation details</strong>: software + version, number of random starting values used, whether the best log-likelihood was replicated.</li>
+<li><strong>Class characterisation</strong>: the item-response probabilities (LCA) or within-class means and SDs (LPA), in a table or profile plot; a substantive label per class.</li>
+<li><strong>Class quality</strong>: mean posterior probability per class, OCC values, and overall entropy.</li>
+<li><strong>Substantive interpretation</strong>: what each class represents, with appropriate hedging if separation is modest.</li>
+<li>For multi-group / covariate / longitudinal extensions: details of which approach was used (one-step vs three-step; configural vs invariant; etc.).</li>
+</ol>
+</div>
+</div>
+<hr>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
+<ul>
+<li><strong>Collins, L. M., &amp; Lanza, S. T. (2010).</strong> <em>Latent class and latent transition analysis: With applications in the social, behavioral, and health sciences.</em> Wiley. — The standard reference: model + notation (Ch 2), measurement quality (Ch 3), estimation and model selection (Ch 4), multi-group LCA (Ch 5), covariates (Ch 6), latent transition models (Ch 7–8).</li>
+<li><strong>Masyn, K. E. (2013).</strong> Latent class analysis and finite mixture modeling. In T. D. Little (Ed.), <em>The Oxford handbook of quantitative methods</em> (Vol. 2). Oxford University Press. — Compact chapter-length treatment with up-to-date model-selection recommendations.</li>
+<li><strong>Hagenaars, J. A., &amp; McCutcheon, A. L. (Eds.). (2002).</strong> <em>Applied latent class analysis.</em> Cambridge University Press. — Edited handbook with substantive applications.</li>
+<li><strong>Nylund-Gibson, K., &amp; Choi, A. Y. (2018).</strong> Ten frequently asked questions about latent class analysis. <em>Translational Issues in Psychological Science</em>, 4(4), 440–461. — Excellent FAQ-style introduction.</li>
+<li><strong>Berlin, K. S., Williams, N. A., &amp; Parra, G. R. (2014).</strong> An introduction to latent variable mixture modeling (part 1): Overview and cross-sectional latent class and latent profile analyses. <em>Journal of Pediatric Psychology</em>, 39(2), 174–187. — Accessible applied tutorial.</li>
+<li><strong>Vermunt, J. K. (2010).</strong> Latent class modeling with covariates: Two improved three-step approaches. <em>Political Analysis</em>, 18(4), 450–469. — The three-step covariate approach.</li>
+<li><strong>Nagin, D. S. (2005).</strong> <em>Group-based modeling of development.</em> Harvard University Press. — Source of the OCC diagnostic.</li>
+</ul>
+<hr>
+</section>
+<section id="software-notes" class="level2">
+<h2 class="anchored" data-anchor-id="software-notes">Software notes</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Software</th>
+<th>LCA</th>
+<th>LPA</th>
+<th>LTA</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Mplus</strong></td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>Field standard for mixture modelling; commercial</td>
+</tr>
+<tr class="even">
+<td><strong>R: <code>poLCA</code></strong></td>
+<td>✓</td>
+<td>✗</td>
+<td>✗</td>
+<td>Open-source LCA for categorical indicators</td>
+</tr>
+<tr class="odd">
+<td><strong>R: <code>tidyLPA</code></strong></td>
+<td>✗</td>
+<td>✓</td>
+<td>✗</td>
+<td>Open-source LPA wrapper around <code>mclust</code></td>
+</tr>
+<tr class="even">
+<td><strong>R: <code>mclust</code></strong></td>
+<td>✗</td>
+<td>✓</td>
+<td>✗</td>
+<td>General Gaussian mixture modelling</td>
+</tr>
+<tr class="odd">
+<td><strong>R: <code>depmixS4</code></strong></td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>Includes hidden Markov / transition models</td>
+</tr>
+<tr class="even">
+<td><strong>Latent GOLD</strong></td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>Commercial GUI alternative to Mplus</td>
+</tr>
+<tr class="odd">
+<td><strong>JASP</strong></td>
+<td><!-- JASP TODO: confirm whether any LCA/LPA module is available --></td>
+<td></td>
+<td></td>
+<td>Not standard in core JASP at present</td>
+</tr>
+</tbody>
+</table>
 
 
 </section>

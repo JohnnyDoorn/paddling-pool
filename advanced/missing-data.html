@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f7333b7c44a7c3d55afcc11699a363c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-5a7edf553ce6f37e40c66d907d0f4061.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -160,7 +160,6 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../advanced/meta-analysis.html">
  <span class="dropdown-text">Meta-Analysis</span></a>
   </li>  
-        <li><hr class="dropdown-divider"></li>
         <li>
     <a class="dropdown-item" href="../advanced/measurement-invariance.html">
  <span class="dropdown-text">Measurement Invariance</span></a>
@@ -207,14 +206,18 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#types-of-missingness" id="toc-types-of-missingness" class="nav-link active" data-scroll-target="#types-of-missingness">Types of missingness</a></li>
-  <li><a href="#common-approaches" id="toc-common-approaches" class="nav-link" data-scroll-target="#common-approaches">Common approaches</a>
+  <li><a href="#how-jasp-handles-missing-data-right-now" id="toc-how-jasp-handles-missing-data-right-now" class="nav-link" data-scroll-target="#how-jasp-handles-missing-data-right-now">How JASP handles missing data right now</a>
   <ul class="collapse">
-  <li><a href="#listwise-deletion-complete-case-analysis" id="toc-listwise-deletion-complete-case-analysis" class="nav-link" data-scroll-target="#listwise-deletion-complete-case-analysis">1. Listwise deletion (complete-case analysis)</a></li>
-  <li><a href="#pairwise-deletion" id="toc-pairwise-deletion" class="nav-link" data-scroll-target="#pairwise-deletion">2. Pairwise deletion</a></li>
-  <li><a href="#mean-substitution" id="toc-mean-substitution" class="nav-link" data-scroll-target="#mean-substitution">3. Mean substitution</a></li>
-  <li><a href="#multiple-imputation-mi-recommended" id="toc-multiple-imputation-mi-recommended" class="nav-link" data-scroll-target="#multiple-imputation-mi-recommended">4. Multiple Imputation (MI) ✓ <em>Recommended</em></a></li>
-  <li><a href="#full-information-maximum-likelihood-fiml" id="toc-full-information-maximum-likelihood-fiml" class="nav-link" data-scroll-target="#full-information-maximum-likelihood-fiml">5. Full Information Maximum Likelihood (FIML)</a></li>
+  <li><a href="#listwise-deletion-complete-case-analysis-the-jasp-default" id="toc-listwise-deletion-complete-case-analysis-the-jasp-default" class="nav-link" data-scroll-target="#listwise-deletion-complete-case-analysis-the-jasp-default">Listwise deletion (complete-case analysis) — the JASP default</a></li>
+  <li><a href="#pairwise-deletion-available-in-some-analyses-e.g.-correlation-matrices" id="toc-pairwise-deletion-available-in-some-analyses-e.g.-correlation-matrices" class="nav-link" data-scroll-target="#pairwise-deletion-available-in-some-analyses-e.g.-correlation-matrices">Pairwise deletion — available in some analyses (e.g., correlation matrices)</a></li>
+  <li><a href="#what-about-mean-substitution" id="toc-what-about-mean-substitution" class="nav-link" data-scroll-target="#what-about-mean-substitution">What about mean substitution?</a></li>
   </ul></li>
+  <li><a href="#what-jasp-does-not-currently-do" id="toc-what-jasp-does-not-currently-do" class="nav-link" data-scroll-target="#what-jasp-does-not-currently-do">What JASP does <strong>not</strong> currently do</a>
+  <ul class="collapse">
+  <li><a href="#multiple-imputation-mi" id="toc-multiple-imputation-mi" class="nav-link" data-scroll-target="#multiple-imputation-mi">Multiple Imputation (MI)</a></li>
+  <li><a href="#littles-mcar-test" id="toc-littles-mcar-test" class="nav-link" data-scroll-target="#littles-mcar-test">Little’s MCAR test</a></li>
+  </ul></li>
+  <li><a href="#fiml-in-structural-equation-models" id="toc-fiml-in-structural-equation-models" class="nav-link" data-scroll-target="#fiml-in-structural-equation-models">FIML in structural-equation models</a></li>
   <li><a href="#diagnosing-missingness-in-jasp" id="toc-diagnosing-missingness-in-jasp" class="nav-link" data-scroll-target="#diagnosing-missingness-in-jasp">Diagnosing missingness in JASP</a></li>
   <li><a href="#reporting" id="toc-reporting" class="nav-link" data-scroll-target="#reporting">Reporting</a></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further reading</a></li>
@@ -301,89 +304,57 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </div>
 </div>
-<p>Testing MCAR: <strong>Little’s MCAR test</strong> (available in SPSS and R; not yet in JASP). In practice, MCAR is often implausible — assume MAR unless you have strong reasons otherwise.</p>
+<p>In practice, MCAR is often implausible — assume MAR unless you have strong reasons otherwise.</p>
 <hr>
 </section>
-<section id="common-approaches" class="level2">
-<h2 class="anchored" data-anchor-id="common-approaches">Common approaches</h2>
-<section id="listwise-deletion-complete-case-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="listwise-deletion-complete-case-analysis">1. Listwise deletion (complete-case analysis)</h3>
-<p>Only cases with complete data on all variables are included. This is the JASP default.</p>
+<section id="how-jasp-handles-missing-data-right-now" class="level2">
+<h2 class="anchored" data-anchor-id="how-jasp-handles-missing-data-right-now">How JASP handles missing data right now</h2>
+<p>JASP currently offers two deletion-based approaches across the standard analysis modules.</p>
+<section id="listwise-deletion-complete-case-analysis-the-jasp-default" class="level3">
+<h3 class="anchored" data-anchor-id="listwise-deletion-complete-case-analysis-the-jasp-default">Listwise deletion (complete-case analysis) — the JASP default</h3>
+<p>Only cases with complete data on all variables involved in the analysis are included.</p>
 <ul>
-<li><strong>When it is acceptable</strong>: MCAR and sample size remains adequate</li>
-<li><strong>Problem</strong>: throws away all information from partially complete cases; biased under MAR</li>
+<li><strong>When it is acceptable</strong>: MCAR (rare in practice), or MAR with a small proportion of missingness</li>
+<li><strong>Problem</strong>: throws away information from partially complete cases; <strong>biased under MAR</strong>; reduces sample size and statistical power</li>
 </ul>
 </section>
-<section id="pairwise-deletion" class="level3">
-<h3 class="anchored" data-anchor-id="pairwise-deletion">2. Pairwise deletion</h3>
-<p>Each analysis uses all cases available for the variables involved. Different analyses may use different subsets.</p>
+<section id="pairwise-deletion-available-in-some-analyses-e.g.-correlation-matrices" class="level3">
+<h3 class="anchored" data-anchor-id="pairwise-deletion-available-in-some-analyses-e.g.-correlation-matrices">Pairwise deletion — available in some analyses (e.g., correlation matrices)</h3>
+<p>Each pairwise statistic uses all cases that have valid data on the two variables involved. Different cells in a correlation matrix can therefore be based on different <em>n</em>.</p>
 <ul>
-<li><strong>Problem</strong>: can lead to inconsistent estimates and negative definite correlation matrices</li>
+<li><strong>Problem</strong>: can produce inconsistent estimates and occasionally yields correlation matrices that are not positive-definite — which then break downstream procedures like regression or factor analysis</li>
 </ul>
 </section>
-<section id="mean-substitution" class="level3">
-<h3 class="anchored" data-anchor-id="mean-substitution">3. Mean substitution</h3>
-<p>Replace missing values with the variable mean.</p>
-<ul>
-<li><strong>Avoid this</strong>: it distorts the distribution, reduces variance, and biases correlations. It is almost never appropriate.</li>
-</ul>
-</section>
-<section id="multiple-imputation-mi-recommended" class="level3">
-<h3 class="anchored" data-anchor-id="multiple-imputation-mi-recommended">4. Multiple Imputation (MI) ✓ <em>Recommended</em></h3>
-<p>MI creates <em>m</em> complete datasets by replacing each missing value with <em>m</em> plausible values drawn from the predictive distribution of the missing data given the observed data. Each dataset is analysed separately, and results are pooled using <strong>Rubin’s rules</strong>.</p>
-<p><strong>Steps</strong>: 1. <strong>Impute</strong>: create <em>m</em> datasets (typically 20–100, though <em>m</em> = 5 is still common in older literature; more is better) 2. <strong>Analyse</strong>: run your intended analysis on each imputed dataset 3. <strong>Pool</strong>: combine estimates across datasets — JASP does this automatically</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Key principle
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The imputation model should include <em>all</em> variables you will use in the analysis, plus any auxiliary variables that predict missingness. A sparse imputation model produces biased results.</p>
-</div>
-</div>
-<p><strong>In JASP</strong>: go to <strong>Missing Values → Multiple Imputation</strong>. You can then run subsequent analyses that automatically use the imputed datasets.</p>
-</section>
-<section id="full-information-maximum-likelihood-fiml" class="level3">
-<h3 class="anchored" data-anchor-id="full-information-maximum-likelihood-fiml">5. Full Information Maximum Likelihood (FIML)</h3>
-<p>FIML estimates model parameters using all available information — including partially complete cases — without creating imputed datasets. It is the preferred approach for structural equation models (SEM) and is available in JASP’s SEM module.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Approach</th>
-<th>Valid under</th>
-<th>JASP availability</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Listwise deletion</td>
-<td>MCAR only</td>
-<td>Default</td>
-</tr>
-<tr class="even">
-<td>Multiple Imputation</td>
-<td>MAR (and MCAR)</td>
-<td>Missing Values module</td>
-</tr>
-<tr class="odd">
-<td>FIML</td>
-<td>MAR (and MCAR)</td>
-<td>SEM module</td>
-</tr>
-</tbody>
-</table>
+<section id="what-about-mean-substitution" class="level3">
+<h3 class="anchored" data-anchor-id="what-about-mean-substitution">What about mean substitution?</h3>
+<p>Replacing missing values with the variable mean distorts the distribution, shrinks variance, and biases correlations. <strong>Don’t do it.</strong> JASP does not offer it as a default option, and it should not be re-introduced manually.</p>
 <hr>
 </section>
+</section>
+<section id="what-jasp-does-not-currently-do" class="level2">
+<h2 class="anchored" data-anchor-id="what-jasp-does-not-currently-do">What JASP does <strong>not</strong> currently do</h2>
+<section id="multiple-imputation-mi" class="level3">
+<h3 class="anchored" data-anchor-id="multiple-imputation-mi">Multiple Imputation (MI)</h3>
+<p>MI is the recommended approach for MAR data in modern guidance — but it is <strong>not yet available in JASP</strong>. An integration of the R package <a href="https://amices.org/mice/"><code>mice</code></a> is in active development, but has not been released in the stable version of JASP at the time of writing. For now, MI has to be done outside JASP — in R (<code>mice</code>, <code>Amelia</code>), SPSS, or Mplus — and the pooled results reported manually.</p>
+<p>What MI does, conceptually: it creates <em>m</em> complete datasets (typically 20–100) by drawing plausible values for each missing cell from a model of the observed data; each dataset is analysed separately, and estimates are combined using <strong>Rubin’s rules</strong> to give a single set of coefficients, standard errors, and <em>p</em>-values that correctly reflects the uncertainty introduced by missingness.</p>
+</section>
+<section id="littles-mcar-test" class="level3">
+<h3 class="anchored" data-anchor-id="littles-mcar-test">Little’s MCAR test</h3>
+<p>Not currently in JASP. Available in SPSS, or in R via <code>naniar::mcar_test()</code>.</p>
+<hr>
+</section>
+</section>
+<section id="fiml-in-structural-equation-models" class="level2">
+<h2 class="anchored" data-anchor-id="fiml-in-structural-equation-models">FIML in structural-equation models</h2>
+<p>JASP’s structural-equation modelling (SEM) module is built on <strong>lavaan</strong>, which supports <strong>Full Information Maximum Likelihood (FIML)</strong> estimation under MAR. If you are fitting an SEM (path model, latent variable model, CFA), FIML is the preferred way to handle missing data: it uses all available information without imputing values. Set the missing-data option in the SEM analysis options.</p>
+<hr>
 </section>
 <section id="diagnosing-missingness-in-jasp" class="level2">
 <h2 class="anchored" data-anchor-id="diagnosing-missingness-in-jasp">Diagnosing missingness in JASP</h2>
 <ol type="1">
-<li><strong>Descriptives</strong>: the <em>N</em> in the descriptives table shows how many valid values each variable has. Compare to total N.</li>
-<li><strong>Missing value plots</strong>: available in the Missing Values module — visualise which variables and cases have missing data, and whether missingness is patterned.</li>
+<li><strong>Descriptives</strong>: the <em>Valid</em> column shows the number of non-missing values per variable. Compare to your total <em>N</em> to see where the gaps are.</li>
+<li><strong>By group</strong>: split descriptives by a grouping variable to see whether missingness clusters in one group.</li>
+<li><strong>Detailed patterns</strong>: for missing-value heatmaps or upset plots (which cases miss which combinations of variables), export the dataset to R and use <code>naniar</code> or <code>VIM</code>.</li>
 </ol>
 <hr>
 </section>
@@ -399,7 +370,9 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>State (a) the percentage of missing data per variable, (b) the missingness mechanism assumed (MCAR/MAR/MNAR) and why, and (c) the method used to handle it. Example: “Data were missing on [variable] for 12% of participants. Little’s MCAR test was non-significant (χ²(5) = 4.2, <em>p</em> = .52), and missingness appeared unrelated to observed study variables, so listwise deletion was used.”</p>
+<p>State (a) the percentage of missing data per variable, (b) the missingness mechanism you assume (MCAR/MAR/MNAR) and why, and (c) the method used to handle it.</p>
+<p><em>Example</em>: “Data were missing on [variable] for 12% of participants. Missingness appeared unrelated to observed study variables (assessed by comparing complete and incomplete cases on demographic and outcome variables), so listwise deletion was used.”</p>
+<p>If you used multiple imputation outside JASP, also report <em>m</em> (the number of imputations), the imputation model (variables included), and the software used (e.g., R <code>mice</code> 3.x).</p>
 </div>
 </div>
 <hr>

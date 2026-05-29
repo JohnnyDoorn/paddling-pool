@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f7333b7c44a7c3d55afcc11699a363c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-5a7edf553ce6f37e40c66d907d0f4061.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -160,7 +160,6 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../advanced/meta-analysis.html">
  <span class="dropdown-text">Meta-Analysis</span></a>
   </li>  
-        <li><hr class="dropdown-divider"></li>
         <li>
     <a class="dropdown-item" href="../advanced/measurement-invariance.html">
  <span class="dropdown-text">Measurement Invariance</span></a>
@@ -222,6 +221,15 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#how-to-do-it-in-jasp-1" id="toc-how-to-do-it-in-jasp-1" class="nav-link" data-scroll-target="#how-to-do-it-in-jasp-1">How to do it in JASP</a></li>
   </ul></li>
   <li><a href="#moderated-mediation" id="toc-moderated-mediation" class="nav-link" data-scroll-target="#moderated-mediation">Moderated mediation</a></li>
+  <li><a href="#the-process-module-up-close" id="toc-the-process-module-up-close" class="nav-link" data-scroll-target="#the-process-module-up-close">The PROCESS module up close</a>
+  <ul class="collapse">
+  <li><a href="#step-1-assign-variables" id="toc-step-1-assign-variables" class="nav-link" data-scroll-target="#step-1-assign-variables">Step 1 — Assign variables</a></li>
+  <li><a href="#step-2-specify-the-causal-paths" id="toc-step-2-specify-the-causal-paths" class="nav-link" data-scroll-target="#step-2-specify-the-causal-paths">Step 2 — Specify the causal paths</a></li>
+  <li><a href="#step-3-tick-the-right-options" id="toc-step-3-tick-the-right-options" class="nav-link" data-scroll-target="#step-3-tick-the-right-options">Step 3 — Tick the right options</a></li>
+  <li><a href="#step-4-read-the-mediation-effects-table" id="toc-step-4-read-the-mediation-effects-table" class="nav-link" data-scroll-target="#step-4-read-the-mediation-effects-table">Step 4 — Read the mediation-effects table</a></li>
+  <li><a href="#comparing-competing-models" id="toc-comparing-competing-models" class="nav-link" data-scroll-target="#comparing-competing-models">Comparing competing models</a></li>
+  <li><a href="#caveats-from-the-tutorial" id="toc-caveats-from-the-tutorial" class="nav-link" data-scroll-target="#caveats-from-the-tutorial">Caveats from the tutorial</a></li>
+  </ul></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further reading</a></li>
   <li><a href="#further-viewing-ssr-lecture-recordings" id="toc-further-viewing-ssr-lecture-recordings" class="nav-link" data-scroll-target="#further-viewing-ssr-lecture-recordings">Further viewing — SSR lecture recordings</a></li>
   <li><a href="#try-it-yourself" id="toc-try-it-yourself" class="nav-link" data-scroll-target="#try-it-yourself">Try it yourself</a>
@@ -335,7 +343,7 @@ X → Y          (direct effect, controlling for M)</code></pre>
 </section>
 <section id="how-to-do-it-in-jasp" class="level3">
 <h3 class="anchored" data-anchor-id="how-to-do-it-in-jasp">How to do it in JASP</h3>
-<p>Install the PROCESS module: <strong>Modules (☰) → Available Modules → PROCESS</strong>.</p>
+<p>Install the PROCESS module: click the blue <strong>+</strong> icon in the top-right of the JASP window to open the module list, then enable <strong>PROCESS</strong>.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -470,6 +478,78 @@ X → Y          (direct effect, controlling for M)</code></pre>
 <p>The indirect effect is estimated separately at different values of W. A <strong>Johnson-Neyman interval</strong> identifies the exact range of W values for which the indirect effect is significant.</p>
 <hr>
 </section>
+<section id="the-process-module-up-close" class="level2">
+<h2 class="anchored" data-anchor-id="the-process-module-up-close">The PROCESS module up close</h2>
+<p>Beyond simple mediation and moderation, JASP’s <strong>Process</strong> module supports general multi-step causal models with several mediators and moderators specified as a DAG. The walkthrough below follows Lüken, Vroegh, Rohrer, van Doorn &amp; Wagenmakers (2024), which uses data from McGarrigle et al.&nbsp;(2021) on listening-related fatigue across the adult lifespan (<em>N</em> = 281). The research question is: does the relationship between <strong>age</strong> and <strong>listening fatigue</strong> run through auditory attention, perceived hearing impairment, perceived memory, and mood disturbances?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>PROCESS in JASP is <em>not</em> the same code as the SPSS PROCESS macro
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The JASP module fits PROCESS-style models via <strong>structural equation modelling</strong> (lavaan under the hood). That means you specify which variables are mediators / moderators <em>explicitly</em> in a DAG, rather than picking a Hayes template number. This forces you to think about which causal structure you’re assuming — and lets you test goodness-of-fit, which the SPSS PROCESS macro does not (Lüken et al., 2024).</p>
+</div>
+</div>
+<section id="step-1-assign-variables" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-assign-variables">Step 1 — Assign variables</h3>
+<p>After installing the <em>Process (beta)</em> module, open <strong>Process → Classic Process Model</strong>. Drag the outcome into <em>Dependent Variable</em> and every predictor / mediator / moderator into <em>Continuous Predictors</em> or <em>Categorical Predictors</em>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/blog/process/figure-3.png" class="img-fluid figure-img" width="620"></p>
+<figcaption>Variable assignment in the Process dialog. <code>Fatigue</code> is the outcome; the four candidate mediators (<code>AudAttention</code>, <code>HearImpair</code>, <code>Memory</code>, <code>MoodDisturb</code>) and the focal predictor <code>Age</code> go into <em>Continuous Predictors</em>.</figcaption>
+</figure>
+</div>
+</section>
+<section id="step-2-specify-the-causal-paths" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-specify-the-causal-paths">Step 2 — Specify the causal paths</h3>
+<p>In the <em>Models</em> section, click the green <strong>+</strong> for each path you want in the model. For every path, pick variables in the <em>From</em> and <em>To</em> dropdowns and a <em>Process Type</em> (<em>Direct</em>, <em>Mediator</em>, or <em>Moderation</em>). The example below codes a multi-mediator model: age has a direct effect on fatigue, plus indirect effects through auditory attention, hearing impairment, and memory.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/blog/process/figure-5.png" class="img-fluid figure-img" width="480"></p>
+<figcaption>The causal-graph view of the Lüken et al.&nbsp;(2024) Model 1 — age (left) influences fatigue (right) directly and through three parallel mediators (auditory attention, hearing impairment, memory).</figcaption>
+</figure>
+</div>
+</section>
+<section id="step-3-tick-the-right-options" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-tick-the-right-options">Step 3 — Tick the right options</h3>
+<p>Under <em>Options</em>, request <strong>Bootstrap</strong> confidence intervals (the default for indirect effects). To check whether the implied causal model is consistent with the data, tick <strong>Local tests</strong> under <em>Tests</em> — these test the conditional-independence implications of your DAG, and significant ones flag model misspecification:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/blog/process/figure-11.png" class="img-fluid figure-img" width="560"></p>
+<figcaption>Per-model options. <em>Mediation</em> parameter estimates are on by default; tick <em>Local tests</em> under <em>Tests</em> to test the model’s implied conditional independencies.</figcaption>
+</figure>
+</div>
+</section>
+<section id="step-4-read-the-mediation-effects-table" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-read-the-mediation-effects-table">Step 4 — Read the mediation-effects table</h3>
+<p>The headline output is the <em>Mediation effects</em> table, which breaks down the total effect of X on Y into the direct effect plus each specific indirect path, with bootstrapped CIs:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/images/blog/process/figure-7.png" class="img-fluid figure-img" width="720"></p>
+<figcaption>Decomposition of the age → fatigue relationship. The direct effect is significant and negative (older adults report less fatigue, holding the mediators constant). Among the indirect paths, only <strong>age → HearImpair → Fatigue</strong> is significant (95% CI [0.031, 0.115]) — older adults perceive more hearing impairment, which in turn predicts more fatigue.</figcaption>
+</figure>
+</div>
+</section>
+<section id="comparing-competing-models" class="level3">
+<h3 class="anchored" data-anchor-id="comparing-competing-models">Comparing competing models</h3>
+<p>The module supports adding multiple models side-by-side (each with its own causal graph and option panel) and compares them via AIC, BIC, and AIC/BIC weights. In the worked example, the authors add a <em>Model 2</em> that includes age × MoodDisturb as a moderator on the path to fatigue. AIC/BIC favour the larger model, but the interaction term itself is not significant — reproducing the original McGarrigle et al.&nbsp;finding that mood does not moderate the age-fatigue relationship.</p>
+</section>
+<section id="caveats-from-the-tutorial" class="level3">
+<h3 class="anchored" data-anchor-id="caveats-from-the-tutorial">Caveats from the tutorial</h3>
+<p>Lüken et al.&nbsp;(2024) close with three warnings worth repeating:</p>
+<ol type="1">
+<li><strong>The module assumes your DAG is correct.</strong> It can test the <em>statistical</em> implications of a specified structure (conditional independencies, fit), but no test can distinguish your structure from one with reversed arrows. Causal-direction claims still need theory or experimental manipulation.</li>
+<li><strong>Unobserved confounders bias indirect effects</strong> even in experimental designs that manipulate X. PROCESS results are conditional on the no-unobserved-confounders assumption — say so explicitly when reporting.</li>
+<li><strong>Don’t chase fit by tweaking the model after seeing local-test results.</strong> Modifying the model post-hoc on the basis of failed local tests is the SEM equivalent of HARKing. If the fit is poor, report it, hypothesise an alternative structure, and test that on a different sample.</li>
+</ol>
+<p>→ <strong>Full tutorial</strong>: <a href="https://jasp-stats.org/2024/01/29/causal-inference-in-jasp-the-process-module/">Lüken, M., Vroegh, T., Rohrer, J. M., van Doorn, J., &amp; Wagenmakers, E.-J. (2024). Causal inference in JASP: The Process module</a> — JASP blog. Walks through the listening-fatigue worked example end-to-end, including the Model 1 vs Model 2 comparison.</p>
+<hr>
+</section>
+</section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
 <ul>
@@ -494,7 +574,7 @@ X → Y          (direct effect, controlling for M)</code></pre>
 <h3 class="anchored" data-anchor-id="exercise-1-mediation-does-mate-value-mediate-the-age-gossiping-relationship">Exercise 1 (mediation) — Does mate value mediate the age → gossiping relationship?</h3>
 <p>Older adults gossip more than younger adults — but is this transmitted through changes in perceived <strong>mate value</strong>? Using <a href="https://discoverjasp.com/repository/dsj1_leni/leni_10.jasp"><code>leni_10.jasp</code></a>, fit a Hayes Model 4 mediation with age as X, mate value as M, and gossiping tendency as Y. Report the indirect effect with its bootstrapped 95% CI.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -503,7 +583,7 @@ X → Y          (direct effect, controlling for M)</code></pre>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/labcoat_leni#i-heard-that-jane-has-a-boil-and-kissed-a-tramp">Labcoat Leni — I heard that Jane has a boil and kissed a tramp</a></li>
@@ -517,7 +597,7 @@ X → Y          (direct effect, controlling for M)</code></pre>
 <h3 class="anchored" data-anchor-id="exercise-2-moderation-does-the-attractiveness-spousal-support-relationship-differ-for-husbands-vs-wives">Exercise 2 (moderation) — Does the attractiveness → spousal-support relationship differ for husbands vs wives?</h3>
 <p>McNulty et al.&nbsp;(2008) tested whether attractiveness predicts how much support newlyweds give their partner — and whether this relationship is <em>moderated</em> by being the husband vs the wife. Using <a href="https://discoverjasp.com/repository/dsj1_data/data/mcnulty_2008.jasp"><code>mcnulty_2008.jasp</code></a>, fit a Hayes Model 1 moderation with <code>attractiveness</code> as the continuous predictor, <code>spouse</code> as the categorical moderator, and <code>support</code> as the outcome. Inspect the simple slopes.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -526,7 +606,7 @@ X → Y          (direct effect, controlling for M)</code></pre>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/smart_alex#task-10.1">Smart Alex Task 10.1</a></li>
@@ -540,7 +620,7 @@ X → Y          (direct effect, controlling for M)</code></pre>
 <h3 class="anchored" data-anchor-id="exercise-3-mediation-does-product-perceived-coolness-mediate-the-advert-desirability-path">Exercise 3 (mediation) — Does product-perceived-coolness mediate the advert → desirability path?</h3>
 <p>A company owner measured how cool people thought the <strong>advertising</strong> was, how cool they thought the <strong>product</strong> was, and how <strong>desirable</strong> they found the product. Using <a href="https://discoverjasp.com/repository/dsj1_data/data/tablets.jasp"><code>tablets.jasp</code></a>, test whether the relationship between advertising coolness and product desirability is mediated by product coolness.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -549,7 +629,7 @@ X → Y          (direct effect, controlling for M)</code></pre>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/smart_alex#task-10.5">Smart Alex Task 10.5</a></li>
