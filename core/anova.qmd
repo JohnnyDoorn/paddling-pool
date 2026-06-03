@@ -128,7 +128,7 @@ An interaction means the effect of factor A is different at different levels of 
 
 ::: {.callout-tip collapse=true}
 ## What "interaction" really means
-A concrete example: *does the effect of alcohol on accidents differ across levels of speed?* If somebody is going fast, maybe the alcohol effect is smaller (or larger) than at low speeds. That's what "the effect of one variable depends on the level of another" looks like in practice.
+A concrete example: *does the effect of alcohol on driving ability depend on the dose of speed (methamphetamine) the driver has also taken?* Alcohol on its own impairs driving, and so does speed on its own — but the question of whether their *combined* effect is more (or less) than the sum of their separate effects is what the interaction term tests. If somebody who's taken a high dose of speed shows a *bigger* alcohol-related impairment than someone who hasn't, that's the interaction: "the effect of one variable depends on the level of another".
 :::
 
 ### How to do it in JASP

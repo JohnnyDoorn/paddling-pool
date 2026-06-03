@@ -16,6 +16,11 @@ Picking the right analysis is mostly a matter of answering four questions about 
 
 ---
 
+::: {.callout-tip}
+## Prefer a video?
+The JASP Video Library has a short [▶ Statistical Test Flowchart](https://jasp-stats.github.io/jasp-video-library/Getting-Started.html#statistical-test-flowchart) (~3 min) that walks through the same decision logic visually. The flowchart on this page covers the same ground in print, plus links into each topic page.
+:::
+
 ## Decision flowchart
 
 ```{mermaid}
@@ -94,10 +99,11 @@ The most common student mistake is to pick a test from the *outcome variable alo
 ::: {.callout-note}
 ## When in doubt, default to the linear model
 Most of the inferential tests above are *the same model* underneath — the linear model with different choices of outcome distribution and link function. A *t*-test is a regression with one binary predictor; an ANOVA is regression with dummy-coded categorical predictors; logistic regression is the linear model with a logit link. If a textbook test doesn't quite fit your situation, the linear-model framing usually has an answer.
+
+→ For a worked walkthrough of how dummy coding turns categorical predictors into regression coefficients, see [Predicting with dummies — one categorical predictor](https://johnnydoorn.github.io/teaching-statistics/extra-texts/PredictingWithDummies_1Variable.html).
 :::
 
 ::: {.callout-tip}
 ## Need more depth?
-- The JASP Video Library has a [▶ Statistical Test Flowchart](https://jasp-stats.github.io/jasp-video-library/Getting-Started.html#statistical-test-flowchart) (~3 min).
-- For a deeper walk through the decision logic, see DSUJ §1.5 and §2.10.
+For a deeper walk through the decision logic, see DSUJ §1.5 and §2.10.
 :::
