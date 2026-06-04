@@ -70,17 +70,6 @@ a:hover { color: #1c2541; }
   color: #1c2541;
 }
 
-/* === Hero banner on home page === */
-.hero-banner {
-  background: linear-gradient(135deg, #4990CD 0%, #84B848 100%);
-  color: white;
-  padding: 3rem 2rem;
-  border-radius: 0.5rem;
-  margin-bottom: 2rem;
-}
-.hero-banner h1 { color: white; margin-top: 0; font-family: "Lato", sans-serif; font-weight: 700; }
-.hero-banner p  { font-size: 1.15rem; opacity: 0.95; }
-
 /* === Topic cards on the home page === */
 .topic-grid {
   display: grid;
@@ -134,6 +123,11 @@ a:hover { color: #1c2541; }
 .callout-warning { border-left-color: #f0a124 !important; }
 .callout-important { border-left-color: #bc3f3f !important; }
 
+/* Bump callout text to the deeper navy — slate-navy #3a506b on light-cyan
+   #f0fafe is only borderline WCAG AA. Deep navy #1c2541 is comfortably AA+. */
+.callout, .callout p, .callout li, .callout td, .callout th,
+.callout-title, .callout-body, .callout-body-container { color: #1c2541; }
+
 /* === Video containers (legacy; kept for any local <video> embeds) === */
 .video-container {
   margin: 1rem 0 1.5rem;
@@ -177,4 +171,19 @@ a:hover { color: #1c2541; }
   .video-container video { max-width: 100%; }
   .topic-grid { grid-template-columns: 1fr; }
   body::before, body::after { height: 50px; }
+}
+
+/* === Print stylesheet — hide chrome so students can save clean PDFs === */
+@media print {
+  /* Drop the JASP-blue/green wave banners */
+  body::before, body::after { display: none !important; }
+  /* Drop the navbar, the right-side TOC, the footer, and the search */
+  .navbar, .page-footer, #TOC, nav.sidebar,
+  .aa-DetachedSearchButton, .aa-Autocomplete { display: none !important; }
+  /* Ensure full content width */
+  main.content { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+  /* Avoid color-shifted text on monochrome printers */
+  a, h1, h2, h3, h4, h5, h6 { color: #000 !important; }
+  /* Keep callouts readable in greyscale */
+  .callout { border: 1px solid #888 !important; background: #fff !important; }
 }
