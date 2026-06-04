@@ -8,6 +8,13 @@ Before running any inferential test, always explore your data. Descriptive stati
 
 This is not a step to skip — surprising patterns often only become visible at this stage.
 
+::: {.callout-tip icon=false}
+## Research vignette — do fish or cat owners enjoy life more?
+A small dataset records two pet groups (fish vs cat) on `animal_liking` and `life_satisfaction`. Before testing any group difference, you'd want to see the per-group means, SDs, and 95% CIs *alongside* a plot that shows the full distribution — not just a bar height. A raincloud plot does exactly that: it combines a half-violin density, a boxplot, and the raw jittered points in one figure, often revealing that "the cat group" is actually two clumps with a gap in between, or that one fish owner is dragging the mean up by themselves. Source: *Discovering Statistics Using JASP* (DSUJ) ch. 5 / Smart Alex 5.8.
+
+→ Worked through in [Exercise 3 below](#exercise-3-descriptives-by-group-compare-two-pet-groups-on-liking-of-animals-and-life-satisfaction).
+:::
+
 ---
 
 ## What are descriptive statistics?
@@ -48,6 +55,61 @@ Always — as the first step in every analysis. Specifically:
 - **To check normality**: look at histograms and Q-Q plots, and inspect skewness/kurtosis values
 - **To detect outliers**: boxplots flag values beyond 1.5 × IQR from the quartiles
 - **To describe your sample**: demographics (age, gender, group sizes) always require descriptives
+
+---
+
+## Plots — visualising your data
+
+Numbers in a descriptives table summarise the data; plots show it. The most useful plot for any given variable depends on (a) its measurement level (continuous vs categorical) and (b) whether you want to inspect a *single* distribution or *compare* distributions across groups.
+
+### Continuous data — one variable
+
+| Plot | What it shows | When to prefer it |
+|---|---|---|
+| **Histogram** | The shape of the distribution (skew, modality, gaps, ceiling/floor) | Always run one first — your eye catches things skewness numbers miss |
+| **Boxplot** | Median, IQR, and points beyond the whiskers as candidate outliers | When you mainly care about outliers and the centre |
+| **Q-Q plot** | Sample quantiles vs theoretical normal quantiles | Specifically for the normality assumption — straighter line ≈ closer to normal |
+| **Density plot** | A smoothed version of the histogram | When the histogram looks "blocky" because *n* is small |
+
+::: {.callout-tip collapse=true}
+## Histogram + boxplot together is the workhorse pair
+The histogram tells you *what shape* the distribution has; the boxplot tells you *where the action is* (median, quartiles, tails). DSUJ ch. 5 makes this point with the festival-hygiene data: the boxplot flags one extreme outlier on day 1 (a participant whose hygiene score was implausibly off the scale), and the histogram explains why the mean and the median diverge so much.
+:::
+
+### Continuous data — comparing groups
+
+| Plot | What it shows | When to prefer it |
+|---|---|---|
+| **Raincloud plot** | Half-violin density + boxplot + raw jittered points, side-by-side per group | The single most informative group-comparison plot. Default to this. |
+| **Boxplots side-by-side** | Group medians and IQRs together | When you have many groups and a raincloud gets cluttered |
+| **Bar plot with error bars** | Means + SE or CI per group | APA papers still expect these — but pair with a raincloud during exploration |
+| **Scatter plot with group colour** | Two continuous variables, group as colour/shape | When the comparison sits inside a continuous relationship |
+
+::: {.callout-warning}
+## Bar-and-error-bar plots hide a lot
+Two groups with the same mean and SE can have completely different underlying distributions — one bimodal, one symmetric, one with a single extreme value. The bar plot makes both look identical. SSR Lecture 4 (intro stats) and DSUJ ch. 5 both flag this; rainclouds were popularised in psychology as the practical fix.
+:::
+
+### Two continuous variables
+
+- **Scatter plot** — the only honest summary of a relationship. Look at it *before* computing a correlation, not after. Non-linear patterns and extreme points are usually visible at a glance.
+- **Scatter-plot matrix** — when you have several continuous variables, JASP's *Plot Matrix* in Descriptives shows every pairwise scatter at once. Useful as an exploratory sweep.
+
+### Categorical data
+
+| Plot | What it shows | When to prefer it |
+|---|---|---|
+| **Bar plot of counts** | Frequency of each category | The default for single nominal/ordinal variables |
+| **Pie chart** | Proportions of a whole | Rarely the best choice — humans read angles poorly; a bar plot is usually clearer |
+| **Stacked / grouped bars** | Counts of one categorical variable split by another | The "is X related to Y" picture before a chi-square test |
+| **Mosaic plot** | Cell sizes proportional to frequencies | Same data as a stacked bar but emphasises the joint distribution |
+
+In JASP, all of the above are reachable from **Descriptives → Plots** or, for categorical data, **Frequencies → Distribution Plots**.
+
+::: {.callout-tip collapse=true}
+## Why "always plot first, test after"
+Anscombe's quartet — four datasets with identical means, SDs, correlations, and regression lines but visibly different shapes — is the canonical demonstration that summary statistics alone can mislead. SSR Lecture 4 walks through this; DSUJ ch. 4 covers the same intuition with real psychology datasets. The practical rule: a *p*-value never replaces a look at the data.
+:::
 
 ---
 

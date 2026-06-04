@@ -21,6 +21,13 @@ Quick framing: regression keeps the same explained-variance logic from ANOVA, bu
 
 ## Correlation
 
+::: {.callout-tip icon=false}
+## Research vignette — which student traits predict the kind of lecturer they like?
+Chamorro-Premuzic et al. (2008) measured five student personality traits (Big Five) and five dimensions of *preferred* lecturer style (knowledgeable, charismatic, accessible, etc.). The natural first move is a full correlation matrix — every trait against every lecturer dimension — to see which pairings hang together and in what direction. Source: Labcoat Leni (DSUJ ch. 7).
+
+→ Worked through in [Exercise 2 below](#exercise-2-correlation-matrix-which-student-traits-predict-the-lecturer-they-prefer).
+:::
+
 ### What is it?
 
 A **correlation coefficient** (*r*) describes the strength and direction of the linear relationship between two continuous variables. Pearson's *r* ranges from −1 (perfect negative) to +1 (perfect positive), with 0 indicating no linear relationship.
@@ -63,6 +70,11 @@ Recordings at [jasp-stats.github.io/jasp-video-library/All_Regression.html#corre
 ---
 
 ## Simple regression
+
+::: {.callout-tip icon=false}
+## Research vignette — does advertising spend predict album sales?
+A music label tracked the advertising budget (€) and first-week album sales for a sample of releases. A simple linear regression of sales on advertising estimates two numbers: the predicted sales of an album that gets *no* advertising (the intercept *b₀*), and how much each extra Euro of advertising buys you in expected sales (the slope *b₁*). The same dataset returns later on this page in the APA reporting example. Source: DSUJ ch. 8 (album sales running example).
+:::
 
 ### What is it?
 
@@ -116,6 +128,13 @@ Recordings at [jasp-stats.github.io/jasp-video-library/All_Regression.html#regre
 ---
 
 ## Multiple regression
+
+::: {.callout-tip icon=false}
+## Research vignette — does narcissism predict Facebook status frequency over and above extraversion?
+Ong et al. (2011) measured adolescents' status-update frequency, demographics (age, grade, sex), extraversion, and narcissism. The interesting question isn't whether narcissism *correlates* with status posts — extraversion does too, and the two traits overlap. A hierarchical multiple regression enters demographics first (Model 0), extraversion next (Model 1), and narcissism last (Model 2); the ΔR² at each step shows what each block adds *over and above* what's already in. Source: Labcoat Leni (DSUJ ch. 8).
+
+→ Worked through in [Exercise 3 below](#exercise-3-hierarchical-multiple-regression-does-narcissism-predict-facebook-status-frequency-above-and-beyond-extraversion).
+:::
 
 ### What is it?
 

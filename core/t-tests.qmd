@@ -16,6 +16,27 @@ t-tests are used to compare means — either against a known value, or between t
 | **Paired-samples** | Do two related measurements differ? | Do anxiety scores decrease from pre- to post-therapy within the same participants? |
 | **Independent-samples** | Do two independent groups differ? | Do males and females differ in their extraversion scores? |
 
+### Research vignettes — what each test can answer
+
+::: {.callout-tip icon=false}
+## One-sample t-test — are people any good at guessing their own IQ?
+Students self-report what they believe their IQ is. The known population mean is 100 (by construction of the IQ scale). A one-sample t-test against 100 asks whether students systematically over- (or under-) estimate themselves — a one-sentence test of a popular folk-psychology claim. Source: SSR Lecture 11 (t-tests); same logic as DSUJ ch. 9 one-sample examples.
+:::
+
+::: {.callout-tip icon=false}
+## Paired-samples t-test — does festival hygiene actually deteriorate over the weekend?
+The same festival-goers were rated for hygiene on day 1 and day 3 of a UK rock festival. Each participant contributes two scores, so a paired-samples t-test on the day-1 − day-3 differences asks whether the typical attendee gets visibly grottier — a setup that *DSUJ ch. 9* uses to introduce paired tests, before flagging that the distribution is skewed enough to make you reach for a Wilcoxon as a sanity check.
+
+→ Worked through in [Exercise 3 below](#exercise-3-does-hygiene-deteriorate-over-a-music-festival).
+:::
+
+::: {.callout-tip icon=false}
+## Independent-samples t-test — are senior business managers as histrionic as clinical inpatients?
+Board & Fritzon (2005) compared personality profiles of senior business managers with a clinical inpatient sample diagnosed with personality disorders. Each participant belongs to exactly one group, so the independent-samples t-test on the histrionic personality scale asks whether boardroom and ward differ on a trait popularly associated with executive charisma. Source: Labcoat Leni (DSUJ ch. 9).
+
+→ Worked through in [Exercise 2 below](#exercise-2-are-senior-business-managers-as-histrionic-as-inpatients-with-personality-disorders).
+:::
+
 ---
 
 ## When to use which t-test

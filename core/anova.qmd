@@ -17,6 +17,13 @@ This page covers four ANOVA designs. Jump to the relevant section:
 
 ## One-way ANOVA
 
+::: {.callout-tip icon=false}
+## Research vignette — do the four Hogwarts houses differ in Machiavellianism?
+Jakob et al. (2019) measured Machiavellianism in students who identified as Gryffindor, Hufflepuff, Ravenclaw, or Slytherin — four independent groups on one continuous personality scale. A one-way ANOVA tests whether *any* house differs from the others; a planned contrast (Slytherin vs the rest) tests the obvious sequel. Source: Labcoat Leni (DSUJ ch. 11).
+
+→ Worked through in [Exercise 1 below](#exercise-1-one-way-anova-do-the-four-hogwarts-houses-differ-in-machiavellianism).
+:::
+
 ### What is it?
 
 One-way ANOVA tests whether the means of three or more independent groups differ on a continuous dependent variable. The "one-way" refers to a single grouping factor (independent variable).
@@ -82,6 +89,13 @@ Recordings at [jasp-stats.github.io/jasp-video-library/All_ANOVA.html#anova-onew
 
 ## ANCOVA (Analysis of Covariance)
 
+::: {.callout-tip icon=false}
+## Research vignette — does interpretation training induce a lasting negative bias in children?
+Muris et al. (2008) randomly assigned children to one of three training conditions (negative / positive / no information about an ambiguous scenario) and later measured an interpretation-bias score. Age, gender, and natural anxiety differ between children and would muddy a plain one-way ANOVA; an ANCOVA adjusts for those covariates so the comparison between training conditions sits on equal footing. Source: Labcoat Leni (DSUJ ch. 12).
+
+→ Worked through in [Exercise 2 below](#exercise-2-ancova-does-interpretation-training-induce-a-persistent-negative-bias-in-children).
+:::
+
 ### What is it?
 
 ANCOVA extends ANOVA by adding one or more **continuous covariates** — variables you want to statistically control for. By removing the variance explained by the covariate, ANCOVA gives a more sensitive test of the group effect.
@@ -116,6 +130,13 @@ Recordings at [jasp-stats.github.io/jasp-video-library/All_ANOVA.html#ancova](ht
 
 ## Factorial ANOVA
 
+::: {.callout-tip icon=false}
+## Research vignette — does mood × "stop rule" affect compulsive checking?
+Davey et al. (2003) crossed two factors: induced mood (negative vs positive) × stop-rule for an ambiguous task ("as many as can" / "feel like continuing" / no instruction), then measured how much each participant checked. The interaction — does the effect of mood depend on which stop-rule you've been given? — is the substantive question; the two main effects on their own can be misleading when the interaction is the real story. Source: Labcoat Leni (DSUJ ch. 13).
+
+→ Worked through in [Exercise 3 below](#exercise-3-factorial-anova-does-mood-stop-rule-affect-checking-behaviour).
+:::
+
 ### What is it?
 
 Factorial ANOVA includes **two or more between-subjects factors**. In addition to the main effect of each factor, it tests the **interaction** — whether the effect of one factor depends on the level of another.
@@ -146,6 +167,13 @@ Recordings at [jasp-stats.github.io/jasp-video-library/All_ANOVA.html#anova-fact
 ---
 
 ## Repeated-measures ANOVA
+
+::: {.callout-tip icon=false}
+## Research vignette — are splattered cadavers distracting during serial recall?
+Each participant attempted serial recall under three different music conditions (no music / classical / death metal with explicit lyrics) — three measurements per person, so the music factor is *within-subjects*. A repeated-measures ANOVA exploits the within-person correlation to ask whether the genre actually shifts memory performance, and Mauchly's test / Greenhouse-Geisser correction handle the sphericity assumption that comes with three or more levels. Source: Labcoat Leni (DSUJ ch. 14).
+
+→ Worked through in [Exercise 4 below](#exercise-4-repeated-measures-anova-are-splattered-cadavers-distracting-during-serial-recall).
+:::
 
 ### What is it?
 

@@ -8,6 +8,11 @@ title: "Welcome to the Paddling Pool"
 
 This site is the statistical equivalent: a low-pressure refresher in the analyses you'll need for your thesis or specialist master's courses. Work through topics at your own pace, watch short JASP demonstrations, and practise with real datasets — a shallow place to revisit the essentials before going further with your own research.
 
+::: {.callout-note icon=false}
+## What this site builds on
+Most of the Paddling Pool is a modular re-packaging of existing teaching material: the [JASP online video library](https://jasp-stats.github.io/jasp-video-library/) and [how-to-use-JASP](https://jasp-stats.org/how-to-use-jasp/) blog posts, the textbook [*Discovering Statistics Using JASP* (DSUJ)](https://discoverjasp.com/), and the UvA [*Scientific and Statistical Reasoning* (SSR)](https://studiegids.uva.nl/en/courses/2025/1/54082) course lectures. The novelty here is the structure — short, decision-oriented topic pages with consistent layout and built-in cross-references — not the underlying content.
+:::
+
 ## How to use this site
 
 1. **Start with [Getting Started](getting-started.qmd)** if you have not used JASP before, or need a quick refresh on loading data and navigating the interface.
@@ -25,7 +30,7 @@ Each topic page follows the same structure:
 - **Interpreting the output** — what to report and how to read the numbers
 - **Further reading** — textbook chapters (DSUJ, Agresti, plus discipline-specific references on the advanced pages) and blog posts
 - **Further viewing** — links to the full SSR lecture recording for the topic, where applicable
-- **Try it yourself** — concrete exercises with a linked JASP dataset and a collapsible worked solution
+- **Try it yourself** — concrete exercises with a linked JASP dataset and a worked solution
 :::
 
 ---
@@ -137,3 +142,12 @@ APA-style reporting templates for every test on this site, alongside the standar
 | [Discovering Statistics Using JASP (DSUJ)](https://discoverjasp.com/) | The main textbook this site is built around (available in the UvA library). The linked companion site, *discoverjasp.com*, hosts open-access materials including datasets, worked examples, Labcoat Leni studies, and Smart Alex exercises that will be referenced throughout the paddling pool. |
 | [How to Use JASP](https://jasp-stats.org/how-to-use-jasp/) | Step-by-step blog posts and gifs for specific analyses on the JASP website. |
 | [JASP Video Library](https://jasp-stats.github.io/jasp-video-library/) | The full collection of screen recordings we draw from, illustrating where to click in JASP. |
+| [Scientific and Statistical Reasoning (SSR)](https://studiegids.uva.nl/en/courses/2025/1/54082) | UvA bachelor course whose lectures cover the conceptual grounding for many of the topics here. Pool pages link directly to the corresponding lecture recording where available. |
+
+---
+
+## Contact, feature requests & issues
+
+Spotted a mistake, want a topic added, or have a suggestion for how to make the pool more useful?
+
+Email **Johnny van Doorn** at [j.b.vandoorn@uva.nl](mailto:j.b.vandoorn@uva.nl) or open an issue on the [GitHub repository](https://github.com/JohnnyDoorn/paddling-pool/issues).

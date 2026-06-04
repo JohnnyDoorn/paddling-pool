@@ -16,6 +16,13 @@ This page covers:
 
 ## Chi-square test of independence
 
+::: {.callout-tip icon=false}
+## Research vignette — do sexualised images of female athletes shape women's self-evaluations?
+Daniels (2012) randomly assigned women to see either sexualised or performance-focused images of female athletes, then coded each participant's open-ended response for whether it expressed *self-objectification* (yes/no). Two categorical variables — image type (2 levels) × self-objectification (2 levels) — gives a 2 × 2 contingency table; the chi-square test of independence asks whether the image manipulation actually pushed women into a different way of talking about themselves. Source: Labcoat Leni (DSUJ ch. 19).
+
+→ Worked through in [Exercise 1 below](#exercise-1-chi-square-does-image-type-sexualised-vs-performance-shape-womens-reactions-to-female-athletes).
+:::
+
 ### What is it?
 
 The chi-square test of independence asks: **are two categorical variables related, or independent?** It compares the *observed* cell frequencies in a contingency table against the *expected* frequencies under the null hypothesis of independence.
@@ -90,6 +97,11 @@ In JASP: **Frequencies → Multinomial Test**. Specify either equal expected pro
 ---
 
 ## Fisher's exact test
+
+::: {.callout-tip icon=false}
+## Research vignette — Fisher's "lady tasting tea"
+The historical origin of the test, from R. A. Fisher's *The Design of Experiments* (1935): a lady (Muriel Bristol) claimed she could tell whether the milk had been poured into the cup before or after the tea. Fisher prepared 8 cups, 4 each way, in random order. With expected cell counts well below 5 in every cell, the standard chi-square approximation is unreliable — so Fisher derived the *exact* test by enumerating all possible cup-arrangements with the same row and column totals. The same logic applies any time you've got a 2 × 2 table from a small sample.
+:::
 
 When expected cell counts are too small for the chi-square approximation to be trustworthy (typically a 2 × 2 table with any expected count < 5), Fisher's exact test computes the *exact* probability of the observed table under the null. It is available in the same JASP dialog — just tick **Fisher's exact test** under *Statistics*.
 
