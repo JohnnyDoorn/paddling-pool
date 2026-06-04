@@ -32,12 +32,12 @@ F is the ratio of the mean squares of the *model* (how much variance the group m
 
 ::: {.assumption-list}
 - **Independence**: each participant contributes data to only one group
-- **Normality**: the DV should be approximately normally distributed *within each group* (check with histograms or Q-Q plots per group)
-- **Homogeneity of variance (homoscedasticity)**: the variance should be similar across groups — Levene's test checks this. If violated, use Welch's ANOVA (available in JASP)
+- **Normality**: the DV should be approximately normally distributed *within each group* (check with Q-Q plot of residuals)
+- **Homogeneity of variance (homoscedasticity)**: the variance should be similar across groups — check with Levene's test or observed group variances. If violated, use Welch's ANOVA (available in JASP)
 :::
 
 ::: {.callout-tip collapse=true}
-## Why assumptions actually matter (small simulation)
+## Why assumptions actually matter (small demonstration)
 When the DV is heavy-tailed (e.g. reaction times with extreme values), the empirical sampling distribution of *F* under H₀ no longer matches the theoretical *F*-distribution. The result: your α and power aren't what you think they are. ANOVA is relatively robust to mild non-normality, but vulnerable to extreme observations that inflate within-group variance.
 
 → [Simulation: what 100,000 ANOVAs under H₀ actually look like](https://johnnydoorn.github.io/teaching-statistics/extra-texts/ViolatingAssumptionsANOVA.html)
@@ -45,7 +45,7 @@ When the DV is heavy-tailed (e.g. reaction times with extreme values), the empir
 
 ### Effect size
 
-Report **η² (eta squared)** or the more conservative **ω² (omega squared)**. Partial η² is often reported in factorial designs.
+Report **η² (eta squared)** or the less biased **ω² (omega squared)**. For factorial designs, make sure to use the partial versions of these effect sizes (partial η² & partial ω²).
 
 | η² | Conventional label |
 |---|---|
@@ -86,11 +86,11 @@ Recordings at [jasp-stats.github.io/jasp-video-library/All_ANOVA.html#anova-onew
 
 ANCOVA extends ANOVA by adding one or more **continuous covariates** — variables you want to statistically control for. By removing the variance explained by the covariate, ANCOVA gives a more sensitive test of the group effect.
 
-**Example**: comparing therapy outcomes across three groups while controlling for pre-therapy symptom severity.
+**Example**: comparing therapy outcomes across three groups while accounting for pre-therapy symptom severity.
 
 ### Key additional assumption
 
-- **Homogeneity of regression slopes**: the relationship between the covariate and the DV should be the same in all groups. JASP can test this by adding a Group × Covariate interaction — it should not be significant.
+- **Homogeneity of regression slopes**: the relationship between the covariate and the DV should be the same in all groups. JASP can test this by adding a Group × Covariate [interaction](#what-interaction-really-means) — it should not be significant. If the interaction effect is significant, you need to take this into account when interpreting the main effect of group. For instance, this therapy is effective for people in group A, *if they have low pre-therapy symptom severity*. *(Unfamiliar with what an "interaction" is? See the callout in the Factorial ANOVA section below.)*
 
 ::: {.callout-tip collapse=true}
 ## How ANCOVA partitions variance (with worked example)
@@ -126,7 +126,7 @@ Factorial ANOVA includes **two or more between-subjects factors**. In addition t
 
 An interaction means the effect of factor A is different at different levels of factor B. Always examine interaction plots — JASP provides these under *Descriptive plots*. A significant interaction means you should interpret simple main effects rather than main effects alone.
 
-::: {.callout-tip collapse=true}
+::: {.callout-tip collapse=true #what-interaction-really-means}
 ## What "interaction" really means
 A concrete example: *does the effect of alcohol on driving ability depend on the dose of speed (methamphetamine) the driver has also taken?* Alcohol on its own impairs driving, and so does speed on its own — but the question of whether their *combined* effect is more (or less) than the sum of their separate effects is what the interaction term tests. If somebody who's taken a high dose of speed shows a *bigger* alcohol-related impairment than someone who hasn't, that's the interaction: "the effect of one variable depends on the level of another".
 :::
@@ -210,10 +210,10 @@ If ANOVA assumptions are seriously violated:
 
 | ANOVA design | Non-parametric alternative |
 |---|---|
-| One-way (between) | Kruskal–Wallis test |
-| One-way (within) | Friedman test |
+| One-way (between) | [Kruskal–Wallis test](nonparametrics.qmd) |
+| One-way (within) | [Friedman test](nonparametrics.qmd) |
 
-Both are available under **ANOVA → Nonparametric** in JASP.
+Both are available under **ANOVA → Nonparametric** in JASP. See the [Non-Parametric Tests](nonparametrics.qmd) page for the full walkthrough.
 
 ---
 
