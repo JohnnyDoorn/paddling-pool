@@ -8,17 +8,17 @@ Picking the right analysis is mostly a matter of answering four questions about 
 
 ::: {.callout-tip}
 ## The four questions
-1. **What is your research question?** Comparing groups, quantifying a relationship, classifying people, or predicting an outcome?
-2. **What is the measurement level of your outcome?** Categorical (nominal/ordinal) or continuous (scale)?
-3. **How many groups / variables are involved?** One, two, three or more?
-4. **Are the groups independent or related?** Between-subjects (different people) or within-subjects (same people, repeated)?
+1. **What is your research question?** Hypothesis testing, parameter estimation, classifying people, or predicting an outcome?
+2. **What is the measurement level of your outcome variable?** Categorical (nominal) or continuous (scale)?
+3. **How many predictor variables are involved and what is their measurement level?** Categorical (nominal), continuous (scale), or mixed?
+4. **Are the groups independent or related?** Between-subjects (different people) or within-subjects (same people, repeated)? In repeated designs, the outcome variable is observed multiple times for each participant, so the observations are not independent.
 :::
 
 ---
 
 ::: {.callout-tip}
-## Prefer a video?
-The JASP Video Library has a short [▶ Statistical Test Flowchart](https://jasp-stats.github.io/jasp-video-library/Getting-Started.html#statistical-test-flowchart) (~3 min) that walks through the same decision logic visually. The flowchart on this page covers the same ground in print, plus links into each topic page.
+## Test selection flowchart in JASP
+The LearnStats module in JASP has a [▶ Statistical Test Flowchart](https://jasp-stats.github.io/jasp-video-library/Getting-Started.html#statistical-test-flowchart) that walks through the same decision logic visually. The flowchart on this page covers the same ground in print, plus links into each topic page.
 :::
 
 ## Decision flowchart
@@ -61,7 +61,7 @@ flowchart TD
     classDef adv  fill:#dbecb6,stroke:#3a506b,stroke-width:2px,color:#1c2541
 ```
 
-Blue = **Basics**; green = **Advanced topics**. Click the topic name in the navbar to jump to its page.
+Blue = **Basics**; green = **Advanced topics**. Click the topic name in the navigation bar above to jump to its page.
 
 ---
 
@@ -93,7 +93,7 @@ If you'd rather see it as a table:
 
 ::: {.callout-note}
 ## Match the design, not just the data
-The most common student mistake is to pick a test from the *outcome variable alone* and ignore the design. Two questionnaire scores from the same person are **not** two independent observations — even though the spreadsheet has two columns. Always identify whether your rows are independent before picking a test.
+The most common student mistake is to pick a test based on the *outcome variable alone* and ignore the design. Two questionnaire scores from the same person are **not** two independent observations — even though the spreadsheet has two columns. Always identify whether your rows are independent before picking a test.
 :::
 
 ::: {.callout-note}

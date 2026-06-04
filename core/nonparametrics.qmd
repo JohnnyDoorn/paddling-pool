@@ -30,10 +30,10 @@ Imagine one participant in your dataset reports a reaction time of 12,000 ms whi
 
 ## When to use a non-parametric test
 
-- The **normality** assumption of the parametric test is seriously violated, *especially* in small samples (*n* < ~30) where you can't lean on the central limit theorem
+- The **normality** assumption of the parametric test is seriously violated, *especially* in small samples (*n* < ~30) where you can't rely on the central limit theorem
 - You have **ordinal data** (e.g. Likert items treated strictly as ranks), where means aren't really meaningful
 - You have **strong outliers** that you don't want to remove and that distort the parametric test
-- Sample sizes are small enough that visual checks (Q-Q plots, histograms per group) clearly look non-normal
+
 
 ::: {.callout-warning}
 ## Non-parametric ≠ assumption-free
@@ -80,7 +80,7 @@ A significant Kruskal–Wallis or Friedman test tells you that *at least two* gr
 
 ## Further reading
 
-- **DSUJ Chapter 16** — *Non-parametric tests* — covers all four tests with JASP walkthroughs, when to choose them, and how to interpret rank-based output
+- **DSUJ Chapter 15** — *Non-parametric tests* — covers all four tests with JASP walkthroughs, when to choose them, and how to interpret rank-based output
 - JASP blog — [Bayesian Mann-Whitney U test](https://jasp-stats.org/2018/02/27/release-jasp-0-8-6-bayesian-non-parametric-mann-whitney-test/) (if you want a Bayesian non-parametric alternative)
 
 ---
