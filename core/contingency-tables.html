@@ -311,6 +311,20 @@ window.Quarto = {
 <hr>
 <section id="chi-square-test-of-independence" class="level2">
 <h2 class="anchored" data-anchor-id="chi-square-test-of-independence">Chi-square test of independence</h2>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Research vignette — do sexualised images of female athletes shape women’s self-evaluations?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Daniels (2012) randomly assigned women to see either sexualised or performance-focused images of female athletes, then coded each participant’s open-ended response for whether it expressed <em>self-objectification</em> (yes/no). Two categorical variables — image type (2 levels) × self-objectification (2 levels) — gives a 2 × 2 contingency table; the chi-square test of independence asks whether the image manipulation actually pushed women into a different way of talking about themselves. Source: Labcoat Leni (DSUJ ch.&nbsp;19).</p>
+<p>→ Worked through in <a href="#exercise-1-chi-square-does-image-type-sexualised-vs-performance-shape-womens-reactions-to-female-athletes">Exercise 1 below</a>.</p>
+</div>
+</div>
 <section id="what-is-it" class="level3">
 <h3 class="anchored" data-anchor-id="what-is-it">What is it?</h3>
 <p>The chi-square test of independence asks: <strong>are two categorical variables related, or independent?</strong> It compares the <em>observed</em> cell frequencies in a contingency table against the <em>expected</em> frequencies under the null hypothesis of independence.</p>
@@ -441,9 +455,22 @@ window.Quarto = {
 </section>
 <section id="fishers-exact-test" class="level2">
 <h2 class="anchored" data-anchor-id="fishers-exact-test">Fisher’s exact test</h2>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Research vignette — Fisher’s “lady tasting tea”
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The historical origin of the test, from R. A. Fisher’s <em>The Design of Experiments</em> (1935): a lady (Muriel Bristol) claimed she could tell whether the milk had been poured into the cup before or after the tea. Fisher prepared 8 cups, 4 each way, in random order. With expected cell counts well below 5 in every cell, the standard chi-square approximation is unreliable — so Fisher derived the <em>exact</em> test by enumerating all possible cup-arrangements with the same row and column totals. The same logic applies any time you’ve got a 2 × 2 table from a small sample.</p>
+</div>
+</div>
 <p>When expected cell counts are too small for the chi-square approximation to be trustworthy (typically a 2 × 2 table with any expected count &lt; 5), Fisher’s exact test computes the <em>exact</em> probability of the observed table under the null. It is available in the same JASP dialog — just tick <strong>Fisher’s exact test</strong> under <em>Statistics</em>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -452,7 +479,7 @@ window.Quarto = {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The chi-square statistic only <em>approximately</em> follows the χ² distribution; the approximation breaks down when expected counts are small. Fisher’s exact test side-steps the approximation altogether by enumerating every possible table with the same row and column totals. It costs nothing in interpretation — you still report a <em>p</em>-value — and is the safer choice for sparse tables.</p>
 </div>
@@ -483,7 +510,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="exercise-1-chi-square-does-image-type-sexualised-vs-performance-shape-womens-reactions-to-female-athletes">Exercise 1 (chi-square) — Does image type (sexualised vs performance) shape women’s reactions to female athletes?</h3>
 <p>Daniels (2012) showed women either sexualised or performance-focused images of female athletes, then coded each participant’s open-ended response for whether it expressed <strong>self-objectification</strong> (yes/no). Using <a href="https://discoverjasp.com/repository/dsj1_leni/leni_16a.jasp"><code>leni_16a.jasp</code></a>, run a chi-square test of independence on image type × self-objectification. Inspect the <strong>standardised residuals</strong> to see which cells drive the result.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -492,7 +519,7 @@ window.Quarto = {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/labcoat_leni#the-impact-of-sexualized-images-on-womens-self-evaluations">Labcoat Leni — The impact of sexualised images on women’s self-evaluations</a></li>
@@ -506,7 +533,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="exercise-2-chi-square-three-outcomes-are-perceptions-of-happiness-associated-with-the-professional-group-rated">Exercise 2 (chi-square × three outcomes) — Are perceptions of happiness associated with the professional group rated?</h3>
 <p>Three groups of professionals rated each other on three different happiness-related measures. Using <a href="https://discoverjasp.com/repository/dsj1_leni/leni_16b.jasp"><code>leni_16b.jasp</code></a>, run a chi-square test for <strong>each</strong> of the three outcomes. Report Cramér’s V and discuss whether you should adjust for multiple testing.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -515,7 +542,7 @@ window.Quarto = {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/labcoat_leni#is-the-black-american-happy">Labcoat Leni — Is the Black American happy?</a></li>
@@ -529,7 +556,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="exercise-3-chi-square-on-a-large-sample-does-time-pressure-at-work-affect-off-hours-psychological-detachment">Exercise 3 (chi-square on a large sample) — Does time-pressure at work affect off-hours psychological detachment?</h3>
 <p>Sonnentag (2012) surveyed 1709 employees on their work time-pressure (5 ordered levels) and whether they could psychologically <em>detach</em> from work in their off-hours. Using <a href="https://discoverjasp.com/repository/dsj1_data/data/sonnentag_2012.jasp"><code>sonnentag_2012.jasp</code></a>, set up the contingency table with <code>time_pressure</code> in <em>Rows</em>, <code>detachment</code> in <em>Columns</em>, and <code>frequency</code> in <em>Counts</em>. Run the chi-square test, report Cramér’s V, and inspect the standardised residuals to see which levels of time-pressure drive the association.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -538,7 +565,7 @@ window.Quarto = {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/smart_alex#task-16.1">Smart Alex Task 16.1</a></li>

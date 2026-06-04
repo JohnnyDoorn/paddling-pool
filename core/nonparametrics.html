@@ -221,7 +221,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-do-they-actually-do" id="toc-what-do-they-actually-do" class="nav-link active" data-scroll-target="#what-do-they-actually-do">What do they actually do?</a></li>
+  <li><a href="#research-vignettes-what-each-test-can-answer" id="toc-research-vignettes-what-each-test-can-answer" class="nav-link active" data-scroll-target="#research-vignettes-what-each-test-can-answer">Research vignettes — what each test can answer</a></li>
+  <li><a href="#what-do-they-actually-do" id="toc-what-do-they-actually-do" class="nav-link" data-scroll-target="#what-do-they-actually-do">What do they actually do?</a></li>
   <li><a href="#when-to-use-a-non-parametric-test" id="toc-when-to-use-a-non-parametric-test" class="nav-link" data-scroll-target="#when-to-use-a-non-parametric-test">When to use a non-parametric test</a></li>
   <li><a href="#how-to-do-them-in-jasp" id="toc-how-to-do-them-in-jasp" class="nav-link" data-scroll-target="#how-to-do-them-in-jasp">How to do them in JASP</a></li>
   <li><a href="#interpreting-the-output" id="toc-interpreting-the-output" class="nav-link" data-scroll-target="#interpreting-the-output">Interpreting the output</a></li>
@@ -304,12 +305,70 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+<section id="research-vignettes-what-each-test-can-answer" class="level3">
+<h3 class="anchored" data-anchor-id="research-vignettes-what-each-test-can-answer">Research vignettes — what each test can answer</h3>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Wilcoxon rank-sum / Mann–Whitney — do men and women spend different amounts of time shopping?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A simple two-group comparison where the outcome (minutes per shopping trip) is heavily right-skewed: most trips are short, a few are very long. Means are pulled around by the long-tail trips; ranks aren’t. The Mann–Whitney asks whether trip durations <em>rank</em> systematically higher in one group than the other. Source: DSUJ ch.&nbsp;15 / Smart Alex 15.7.</p>
+<p>→ Worked through in <a href="#exercise-3-mannwhitney-wilcoxon-rank-sum-do-men-and-women-spend-different-amounts-of-time-shopping">Exercise 3 below</a>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Wilcoxon signed-rank — do male quails fertilise more eggs after a signaled vs control mating context?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Each male quail experienced both a signaled and a control mating context in counterbalanced order, with the number of fertilised eggs counted each time. Two related measurements per bird, a small <em>n</em>, and count data — exactly when the paired t-test starts to creak and the signed-rank test on the within-bird differences is the safer call. Source: Labcoat Leni (DSUJ ch.&nbsp;15).</p>
+<p>→ Worked through in <a href="#exercise-1-wilcoxon-signed-rank-do-male-quails-fertilise-more-eggs-after-signaled-vs-control-mating-contexts">Exercise 1 below</a>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Kruskal–Wallis — do three “quail fetish” subtypes differ in fertilisation rate?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Male quails were classified into three behavioural subtypes around a terrycloth object and compared on subsequent fertilisation rate — three independent groups, small <em>n</em>, count outcome. The Kruskal–Wallis is the rank-based one-way ANOVA, followed by Dunn’s pairwise post-hoc tests (Bonferroni-corrected) when the overall test is significant. Source: Labcoat Leni (DSUJ ch.&nbsp;15).</p>
+<p>→ Worked through in <a href="#exercise-2-kruskalwallis-dunn-post-hoc-do-three-types-of-quail-fetish-differ-in-fertilisation-rate">Exercise 2 below</a>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Friedman — does a diet program shift body weight across three measurement waves?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Imagine the same participants weighed at baseline, after one month, and after two months of a structured diet — three repeated measurements per person, but with weight changes that are often skewed and a sample too small to rely on the central limit theorem. The Friedman test ranks each person’s three measurements <em>within</em> the person, then asks whether the rank distribution differs across time points — the rank-based counterpart to a within-subjects one-way ANOVA. Source: DSUJ ch.&nbsp;15 (within-subjects diet example).</p>
+</div>
+</div>
 <hr>
+</section>
 <section id="what-do-they-actually-do" class="level2">
 <h2 class="anchored" data-anchor-id="what-do-they-actually-do">What do they actually do?</h2>
 <p>All four tests follow the same idea: <strong>convert your raw scores to ranks, then test whether the ranks differ between groups (or conditions)</strong>. Because ranks are bounded and don’t depend on the original metric, the resulting test statistic isn’t pulled around by outliers or skew the way a <em>t</em> or <em>F</em> statistic can be.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -318,7 +377,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Imagine one participant in your dataset reports a reaction time of 12,000 ms while everyone else is between 200–800 ms. That single value drags the mean of their group up and inflates the variance of the difference — your <em>t</em> drops, your <em>p</em> climbs, and you may miss a real effect. Replace each raw score by its rank (1 = fastest, <em>N</em> = slowest), and that outlier becomes “the slowest one” — its influence is bounded. You trade away some information (the absolute spacing of the values) for robustness against extreme scores.</p>
 </div>
@@ -447,7 +506,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="exercise-1-wilcoxon-signed-rank-do-male-quails-fertilise-more-eggs-after-signaled-vs-control-mating-contexts">Exercise 1 (Wilcoxon signed-rank) — Do male quails fertilise more eggs after signaled vs control mating contexts?</h3>
 <p>Each male quail experienced two mating contexts (signaled vs control) in counterbalanced order, and the number of fertilised eggs was counted. Using <a href="https://discoverjasp.com/repository/dsj1_leni/leni_15a.jasp"><code>leni_15a.jasp</code></a>, run a Wilcoxon signed-rank test on the within-subject difference, and report the rank-biserial effect size alongside the medians.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -456,7 +515,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/labcoat_leni#having-a-quail-of-a-time">Labcoat Leni — Having a quail of a time?</a></li>
@@ -470,7 +529,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="exercise-2-kruskalwallis-dunn-post-hoc-do-three-types-of-quail-fetish-differ-in-fertilisation-rate">Exercise 2 (Kruskal–Wallis + Dunn post-hoc) — Do three types of “quail fetish” differ in fertilisation rate?</h3>
 <p>Male quails were classified into three fetish groups based on their behaviour around a terrycloth object, and fertilisation rate was compared across the three groups. Using <a href="https://discoverjasp.com/repository/dsj1_leni/leni_15b.jasp"><code>leni_15b.jasp</code></a>, fit a Kruskal–Wallis test and follow up with <strong>Dunn’s post-hoc</strong> (Bonferroni-corrected).</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -479,7 +538,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/labcoat_leni#eggs-traordinary">Labcoat Leni — Eggs-traordinary</a></li>
@@ -493,7 +552,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="exercise-3-mannwhitney-wilcoxon-rank-sum-do-men-and-women-spend-different-amounts-of-time-shopping">Exercise 3 (Mann–Whitney / Wilcoxon rank-sum) — Do men and women spend different amounts of time shopping?</h3>
 <p>The <a href="https://discoverjasp.com/repository/dsj1_data/data/shopping.jasp"><code>shopping.jasp</code></a> dataset has shopping-trip durations (in minutes) for male and female participants. Run a Mann–Whitney test (i.e.&nbsp;Wilcoxon rank-sum) and interpret the result alongside the group medians.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -502,7 +561,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/smart_alex#task-15.7">Smart Alex Task 15.7</a></li>

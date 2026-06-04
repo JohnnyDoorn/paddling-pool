@@ -223,6 +223,13 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#what-are-descriptive-statistics" id="toc-what-are-descriptive-statistics" class="nav-link active" data-scroll-target="#what-are-descriptive-statistics">What are descriptive statistics?</a></li>
   <li><a href="#when-to-use-descriptive-statistics" id="toc-when-to-use-descriptive-statistics" class="nav-link" data-scroll-target="#when-to-use-descriptive-statistics">When to use descriptive statistics</a></li>
+  <li><a href="#plots-visualising-your-data" id="toc-plots-visualising-your-data" class="nav-link" data-scroll-target="#plots-visualising-your-data">Plots — visualising your data</a>
+  <ul class="collapse">
+  <li><a href="#continuous-data-one-variable" id="toc-continuous-data-one-variable" class="nav-link" data-scroll-target="#continuous-data-one-variable">Continuous data — one variable</a></li>
+  <li><a href="#continuous-data-comparing-groups" id="toc-continuous-data-comparing-groups" class="nav-link" data-scroll-target="#continuous-data-comparing-groups">Continuous data — comparing groups</a></li>
+  <li><a href="#two-continuous-variables" id="toc-two-continuous-variables" class="nav-link" data-scroll-target="#two-continuous-variables">Two continuous variables</a></li>
+  <li><a href="#categorical-data" id="toc-categorical-data" class="nav-link" data-scroll-target="#categorical-data">Categorical data</a></li>
+  </ul></li>
   <li><a href="#assumptions-to-check" id="toc-assumptions-to-check" class="nav-link" data-scroll-target="#assumptions-to-check">Assumptions to check</a></li>
   <li><a href="#how-to-do-it-in-jasp" id="toc-how-to-do-it-in-jasp" class="nav-link" data-scroll-target="#how-to-do-it-in-jasp">How to do it in JASP</a></li>
   <li><a href="#interpreting-the-output" id="toc-interpreting-the-output" class="nav-link" data-scroll-target="#interpreting-the-output">Interpreting the output</a></li>
@@ -267,6 +274,20 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="section-badge">Basics</span></p>
 <p>Before running any inferential test, always explore your data. Descriptive statistics and visualisations help you understand the shape of your distributions, identify outliers, and check whether your data meet the assumptions of the analyses you plan to run.</p>
 <p>This is not a step to skip — surprising patterns often only become visible at this stage.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Research vignette — do fish or cat owners enjoy life more?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A small dataset records two pet groups (fish vs cat) on <code>animal_liking</code> and <code>life_satisfaction</code>. Before testing any group difference, you’d want to see the per-group means, SDs, and 95% CIs <em>alongside</em> a plot that shows the full distribution — not just a bar height. A raincloud plot does exactly that: it combines a half-violin density, a boxplot, and the raw jittered points in one figure, often revealing that “the cat group” is actually two clumps with a gap in between, or that one fish owner is dragging the mean up by themselves. Source: <em>Discovering Statistics Using JASP</em> (DSUJ) ch.&nbsp;5 / Smart Alex 5.8.</p>
+<p>→ Worked through in <a href="#exercise-3-descriptives-by-group-compare-two-pet-groups-on-liking-of-animals-and-life-satisfaction">Exercise 3 below</a>.</p>
+</div>
+</div>
 <hr>
 <section id="what-are-descriptive-statistics" class="level2">
 <h2 class="anchored" data-anchor-id="what-are-descriptive-statistics">What are descriptive statistics?</h2>
@@ -361,6 +382,181 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <hr>
 </section>
+<section id="plots-visualising-your-data" class="level2">
+<h2 class="anchored" data-anchor-id="plots-visualising-your-data">Plots — visualising your data</h2>
+<p>Numbers in a descriptives table summarise the data; plots show it. The most useful plot for any given variable depends on (a) its measurement level (continuous vs categorical) and (b) whether you want to inspect a <em>single</em> distribution or <em>compare</em> distributions across groups.</p>
+<section id="continuous-data-one-variable" class="level3">
+<h3 class="anchored" data-anchor-id="continuous-data-one-variable">Continuous data — one variable</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Plot</th>
+<th>What it shows</th>
+<th>When to prefer it</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Histogram</strong></td>
+<td>The shape of the distribution (skew, modality, gaps, ceiling/floor)</td>
+<td>Always run one first — your eye catches things skewness numbers miss</td>
+</tr>
+<tr class="even">
+<td><strong>Boxplot</strong></td>
+<td>Median, IQR, and points beyond the whiskers as candidate outliers</td>
+<td>When you mainly care about outliers and the centre</td>
+</tr>
+<tr class="odd">
+<td><strong>Q-Q plot</strong></td>
+<td>Sample quantiles vs theoretical normal quantiles</td>
+<td>Specifically for the normality assumption — straighter line ≈ closer to normal</td>
+</tr>
+<tr class="even">
+<td><strong>Density plot</strong></td>
+<td>A smoothed version of the histogram</td>
+<td>When the histogram looks “blocky” because <em>n</em> is small</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Histogram + boxplot together is the workhorse pair
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The histogram tells you <em>what shape</em> the distribution has; the boxplot tells you <em>where the action is</em> (median, quartiles, tails). DSUJ ch.&nbsp;5 makes this point with the festival-hygiene data: the boxplot flags one extreme outlier on day 1 (a participant whose hygiene score was implausibly off the scale), and the histogram explains why the mean and the median diverge so much.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="continuous-data-comparing-groups" class="level3">
+<h3 class="anchored" data-anchor-id="continuous-data-comparing-groups">Continuous data — comparing groups</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Plot</th>
+<th>What it shows</th>
+<th>When to prefer it</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Raincloud plot</strong></td>
+<td>Half-violin density + boxplot + raw jittered points, side-by-side per group</td>
+<td>The single most informative group-comparison plot. Default to this.</td>
+</tr>
+<tr class="even">
+<td><strong>Boxplots side-by-side</strong></td>
+<td>Group medians and IQRs together</td>
+<td>When you have many groups and a raincloud gets cluttered</td>
+</tr>
+<tr class="odd">
+<td><strong>Bar plot with error bars</strong></td>
+<td>Means + SE or CI per group</td>
+<td>APA papers still expect these — but pair with a raincloud during exploration</td>
+</tr>
+<tr class="even">
+<td><strong>Scatter plot with group colour</strong></td>
+<td>Two continuous variables, group as colour/shape</td>
+<td>When the comparison sits inside a continuous relationship</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Bar-and-error-bar plots hide a lot
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Two groups with the same mean and SE can have completely different underlying distributions — one bimodal, one symmetric, one with a single extreme value. The bar plot makes both look identical. SSR Lecture 4 (intro stats) and DSUJ ch.&nbsp;5 both flag this; rainclouds were popularised in psychology as the practical fix.</p>
+</div>
+</div>
+</section>
+<section id="two-continuous-variables" class="level3">
+<h3 class="anchored" data-anchor-id="two-continuous-variables">Two continuous variables</h3>
+<ul>
+<li><strong>Scatter plot</strong> — the only honest summary of a relationship. Look at it <em>before</em> computing a correlation, not after. Non-linear patterns and extreme points are usually visible at a glance.</li>
+<li><strong>Scatter-plot matrix</strong> — when you have several continuous variables, JASP’s <em>Plot Matrix</em> in Descriptives shows every pairwise scatter at once. Useful as an exploratory sweep.</li>
+</ul>
+</section>
+<section id="categorical-data" class="level3">
+<h3 class="anchored" data-anchor-id="categorical-data">Categorical data</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Plot</th>
+<th>What it shows</th>
+<th>When to prefer it</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Bar plot of counts</strong></td>
+<td>Frequency of each category</td>
+<td>The default for single nominal/ordinal variables</td>
+</tr>
+<tr class="even">
+<td><strong>Pie chart</strong></td>
+<td>Proportions of a whole</td>
+<td>Rarely the best choice — humans read angles poorly; a bar plot is usually clearer</td>
+</tr>
+<tr class="odd">
+<td><strong>Stacked / grouped bars</strong></td>
+<td>Counts of one categorical variable split by another</td>
+<td>The “is X related to Y” picture before a chi-square test</td>
+</tr>
+<tr class="even">
+<td><strong>Mosaic plot</strong></td>
+<td>Cell sizes proportional to frequencies</td>
+<td>Same data as a stacked bar but emphasises the joint distribution</td>
+</tr>
+</tbody>
+</table>
+<p>In JASP, all of the above are reachable from <strong>Descriptives → Plots</strong> or, for categorical data, <strong>Frequencies → Distribution Plots</strong>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Why “always plot first, test after”
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Anscombe’s quartet — four datasets with identical means, SDs, correlations, and regression lines but visibly different shapes — is the canonical demonstration that summary statistics alone can mislead. SSR Lecture 4 walks through this; DSUJ ch.&nbsp;4 covers the same intuition with real psychology datasets. The practical rule: a <em>p</em>-value never replaces a look at the data.</p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
 <section id="assumptions-to-check" class="level2">
 <h2 class="anchored" data-anchor-id="assumptions-to-check">Assumptions to check</h2>
 <p>Descriptive statistics have no assumptions themselves, but examining them tells you whether the assumptions of your <em>next</em> analysis hold:</p>
@@ -438,7 +634,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="exercise-1-visualisation-plot-a-raincloud-comparing-students-and-lecturers-on-number-of-friends">Exercise 1 (visualisation) — Plot a raincloud comparing students and lecturers on number of friends</h3>
 <p>Using <a href="https://discoverjasp.com/repository/dsj1_data/data/students.jasp"><code>students.jasp</code></a>, produce a raincloud plot of <code>friends</code> split by <code>role</code> (student vs lecturer). A raincloud plot combines a half-violin density, a boxplot, and the raw jittered data in a single figure — much more informative than a bar-and-error-bar plot.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -447,7 +643,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/smart_alex#task-5.1">Smart Alex Task 5.1</a></li>
@@ -461,7 +657,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="exercise-2-assumption-checks-are-the-jasp-exam-scores-normally-distributed">Exercise 2 (assumption checks) — Are the JASP exam scores normally distributed?</h3>
 <p>Using <a href="https://discoverjasp.com/repository/dsj1_data/data/jasp_exam.jasp"><code>jasp_exam.jasp</code></a>, compute descriptives + Shapiro-Wilk tests for <code>numeracy</code> and <code>exam</code> scores. Then <em>split by university</em> and run the same tests again — does the picture change once you account for the grouping?</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -470,7 +666,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/smart_alex#task-6.7">Smart Alex Task 6.7</a></li>
@@ -484,7 +680,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="exercise-3-descriptives-by-group-compare-two-pet-groups-on-liking-of-animals-and-life-satisfaction">Exercise 3 (descriptives by group) — Compare two pet groups on liking-of-animals and life satisfaction</h3>
 <p>Using <a href="https://discoverjasp.com/repository/dsj1_data/data/pets.jasp"><code>pets.jasp</code></a>, produce two raincloud plots (one for <code>animal</code> liking, one for <code>life_satisfaction</code>), each split by <code>pet</code> (fish vs cat). Then run descriptives <strong>split by <code>pet</code></strong> to get the group means, SDs, and 95% CIs.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -493,7 +689,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/smart_alex#task-5.8">Smart Alex Task 5.8</a></li>

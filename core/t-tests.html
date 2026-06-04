@@ -221,7 +221,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#three-types-of-t-test" id="toc-three-types-of-t-test" class="nav-link active" data-scroll-target="#three-types-of-t-test">Three types of t-test</a></li>
+  <li><a href="#three-types-of-t-test" id="toc-three-types-of-t-test" class="nav-link active" data-scroll-target="#three-types-of-t-test">Three types of t-test</a>
+  <ul class="collapse">
+  <li><a href="#research-vignettes-what-each-test-can-answer" id="toc-research-vignettes-what-each-test-can-answer" class="nav-link" data-scroll-target="#research-vignettes-what-each-test-can-answer">Research vignettes — what each test can answer</a></li>
+  </ul></li>
   <li><a href="#when-to-use-which-t-test" id="toc-when-to-use-which-t-test" class="nav-link" data-scroll-target="#when-to-use-which-t-test">When to use which t-test</a></li>
   <li><a href="#one-sided-or-two-sided" id="toc-one-sided-or-two-sided" class="nav-link" data-scroll-target="#one-sided-or-two-sided">One-sided or two-sided?</a></li>
   <li><a href="#assumptions" id="toc-assumptions" class="nav-link" data-scroll-target="#assumptions">Assumptions</a>
@@ -307,7 +310,51 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+<section id="research-vignettes-what-each-test-can-answer" class="level3">
+<h3 class="anchored" data-anchor-id="research-vignettes-what-each-test-can-answer">Research vignettes — what each test can answer</h3>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>One-sample t-test — are people any good at guessing their own IQ?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Students self-report what they believe their IQ is. The known population mean is 100 (by construction of the IQ scale). A one-sample t-test against 100 asks whether students systematically over- (or under-) estimate themselves — a one-sentence test of a popular folk-psychology claim. Source: SSR Lecture 11 (t-tests); same logic as DSUJ ch.&nbsp;9 one-sample examples.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Paired-samples t-test — does festival hygiene actually deteriorate over the weekend?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The same festival-goers were rated for hygiene on day 1 and day 3 of a UK rock festival. Each participant contributes two scores, so a paired-samples t-test on the day-1 − day-3 differences asks whether the typical attendee gets visibly grottier — a setup that <em>DSUJ ch.&nbsp;9</em> uses to introduce paired tests, before flagging that the distribution is skewed enough to make you reach for a Wilcoxon as a sanity check.</p>
+<p>→ Worked through in <a href="#exercise-3-does-hygiene-deteriorate-over-a-music-festival">Exercise 3 below</a>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Independent-samples t-test — are senior business managers as histrionic as clinical inpatients?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Board &amp; Fritzon (2005) compared personality profiles of senior business managers with a clinical inpatient sample diagnosed with personality disorders. Each participant belongs to exactly one group, so the independent-samples t-test on the histrionic personality scale asks whether boardroom and ward differ on a trait popularly associated with executive charisma. Source: Labcoat Leni (DSUJ ch.&nbsp;9).</p>
+<p>→ Worked through in <a href="#exercise-2-are-senior-business-managers-as-histrionic-as-inpatients-with-personality-disorders">Exercise 2 below</a>.</p>
+</div>
+</div>
 <hr>
+</section>
 </section>
 <section id="when-to-use-which-t-test" class="level2">
 <h2 class="anchored" data-anchor-id="when-to-use-which-t-test">When to use which t-test</h2>
@@ -330,7 +377,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -339,7 +386,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>For each participant, compute the difference between their two measurements. Now you have one set of difference scores — and you’re back to a one-sample t-test against H₀: mean difference = 0. This is why “paired”, “dependent-samples”, and “within-subjects” all refer to the same procedure.</p>
 </div>
@@ -369,7 +416,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -378,7 +425,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Using the IQ self-assessment example: two-sided (“self-reported IQ is <em>different from</em> 120”) asks whether there’s any bias, while one-sided (“students systematically <em>overestimate</em> IQ”) tests a specific direction. Different research questions, different rejection regions.</p>
 </div>
@@ -397,7 +444,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -406,7 +453,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>A subtle point: significance tests <em>for assumptions</em> (Levene’s, Shapiro-Wilk) are themselves driven by sample size. At large <em>n</em>, even a trivial deviation from equal variances will make Levene’s significant — that doesn’t mean you have a “problem”. At small <em>n</em>, neither test has the power to detect a meaningful violation. The recommended workflow: look at the observed standard deviations (a ratio of more than ~1.4 between groups is worth noting), inspect Q-Q plots, and just default to the Welch t-test — it costs you a little power and buys robustness against unequal variances.</p>
 </div>
@@ -553,7 +600,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="exercise-1-is-arachnophobia-specific-to-real-spiders-or-do-pictures-evoke-similar-anxiety">Exercise 1 — Is arachnophobia specific to real spiders, or do pictures evoke similar anxiety?</h3>
 <p>Twelve arachnophobes were each exposed to a real tarantula <em>and</em> a picture of one, with their anxiety rated in both conditions. Using <a href="https://discoverjasp.com/repository/dsj1_data/data/big_hairy_spider.jasp"><code>big_hairy_spider.jasp</code></a>, run <strong>both</strong> an independent-samples and a paired-samples t-test on the same data. Compare the conclusions — what does the discrepancy reveal about respecting the design?</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -562,7 +609,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/smart_alex#task-9.1">Smart Alex Task 9.1</a></li>
@@ -576,7 +623,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="exercise-2-are-senior-business-managers-as-histrionic-as-inpatients-with-personality-disorders">Exercise 2 — Are senior business managers as histrionic as inpatients with personality disorders?</h3>
 <p>Board &amp; Fritzon (2005) compared the personality profiles of senior business managers against a clinical inpatient sample. Using <a href="https://discoverjasp.com/repository/dsj1_leni/leni_09a.jasp"><code>leni_09a.jasp</code></a>, run an independent-samples t-test on the histrionic personality scores, tick <strong>Welch</strong> and <strong>Cohen’s <em>d</em></strong>, and write a one-sentence APA-style verdict.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -585,7 +632,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/labcoat_leni#you-dont-have-to-be-mad-here-but-it-helps">Labcoat Leni — You don’t have to be mad here, but it helps</a></li>
@@ -599,7 +646,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="exercise-3-does-hygiene-deteriorate-over-a-music-festival">Exercise 3 — Does hygiene deteriorate over a music festival?</h3>
 <p>The <a href="https://discoverjasp.com/repository/dsj1_data/data/download.jasp"><code>download.jasp</code></a> dataset records hygiene ratings of festival-goers on day 1 and day 3 of a UK rock festival. Run a paired-samples t-test on day 1 vs day 3 and decide whether the change is significant — then inspect the distribution and judge whether the parametric test is actually appropriate.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -608,7 +655,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/smart_alex#task-9.7">Smart Alex Task 9.7</a></li>

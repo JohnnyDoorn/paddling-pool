@@ -301,12 +301,26 @@ ul.task-list li input[type="checkbox"] {
 <hr>
 <section id="one-way-anova" class="level2">
 <h2 class="anchored" data-anchor-id="one-way-anova">One-way ANOVA</h2>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Research vignette — do the four Hogwarts houses differ in Machiavellianism?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Jakob et al.&nbsp;(2019) measured Machiavellianism in students who identified as Gryffindor, Hufflepuff, Ravenclaw, or Slytherin — four independent groups on one continuous personality scale. A one-way ANOVA tests whether <em>any</em> house differs from the others; a planned contrast (Slytherin vs the rest) tests the obvious sequel. Source: Labcoat Leni (DSUJ ch.&nbsp;11).</p>
+<p>→ Worked through in <a href="#exercise-1-one-way-anova-do-the-four-hogwarts-houses-differ-in-machiavellianism">Exercise 1 below</a>.</p>
+</div>
+</div>
 <section id="what-is-it" class="level3">
 <h3 class="anchored" data-anchor-id="what-is-it">What is it?</h3>
 <p>One-way ANOVA tests whether the means of three or more independent groups differ on a continuous dependent variable. The “one-way” refers to a single grouping factor (independent variable).</p>
 <p>The F-statistic is the ratio of <em>between-groups variance</em> to <em>within-groups variance</em>. A large F indicates that the group means are more spread out than expected by chance.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -315,7 +329,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>F is the ratio of the mean squares of the <em>model</em> (how much variance the group means capture) to the mean squares of the <em>error</em> (leftover within-group variance). Like a <em>t</em>-statistic, F is a standardised test statistic with a known sampling distribution — that’s how a <em>p</em>-value gets attached to it.</p>
 </div>
@@ -332,7 +346,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -341,7 +355,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>When the DV is heavy-tailed (e.g.&nbsp;reaction times with extreme values), the empirical sampling distribution of <em>F</em> under H₀ no longer matches the theoretical <em>F</em>-distribution. The result: your α and power aren’t what you think they are. ANOVA is relatively robust to mild non-normality, but vulnerable to extreme observations that inflate within-group variance.</p>
 <p>→ <a href="https://johnnydoorn.github.io/teaching-statistics/extra-texts/ViolatingAssumptionsANOVA.html">Simulation: what 100,000 ANOVAs under H₀ actually look like</a></p>
@@ -375,7 +389,7 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -384,7 +398,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>A <em>t</em> (or <em>F</em>) statistic grows with both the magnitude of the effect <em>and</em> the sample size — increase <em>n</em> with a fixed mean difference and <em>t</em> climbs accordingly. Effect sizes like Cohen’s <em>d</em>, <em>r</em>, or η² are standardised and largely insulated from sample size. That’s why a significant result with a tiny effect size can still be practically meaningless, and why both belong in your report.</p>
 <p>→ <a href="https://johnnydoorn.github.io/teaching-statistics/extra-texts/EffSizeVsTestStat.html">Worked example with numbers</a></p>
@@ -423,6 +437,20 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="ancova-analysis-of-covariance" class="level2">
 <h2 class="anchored" data-anchor-id="ancova-analysis-of-covariance">ANCOVA (Analysis of Covariance)</h2>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Research vignette — does interpretation training induce a lasting negative bias in children?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Muris et al.&nbsp;(2008) randomly assigned children to one of three training conditions (negative / positive / no information about an ambiguous scenario) and later measured an interpretation-bias score. Age, gender, and natural anxiety differ between children and would muddy a plain one-way ANOVA; an ANCOVA adjusts for those covariates so the comparison between training conditions sits on equal footing. Source: Labcoat Leni (DSUJ ch.&nbsp;12).</p>
+<p>→ Worked through in <a href="#exercise-2-ancova-does-interpretation-training-induce-a-persistent-negative-bias-in-children">Exercise 2 below</a>.</p>
+</div>
+</div>
 <section id="what-is-it-1" class="level3">
 <h3 class="anchored" data-anchor-id="what-is-it-1">What is it?</h3>
 <p>ANCOVA extends ANOVA by adding one or more <strong>continuous covariates</strong> — variables you want to statistically control for. By removing the variance explained by the covariate, ANCOVA gives a more sensitive test of the group effect.</p>
@@ -434,7 +462,7 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Homogeneity of regression slopes</strong>: the relationship between the covariate and the DV should be the same in all groups. JASP can test this by adding a Group × Covariate <a href="#what-interaction-really-means">interaction</a> — it should not be significant. If the interaction effect is significant, you need to take this into account when interpreting the main effect of group. For instance, this therapy is effective for people in group A, <em>if they have low pre-therapy symptom severity</em>. <em>(Unfamiliar with what an “interaction” is? See the callout in the Factorial ANOVA section below.)</em></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -443,7 +471,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Once you add a covariate, the regression coefficients for the group dummies no longer recover the raw group means — they recover means <em>adjusted for</em> the covariate. The F-tests for group and covariate then come from comparing the full model against reduced models that drop one predictor at a time.</p>
 <p>→ <a href="https://johnnydoorn.github.io/teaching-statistics/extra-texts/PredictingWithDummies_1Variable.html">Worked example: extraversion ~ nationality + openness</a></p>
@@ -477,6 +505,20 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="factorial-anova" class="level2">
 <h2 class="anchored" data-anchor-id="factorial-anova">Factorial ANOVA</h2>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Research vignette — does mood × “stop rule” affect compulsive checking?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Davey et al.&nbsp;(2003) crossed two factors: induced mood (negative vs positive) × stop-rule for an ambiguous task (“as many as can” / “feel like continuing” / no instruction), then measured how much each participant checked. The interaction — does the effect of mood depend on which stop-rule you’ve been given? — is the substantive question; the two main effects on their own can be misleading when the interaction is the real story. Source: Labcoat Leni (DSUJ ch.&nbsp;13).</p>
+<p>→ Worked through in <a href="#exercise-3-factorial-anova-does-mood-stop-rule-affect-checking-behaviour">Exercise 3 below</a>.</p>
+</div>
+</div>
 <section id="what-is-it-2" class="level3">
 <h3 class="anchored" data-anchor-id="what-is-it-2">What is it?</h3>
 <p>Factorial ANOVA includes <strong>two or more between-subjects factors</strong>. In addition to the main effect of each factor, it tests the <strong>interaction</strong> — whether the effect of one factor depends on the level of another.</p>
@@ -486,7 +528,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="interpreting-interactions">Interpreting interactions</h3>
 <p>An interaction means the effect of factor A is different at different levels of factor B. Always examine interaction plots — JASP provides these under <em>Descriptive plots</em>. A significant interaction means you should interpret simple main effects rather than main effects alone.</p>
 <div id="what-interaction-really-means" class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -495,7 +537,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>A concrete example: <em>does the effect of alcohol on driving ability depend on the dose of speed (methamphetamine) the driver has also taken?</em> Alcohol on its own impairs driving, and so does speed on its own — but the question of whether their <em>combined</em> effect is more (or less) than the sum of their separate effects is what the interaction term tests. If somebody who’s taken a high dose of speed shows a <em>bigger</em> alcohol-related impairment than someone who hasn’t, that’s the interaction: “the effect of one variable depends on the level of another”.</p>
 </div>
@@ -528,6 +570,20 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="repeated-measures-anova" class="level2">
 <h2 class="anchored" data-anchor-id="repeated-measures-anova">Repeated-measures ANOVA</h2>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Research vignette — are splattered cadavers distracting during serial recall?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Each participant attempted serial recall under three different music conditions (no music / classical / death metal with explicit lyrics) — three measurements per person, so the music factor is <em>within-subjects</em>. A repeated-measures ANOVA exploits the within-person correlation to ask whether the genre actually shifts memory performance, and Mauchly’s test / Greenhouse-Geisser correction handle the sphericity assumption that comes with three or more levels. Source: Labcoat Leni (DSUJ ch.&nbsp;14).</p>
+<p>→ Worked through in <a href="#exercise-4-repeated-measures-anova-are-splattered-cadavers-distracting-during-serial-recall">Exercise 4 below</a>.</p>
+</div>
+</div>
 <section id="what-is-it-3" class="level3">
 <h3 class="anchored" data-anchor-id="what-is-it-3">What is it?</h3>
 <p>Repeated-measures ANOVA is used when the <strong>same participants are measured across multiple conditions or time points</strong> (within-subjects design). Because measurements within a person are correlated, this design is more powerful than a between-subjects design of the same size.</p>
@@ -541,7 +597,7 @@ ul.task-list li input[type="checkbox"] {
 <li>If there are only two within-subjects levels, sphericity cannot be violated (it is automatic)</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -550,7 +606,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Sphericity = the variances of the <em>differences</em> between every pair of within-subject levels are equal. Mauchly’s test flags violations, but (like Levene’s and Shapiro-Wilk) it’s sensitive to sample size. The pragmatic move: under <em>Assumption Checks → Sphericity corrections</em>, tick Greenhouse-Geisser (or Huynh-Feldt) by default — they adjust the degrees of freedom in the ANOVA table to give you a result that’s robust to sphericity violations whether or not Mauchly is significant.</p>
 </div>
@@ -685,7 +741,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="exercise-1-one-way-anova-do-the-four-hogwarts-houses-differ-in-machiavellianism">Exercise 1 (one-way ANOVA) — Do the four Hogwarts houses differ in Machiavellianism?</h3>
 <p>Jakob et al.&nbsp;(2019) measured Machiavellianism in students who identified as Gryffindor, Hufflepuff, Ravenclaw, or Slytherin. Using <a href="https://discoverjasp.com/repository/dsj1_leni/leni_11.jasp"><code>leni_11.jasp</code></a>, run a one-way ANOVA, follow it up with a <strong>Tukey HSD</strong> post-hoc test, and add a planned contrast comparing Slytherin against the other three houses combined.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -694,7 +750,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/labcoat_leni#science-behind-the-magic">Labcoat Leni — Science behind the magic?</a></li>
@@ -708,7 +764,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="exercise-2-ancova-does-interpretation-training-induce-a-persistent-negative-bias-in-children">Exercise 2 (ANCOVA) — Does interpretation training induce a persistent negative bias in children?</h3>
 <p>Muris et al.&nbsp;(2008) randomly assigned children to one of three training conditions (negative / positive / no information) and measured a later interpretation-bias score. The age, gender, and natural anxiety of each child should be controlled for. Using <a href="https://discoverjasp.com/repository/dsj1_leni/leni_12.jasp"><code>leni_12.jasp</code></a>, fit an ANCOVA with training as the factor and the three demographics as covariates. Check the homogeneity-of-regression-slopes assumption.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -717,7 +773,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/labcoat_leni#space-invaders">Labcoat Leni — Space invaders</a></li>
@@ -731,7 +787,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="exercise-3-factorial-anova-does-mood-stop-rule-affect-checking-behaviour">Exercise 3 (factorial ANOVA) — Does mood × “stop rule” affect checking behaviour?</h3>
 <p>Davey et al.&nbsp;(2003) used a 2 × 3 design (mood: negative/positive × stop-rule: “as many as can” / “feel like continuing” / no instruction) and measured checking behaviour. Using <a href="https://discoverjasp.com/repository/dsj1_leni/leni_13.jasp"><code>leni_13.jasp</code></a>, fit a two-way factorial ANOVA — but inspect the <strong>interaction plot before the main effects</strong>. (This dataset is a textbook reminder that main effects can mislead when the interaction is significant.)</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -740,7 +796,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/labcoat_leni#dont-forget-your-toothbrush">Labcoat Leni — Don’t forget your toothbrush</a></li>
@@ -754,7 +810,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="exercise-4-repeated-measures-anova-are-splattered-cadavers-distracting-during-serial-recall">Exercise 4 (repeated-measures ANOVA) — Are splattered cadavers distracting during serial recall?</h3>
 <p>Participants attempted serial recall while three different types of music played (no music / classical / “death metal”). Using <a href="https://discoverjasp.com/repository/dsj1_leni/leni_14.jasp"><code>leni_14.jasp</code></a>, fit a repeated-measures ANOVA on the music factor, check <strong>Mauchly’s test</strong> for sphericity, and apply the <strong>Greenhouse-Geisser</strong> correction if needed.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -763,7 +819,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/labcoat_leni#are-splattered-cadavers-distracting">Labcoat Leni — Are splattered cadavers distracting?</a></li>

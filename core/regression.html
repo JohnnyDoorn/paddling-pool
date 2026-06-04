@@ -338,6 +338,20 @@ window.Quarto = {
 <hr>
 <section id="correlation" class="level2">
 <h2 class="anchored" data-anchor-id="correlation">Correlation</h2>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Research vignette — which student traits predict the kind of lecturer they like?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Chamorro-Premuzic et al.&nbsp;(2008) measured five student personality traits (Big Five) and five dimensions of <em>preferred</em> lecturer style (knowledgeable, charismatic, accessible, etc.). The natural first move is a full correlation matrix — every trait against every lecturer dimension — to see which pairings hang together and in what direction. Source: Labcoat Leni (DSUJ ch.&nbsp;7).</p>
+<p>→ Worked through in <a href="#exercise-2-correlation-matrix-which-student-traits-predict-the-lecturer-they-prefer">Exercise 2 below</a>.</p>
+</div>
+</div>
 <section id="what-is-it" class="level3">
 <h3 class="anchored" data-anchor-id="what-is-it">What is it?</h3>
 <p>A <strong>correlation coefficient</strong> (<em>r</em>) describes the strength and direction of the linear relationship between two continuous variables. Pearson’s <em>r</em> ranges from −1 (perfect negative) to +1 (perfect positive), with 0 indicating no linear relationship.</p>
@@ -409,6 +423,19 @@ window.Quarto = {
 </section>
 <section id="simple-regression" class="level2">
 <h2 class="anchored" data-anchor-id="simple-regression">Simple regression</h2>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Research vignette — does advertising spend predict album sales?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A music label tracked the advertising budget (€) and first-week album sales for a sample of releases. A simple linear regression of sales on advertising estimates two numbers: the predicted sales of an album that gets <em>no</em> advertising (the intercept <em>b₀</em>), and how much each extra Euro of advertising buys you in expected sales (the slope <em>b₁</em>). The same dataset returns later on this page in the APA reporting example. Source: DSUJ ch.&nbsp;8 (album sales running example).</p>
+</div>
+</div>
 <section id="what-is-it-1" class="level3">
 <h3 class="anchored" data-anchor-id="what-is-it-1">What is it?</h3>
 <p>Simple (linear) regression models the relationship between <strong>one predictor</strong> (X) and a <strong>continuous outcome</strong> (Y):</p>
@@ -446,7 +473,7 @@ window.Quarto = {
 </ul>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -455,7 +482,7 @@ window.Quarto = {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Plot the standardised residuals against the standardised predictions. A “healthy” cloud of points means error is constant across the range of Y. A funnel shape or a tilted line means the model is more accurate for some predicted values than others — a sign of mis-specification.</p>
 <p>→ <a href="https://johnnydoorn.github.io/teaching-statistics/extra-texts/Heteroscedasticity.html">Visual catalogue: healthy vs.&nbsp;heteroscedastic plots</a></p>
@@ -489,6 +516,20 @@ window.Quarto = {
 </section>
 <section id="multiple-regression" class="level2">
 <h2 class="anchored" data-anchor-id="multiple-regression">Multiple regression</h2>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Research vignette — does narcissism predict Facebook status frequency over and above extraversion?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ong et al.&nbsp;(2011) measured adolescents’ status-update frequency, demographics (age, grade, sex), extraversion, and narcissism. The interesting question isn’t whether narcissism <em>correlates</em> with status posts — extraversion does too, and the two traits overlap. A hierarchical multiple regression enters demographics first (Model 0), extraversion next (Model 1), and narcissism last (Model 2); the ΔR² at each step shows what each block adds <em>over and above</em> what’s already in. Source: Labcoat Leni (DSUJ ch.&nbsp;8).</p>
+<p>→ Worked through in <a href="#exercise-3-hierarchical-multiple-regression-does-narcissism-predict-facebook-status-frequency-above-and-beyond-extraversion">Exercise 3 below</a>.</p>
+</div>
+</div>
 <section id="what-is-it-2" class="level3">
 <h3 class="anchored" data-anchor-id="what-is-it-2">What is it?</h3>
 <p>Multiple regression extends simple regression to <strong>two or more predictors</strong>:</p>
@@ -525,7 +566,7 @@ window.Quarto = {
 </tbody>
 </table>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -534,7 +575,7 @@ window.Quarto = {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>How to set up Model 0 → Model 1 → Model 2 in JASP’s Regression module, what the ΔR² between consecutive models actually means, and why “controlling for X” and “adding X to the null model” are the same operation.</p>
 </div>
@@ -545,7 +586,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="additional-assumption-multicollinearity">Additional assumption: multicollinearity</h3>
 <p>When predictors are highly correlated with each other, regression coefficients become unstable. Check: - <strong>Tolerance</strong> (should be &gt; .1) or <strong>VIF</strong> (variance inflation factor, should be &lt; 10) — both available in JASP under <em>Collinearity Diagnostics</em></p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -554,7 +595,7 @@ window.Quarto = {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>What multicollinearity really means (predictors that overlap), how to read VIF (the 10 threshold is a continuum, not a binary pass/fail), and why a scatter plot matrix of your predictors is still worth its weight — VIF only catches <em>linear</em> dependence.</p>
 </div>
@@ -710,7 +751,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="exercise-1-correlation-do-gcse-maths-grades-predict-university-statistics-grades">Exercise 1 (correlation) — Do GCSE maths grades predict university statistics grades?</h3>
 <p>The <a href="https://discoverjasp.com/repository/dsj1_data/data/grades.jasp"><code>grades.jasp</code></a> dataset pairs each student’s GCSE maths grade with their later university statistics grade. Pick the appropriate correlation coefficient (think about the measurement level of GCSE grade), run it, and report <em>r</em> with its 95% CI.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -719,7 +760,7 @@ window.Quarto = {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/smart_alex#task-7.4">Smart Alex Task 7.4</a></li>
@@ -733,7 +774,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="exercise-2-correlation-matrix-which-student-traits-predict-the-lecturer-they-prefer">Exercise 2 (correlation matrix) — Which student traits predict the lecturer they prefer?</h3>
 <p>Chamorro-Premuzic et al.&nbsp;(2008) measured five student personality traits and five lecturer-preference dimensions. Using <a href="https://discoverjasp.com/repository/dsj1_leni/leni_07.jasp"><code>leni_07.jasp</code></a>, produce the full correlation matrix between student traits and preferred-lecturer dimensions, and identify which student trait is most strongly associated with each lecturer dimension.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -742,7 +783,7 @@ window.Quarto = {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/labcoat_leni#why-do-you-like-your-lecturers">Labcoat Leni — Why do you like your lecturers?</a></li>
@@ -756,7 +797,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="exercise-3-hierarchical-multiple-regression-does-narcissism-predict-facebook-status-frequency-above-and-beyond-extraversion">Exercise 3 (hierarchical multiple regression) — Does narcissism predict Facebook status frequency above and beyond extraversion?</h3>
 <p>Ong et al.&nbsp;(2011) measured adolescents’ status-update frequency, demographics (age, grade, sex), extraversion, and narcissism. Using <a href="https://discoverjasp.com/repository/dsj1_leni/leni_08a.jasp"><code>leni_08a.jasp</code></a>, fit a hierarchical regression with <strong>three blocks</strong>: demographics (Model 0), + extraversion (Model 1), + narcissism (Model 2). Report ΔR² for each step.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -765,7 +806,7 @@ window.Quarto = {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>Walkthrough</strong>: <a href="https://discoverjasp.com/pages/labcoat_leni#i-want-to-be-loved-on-facebook">Labcoat Leni — I want to be loved (on Facebook)</a></li>
