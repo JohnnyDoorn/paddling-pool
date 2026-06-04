@@ -64,6 +64,9 @@ website:
   search:
     location: navbar
     type: textbox
+  # Show last-modified date pulled from git history at the bottom of each page.
+  page-navigation: true
+  back-to-top-navigation: true
   page-footer:
     center: |
       Paddling Pool &nbsp;|&nbsp; UvA Psychology &nbsp;|&nbsp;
@@ -84,6 +87,8 @@ format:
     toc-depth: 3
     toc-location: right
     toc-title: "On this page"
+    date-modified: last-modified
+    date-format: "D MMMM YYYY"
     anchor-sections: true
     smooth-scroll: true
     footnotes-hover: true

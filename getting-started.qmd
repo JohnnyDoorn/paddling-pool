@@ -47,9 +47,9 @@ When you open a dataset, the JASP window is divided into three panels:
 
 JASP recognises three measurement levels (DSUJ §4.6.2). The icon next to each column header tells you which is currently assigned; click it to change.
 
-- ![](assets/images/getting-started/variable-nominal.svg){height=18 style="vertical-align: middle"} **Nominal** — unordered categories (e.g. treatment group, gender identity).
-- ![](assets/images/getting-started/variable-ordinal.svg){height=18 style="vertical-align: middle"} **Ordinal** — ordered categories with no guaranteed equal spacing (e.g. Likert items if you want to be conservative, education level, satisfaction rating).
-- ![](assets/images/getting-started/variable-scale.svg){height=18 style="vertical-align: middle"} **Scale** (continuous / interval / ratio) — numeric measurements with meaningful spacing (e.g. reaction time, exam score, IQ).
+- ![JASP icon for a nominal variable: three coloured circles](assets/images/getting-started/variable-nominal.svg){height=18 style="vertical-align: middle"} **Nominal** — unordered categories (e.g. treatment group, gender identity).
+- ![JASP icon for an ordinal variable: three coloured circles with an arrow](assets/images/getting-started/variable-ordinal.svg){height=18 style="vertical-align: middle"} **Ordinal** — ordered categories with no guaranteed equal spacing (e.g. Likert items if you want to be conservative, education level, satisfaction rating).
+- ![JASP icon for a scale variable: a small ruler](assets/images/getting-started/variable-scale.svg){height=18 style="vertical-align: middle"} **Scale** (continuous / interval / ratio) — numeric measurements with meaningful spacing (e.g. reaction time, exam score, IQ).
 
 The measurement level matters because JASP uses it to determine which analyses become available, how to dummy-code in regression, and how to render plots. Each variable also carries a **value** (what JASP computes on) and a **label** (what the output shows) — nominal and ordinal variables can have non-numeric labels, but scale variables need numeric values.
 
