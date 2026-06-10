@@ -10,7 +10,7 @@ This site is the statistical equivalent: a low-pressure refresher in the analyse
 
 ::: {.callout-note icon=false}
 ## What this site builds on
-Most of the Paddling Pool is a modular re-packaging of existing teaching material: the [JASP online video library](https://jasp-stats.github.io/jasp-video-library/) and [how-to-use-JASP](https://jasp-stats.org/how-to-use-jasp/) blog posts, the textbook [*Discovering Statistics Using JASP* (DSUJ)](https://discoverjasp.com/), and the UvA [*Scientific and Statistical Reasoning* (SSR)](https://studiegids.uva.nl/en/courses/2025/1/54082) course lectures. The novelty here is the structure — short, decision-oriented topic pages with consistent layout and built-in cross-references — not the underlying content.
+Most of the content here is repackaged from existing teaching material: the [JASP video library](https://jasp-stats.github.io/jasp-video-library/) and [how-to-use-JASP](https://jasp-stats.org/how-to-use-jasp/) blog posts, the textbook [*Discovering Statistics Using JASP*](https://discoverjasp.com/), and the UvA [*Scientific and Statistical Reasoning*](https://studiegids.uva.nl/en/courses/2025/1/54082) course lectures. What's added on top is the structure — short, decision-shaped pages with consistent layout and cross-references between them.
 :::
 
 ## How to use this site
@@ -148,6 +148,6 @@ APA-style reporting templates for every test on this site, alongside the standar
 
 ## Contact, feature requests & issues
 
-Spotted a mistake, want a topic added, or have a suggestion for how to make the pool more useful?
+Spotted a mistake, want a topic added, or have a suggestion?
 
-Email **Johnny van Doorn** at [j.b.vandoorn@uva.nl](mailto:j.b.vandoorn@uva.nl) or open an issue on the [GitHub repository](https://github.com/JohnnyDoorn/paddling-pool/issues).
+Email me at [j.b.vandoorn@uva.nl](mailto:j.b.vandoorn@uva.nl), or open an issue on the [GitHub repository](https://github.com/JohnnyDoorn/paddling-pool/issues).

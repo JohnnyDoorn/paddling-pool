@@ -19,9 +19,9 @@ This page covers four ANOVA designs. Jump to the relevant section:
 
 ::: {.callout-tip icon=false}
 ## Research vignette — do the four Hogwarts houses differ in Machiavellianism?
-Jakob et al. (2019) measured Machiavellianism in students who identified as Gryffindor, Hufflepuff, Ravenclaw, or Slytherin — four independent groups on one continuous personality scale. A one-way ANOVA tests whether *any* house differs from the others; a planned contrast (Slytherin vs the rest) tests the obvious sequel. Source: Labcoat Leni (DSUJ ch. 11).
+Jakob et al. (2019) measured Machiavellianism in students who identified as Gryffindor, Hufflepuff, Ravenclaw, or Slytherin: four independent groups, one continuous personality scale. A one-way ANOVA asks whether *any* house differs from the others; a planned contrast (Slytherin vs the rest) tests the obvious follow-up. From Labcoat Leni (DSUJ ch. 11).
 
-→ Worked through in [Exercise 1 below](#exercise-1-one-way-anova-do-the-four-hogwarts-houses-differ-in-machiavellianism).
+→ Worked in [Exercise 1 below](#exercise-1-one-way-anova-do-the-four-hogwarts-houses-differ-in-machiavellianism).
 :::
 
 ### What is it?
@@ -90,10 +90,10 @@ Recordings at [jasp-stats.github.io/jasp-video-library/All_ANOVA.html#anova-onew
 ## ANCOVA (Analysis of Covariance)
 
 ::: {.callout-tip icon=false}
-## Research vignette — does interpretation training induce a lasting negative bias in children?
-Muris et al. (2008) randomly assigned children to one of three training conditions (negative / positive / no information about an ambiguous scenario) and later measured an interpretation-bias score. Age, gender, and natural anxiety differ between children and would muddy a plain one-way ANOVA; an ANCOVA adjusts for those covariates so the comparison between training conditions sits on equal footing. Source: Labcoat Leni (DSUJ ch. 12).
+## Research vignette — does interpretation training leave children with a negative bias?
+Muris et al. (2008) randomly assigned children to one of three training conditions (negative / positive / no information about an ambiguous scenario), then measured an interpretation-bias score later. Age, gender, and natural anxiety vary between kids and would muddy a plain one-way ANOVA, so an ANCOVA pulls those covariates out and lets the training comparison stand on equal footing. From Labcoat Leni (DSUJ ch. 12).
 
-→ Worked through in [Exercise 2 below](#exercise-2-ancova-does-interpretation-training-induce-a-persistent-negative-bias-in-children).
+→ Worked in [Exercise 2 below](#exercise-2-ancova-does-interpretation-training-induce-a-persistent-negative-bias-in-children).
 :::
 
 ### What is it?
@@ -132,9 +132,9 @@ Recordings at [jasp-stats.github.io/jasp-video-library/All_ANOVA.html#ancova](ht
 
 ::: {.callout-tip icon=false}
 ## Research vignette — does mood × "stop rule" affect compulsive checking?
-Davey et al. (2003) crossed two factors: induced mood (negative vs positive) × stop-rule for an ambiguous task ("as many as can" / "feel like continuing" / no instruction), then measured how much each participant checked. The interaction — does the effect of mood depend on which stop-rule you've been given? — is the substantive question; the two main effects on their own can be misleading when the interaction is the real story. Source: Labcoat Leni (DSUJ ch. 13).
+Davey et al. (2003) crossed two factors — induced mood (negative vs positive) × stop-rule for an ambiguous task ("as many as can" / "feel like continuing" / no instruction) — and measured how much each participant checked. The substantive question is the interaction: does the effect of mood depend on which stop-rule you got? The two main effects on their own can be misleading when the interaction is doing the work. From Labcoat Leni (DSUJ ch. 13).
 
-→ Worked through in [Exercise 3 below](#exercise-3-factorial-anova-does-mood-stop-rule-affect-checking-behaviour).
+→ Worked in [Exercise 3 below](#exercise-3-factorial-anova-does-mood-stop-rule-affect-checking-behaviour).
 :::
 
 ### What is it?
@@ -149,7 +149,7 @@ An interaction means the effect of factor A is different at different levels of 
 
 ::: {.callout-tip collapse=true #what-interaction-really-means}
 ## What "interaction" really means
-A concrete example: *does the effect of alcohol on driving ability depend on the dose of speed (methamphetamine) the driver has also taken?* Alcohol on its own impairs driving, and so does speed on its own — but the question of whether their *combined* effect is more (or less) than the sum of their separate effects is what the interaction term tests. If somebody who's taken a high dose of speed shows a *bigger* alcohol-related impairment than someone who hasn't, that's the interaction: "the effect of one variable depends on the level of another".
+A concrete example: *does the effect of alcohol on driving ability depend on the dose of speed (methamphetamine) the driver has also taken?* Alcohol impairs driving on its own, and so does speed — the interaction term asks whether the two together do more (or less) damage than you'd guess from adding their separate effects. If somebody who's taken a high dose of speed shows a *bigger* alcohol-related impairment than someone who hasn't, that's the interaction in action.
 :::
 
 ### How to do it in JASP
@@ -170,9 +170,9 @@ Recordings at [jasp-stats.github.io/jasp-video-library/All_ANOVA.html#anova-fact
 
 ::: {.callout-tip icon=false}
 ## Research vignette — are splattered cadavers distracting during serial recall?
-Each participant attempted serial recall under three different music conditions (no music / classical / death metal with explicit lyrics) — three measurements per person, so the music factor is *within-subjects*. A repeated-measures ANOVA exploits the within-person correlation to ask whether the genre actually shifts memory performance, and Mauchly's test / Greenhouse-Geisser correction handle the sphericity assumption that comes with three or more levels. Source: Labcoat Leni (DSUJ ch. 14).
+Each participant did a serial-recall task three times — once with no music, once with classical, once with death metal with explicit lyrics — so the music factor is *within-subjects*. A repeated-measures ANOVA uses the within-person correlation to ask whether genre actually shifts memory performance, with Mauchly's test and a Greenhouse–Geisser correction handling the sphericity assumption that comes in once you have three or more levels. From Labcoat Leni (DSUJ ch. 14).
 
-→ Worked through in [Exercise 4 below](#exercise-4-repeated-measures-anova-are-splattered-cadavers-distracting-during-serial-recall).
+→ Worked in [Exercise 4 below](#exercise-4-repeated-measures-anova-are-splattered-cadavers-distracting-during-serial-recall).
 :::
 
 ### What is it?

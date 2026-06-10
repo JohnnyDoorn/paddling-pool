@@ -19,28 +19,28 @@ This page covers the four most commonly used non-parametric tests for group comp
 
 ::: {.callout-tip icon=false}
 ## Wilcoxon rank-sum / Mann–Whitney — do men and women spend different amounts of time shopping?
-A simple two-group comparison where the outcome (minutes per shopping trip) is heavily right-skewed: most trips are short, a few are very long. Means are pulled around by the long-tail trips; ranks aren't. The Mann–Whitney asks whether trip durations *rank* systematically higher in one group than the other. Source: DSUJ ch. 15 / Smart Alex 15.7.
+A two-group comparison where the outcome (minutes per shopping trip) is heavily right-skewed: most trips are short, a few are very long. Means get pulled around by the long-tail trips; ranks don't. The Mann–Whitney asks whether trip durations *rank* systematically higher in one group than the other. From DSUJ ch. 15 (Smart Alex 15.7).
 
-→ Worked through in [Exercise 3 below](#exercise-3-mannwhitney-wilcoxon-rank-sum-do-men-and-women-spend-different-amounts-of-time-shopping).
+→ Worked in [Exercise 3 below](#exercise-3-mannwhitney-wilcoxon-rank-sum-do-men-and-women-spend-different-amounts-of-time-shopping).
 :::
 
 ::: {.callout-tip icon=false}
 ## Wilcoxon signed-rank — do male quails fertilise more eggs after a signaled vs control mating context?
-Each male quail experienced both a signaled and a control mating context in counterbalanced order, with the number of fertilised eggs counted each time. Two related measurements per bird, a small *n*, and count data — exactly when the paired t-test starts to creak and the signed-rank test on the within-bird differences is the safer call. Source: Labcoat Leni (DSUJ ch. 15).
+Each male quail experienced both a signaled and a control mating context, in counterbalanced order, with the number of fertilised eggs counted each time. Two related measurements per bird, small *n*, count data — the conditions in which the paired t-test starts creaking and the signed-rank test on the within-bird differences is the safer call. From Labcoat Leni (DSUJ ch. 15).
 
-→ Worked through in [Exercise 1 below](#exercise-1-wilcoxon-signed-rank-do-male-quails-fertilise-more-eggs-after-signaled-vs-control-mating-contexts).
+→ Worked in [Exercise 1 below](#exercise-1-wilcoxon-signed-rank-do-male-quails-fertilise-more-eggs-after-signaled-vs-control-mating-contexts).
 :::
 
 ::: {.callout-tip icon=false}
 ## Kruskal–Wallis — do three "quail fetish" subtypes differ in fertilisation rate?
-Male quails were classified into three behavioural subtypes around a terrycloth object and compared on subsequent fertilisation rate — three independent groups, small *n*, count outcome. The Kruskal–Wallis is the rank-based one-way ANOVA, followed by Dunn's pairwise post-hoc tests (Bonferroni-corrected) when the overall test is significant. Source: Labcoat Leni (DSUJ ch. 15).
+Male quails were classified into three behavioural subtypes around a terrycloth object and compared on subsequent fertilisation rate: three independent groups, small *n*, count outcome. The Kruskal–Wallis is the rank-based one-way ANOVA; when it comes back significant, Dunn's pairwise post-hoc tests with a Bonferroni correction give you the per-pair detail. From Labcoat Leni (DSUJ ch. 15).
 
-→ Worked through in [Exercise 2 below](#exercise-2-kruskalwallis-dunn-post-hoc-do-three-types-of-quail-fetish-differ-in-fertilisation-rate).
+→ Worked in [Exercise 2 below](#exercise-2-kruskalwallis-dunn-post-hoc-do-three-types-of-quail-fetish-differ-in-fertilisation-rate).
 :::
 
 ::: {.callout-tip icon=false}
 ## Friedman — does a diet program shift body weight across three measurement waves?
-Imagine the same participants weighed at baseline, after one month, and after two months of a structured diet — three repeated measurements per person, but with weight changes that are often skewed and a sample too small to rely on the central limit theorem. The Friedman test ranks each person's three measurements *within* the person, then asks whether the rank distribution differs across time points — the rank-based counterpart to a within-subjects one-way ANOVA. Source: DSUJ ch. 15 (within-subjects diet example).
+The same participants weighed at baseline, after one month, and after two months of a structured diet: three repeated measurements per person, weight changes that are often skewed, and an *n* too small to lean on the central limit theorem. The Friedman test ranks each person's three measurements *within* the person, then asks whether those rank distributions differ across time points — the rank-based counterpart to a within-subjects one-way ANOVA. From DSUJ ch. 15 (within-subjects diet example).
 :::
 
 ---
