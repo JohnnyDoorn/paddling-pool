@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-5a7edf553ce6f37e40c66d907d0f4061.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-d42e3a450557161d5337326f150af9d1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -255,7 +255,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">4 June 2026</p>
+      <p class="date-modified">10 June 2026</p>
     </div>
   </div>
     
@@ -317,8 +317,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A simple two-group comparison where the outcome (minutes per shopping trip) is heavily right-skewed: most trips are short, a few are very long. Means are pulled around by the long-tail trips; ranks aren’t. The Mann–Whitney asks whether trip durations <em>rank</em> systematically higher in one group than the other. Source: DSUJ ch.&nbsp;15 / Smart Alex 15.7.</p>
-<p>→ Worked through in <a href="#exercise-3-mannwhitney-wilcoxon-rank-sum-do-men-and-women-spend-different-amounts-of-time-shopping">Exercise 3 below</a>.</p>
+<p>A two-group comparison where the outcome (minutes per shopping trip) is heavily right-skewed: most trips are short, a few are very long. Means get pulled around by the long-tail trips; ranks don’t. The Mann–Whitney asks whether trip durations <em>rank</em> systematically higher in one group than the other. From DSUJ ch.&nbsp;15 (Smart Alex 15.7).</p>
+<p>→ Worked in <a href="#exercise-3-mannwhitney-wilcoxon-rank-sum-do-men-and-women-spend-different-amounts-of-time-shopping">Exercise 3 below</a>.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
@@ -331,8 +331,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Each male quail experienced both a signaled and a control mating context in counterbalanced order, with the number of fertilised eggs counted each time. Two related measurements per bird, a small <em>n</em>, and count data — exactly when the paired t-test starts to creak and the signed-rank test on the within-bird differences is the safer call. Source: Labcoat Leni (DSUJ ch.&nbsp;15).</p>
-<p>→ Worked through in <a href="#exercise-1-wilcoxon-signed-rank-do-male-quails-fertilise-more-eggs-after-signaled-vs-control-mating-contexts">Exercise 1 below</a>.</p>
+<p>Each male quail experienced both a signaled and a control mating context, in counterbalanced order, with the number of fertilised eggs counted each time. Two related measurements per bird, small <em>n</em>, count data — the conditions in which the paired t-test starts creaking and the signed-rank test on the within-bird differences is the safer call. From Labcoat Leni (DSUJ ch.&nbsp;15).</p>
+<p>→ Worked in <a href="#exercise-1-wilcoxon-signed-rank-do-male-quails-fertilise-more-eggs-after-signaled-vs-control-mating-contexts">Exercise 1 below</a>.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
@@ -345,8 +345,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Male quails were classified into three behavioural subtypes around a terrycloth object and compared on subsequent fertilisation rate — three independent groups, small <em>n</em>, count outcome. The Kruskal–Wallis is the rank-based one-way ANOVA, followed by Dunn’s pairwise post-hoc tests (Bonferroni-corrected) when the overall test is significant. Source: Labcoat Leni (DSUJ ch.&nbsp;15).</p>
-<p>→ Worked through in <a href="#exercise-2-kruskalwallis-dunn-post-hoc-do-three-types-of-quail-fetish-differ-in-fertilisation-rate">Exercise 2 below</a>.</p>
+<p>Male quails were classified into three behavioural subtypes around a terrycloth object and compared on subsequent fertilisation rate: three independent groups, small <em>n</em>, count outcome. The Kruskal–Wallis is the rank-based one-way ANOVA; when it comes back significant, Dunn’s pairwise post-hoc tests with a Bonferroni correction give you the per-pair detail. From Labcoat Leni (DSUJ ch.&nbsp;15).</p>
+<p>→ Worked in <a href="#exercise-2-kruskalwallis-dunn-post-hoc-do-three-types-of-quail-fetish-differ-in-fertilisation-rate">Exercise 2 below</a>.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
@@ -359,7 +359,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Imagine the same participants weighed at baseline, after one month, and after two months of a structured diet — three repeated measurements per person, but with weight changes that are often skewed and a sample too small to rely on the central limit theorem. The Friedman test ranks each person’s three measurements <em>within</em> the person, then asks whether the rank distribution differs across time points — the rank-based counterpart to a within-subjects one-way ANOVA. Source: DSUJ ch.&nbsp;15 (within-subjects diet example).</p>
+<p>The same participants weighed at baseline, after one month, and after two months of a structured diet: three repeated measurements per person, weight changes that are often skewed, and an <em>n</em> too small to lean on the central limit theorem. The Friedman test ranks each person’s three measurements <em>within</em> the person, then asks whether those rank distributions differ across time points — the rank-based counterpart to a within-subjects one-way ANOVA. From DSUJ ch.&nbsp;15 (within-subjects diet example).</p>
 </div>
 </div>
 <hr>

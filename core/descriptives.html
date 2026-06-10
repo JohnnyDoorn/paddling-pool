@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-5a7edf553ce6f37e40c66d907d0f4061.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-d42e3a450557161d5337326f150af9d1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -225,8 +225,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#when-to-use-descriptive-statistics" id="toc-when-to-use-descriptive-statistics" class="nav-link" data-scroll-target="#when-to-use-descriptive-statistics">When to use descriptive statistics</a></li>
   <li><a href="#plots-visualising-your-data" id="toc-plots-visualising-your-data" class="nav-link" data-scroll-target="#plots-visualising-your-data">Plots — visualising your data</a>
   <ul class="collapse">
-  <li><a href="#continuous-data-one-variable" id="toc-continuous-data-one-variable" class="nav-link" data-scroll-target="#continuous-data-one-variable">Continuous data — one variable</a></li>
-  <li><a href="#continuous-data-comparing-groups" id="toc-continuous-data-comparing-groups" class="nav-link" data-scroll-target="#continuous-data-comparing-groups">Continuous data — comparing groups</a></li>
+  <li><a href="#one-continuous-variable" id="toc-one-continuous-variable" class="nav-link" data-scroll-target="#one-continuous-variable">One continuous variable</a></li>
+  <li><a href="#comparing-continuous-distributions-across-groups" id="toc-comparing-continuous-distributions-across-groups" class="nav-link" data-scroll-target="#comparing-continuous-distributions-across-groups">Comparing continuous distributions across groups</a></li>
   <li><a href="#two-continuous-variables" id="toc-two-continuous-variables" class="nav-link" data-scroll-target="#two-continuous-variables">Two continuous variables</a></li>
   <li><a href="#categorical-data" id="toc-categorical-data" class="nav-link" data-scroll-target="#categorical-data">Categorical data</a></li>
   </ul></li>
@@ -260,7 +260,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">4 June 2026</p>
+      <p class="date-modified">10 June 2026</p>
     </div>
   </div>
     
@@ -272,8 +272,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><span class="section-badge">Basics</span></p>
-<p>Before running any inferential test, always explore your data. Descriptive statistics and visualisations help you understand the shape of your distributions, identify outliers, and check whether your data meet the assumptions of the analyses you plan to run.</p>
-<p>This is not a step to skip — surprising patterns often only become visible at this stage.</p>
+<p>Before running any inferential test, look at your data. Descriptives and plots tell you the shape of the distribution, flag outliers, and reveal whether the assumptions of your next analysis are even close to being met. Surprising patterns often only show up here.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -284,8 +283,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A small dataset records two pet groups (fish vs cat) on <code>animal_liking</code> and <code>life_satisfaction</code>. Before testing any group difference, you’d want to see the per-group means, SDs, and 95% CIs <em>alongside</em> a plot that shows the full distribution — not just a bar height. A raincloud plot does exactly that: it combines a half-violin density, a boxplot, and the raw jittered points in one figure, often revealing that “the cat group” is actually two clumps with a gap in between, or that one fish owner is dragging the mean up by themselves. Source: <em>Discovering Statistics Using JASP</em> (DSUJ) ch.&nbsp;5 / Smart Alex 5.8.</p>
-<p>→ Worked through in <a href="#exercise-3-descriptives-by-group-compare-two-pet-groups-on-liking-of-animals-and-life-satisfaction">Exercise 3 below</a>.</p>
+<p>A small dataset has two pet groups (fish vs cat), each rated on <code>animal_liking</code> and <code>life_satisfaction</code>. The descriptives table gives you means, SDs, and 95% CIs; a raincloud plot then shows what those numbers hide — maybe one fish owner is dragging the mean up by themselves, or “the cat group” is two clumps with a gap between them. From DSUJ ch.&nbsp;5 (Smart Alex 5.8).</p>
+<p>→ Worked in <a href="#exercise-3-descriptives-by-group-compare-two-pet-groups-on-liking-of-animals-and-life-satisfaction">Exercise 3 below</a>.</p>
 </div>
 </div>
 <hr>
@@ -384,9 +383,9 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="plots-visualising-your-data" class="level2">
 <h2 class="anchored" data-anchor-id="plots-visualising-your-data">Plots — visualising your data</h2>
-<p>Numbers in a descriptives table summarise the data; plots show it. The most useful plot for any given variable depends on (a) its measurement level (continuous vs categorical) and (b) whether you want to inspect a <em>single</em> distribution or <em>compare</em> distributions across groups.</p>
-<section id="continuous-data-one-variable" class="level3">
-<h3 class="anchored" data-anchor-id="continuous-data-one-variable">Continuous data — one variable</h3>
+<p>The descriptives table summarises the data; a plot shows it. Which plot to use depends on the measurement level of the variable and whether you’re looking at one distribution or comparing several.</p>
+<section id="one-continuous-variable" class="level3">
+<h3 class="anchored" data-anchor-id="one-continuous-variable">One continuous variable</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -403,23 +402,23 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td><strong>Histogram</strong></td>
-<td>The shape of the distribution (skew, modality, gaps, ceiling/floor)</td>
-<td>Always run one first — your eye catches things skewness numbers miss</td>
+<td>Shape: skew, modality, gaps, ceiling or floor</td>
+<td>Always your first look — the eye catches things skewness numbers miss</td>
 </tr>
 <tr class="even">
 <td><strong>Boxplot</strong></td>
-<td>Median, IQR, and points beyond the whiskers as candidate outliers</td>
-<td>When you mainly care about outliers and the centre</td>
+<td>Median, IQR, candidate outliers past the whiskers</td>
+<td>When the centre and outliers are what you care about</td>
 </tr>
 <tr class="odd">
 <td><strong>Q-Q plot</strong></td>
-<td>Sample quantiles vs theoretical normal quantiles</td>
-<td>Specifically for the normality assumption — straighter line ≈ closer to normal</td>
+<td>Sample quantiles vs the theoretical normal quantiles</td>
+<td>For the normality assumption — straighter line, closer to normal</td>
 </tr>
 <tr class="even">
 <td><strong>Density plot</strong></td>
-<td>A smoothed version of the histogram</td>
-<td>When the histogram looks “blocky” because <em>n</em> is small</td>
+<td>A smoothed histogram</td>
+<td>When <em>n</em> is small and the histogram looks blocky</td>
 </tr>
 </tbody>
 </table>
@@ -429,19 +428,19 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Histogram + boxplot together is the workhorse pair
+<span class="screen-reader-only">Tip</span>Histogram + boxplot is the workhorse pair
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>The histogram tells you <em>what shape</em> the distribution has; the boxplot tells you <em>where the action is</em> (median, quartiles, tails). DSUJ ch.&nbsp;5 makes this point with the festival-hygiene data: the boxplot flags one extreme outlier on day 1 (a participant whose hygiene score was implausibly off the scale), and the histogram explains why the mean and the median diverge so much.</p>
+<p>The histogram shows the shape; the boxplot pins down where the action is (median, quartiles, tails). The festival-hygiene example in DSUJ ch.&nbsp;5 is a nice illustration: the day-1 boxplot flags one extreme outlier off the top of the scale, and the histogram then explains why the mean and median don’t agree.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="continuous-data-comparing-groups" class="level3">
-<h3 class="anchored" data-anchor-id="continuous-data-comparing-groups">Continuous data — comparing groups</h3>
+<section id="comparing-continuous-distributions-across-groups" class="level3">
+<h3 class="anchored" data-anchor-id="comparing-continuous-distributions-across-groups">Comparing continuous distributions across groups</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -458,23 +457,23 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td><strong>Raincloud plot</strong></td>
-<td>Half-violin density + boxplot + raw jittered points, side-by-side per group</td>
-<td>The single most informative group-comparison plot. Default to this.</td>
+<td>Half-violin density + boxplot + raw points, one strip per group</td>
+<td>The first plot to reach for. Defaults to this.</td>
 </tr>
 <tr class="even">
 <td><strong>Boxplots side-by-side</strong></td>
-<td>Group medians and IQRs together</td>
-<td>When you have many groups and a raincloud gets cluttered</td>
+<td>Medians and IQRs together</td>
+<td>When you have many groups and the raincloud gets crowded</td>
 </tr>
 <tr class="odd">
 <td><strong>Bar plot with error bars</strong></td>
 <td>Means + SE or CI per group</td>
-<td>APA papers still expect these — but pair with a raincloud during exploration</td>
+<td>APA still expects these in papers, but pair with a raincloud while exploring</td>
 </tr>
 <tr class="even">
-<td><strong>Scatter plot with group colour</strong></td>
-<td>Two continuous variables, group as colour/shape</td>
-<td>When the comparison sits inside a continuous relationship</td>
+<td><strong>Scatter with group colour</strong></td>
+<td>Two continuous variables, group as colour or shape</td>
+<td>When the group comparison sits inside a continuous relationship</td>
 </tr>
 </tbody>
 </table>
@@ -488,15 +487,15 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Two groups with the same mean and SE can have completely different underlying distributions — one bimodal, one symmetric, one with a single extreme value. The bar plot makes both look identical. SSR Lecture 4 (intro stats) and DSUJ ch.&nbsp;5 both flag this; rainclouds were popularised in psychology as the practical fix.</p>
+<p>Two groups with identical means and SEs can have very different underlying shapes (one bimodal, one symmetric, one carried by a single extreme value). On a bar plot they look the same. SSR Lecture 4 and DSUJ ch.&nbsp;5 both call this out; rainclouds caught on in psychology as the practical fix.</p>
 </div>
 </div>
 </section>
 <section id="two-continuous-variables" class="level3">
 <h3 class="anchored" data-anchor-id="two-continuous-variables">Two continuous variables</h3>
 <ul>
-<li><strong>Scatter plot</strong> — the only honest summary of a relationship. Look at it <em>before</em> computing a correlation, not after. Non-linear patterns and extreme points are usually visible at a glance.</li>
-<li><strong>Scatter-plot matrix</strong> — when you have several continuous variables, JASP’s <em>Plot Matrix</em> in Descriptives shows every pairwise scatter at once. Useful as an exploratory sweep.</li>
+<li><strong>Scatter plot</strong> — the honest summary of a relationship. Look at it <em>before</em> computing a correlation, not after; non-linearity and extreme points are usually obvious.</li>
+<li><strong>Scatter-plot matrix</strong> — with several continuous variables, JASP’s <em>Plot Matrix</em> in Descriptives gives you every pairwise scatter at once. Useful as a first sweep.</li>
 </ul>
 </section>
 <section id="categorical-data" class="level3">
@@ -518,7 +517,7 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td><strong>Bar plot of counts</strong></td>
 <td>Frequency of each category</td>
-<td>The default for single nominal/ordinal variables</td>
+<td>The default for a single nominal or ordinal variable</td>
 </tr>
 <tr class="even">
 <td><strong>Pie chart</strong></td>
@@ -527,30 +526,30 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="odd">
 <td><strong>Stacked / grouped bars</strong></td>
-<td>Counts of one categorical variable split by another</td>
+<td>One categorical variable split by another</td>
 <td>The “is X related to Y” picture before a chi-square test</td>
 </tr>
 <tr class="even">
 <td><strong>Mosaic plot</strong></td>
-<td>Cell sizes proportional to frequencies</td>
-<td>Same data as a stacked bar but emphasises the joint distribution</td>
+<td>Cell area proportional to frequency</td>
+<td>Same data as a stacked bar, but the joint distribution is more visible</td>
 </tr>
 </tbody>
 </table>
-<p>In JASP, all of the above are reachable from <strong>Descriptives → Plots</strong> or, for categorical data, <strong>Frequencies → Distribution Plots</strong>.</p>
+<p>In JASP these all live under <strong>Descriptives → Plots</strong>, or <strong>Frequencies → Distribution Plots</strong> for the categorical side.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Why “always plot first, test after”
+<span class="screen-reader-only">Tip</span>Plot first, test after
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Anscombe’s quartet — four datasets with identical means, SDs, correlations, and regression lines but visibly different shapes — is the canonical demonstration that summary statistics alone can mislead. SSR Lecture 4 walks through this; DSUJ ch.&nbsp;4 covers the same intuition with real psychology datasets. The practical rule: a <em>p</em>-value never replaces a look at the data.</p>
+<p>Anscombe’s quartet — four datasets with identical means, SDs, correlations, and regression lines, but visibly different shapes — is the classic warning that summary statistics can mislead. SSR Lecture 4 walks through it; DSUJ ch.&nbsp;4 covers the same idea with real psychology data. A <em>p</em>-value never replaces a look at the data.</p>
 </div>
 </div>
 </div>

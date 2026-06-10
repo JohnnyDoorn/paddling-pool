@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-5a7edf553ce6f37e40c66d907d0f4061.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-d42e3a450557161d5337326f150af9d1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -278,7 +278,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">4 June 2026</p>
+      <p class="date-modified">10 June 2026</p>
     </div>
   </div>
     
@@ -311,8 +311,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Jakob et al.&nbsp;(2019) measured Machiavellianism in students who identified as Gryffindor, Hufflepuff, Ravenclaw, or Slytherin — four independent groups on one continuous personality scale. A one-way ANOVA tests whether <em>any</em> house differs from the others; a planned contrast (Slytherin vs the rest) tests the obvious sequel. Source: Labcoat Leni (DSUJ ch.&nbsp;11).</p>
-<p>→ Worked through in <a href="#exercise-1-one-way-anova-do-the-four-hogwarts-houses-differ-in-machiavellianism">Exercise 1 below</a>.</p>
+<p>Jakob et al.&nbsp;(2019) measured Machiavellianism in students who identified as Gryffindor, Hufflepuff, Ravenclaw, or Slytherin: four independent groups, one continuous personality scale. A one-way ANOVA asks whether <em>any</em> house differs from the others; a planned contrast (Slytherin vs the rest) tests the obvious follow-up. From Labcoat Leni (DSUJ ch.&nbsp;11).</p>
+<p>→ Worked in <a href="#exercise-1-one-way-anova-do-the-four-hogwarts-houses-differ-in-machiavellianism">Exercise 1 below</a>.</p>
 </div>
 </div>
 <section id="what-is-it" class="level3">
@@ -443,12 +443,12 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Research vignette — does interpretation training induce a lasting negative bias in children?
+<span class="screen-reader-only">Tip</span>Research vignette — does interpretation training leave children with a negative bias?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Muris et al.&nbsp;(2008) randomly assigned children to one of three training conditions (negative / positive / no information about an ambiguous scenario) and later measured an interpretation-bias score. Age, gender, and natural anxiety differ between children and would muddy a plain one-way ANOVA; an ANCOVA adjusts for those covariates so the comparison between training conditions sits on equal footing. Source: Labcoat Leni (DSUJ ch.&nbsp;12).</p>
-<p>→ Worked through in <a href="#exercise-2-ancova-does-interpretation-training-induce-a-persistent-negative-bias-in-children">Exercise 2 below</a>.</p>
+<p>Muris et al.&nbsp;(2008) randomly assigned children to one of three training conditions (negative / positive / no information about an ambiguous scenario), then measured an interpretation-bias score later. Age, gender, and natural anxiety vary between kids and would muddy a plain one-way ANOVA, so an ANCOVA pulls those covariates out and lets the training comparison stand on equal footing. From Labcoat Leni (DSUJ ch.&nbsp;12).</p>
+<p>→ Worked in <a href="#exercise-2-ancova-does-interpretation-training-induce-a-persistent-negative-bias-in-children">Exercise 2 below</a>.</p>
 </div>
 </div>
 <section id="what-is-it-1" class="level3">
@@ -515,8 +515,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Davey et al.&nbsp;(2003) crossed two factors: induced mood (negative vs positive) × stop-rule for an ambiguous task (“as many as can” / “feel like continuing” / no instruction), then measured how much each participant checked. The interaction — does the effect of mood depend on which stop-rule you’ve been given? — is the substantive question; the two main effects on their own can be misleading when the interaction is the real story. Source: Labcoat Leni (DSUJ ch.&nbsp;13).</p>
-<p>→ Worked through in <a href="#exercise-3-factorial-anova-does-mood-stop-rule-affect-checking-behaviour">Exercise 3 below</a>.</p>
+<p>Davey et al.&nbsp;(2003) crossed two factors — induced mood (negative vs positive) × stop-rule for an ambiguous task (“as many as can” / “feel like continuing” / no instruction) — and measured how much each participant checked. The substantive question is the interaction: does the effect of mood depend on which stop-rule you got? The two main effects on their own can be misleading when the interaction is doing the work. From Labcoat Leni (DSUJ ch.&nbsp;13).</p>
+<p>→ Worked in <a href="#exercise-3-factorial-anova-does-mood-stop-rule-affect-checking-behaviour">Exercise 3 below</a>.</p>
 </div>
 </div>
 <section id="what-is-it-2" class="level3">
@@ -539,7 +539,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>A concrete example: <em>does the effect of alcohol on driving ability depend on the dose of speed (methamphetamine) the driver has also taken?</em> Alcohol on its own impairs driving, and so does speed on its own — but the question of whether their <em>combined</em> effect is more (or less) than the sum of their separate effects is what the interaction term tests. If somebody who’s taken a high dose of speed shows a <em>bigger</em> alcohol-related impairment than someone who hasn’t, that’s the interaction: “the effect of one variable depends on the level of another”.</p>
+<p>A concrete example: <em>does the effect of alcohol on driving ability depend on the dose of speed (methamphetamine) the driver has also taken?</em> Alcohol impairs driving on its own, and so does speed — the interaction term asks whether the two together do more (or less) damage than you’d guess from adding their separate effects. If somebody who’s taken a high dose of speed shows a <em>bigger</em> alcohol-related impairment than someone who hasn’t, that’s the interaction in action.</p>
 </div>
 </div>
 </div>
@@ -580,8 +580,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Each participant attempted serial recall under three different music conditions (no music / classical / death metal with explicit lyrics) — three measurements per person, so the music factor is <em>within-subjects</em>. A repeated-measures ANOVA exploits the within-person correlation to ask whether the genre actually shifts memory performance, and Mauchly’s test / Greenhouse-Geisser correction handle the sphericity assumption that comes with three or more levels. Source: Labcoat Leni (DSUJ ch.&nbsp;14).</p>
-<p>→ Worked through in <a href="#exercise-4-repeated-measures-anova-are-splattered-cadavers-distracting-during-serial-recall">Exercise 4 below</a>.</p>
+<p>Each participant did a serial-recall task three times — once with no music, once with classical, once with death metal with explicit lyrics — so the music factor is <em>within-subjects</em>. A repeated-measures ANOVA uses the within-person correlation to ask whether genre actually shifts memory performance, with Mauchly’s test and a Greenhouse–Geisser correction handling the sphericity assumption that comes in once you have three or more levels. From Labcoat Leni (DSUJ ch.&nbsp;14).</p>
+<p>→ Worked in <a href="#exercise-4-repeated-measures-anova-are-splattered-cadavers-distracting-during-serial-recall">Exercise 4 below</a>.</p>
 </div>
 </div>
 <section id="what-is-it-3" class="level3">
