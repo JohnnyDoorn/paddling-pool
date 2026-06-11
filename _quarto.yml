@@ -50,6 +50,8 @@ website:
             href: advanced/latent-class.qmd
           - text: "Network Analysis"
             href: advanced/network-analysis.qmd
+      - text: "Courses"
+        href: courses.qmd
       - text: "Reference"
         menu:
           - text: "Which test should I use?"

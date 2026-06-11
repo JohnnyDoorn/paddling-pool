@@ -1,0 +1,40 @@
+---
+title: "Courses"
+---
+
+<span class="section-badge">Reference</span>
+
+Most of the Paddling Pool builds on lectures given in other UvA courses. This page collects the source lectures in one place — useful if you want to watch a topic in full before working through the topic page here, or if you've forgotten which lecture covered which test.
+
+For now only **SSR** is listed; other courses will follow.
+
+---
+
+## Scientific & Statistical Reasoning (SSR)
+
+A first-year bachelor's course covering the conceptual grounding for almost everything on this site — populations and sampling, NHST, the linear model, ANOVA, non-parametrics, mediation, moderation, and the chi-square family.
+
+→ **Slides:** the full [SSR Overview](https://johnnydoorn.github.io/teaching-statistics/SSR/OverviewSSR.html) page lists all lecture handouts and slide decks.
+
+→ **Course catalogue:** [studiegids entry](https://studiegids.uva.nl/en/courses/2025/1/54082).
+
+### Lecture recordings
+
+Captions are available in the SharePoint player.
+
+| # | Topic | Recording |
+|---|---|---|
+| 4 | Introduction to Statistics & NHST | [▶ link](https://amsuni-my.sharepoint.com/:v:/g/personal/r_a_voskens_uva_nl/ET2tzHtsP4BMpjvy-LvhZrYB2ofWdiACW8JgRAYd1h-AiA?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=3lX7UQ) |
+| 5 | Introduction to JASP | [▶ link](https://amsuni-my.sharepoint.com/:v:/g/personal/r_a_voskens_uva_nl/EXVZr9oM-jVLquRgPwzAEEYB1mR9oVHqZYeURLGOkffzWw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=MaZfdw) |
+| 7 | Correlation & the Linear Model | [▶ link](https://amsuni-my.sharepoint.com/:v:/g/personal/r_a_voskens_uva_nl/EYmgPRhAgkBEliafLv_ech8BPwxS8gy8aTtX7lOVHJvFbg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=eV0zUx) |
+| 8 | The Linear Model | [▶ link](https://amsuni-my.sharepoint.com/:v:/g/personal/j_b_vandoorn_uva_nl/ESL3M4DpFURCuLyCb7ILp24BYREu8vRoKWYd7tN-4v4kWw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=nqlXIF) |
+| 11 | t-Tests | [▶ link](https://amsuni-my.sharepoint.com/:v:/g/personal/j_b_vandoorn_uva_nl/EahOMDJnz9VPttWQxAZco9wBrb5K99hpGubhOkz0-DdZAw?e=GFj5cF&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) |
+| 12 | One-way ANOVA | [▶ link](https://amsuni-my.sharepoint.com/:v:/g/personal/j_b_vandoorn_uva_nl/ERes4EOiQZpGiel4rafb1u4B5bqXqGTWv2QiTKTA4xGB9A?e=VSXMW4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) |
+| 14 | ANCOVA | [▶ link](https://amsuni-my.sharepoint.com/:v:/g/personal/j_b_vandoorn_uva_nl/ER_RAS7DHcFBniFgxHobdoUBLhJX7wJC8obRIgBmG9QCIg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=KvLQQl) |
+| 15 | Factorial ANOVA | [▶ link](https://amsuni-my.sharepoint.com/:v:/g/personal/j_b_vandoorn_uva_nl/EYOhbLyuOsZHqJd72rlUp-IBMjUeoS2Z3f_ak44KzW-4Dw?e=ygYJyb&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) |
+| 18 | Repeated-Measures & Mixed ANOVA | [▶ link](https://amsuni-my.sharepoint.com/:v:/g/personal/j_b_vandoorn_uva_nl/ERu30EipOpFHlscrmrf4PHsBeJft-YNnXKJxuPq1GaEflQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=OetsEz) |
+| 20 | Non-Parametrics | [▶ link](https://amsuni-my.sharepoint.com/:v:/g/personal/j_b_vandoorn_uva_nl/Ef2Nmky2nMJMhvGu8vcNQqkB3d4_n1ngzHSvP5JxkY8IMQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=0xVUhj) |
+| 22 | Multiple Regression | [▶ link](https://amsuni-my.sharepoint.com/:v:/g/personal/j_b_vandoorn_uva_nl/EVZu2_XUBChDgKCE_D74OZQBnFoilT4XQRG5cEDfZcWu3g?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=OFlsC3) |
+| 26 | Moderation | [▶ link](https://amsuni-my.sharepoint.com/:v:/g/personal/j_b_vandoorn_uva_nl/EfNB5ydwSIlHjivPr0yhlzkBc5X_fmr7HkcxVKaCNvrF6A?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=gYOVYt) |
+| 27 | Mediation | [▶ link](https://amsuni-my.sharepoint.com/:v:/g/personal/j_b_vandoorn_uva_nl/EUHEfkBgB5xKuP2bJkd2XbIBi88dHPwHTAY1aHHOLipkFw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=anM8Bi) |
+| 28 | Chi-Square & Contingency Tables | [▶ link](https://amsuni-my.sharepoint.com/:v:/g/personal/j_b_vandoorn_uva_nl/EUdZ0iYtIZBLsOyakIXtcJMBDfwT9iC1FrMlmUpiIYHsdQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=uArm3T) |
