@@ -6,7 +6,7 @@ title: "Welcome to the Paddling Pool"
 >
 > A shallow body of water in which one can comfortably wade rather than swim — a place to get the feel of the water before going further.
 
-This site is the statistical equivalent: a low-pressure refresher in the analyses you'll need for your thesis or specialist master's courses. Work through topics at your own pace, watch short JASP demonstrations, and practise with real datasets — a shallow place to revisit the essentials before diving deeper into your own research.
+This site is the statistical equivalent: a low-pressure refresher in the analyses you'll need for your thesis or specialist master's courses. Work through topics at your own pace, watch short JASP demonstrations, and practise with real datasets: a shallow place to revisit the essentials before diving deeper into your own research.
 
 ::: {.callout-note icon=false}
 ## What this site builds on
