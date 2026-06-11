@@ -4,7 +4,7 @@ title: "Descriptive Statistics & Visualisation"
 
 <span class="section-badge">Basics</span>
 
-Before running any inferential test, look at your data. Descriptives and plots tell you the shape of the distribution, flag outliers, and reveal whether the assumptions of your next analysis are even close to being met. Surprising patterns often only show up here.
+Before running any inferential test, look at your data. Descriptives and plots tell you the shape of the distribution, flag outliers, and show whether the assumptions of your next analysis hold. Surprising patterns often only show up at this stage.
 
 ::: {.callout-tip icon=false}
 ## Research vignette — do fish or cat owners enjoy life more?
@@ -47,12 +47,12 @@ Descriptive statistics summarise the key features of a dataset without making in
 
 ## When to use descriptive statistics
 
-Always — as the first step in every analysis. Specifically:
+Always, as the first step in every analysis:
 
 - **Before any test**: report means and SDs for your key variables
-- **To check normality**: look at histograms and Q-Q plots, and inspect skewness/kurtosis values
-- **To detect outliers**: boxplots flag values beyond 1.5 × IQR from the quartiles
-- **To describe your sample**: demographics (age, gender, group sizes) always require descriptives
+- **To check normality**: histograms and Q-Q plots; inspect skewness and kurtosis
+- **To detect outliers**: boxplots flag values past 1.5 × IQR from the quartiles
+- **To describe your sample**: demographics (age, gender, group sizes) always need descriptives
 
 ---
 

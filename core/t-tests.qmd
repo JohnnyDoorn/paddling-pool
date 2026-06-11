@@ -62,7 +62,7 @@ For each participant, compute the difference between their two measurements. Now
 Whichever t-test you pick, you'll also need to decide what alternative hypothesis to test:
 
 - **Two-sided** (default in JASP): H₁ says the mean differs from the null value in *either* direction. Use this unless you have a strong directional prediction.
-- **One-sided** (directional): H₁ says the mean is specifically greater than, or specifically less than, the null value. More statistical power if you're right about the direction — but if the effect goes the other way, you can't reject H₀.
+- **One-sided** (directional): H₁ says the mean is either greater than, or less than, the null value — you commit to a direction. More power if you're right; if the effect goes the other way, you can't reject H₀.
 
 ::: {.callout-tip}
 ## A one-sided test is a commitment, not a shortcut

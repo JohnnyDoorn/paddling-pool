@@ -10,7 +10,7 @@ This site is the statistical equivalent: a low-pressure refresher in the analyse
 
 ::: {.callout-note icon=false}
 ## What this site builds on
-Most of the content here is repackaged from existing teaching material: the [JASP video library](https://jasp-stats.github.io/jasp-video-library/) and [how-to-use-JASP](https://jasp-stats.org/how-to-use-jasp/) blog posts, the textbook [*Discovering Statistics Using JASP*](https://discoverjasp.com/), and the UvA [*Scientific and Statistical Reasoning*](https://studiegids.uva.nl/en/courses/2025/1/54082) course lectures. What's added on top is the structure — short, decision-shaped pages with consistent layout and cross-references between them.
+Most of the content is repackaged from existing teaching material: the [JASP video library](https://jasp-stats.github.io/jasp-video-library/) and [how-to-use-JASP](https://jasp-stats.org/how-to-use-jasp/) blog posts, the textbook [*Discovering Statistics Using JASP*](https://discoverjasp.com/), and the UvA [*Scientific and Statistical Reasoning*](https://studiegids.uva.nl/en/courses/2025/1/54082) course lectures. What is new here is the structure: short topic pages, consistent layout, cross-references between them.
 :::
 
 ## How to use this site
