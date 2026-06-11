@@ -6,7 +6,7 @@ title: "Welcome to the Paddling Pool"
 >
 > A shallow body of water in which one can comfortably wade rather than swim — a place to get the feel of the water before going further.
 
-This site is the statistical equivalent: a low-pressure refresher in the analyses you'll need for your thesis or specialist master's courses. Work through topics at your own pace, watch short JASP demonstrations, and practise with real datasets — a shallow place to revisit the essentials before going further with your own research.
+This site is the statistical equivalent: a low-pressure refresher in the analyses you'll need for your thesis or specialist master's courses. Work through topics at your own pace, watch short JASP demonstrations, and practise with real datasets — a shallow place to revisit the essentials before diving deeper into your own research.
 
 ::: {.callout-note icon=false}
 ## What this site builds on
@@ -17,7 +17,7 @@ Most of the content is repackaged from existing teaching material: the [JASP vid
 
 1. **Start with [Getting Started](getting-started.qmd)** if you have not used JASP before, or need a quick refresh on loading data and navigating the interface.
 2. **Work through [Basics](core/descriptives.qmd)** — descriptive statistics, t-tests, ANOVA, regression, non-parametric tests, and contingency tables. These are the foundations that almost every analysis builds on.
-3. **Consult [Advanced Topics](advanced/mediation-moderation.qmd)** when your thesis or course requires a specific technique. Not everyone needs all of these — pick what is relevant to you.
+3. **Consult [Advanced Topics](advanced/mediation-moderation.qmd)** when your thesis or course requires a specific technique. Not everyone needs all of these, so pick what is relevant to you.
 
 Each topic page follows the same structure:
 
