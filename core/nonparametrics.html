@@ -42,7 +42,10 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-5a7edf553ce6f37e40c66d907d0f4061.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-d42e3a450557161d5337326f150af9d1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -259,7 +262,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">11 June 2026</p>
+      <p class="date-modified">18 June 2026</p>
     </div>
   </div>
     
@@ -420,6 +423,17 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Friedman</strong> → <em>Repeated Measures ANOVA</em> menu → tick the <em>Friedman</em> option</li>
 </ul>
 <p>JASP reports the rank-based statistic, a <em>p</em>-value, and a rank-biserial correlation as the effect size for the Wilcoxon tests.</p>
+<p>For the Wilcoxon tests there is nothing new to show: it is the <em>Wilcoxon</em> (Mann–Whitney) checkbox in the same <a href="../core/t-tests.html#how-to-do-it-in-jasp">Independent Samples T-Test panel</a> you already use for the parametric test. The Kruskal–Wallis test is the one that looks a little different, since it sits in the <em>Nonparametrics</em> section of the ordinary ANOVA dialog:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../assets/images/core/options-kruskalwallis.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="The Kruskal–Wallis Test under Nonparametrics in the ANOVA dialog: move the grouping variable (here Soya) into the box, then tick Estimates of effect size (ε² and η²) and Dunn’s post hoc tests to follow up which groups differ. The dependent variable is assigned in the main ANOVA panel above this section."><img src="../assets/images/core/options-kruskalwallis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="560" alt="The Kruskal–Wallis Test under Nonparametrics in the ANOVA dialog: move the grouping variable (here Soya) into the box, then tick Estimates of effect size (ε² and η²) and Dunn’s post hoc tests to follow up which groups differ. The dependent variable is assigned in the main ANOVA panel above this section."></a></p>
+</figure>
+</div>
+<figcaption>The <em>Kruskal–Wallis Test</em> under <em>Nonparametrics</em> in the <em>ANOVA</em> dialog: move the grouping variable (here <code>Soya</code>) into the box, then tick <em>Estimates of effect size</em> (ε² and η²) and <em>Dunn’s post hoc tests</em> to follow up which groups differ. The dependent variable is assigned in the main ANOVA panel above this section.</figcaption>
+</figure>
+</div>
 <hr>
 </section>
 <section id="interpreting-the-output" class="level2">
@@ -1001,6 +1015,38 @@ ul.task-list li input[type="checkbox"] {
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

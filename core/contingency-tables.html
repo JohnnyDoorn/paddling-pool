@@ -42,7 +42,10 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-5a7edf553ce6f37e40c66d907d0f4061.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-d42e3a450557161d5337326f150af9d1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -293,7 +296,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">11 June 2026</p>
+      <p class="date-modified">18 June 2026</p>
     </div>
   </div>
     
@@ -383,6 +386,16 @@ window.Quarto = {
 <section id="how-to-do-it-in-jasp" class="level3">
 <h3 class="anchored" data-anchor-id="how-to-do-it-in-jasp">How to do it in JASP</h3>
 <p>Go to <strong>Frequencies → Contingency Tables</strong> in the analysis menu.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../assets/images/core/contingency-options.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="The Contingency Tables panel for the female-athletes example: one categorical variable (picture) goes into Rows and the other (theme_present) into Columns. When the data are already tabulated, the column holding the cell frequencies (self_evaluation) goes into Counts; with raw one-row-per-participant data you leave Counts empty. Under Statistics, χ² is ticked alongside the Odds ratio (offered because the table is 2×2) and Phi and Cramér’s V as the effect size."><img src="../assets/images/core/contingency-options.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="540" alt="The Contingency Tables panel for the female-athletes example: one categorical variable (picture) goes into Rows and the other (theme_present) into Columns. When the data are already tabulated, the column holding the cell frequencies (self_evaluation) goes into Counts; with raw one-row-per-participant data you leave Counts empty. Under Statistics, χ² is ticked alongside the Odds ratio (offered because the table is 2×2) and Phi and Cramér’s V as the effect size."></a></p>
+</figure>
+</div>
+<figcaption>The <em>Contingency Tables</em> panel for the female-athletes example: one categorical variable (<code>picture</code>) goes into <em>Rows</em> and the other (<code>theme_present</code>) into <em>Columns</em>. When the data are already tabulated, the column holding the cell frequencies (<code>self_evaluation</code>) goes into <em>Counts</em>; with raw one-row-per-participant data you leave <em>Counts</em> empty. Under <em>Statistics</em>, χ² is ticked alongside the <em>Odds ratio</em> (offered because the table is 2×2) and <em>Phi and Cramér’s V</em> as the effect size.</figcaption>
+</figure>
+</div>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1005,6 +1018,38 @@ window.Quarto = {
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

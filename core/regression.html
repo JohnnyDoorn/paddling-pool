@@ -42,7 +42,10 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-5a7edf553ce6f37e40c66d907d0f4061.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-d42e3a450557161d5337326f150af9d1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -304,7 +307,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">11 June 2026</p>
+      <p class="date-modified">18 June 2026</p>
     </div>
   </div>
     
@@ -497,6 +500,16 @@ window.Quarto = {
 <section id="how-to-do-it-in-jasp-1" class="level3">
 <h3 class="anchored" data-anchor-id="how-to-do-it-in-jasp-1">How to do it in JASP</h3>
 <p>Go to <strong>Regression → Linear Regression</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../assets/images/core/regression-options-single.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="The Linear Regression panel for the simple album-sales model: Sales is the Dependent Variable and Adverts the single Covariate, entered with Method: Enter. The Model section shows the comparison JASP sets up automatically — Model 0 is the intercept-only null model, Model 1 adds Adverts — so the jump in R² from Model 0 to Model 1 is exactly what advertising buys you."><img src="../assets/images/core/regression-options-single.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="540" alt="The Linear Regression panel for the simple album-sales model: Sales is the Dependent Variable and Adverts the single Covariate, entered with Method: Enter. The Model section shows the comparison JASP sets up automatically — Model 0 is the intercept-only null model, Model 1 adds Adverts — so the jump in R² from Model 0 to Model 1 is exactly what advertising buys you."></a></p>
+</figure>
+</div>
+<figcaption>The <em>Linear Regression</em> panel for the simple album-sales model: <code>Sales</code> is the <em>Dependent Variable</em> and <code>Adverts</code> the single <em>Covariate</em>, entered with <em>Method: Enter</em>. The <em>Model</em> section shows the comparison JASP sets up automatically — Model 0 is the intercept-only null model, Model 1 adds <code>Adverts</code> — so the jump in R² from Model 0 to Model 1 is exactly what advertising buys you.</figcaption>
+</figure>
+</div>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -608,6 +621,17 @@ window.Quarto = {
 </section>
 <section id="how-to-do-it-in-jasp-2" class="level3">
 <h3 class="anchored" data-anchor-id="how-to-do-it-in-jasp-2">How to do it in JASP</h3>
+<p>It is the same <em>Linear Regression</em> dialog, with the predictors entered in blocks:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../assets/images/core/regression-options-multi.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Hierarchical multiple regression in the same dialog: all predictors (Adverts, Airplay, Image) are listed as Covariates, and the Model blocks build up in steps — Model 0 holds Adverts alone, Model 1 adds Airplay and Image (the greyed Adverts is carried over from the previous block). The ΔR² between Model 0 and Model 1 tests what airplay and image add over and above advertising."><img src="../assets/images/core/regression-options-multi.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="540" alt="Hierarchical multiple regression in the same dialog: all predictors (Adverts, Airplay, Image) are listed as Covariates, and the Model blocks build up in steps — Model 0 holds Adverts alone, Model 1 adds Airplay and Image (the greyed Adverts is carried over from the previous block). The ΔR² between Model 0 and Model 1 tests what airplay and image add over and above advertising."></a></p>
+</figure>
+</div>
+<figcaption>Hierarchical multiple regression in the same dialog: all predictors (<code>Adverts</code>, <code>Airplay</code>, <code>Image</code>) are listed as <em>Covariates</em>, and the <em>Model</em> blocks build up in steps — Model 0 holds <code>Adverts</code> alone, Model 1 adds <code>Airplay</code> and <code>Image</code> (the greyed <code>Adverts</code> is carried over from the previous block). The ΔR² between Model 0 and Model 1 tests what airplay and image add over and above advertising.</figcaption>
+</figure>
+</div>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1246,6 +1270,38 @@ window.Quarto = {
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
