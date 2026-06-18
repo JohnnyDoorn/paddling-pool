@@ -61,6 +61,8 @@ For larger tables, the benchmarks scale down — consult DSUJ Chapter 19 or use 
 
 Go to **Frequencies → Contingency Tables** in the analysis menu.
 
+![The *Contingency Tables* panel for the female-athletes example: one categorical variable (`picture`) goes into *Rows* and the other (`theme_present`) into *Columns*. When the data are already tabulated, the column holding the cell frequencies (`self_evaluation`) goes into *Counts*; with raw one-row-per-participant data you leave *Counts* empty. Under *Statistics*, χ² is ticked alongside the *Odds ratio* (offered because the table is 2×2) and *Phi and Cramér's V* as the effect size.](../assets/images/core/contingency-options.png){fig-align="center" width=540}
+
 ::: {.callout-note icon=false}
 ## JASP Video Library — Contingency Tables
 Recordings at [jasp-stats.github.io/jasp-video-library/All_Frequencies.html](https://jasp-stats.github.io/jasp-video-library/All_Frequencies.html):

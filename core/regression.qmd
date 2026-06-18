@@ -116,6 +116,8 @@ Plot the standardised residuals against the standardised predictions. A "healthy
 
 Go to **Regression → Linear Regression**.
 
+![The *Linear Regression* panel for the simple album-sales model: `Sales` is the *Dependent Variable* and `Adverts` the single *Covariate*, entered with *Method: Enter*. The *Model* section shows the comparison JASP sets up automatically — Model 0 is the intercept-only null model, Model 1 adds `Adverts` — so the jump in R² from Model 0 to Model 1 is exactly what advertising buys you.](../assets/images/core/regression-options-single.png){fig-align="center" width=540}
+
 ::: {.callout-note icon=false}
 ## JASP Video Library — Simple Regression
 Recordings at [jasp-stats.github.io/jasp-video-library/All_Regression.html#regression](https://jasp-stats.github.io/jasp-video-library/All_Regression.html#regression):
@@ -171,6 +173,10 @@ What multicollinearity really means (predictors that overlap), how to read VIF (
 :::
 
 ### How to do it in JASP
+
+It is the same *Linear Regression* dialog, with the predictors entered in blocks:
+
+![Hierarchical multiple regression in the same dialog: all predictors (`Adverts`, `Airplay`, `Image`) are listed as *Covariates*, and the *Model* blocks build up in steps — Model 0 holds `Adverts` alone, Model 1 adds `Airplay` and `Image` (the greyed `Adverts` is carried over from the previous block). The ΔR² between Model 0 and Model 1 tests what airplay and image add over and above advertising.](../assets/images/core/regression-options-multi.png){fig-align="center" width=540}
 
 ::: {.callout-note icon=false}
 ## JASP Video Library — Multiple Regression

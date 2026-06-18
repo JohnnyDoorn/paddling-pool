@@ -116,6 +116,8 @@ These benchmarks are rough guides — the meaningful effect size depends on your
 
 Go to **T-Tests** in the analysis menu and select the appropriate test.
 
+![The *Independent Samples T-Test* panel set up for the managers-vs-inpatients example (Exercise 2): the histrionic score goes into *Dependent Variables* and the two-level `Group` variable into *Grouping Variable*. Both *Student* and *Welch* are ticked (Welch drops the equal-variances assumption), with *Effect size → Cohen's d* and *Descriptives* requested, and a Q-Q plot of the residuals for the normality check.](../assets/images/core/ttest-options.png){fig-align="center" width=560}
+
 ::: {.callout-note icon=false}
 ## JASP Video Library — T-Tests
 All screen recordings are at [jasp-stats.github.io/jasp-video-library/All_T-Tests.html](https://jasp-stats.github.io/jasp-video-library/All_T-Tests.html):

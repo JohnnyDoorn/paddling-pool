@@ -80,6 +80,10 @@ In JASP, every non-parametric test lives alongside its parametric counterpart:
 
 JASP reports the rank-based statistic, a *p*-value, and a rank-biserial correlation as the effect size for the Wilcoxon tests.
 
+For the Wilcoxon tests there is nothing new to show: it is the *Wilcoxon* (Mann–Whitney) checkbox in the same [Independent Samples T-Test panel](t-tests.qmd#how-to-do-it-in-jasp) you already use for the parametric test. The Kruskal–Wallis test is the one that looks a little different, since it sits in the *Nonparametrics* section of the ordinary ANOVA dialog:
+
+![The *Kruskal–Wallis Test* under *Nonparametrics* in the *ANOVA* dialog: move the grouping variable (here `Soya`) into the box, then tick *Estimates of effect size* (ε² and η²) and *Dunn's post hoc tests* to follow up which groups differ. The dependent variable is assigned in the main ANOVA panel above this section.](../assets/images/core/options-kruskalwallis.png){fig-align="center" width=560}
+
 ---
 
 ## Interpreting the output

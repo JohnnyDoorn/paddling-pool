@@ -75,6 +75,8 @@ A significant F-test only tells you that *at least one pair of groups differs* �
 
 Go to **ANOVA → ANOVA** in the analysis menu.
 
+![The one-way *ANOVA* panel for the Hogwarts example (Exercise 1): `Machiavellianism` is the *Dependent Variable* and the four-level `Sorting house` is the *Fixed Factor*. Under *Display*, *Estimates of effect size → ω²* is ticked with confidence intervals (ω² is less upward-biased than η² in small samples), and `Sorting house` has been moved into *Post Hoc Tests* to follow up a significant omnibus result.](../assets/images/core/anova-options.png){fig-align="center" width=540}
+
 ::: {.callout-note icon=false}
 ## JASP Video Library — One-Way ANOVA
 Recordings at [jasp-stats.github.io/jasp-video-library/All_ANOVA.html#anova-oneway](https://jasp-stats.github.io/jasp-video-library/All_ANOVA.html#anova-oneway):

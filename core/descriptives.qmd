@@ -88,6 +88,10 @@ The histogram shows the shape; the boxplot pins down where the action is (median
 Two groups with identical means and SEs can have very different underlying shapes (one bimodal, one symmetric, one carried by a single extreme value). On a bar plot they look the same. SSR Lecture 4 and DSUJ ch. 5 both call this out; rainclouds caught on in psychology as the practical fix.
 :::
 
+JASP also has a dedicated *Raincloud Plots* analysis in the Descriptives module. Drop the continuous outcomes (`animal`, `life_satisfaction`) into *Dependent Variables* and the grouping variable (`pet`) into *Primary Factor* to get one density-plus-boxplot-plus-points strip per group:
+
+![The *Raincloud Plots* analysis: outcomes go into *Dependent Variables*, the grouping variable into *Primary Factor*. A *Secondary Factor* would split each strip further; *Covariate* and *ID* support repeated-measures layouts (which is why the panel notes it wants the data in long format).](../assets/images/core/raincloud-options.png){fig-align="center" width=520}
+
 ### Two continuous variables
 
 - **Scatter plot** — the honest summary of a relationship. Look at it *before* computing a correlation, not after; non-linearity and extreme points are usually obvious.
@@ -126,6 +130,8 @@ Descriptive statistics have no assumptions themselves, but examining them tells 
 ## How to do it in JASP
 
 Open your dataset, go to **Descriptives → Descriptives** in the analysis menu.
+
+![The *Descriptive Statistics* setup for the pet-groups example: `animal` and `life_satisfaction` go into *Variables*, and `pet` into *Split* so every statistic is reported separately per group. The expanded *Customizable Plots* section builds a boxplot by hand — ticking *Boxplots* with the *Violin* and *Jitter* elements layers a boxplot, a density curve, and the raw points into one figure.](../assets/images/core/descriptives-options.png){fig-align="center" width=520}
 
 ::: {.callout-note icon=false}
 ## JASP Video Library — Descriptives
