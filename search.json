@@ -42,6 +42,13 @@
     "text": "Resources\n\n\n\nResource\nDescription\n\n\n\n\nJASP Download\nFree, open-source statistical software used throughout this site.\n\n\nDiscovering Statistics Using JASP (DSUJ)\nThe main textbook this site is built around (available in the UvA library). The linked companion site, discoverjasp.com, hosts open-access materials including datasets, worked examples, Labcoat Leni studies, and Smart Alex exercises that will be referenced throughout the paddling pool.\n\n\nHow to Use JASP\nStep-by-step blog posts and gifs for specific analyses on the JASP website.\n\n\nJASP Video Library\nThe full collection of screen recordings we draw from, illustrating where to click in JASP.\n\n\nScientific and Statistical Reasoning (SSR)\nUvA bachelor course whose lectures cover the conceptual grounding for many of the topics here. Pool pages link directly to the corresponding lecture recording where available."
   },
   {
+    "objectID": "index.html#ai-statement",
+    "href": "index.html#ai-statement",
+    "title": "Welcome to the Paddling Pool",
+    "section": "AI statement",
+    "text": "AI statement\nParts of this site (layout, copy editing, figure captions, site setup) were drafted with an AI coding assistant and then reviewed and edited by me. The explanations, exercises, and statistics are drawn from the 100% human sources above; any errors are mine."
+  },
+  {
     "objectID": "index.html#contact-feature-requests-issues",
     "href": "index.html#contact-feature-requests-issues",
     "title": "Welcome to the Paddling Pool",
