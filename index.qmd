@@ -146,6 +146,12 @@ APA-style reporting templates for every test on this site, alongside the standar
 
 ---
 
+## AI statement
+
+Parts of this site (layout, copy editing, figure captions, site setup) were drafted with an AI coding assistant and then reviewed and edited by me. The explanations, exercises, and statistics are drawn from the 100% human sources above; any errors are mine.
+
+---
+
 ## Contact, feature requests & issues
 
 Spotted a mistake, want a topic added, or have a suggestion?
