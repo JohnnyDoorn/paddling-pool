@@ -83,7 +83,7 @@ Using the IQ self-assessment example: two-sided ("self-reported IQ is *different
 ::: {.assumption-list}
 - **Scale data**: the dependent variable is continuous (interval or ratio level)
 - **Independence of observations**: each row in the dataset is an independent participant (violated in paired designs, which is *why* you use the paired t-test instead)
-- **Normality**: the dependent variable (or, for paired data, the *difference scores*) should be approximately normally distributed, especially important in small samples (*n* < 30)
+- **Normality**: the residuals (or, for paired data, the *difference scores*) should be approximately normally distributed, especially important in small samples (*n* < 30)
 - **Equal variances** (independent-samples only): Levene's test checks this. JASP reports a Welch correction by default, which is robust to unequal variances — this is generally the safer choice
 :::
 

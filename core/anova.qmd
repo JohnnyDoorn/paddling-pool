@@ -39,7 +39,7 @@ F is the ratio of the mean squares of the *model* (how much variance the group m
 
 ::: {.assumption-list}
 - **Independence**: each participant contributes data to only one group
-- **Normality**: the DV should be approximately normally distributed *within each group* (check with Q-Q plot of residuals)
+- **Normality**: the residuals should be approximately normally distributed *within each group* (check with Q-Q plot of residuals)
 - **Homogeneity of variance (homoscedasticity)**: the variance should be similar across groups — check with Levene's test or observed group variances. If violated, use Welch's ANOVA (available in JASP)
 :::
 
